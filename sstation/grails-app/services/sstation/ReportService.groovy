@@ -1,4 +1,4 @@
-package success
+package sstation
 
 import sstation.AcStudent;
 import sstation.CampusOrg;
