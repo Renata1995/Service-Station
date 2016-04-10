@@ -4,30 +4,31 @@
 # to generate your .gitignore file.
 
 # web application files
-/web-app/WEB-INF/classes
+sstation/web-app/WEB-INF/classes
 
 # default HSQL database files for production mode
-/prodDb.*
+sstation/prodDb.*
 
 # general HSQL database files
 *Db.properties
 *Db.script
 
 # logs
-/stacktrace.log
-/test/reports
-/logs
+sstation/stacktrace.log
+sstation/test/reports
+sstation/logs
 
 # project release file
 /*.war
 
 # plugin release files
 /*.zip
-/plugin.xml
+sstation/plugin.xml
 
 # older plugin install locations
-/plugins
-/web-app/plugins
+sstation/plugins
+sstation/web-app/plugins
 
 # "temporary" build files
-/target
+sstation/target-eclipse
+sstation/target
