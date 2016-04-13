@@ -1,5 +1,4 @@
 
-<%@ page import="success.AcStudent"%>
 <!DOCTYPE html>
 <html>
 <head>

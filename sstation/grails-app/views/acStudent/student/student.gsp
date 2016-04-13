@@ -1,5 +1,4 @@
 
-<%@ page import="success.AcStudent"%>
 <!-- This page shows the basic information of the current selected studnet -->
 <!DOCTYPE html>
 <html>

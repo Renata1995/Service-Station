@@ -1,4 +1,3 @@
-<%@ page import="success.AcStudent" %>
 <%! import success.Classification %>
 
 <!-- form template for student -->
