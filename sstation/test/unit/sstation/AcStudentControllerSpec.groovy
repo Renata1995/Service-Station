@@ -21,23 +21,30 @@ class AcStudentControllerSpec extends Specification {
 	/**
 	 * Testing methods about student management
 	 */
-	void "test _studentList which renders the student management main page"(){
-		when:"execute _studentList with no students"
-		controller._studentList()
+	void "studentlist with no students should be empty"(){
+		when:"execute studentList with no students"
+		controller.studentList()
 		then:"No students will be in the list"
-		view=="/acStudent/student/_studentList"
+		view=="/acStudent/student/studentList"
 		model.list.size()==0
+	}
+	
+	
+	void "test studentList with some students should not be empty"(){
 
 		when: "There are 10 students"
 		10.times{
 			new AcStudent(firstname:"Renata",lastname:"Chai",acid:"AC3483"+it,acEmail:"rchai13@austincollege.edu",acBox:"11111",acYear:2013,classification:Classification.JU,phone:"1111111111").save(flush:true,failOnError:true)
 		}
-		controller._studentList()
+		controller.studentList()
 		then:"10 students will be shown in the list"
-		view=="/acStudent/student/_studentList"
+		view=="/acStudent/student/studentList"
 		model.list.size()==10
 		model.list[0].firstname=="Renata"
 	}
+	
+	
+	
 
 	void "test sTable which leads to the student list"(){
 		when:"execute _studentList with no students"
@@ -57,12 +64,12 @@ class AcStudentControllerSpec extends Specification {
 		model.list[0].firstname=="Renata"
 	}
 
-	void "test _student which leads the student main page"(){
+	void "test student which leads the student main page"(){
 		when:
 		AcStudent ac=new AcStudent(firstname:"Renata",lastname:"Chai",acid:"AC3483",acEmail:"rchai13@austincollege.edu",acBox:"11111",acYear:2013,classification:Classification.JU,phone:"1111111111").save(flush:true,failOnError:true)
-		controller._student(ac)
+		controller.student(ac)
 		then:
-		view=="/acStudent/student/_student"
+		view=="/acStudent/student/student"
 		model.acStudentInstance==ac
 
 	}
