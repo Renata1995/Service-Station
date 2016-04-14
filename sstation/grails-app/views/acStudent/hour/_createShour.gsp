@@ -1,6 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8"%>
-<%@ page import="success.Status"%>
-<%@ page import="success.AcStudent"%>
+<%@ page import="sstation.Status"%>
+<%@ page import="sstation.AcStudent"%>
 <html>
 <head>
 <style>
@@ -46,7 +46,7 @@ div.btn-group-vertical {
 <!-- Create Service Hour Page -->
 <g:form>
 <div id="totalCreateSH" class="mainback">
-	<g:set var="shour" value="${new success.ServiceHour()}" />
+	<g:set var="shour" value="${new sstation.ServiceHour()}" />
 	<div id="create-servicehour" class="content scaffold-create"
 		role="main">
 		<g:if test="${flash.message}">

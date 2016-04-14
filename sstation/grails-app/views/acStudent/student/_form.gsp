@@ -1,4 +1,4 @@
-<%! import success.Classification %>
+<%! import sstation.Classification %>
 
 <!-- form template for student -->
 <div class="fieldcontain ${hasErrors(bean: student, field: 'firstname', 'error')} required">

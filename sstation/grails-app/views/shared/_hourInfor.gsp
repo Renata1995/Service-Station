@@ -1,5 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" %>
-<%@ page import="success.Status" %>
+<%@ page import="sstation.Status" %>
 <ol class="property-list acStudent">
 
 			<g:if test="${shour?.event}">

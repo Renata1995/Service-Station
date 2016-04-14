@@ -1,7 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" %>
 <%@ page contentType="text/html;charset=UTF-8"%>
-<%@ page import="success.Status"%>
-<%@ page import="success.AcStudent"%>
+<%@ page import="sstation.Status"%>
+<%@ page import="sstation.AcStudent"%>
 <html>
 <head>
 <style>

@@ -1,5 +1,5 @@
-<%@ page import="success.AcStudent"%>
-<%@ page import="success.Status"%>
+<%@ page import="sstation.AcStudent"%>
+<%@ page import="sstation.Status"%>
 <!DOCTYPE html>
 <html>
 <div>

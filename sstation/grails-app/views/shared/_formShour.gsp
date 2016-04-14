@@ -1,4 +1,4 @@
-<%@ page import="success.ServiceHour" %>
+<%@ page import="sstation.ServiceHour" %>
 
 <!-- Form template for service hour -->
 
