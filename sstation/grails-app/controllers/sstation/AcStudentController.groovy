@@ -23,7 +23,6 @@ import sstation.Event;
 import sstation.ServiceHour;
 import sstation.Status;
 
-
 class AcStudentController {
 	def hourService//Calculate all statistics about service hour list
 	def reportService//Used for report pages
@@ -220,7 +219,7 @@ class AcStudentController {
 			def id=Long.parseLong(it)
 			AcStudent.get(id).delete flush:true
 		}
-		render view:"student/_studentList", model:[list:AcStudent.list()]
+		render view:"student/studentList", model:[list:AcStudent.list()]
 
 
 

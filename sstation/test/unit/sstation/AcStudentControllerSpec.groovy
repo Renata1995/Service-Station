@@ -1,5 +1,5 @@
 package sstation
-import sstation.AcStudent;
+import sstation.*;
 import sstation.AcStudentController;
 import sstation.CampusOrg;
 import sstation.Classification;
@@ -10,7 +10,7 @@ import grails.test.mixin.*
 import spock.lang.*
 
 @TestFor(AcStudentController)
-@Mock([AcStudent,ServiceHour,CampusOrg])
+@Mock([AcStudent,ServiceHour,CampusOrg,Event,CommAg])
 @FreshRuntime
 class AcStudentControllerSpec extends Specification {
 	def rand
@@ -70,7 +70,7 @@ class AcStudentControllerSpec extends Specification {
 		controller.student(ac)
 		then:
 		view=="/acStudent/student/student"
-		model.acStudentInstance==ac
+		model.student==ac
 
 	}
 
@@ -80,7 +80,7 @@ class AcStudentControllerSpec extends Specification {
 		controller._showStudent(ac)
 		then:
 		view=="/acStudent/student/_showStudent"
-		model.acStudentInstance==ac
+		model.student==ac
 	}
 	void "test _createStudent which leads to the student creation form "(){
 		when:
@@ -88,14 +88,14 @@ class AcStudentControllerSpec extends Specification {
 		then:
 		view=="/acStudent/student/_createStudent"
 	}
-	void "test _saveStudent which saves the newly created student and leads to the student infor. page"(){
+	void "test saveStudent which saves the newly created student and leads to the student infor. page"(){
 		when:
 		int count=AcStudent.count()
 		AcStudent ac=new AcStudent(firstname:"Renata",lastname:"Chai",acid:"AC3483",acEmail:"rchai13@austincollege.edu",acBox:"11111",acYear:2013,classification:Classification.JU,phone:"1111111111").save(flush:true,failOnError:true)
-		controller.save(ac)
+		controller.saveStudent(ac)
 		then:
-		view=="/acStudent/student/_student"
-		model.acStudentInstance==ac
+		view=="/acStudent/student/student"
+		model.student==ac
 		AcStudent.count()==count+1
 
 	}
@@ -109,17 +109,17 @@ class AcStudentControllerSpec extends Specification {
 	void "test updateStudent which update the edited student and leads to the student infor page"(){
 		when:
 		AcStudent ac=new AcStudent(firstname:"Renata",lastname:"Chai",acid:"AC3483",acEmail:"rchai13@austincollege.edu",acBox:"11111",acYear:2013,classification:Classification.JU,phone:"1111111111").save(flush:true,failOnError:true)
-		controller.update(ac)
+		controller._updateStudent(ac)
 		then:
 		view=="/acStudent/student/_showStudent"
-		model.acStudentInstance==ac
+		model.student==ac
 	}
 	
 	void "test delete Student"(){
 		when:
 		AcStudent ac=new AcStudent(firstname:"Renata",lastname:"Chai",acid:"AC3483",acEmail:"rchai13@austincollege.edu",acBox:"11111",acYear:2013,classification:Classification.JU,phone:"1111111111").save(flush:true,failOnError:true)
 		int count=AcStudent.count()
-		controller.delete(ac)
+		controller.deleteStudent(ac)
 		then:
 		view=="/acStudent/student/_sTable"
 		model.list.size()==count-1
@@ -133,7 +133,7 @@ class AcStudentControllerSpec extends Specification {
 		params.checkstudent=["1","3","5"]
 		controller.deletemult()
 		then:"7 students left"
-		view=="/acStudent/student/_studentList"
+		view=="/acStudent/student/studentList"
 		model.list.size()==7
 		AcStudent.get(1)==null
 		AcStudent.get(3)==null
@@ -143,8 +143,20 @@ class AcStudentControllerSpec extends Specification {
 	
 	
 	
+	
 	/**
-	 * Service Hour Management 
+	 * Report Method
+	 */
+	void "test _reportAdmin"(){
+		def s=Mock(AcStudent)
+		when:
+		controller._reportAdmin(s)
+		then:
+		view=="/acStudent/report/_reportAdmin"
+	}	
+	
+	/**
+	 * Service Hour Management
 	 */
 
 	void "test _shour which leads to the basic infor of the current service hour"(){
@@ -152,9 +164,9 @@ class AcStudentControllerSpec extends Specification {
 			Mock(ServiceHour).save(flush:true,failOnError:true)
 		}
 		when:
-		controller._shour(ServiceHour.get(1))
+		controller.shour(ServiceHour.get(1))
 		then:
-		view=="/acStudent/shour/_shour"
+		view=="/acStudent/shour/shour"
 		model.shour==ServiceHour.get(1)
 	}
 	
@@ -174,69 +186,6 @@ class AcStudentControllerSpec extends Specification {
 		view=="/acStudent/shour/_editShour"
 	}
 	
-	void "test _totalHList"(){
-		when:
-		10.times{
-			def sh=Mock(ServiceHour).save(flush:true)
-		}
-		controller._totalHList()
-		then:
-		view=="/acStudent/hour/_totalHList"
-	}
-	
-	
-	
-	/**
-	 * Report Method
-	 */
-	void "test _report"(){
-		when:
-		def s=Mock(AcStudent)
-		controller._report(s)
-		then:
-		view=="/acStudent/report/_report"
-	}
-	
-	void "test _reportAdmin"(){
-		def s=Mock(AcStudent)
-		when:
-		controller._reportAdmin(s)
-		then:
-		view=="/acStudent/report/_reportAdmin"
-	}	
 
-	/**
-	 * Organization Management
-	 */
-	void "test _orgList"(){
-		when:
-		10.times{
-			Mock(CampusOrg).save(flush:true,failOnError:true)
-		}
-		controller._orgList()
-		then:
-		view=="/acStudent/org/_orgList"
-		model.list==CampusOrg.list()
-	}
-	void "test _org"(){
-		when:
-		def s=Mock(CampusOrg)
-		controller._org(s)
-		then:
-		view=="/acStudent/org/_org"
-	}
-	void "test _createOrg"(){
-		when:
-		controller._createOrg()
-		then:
-		view=="/acStudent/org/_createOrg"
-		
-	}
-	void "test _editOrg"(){
-		when:
-		def s=Mock(CampusOrg)
-		controller._editOrg(s)
-		then:
-		view=="/acStudent/org/_editOrg"
-	}
+	
 }
