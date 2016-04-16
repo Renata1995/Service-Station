@@ -60,11 +60,11 @@
 	<!-- Save Button -->
 	<div>
 		<g:if test="${params.orgAgMain=='1'}">
-			<g:actionSubmit class="btn btn-default" action="_saveOrgOnOA"
+			<g:actionSubmit class="btn btn-default" action="_saveOrgOnOA" update = "main" 
 				value="Save" />
 		</g:if>
 		<g:else>
-			<g:actionSubmit class="btn btn-default" action="_saveOrgOnMain"
+			<g:actionSubmit class="btn btn-default" action="_saveOrgOnMain" update = "main"
 				value="Save"/>
 		</g:else>
 	</div>
