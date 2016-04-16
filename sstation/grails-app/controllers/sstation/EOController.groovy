@@ -121,8 +121,14 @@ class EOController {
 	
 	def _saveOrgOnOA(CampusOrg org){
 		org.properties=params
-		org.save(flush:true,failOnError:true)
-		orgAgMain()
+		try{
+			org.save(flush:true,failOnError:true)
+			orgAgMain()
+		}
+		catch(error){
+			print("error")
+			render view:"org/_orgForm",model:[org:org,heading:org.name]
+		}
 	}
 	
 	def _saveOrgOnMain(CampusOrg org){

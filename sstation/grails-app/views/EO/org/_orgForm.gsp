@@ -3,6 +3,7 @@
 <div class="formHeading greyBar">
 	${heading}
 </div>
+
 <g:form class="mainback" controller="EO" method="POST" id="${org.id}">
 	<div
 		class="fieldcontain ${hasErrors(bean: campusOrg, field: 'name', 'error')} required">
@@ -46,6 +47,15 @@
 			value="${org?.contactEmail}" />
 	</div>
 	
+	<div>
+		<g:hasErrors>
+		<g:if test = "error in org._orgForm.validation.FieldError">
+			<p style = color:red>
+				Please fill out all fields before submitting			
+			</p>
+		</g:if>
+		</g:hasErrors>
+	</div>
 	
 	<!-- Save Button -->
 	<div>
