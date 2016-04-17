@@ -35,16 +35,18 @@ class ACGroupController {
 	}
 	
 	def _saveOnCard(CampusOrg org){
-		org.properties=params
+		org.properties=params		
 		
-		def error
-		if(!org.save(flush:true)){
-			error=org.errors.allErrors.collect{it.defaultMessage} 
+		try{
+			org.save(flush:true,failOnError:true)
+			def orgList=CampusOrg.list()
+			render view:"index", model:[list:orgList]
 		}
-		[error:error]
+		catch(error){
+			print("error")
+			render view:"_orgForm",model:[org:org,heading:org.name]
+		}
 		
-		def orgList=CampusOrg.list()
-		render view:"index", model:[list:orgList]
 	}
 	
 	def _saveOnTable(CampusOrg org){

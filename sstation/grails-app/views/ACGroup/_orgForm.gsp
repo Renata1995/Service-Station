@@ -46,6 +46,15 @@
 			value="${org?.contactEmail}" />
 	</div>
 	
+	<div>
+		<g:hasErrors>
+		<g:if test = "error in org._orgForm.validation.FieldError">
+			<p style = color:red>
+				Please fill out all fields before submitting			
+			</p>
+		</g:if>
+		</g:hasErrors>
+	</div>
 	
 	<!-- Save Button -->
 	<div>
@@ -54,8 +63,7 @@
 				value="Save" />
 		</g:if>
 		<g:else> 
-			<g:actionSubmit class="btn btn-default" action="_saveOnTable"
-				value="Save"/>
+			<g:actionSubmit class="btn btn-default" action="_saveOnTable" value="Submit"/>
 		</g:else>
 	</div>
 	
