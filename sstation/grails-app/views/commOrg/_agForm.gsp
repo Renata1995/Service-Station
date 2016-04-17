@@ -57,11 +57,11 @@
 	</div>
 	<div>
 		<g:if test="${params.orgAgMain=='1'}">
-			<g:actionSubmit class="btn btn-default" action="_saveAgencyToOA"
+			<g:actionSubmit class="btn btn-default" action="_saveOnCard"
 				value="Save"/>
 		</g:if>
 		<g:else>
-			<g:actionSubmit class="btn btn-default" action="_saveAgencyToAgMain"
+			<g:actionSubmit class="btn btn-default" action="_saveOnTable"
 				value="Save"/>
 		</g:else>
 	</div>

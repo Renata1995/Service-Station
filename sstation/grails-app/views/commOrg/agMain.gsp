@@ -22,7 +22,12 @@
 		</div><!-- titletop ends -->		
 		
 		<div id="agMain">
+			<g:if test="${table==1}">
+			<g:render template="agTable"/>
+			</g:if>
+			<g:else>		
 			<g:render template="agCard" />
+			</g:else>
 		</div>
 
 	</div>

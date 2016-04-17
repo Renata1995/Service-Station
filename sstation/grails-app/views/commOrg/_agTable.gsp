@@ -78,7 +78,7 @@
 								<span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
 							</g:remoteLink> 
 							<g:remoteLink controller="commOrg" id="${ag.id}"
-								action="_deleteAgencyOnMain" update="agMain">
+								action="_deleteOnTable" update="agMain">
 								<span class="glyphicon glyphicon-trash"
 									style="padding-top: 10px" aria-hidden="true"></span>
 							</g:remoteLink></td>

@@ -27,12 +27,10 @@
 </head>
 <body>
 	<div class="body">
-		<div>
-
 			<div class="row">
-				<div class="col-md-6" id="agTopList">
+				<div class="col-md-12" id="agTopList">
 
-					<div class="list-group">
+					<div class="list-group" style="width:100%">
 						<div class="list-group-item more">
 							<g:remoteLink controller="commOrg" class="aoListIcon" action="_createAgency" update="main"
 								params="[orgAgMain:1]">
@@ -68,7 +66,7 @@
 									</g:remoteLink>
 
 									<g:remoteLink class="orgAgMainDelete aoListIcon" controller="commOrg"
-										id="${ag.id}" action="_deleteAgencyOnOA">
+										id="${ag.id}" action="_deleteOnCard">
 										<span class="glyphicon glyphicon-trash"
 											style="padding-left: 20px" aria-hidden="true"></span>
 										<b>Delete</b>
@@ -92,7 +90,6 @@
 
 			</div>
 			<!-- row ends -->
-		</div>
 	</div>
 	<script>
 		$(function() {

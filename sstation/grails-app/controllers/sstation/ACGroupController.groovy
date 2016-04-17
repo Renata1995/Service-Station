@@ -71,6 +71,6 @@ class ACGroupController {
 		org.delete(flush:true,failOnError:true)
 		
 		def list=CampusOrg.list()
-		render view:"_orgTable",model:[list:list,table:1]
+		render view:"_orgTable",model:[list:list]
 	}
 }

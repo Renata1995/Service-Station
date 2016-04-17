@@ -27,11 +27,8 @@
 </head>
 <body>
 	<div class="body">
-		
-		<div>
-
 			<div class="row">
-				<div class="col-md-6" id="orgTopList">
+				<div class="col-md-12" id="orgTopList">
 		
 					<div class="list-group">
 						<div class="list-group-item more">
@@ -92,7 +89,6 @@
 
 			</div>
 			<!-- row ends -->
-		</div>
 	</div>
 	<script>
 		$(function() {

@@ -18,6 +18,11 @@ class CommOrgController {
 		def list=CommAg.list()
 		render view:"_agTable",model:[list:list]
 	}
+	
+	def _agCard(){
+		def list=CommAg.list()
+		render view:"_agCard",model:[list:list]
+	}
 
 	def _agOverallKPI(){
 
@@ -38,21 +43,21 @@ class CommOrgController {
 		render view:"_agForm",model:[agency:ag,heading:heading]
 	}
 
-	def _saveAgencyToAgMain(CommAg agency){
+	def _saveOnCard(CommAg agency){
 		agency.properties=params
 		agency.save(flush:true,failOnError:true)
 		def list=CommAg.list()
 		render view:"agMain",model:[list:list]
 	}
 	
-	def _saveAgencyToOA(CommAg agency){
+	def _saveOnTable(CommAg agency){
 		agency.properties=params
 		agency.save(flush:true,failOnError:true)
 		def list=CommAg.list()
-		render view:"agMain",model:[list:list]
+		render view:"agMain",model:[list:list,table:1]
 	}
 
-	def _deleteAgencyOnMain(CommAg ag){
+	def _deleteOnTable(CommAg ag){
 		ServiceHour.findAllByCommAg(ag).each{
 			it.delete(flush:true,failOnError:true)
 		}
@@ -60,7 +65,7 @@ class CommOrgController {
 		_agTable()
 	}
 
-	def _deleteAgencyOnOA(CommAg ag){
+	def _deleteOnCard(CommAg ag){
 		ServiceHour.findAllByCommAg(ag).each{
 			it.delete(flush:true,failOnError:true)
 		}
