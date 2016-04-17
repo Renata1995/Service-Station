@@ -23,7 +23,7 @@ a.eventTime{
 		<div class="col-md-6 navbar-right cornerButtons"
 			style="margin-top: 7px; margin-bottom: -7px;">
 				<!--  <div id="createEventButton">-->
-				<g:remoteLink controller="EO" action="_createEvent" update="eventMain"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span><b>New Event</b></g:remoteLink>
+				<g:remoteLink controller="event" action="_createEvent" update="eventMain"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span><b>New Event</b></g:remoteLink>
 		</div>
 		<!-- cornerButtons ends -->
 	</div>
@@ -60,11 +60,11 @@ a.eventTime{
 
 				<!-- Buttons -->
 				<div class="cornerButtons listButtons">
-					<g:remoteLink class="aoListIcon" controller="EO" id="${event.id}" action="_editEvent" update="eventMain">
+					<g:remoteLink class="aoListIcon" controller="event" id="${event.id}" action="_editEvent" update="eventMain">
 					<span
 						class="glyphicon glyphicon-edit" aria-hidden="true"></span> <b>Edit</b>
 					</g:remoteLink>
-					<g:remoteLink class="aoListIcon" controller="EO" id="${event.id}" action="_deleteEvent" update="eventMain"><span
+					<g:remoteLink class="aoListIcon" controller="event" id="${event.id}" action="_deleteEvent" update="eventMain"><span
 						class="glyphicon glyphicon-trash" style="padding-left: 20px"
 						aria-hidden="true"></span> <b>Delete</b></g:remoteLink>
 				</div>

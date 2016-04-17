@@ -9,14 +9,14 @@
 
 			<div class="col-md-6 navbar-right cornerButtons"
 				style="margin-top: 7px; margin-bottom: -7px;">
-				<g:remoteLink controller="EO" action="_createAgency" update="main">
+				<g:remoteLink controller="commOrg" action="_createAgency" update="main">
 					<span style="color: #FFDE97" class="glyphicon glyphicon-plus"
 						aria-hidden="true"></span>
 					<b>Add</b>
 				</g:remoteLink>
 				<span style="color: #FFDE97" class="glyphicon glyphicon-trash"
 					aria-hidden="true"></span>
-				<g:submitToRemote controller="EO" action="deletemult" value="Delete"
+				<g:submitToRemote controller="commOrg" action="deletemult" value="Delete"
 					class="tabledelete"></g:submitToRemote>
 			</div>
 		</div>
@@ -73,11 +73,11 @@
 							${ag.contactEmail}
 						</td>
 
-						<td class="aoTableIcon"><g:remoteLink controller="EO"
+						<td class="aoTableIcon"><g:remoteLink controller="commOrg"
 								action="_editAgency" update="main" id="${ag.id}">
 								<span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
 							</g:remoteLink> 
-							<g:remoteLink controller="EO" id="${ag.id}"
+							<g:remoteLink controller="commOrg" id="${ag.id}"
 								action="_deleteAgencyOnMain" update="agMain">
 								<span class="glyphicon glyphicon-trash"
 									style="padding-top: 10px" aria-hidden="true"></span>

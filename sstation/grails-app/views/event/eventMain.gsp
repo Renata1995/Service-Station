@@ -16,13 +16,13 @@
 	
 	<!-- Link to the profile or the service hour list of the current student -->
 		<ul class="nav-tabs navGradient nav">
-				<li class="tab1"><g:remoteLink controller="EO" action="_eventTable" update="eventMain"><b>Event List</b></g:remoteLink></li>
-				<li class="tab2"><g:remoteLink controller="EO" action="_eventOverallKPI" update="eventMain">Analysis</g:remoteLink></li>
+				<li class="tab1"><g:remoteLink controller="event" action="_eventTable" update="eventMain"><b>Event List</b></g:remoteLink></li>
+				<li class="tab2"><g:remoteLink controller="event" action="_eventOverallKPI" update="eventMain">Analysis</g:remoteLink></li>
 				
  	</ul>
  	</div>
  	<div id="eventMain">
-		<g:render template="event/eventTable" />
+		<g:render template="eventTable" />
 	</div>
 
 	</div>

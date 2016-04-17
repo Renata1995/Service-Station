@@ -3,7 +3,7 @@
 <div class="formHeading greyBar">
 	${heading}
 </div>
-<g:form class="mainback" controller="EO" method="POST" id="${org.id}">
+<g:form class="mainback" controller="ACGroup" method="POST" id="${org.id}">
 	<div
 		class="fieldcontain ${hasErrors(bean: campusOrg, field: 'name', 'error')} required">
 		<label for="name"> Name: <span class="required-indicator">*</span>
@@ -50,11 +50,11 @@
 	<!-- Save Button -->
 	<div>
 		<g:if test="${params.orgAgMain=='1'}">
-			<g:actionSubmit class="btn btn-default" action="_saveOrgOnOA"
+			<g:actionSubmit class="btn btn-default" action="_saveOnCard"
 				value="Save" />
 		</g:if>
-		<g:else>
-			<g:actionSubmit class="btn btn-default" action="_saveOrgOnMain"
+		<g:else> 
+			<g:actionSubmit class="btn btn-default" action="_saveOnTable"
 				value="Save"/>
 		</g:else>
 	</div>

@@ -13,12 +13,12 @@
 				${event.name}
 			</h1>
 			<div class="cornerButtons">
-				<g:link controller="EO" action="eventMain">
+				<g:link controller="event" action="eventMain">
 					<span class="glyphicon glyphicon-th-list" aria-hidden="true"></span>
 					<b>Back</b>
 				</g:link>
 
-				<g:remoteLink controller="EO" action="_deleteEvent" id="${event.id}"
+				<g:remoteLink controller="event" action="_deleteEvent" id="${event.id}"
 					update="main">
 					<span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
 					<b
@@ -29,10 +29,10 @@
 			<!-- Link to the profile or the service  hour list of the current student -->
 			<ul class="nav nav-tabs">
 				<li class="tab1" role="presentation" class="active"><g:remoteLink
-						controller="EO" action="_showEvent" id="${event.id}"
+						controller="event" action="_showEvent" id="${event.id}"
 						update="student">Information</g:remoteLink></li>
 				<li class="tab2" role="presentation"><g:remoteLink
-						controller="EO" action="_eventKPI" id="${event.id}"
+						controller="event" action="_eventKPI" id="${event.id}"
 						update="student">Analysis</g:remoteLink></li>
 			</ul>
 		</div><!-- titleTop ends -->

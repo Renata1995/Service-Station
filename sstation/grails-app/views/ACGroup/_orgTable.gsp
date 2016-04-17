@@ -6,7 +6,7 @@
 <body>
 	<div class="table_buttons" style="height: 2em">
 		<div class="col-md-3 navbar-right cornerButtons" style="margin: 0px;">
-			<g:remoteLink controller="EO" action="_createOrg"
+			<g:remoteLink controller="ACGroup" action="_createOrg"
 				update="main">
 				<span style="color: #FFDE97" class="glyphicon glyphicon-plus"
 					aria-hidden="true"></span>
@@ -53,11 +53,11 @@
 						${s.contactEmail}
 					</td>
 
-					<td class="aoTableIcon"><g:remoteLink controller="EO"
+					<td class="aoTableIcon"><g:remoteLink controller="ACGroup"
 							action="_editOrg" update="main" id="${s.id}">
 							<span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
-						</g:remoteLink> <g:remoteLink controller="EO" id="${s.id}"
-							action="_deleteOrgOnMain" update="orgMain">
+						</g:remoteLink> <g:remoteLink controller="ACGroup" id="${s.id}"
+							action="_deleteOnTable" update="orgMainType">
 							<span class="glyphicon glyphicon-trash" style="padding-top: 10px"
 								aria-hidden="true"></span>
 						</g:remoteLink></td>

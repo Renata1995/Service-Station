@@ -4,7 +4,7 @@
 	${heading}
 </div>
 
-<g:form class="mainback" controller="EO" id="${agency.id}" method="POST">
+<g:form class="mainback" controller="commOrg" id="${agency.id}" method="POST">
 	<div
 		class="fieldcontain ${hasErrors(bean: agency, field: 'name', 'error')} required">
 		<label for="name"> Name: <span class="required-indicator">*</span>

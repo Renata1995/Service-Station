@@ -50,8 +50,8 @@
 
 </div>
 
-<g:submitToRemote class="btn btn-default" id="${event.id}" value="Save" controller="EO" update="eventMain" action="_saveEvent" />
-<g:remoteLink class="btn btn-default" action="_eventTable" controller="EO" update="eventMain">Cancel</g:remoteLink>
+<g:submitToRemote class="btn btn-default" id="${event.id}" value="Save" controller="event" update="eventMain" action="_saveEvent" />
+<g:remoteLink class="btn btn-default" action="_eventTable" controller="event" update="eventMain">Cancel</g:remoteLink>
 </form>
 
 </html>

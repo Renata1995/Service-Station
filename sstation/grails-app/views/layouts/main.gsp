@@ -111,13 +111,17 @@ body {
 							<span class="glyphicon glyphicon-education" aria-hidden="true"></span>
 							<br /> Students</g:link></li>
 
-					<li><g:link controller="EO" action="eventMain">
+					<li><g:link controller="event" action="eventMain">
 							<span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>
 							<br />Events</g:link></li>
 
-					<li><g:link controller="EO" action="orgAgMain">
+					<li><g:link controller="ACGroup" action="index">
+							<span class="glyphicon glyphicon-pawn" aria-hidden="true"></span>
+							<br/>AC Group</g:link></li>
+							
+					<li><g:link controller="CommOrg" action="agMain">
 							<span class="glyphicon glyphicon-tower" aria-hidden="true"></span>
-							<br />Organizations</g:link></li>
+							<br/>Organizations</g:link></li>
 
 				</ul>
 			</div>
