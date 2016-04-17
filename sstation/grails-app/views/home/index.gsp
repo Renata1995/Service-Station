@@ -114,7 +114,7 @@ div.col-md-7 {
 	</div>
 	<!-- row -->
 
-	<g:render template="kpi/hourkpi" />
+	<g:render template="hourkpi" />
 
 </body>
 </html>

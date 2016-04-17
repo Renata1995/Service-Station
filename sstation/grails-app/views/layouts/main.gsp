@@ -101,7 +101,7 @@ body {
 		<nav class="nav-pills nav-stacked" id="sideBar">
 			<div class="sidebar-collapse menu-collapse" style="height: 100%">
 				<ul class="nav navLink" id="main-menu" style="height: 100%">
-					<li><g:link controller="acStudent" params="[domain:1]" action="dashboard">
+					<li><g:link controller="home" params="[domain:1]" action="index">
 							<span class="glyphicon glyphicon-home" aria-hidden="true"></span>
 							<br/>Home </g:link></li>
 					<li><g:link controller="hour" action="overall">

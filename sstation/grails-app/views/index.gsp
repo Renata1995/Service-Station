@@ -58,7 +58,7 @@ label.loginLabel{
 		
 			
 			<!-- Log in form -->
-			<g:form controller="acStudent" class="indexForm form-horizontal" id="logInForm">
+			<g:form controller="home" class="indexForm form-horizontal" id="logInForm">
 
 				<!-- Domin Selection -->
 				<div class="form-group">
@@ -107,7 +107,7 @@ label.loginLabel{
 				<!-- Log in button -->
 				<div class="form-group">
 					<div class="col-md-offset-3 col-md-7">
-						<g:actionSubmit action="dashboard" method="POST"
+						<g:actionSubmit controller="home" action="index" method="POST"
 							class="btn btn-default" value="Log In" />
 					</div>
 				</div>
@@ -118,7 +118,7 @@ label.loginLabel{
 			
 			
 			<!-- Sign up Form -->
-			<g:form class="indexForm form-horizontal" controller="acStudent" id="signUpForm" style="display:none">
+			<g:form class="indexForm form-horizontal" controller="home" id="signUpForm" style="display:none">
 
 				<!-- Domin Selection -->
 				<div class="form-group">
@@ -157,7 +157,7 @@ label.loginLabel{
 				<!-- Log in button -->
 				<div class="form-group">
 					<div class="col-md-offset-3 col-md-7">
-						<g:actionSubmit action="dashboard" method="POST"
+						<g:actionSubmit controller="home" action="index" method="POST"
 							class="btn btn-default" value="Sign Up" />
 					</div>
 				</div>
