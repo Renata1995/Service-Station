@@ -103,7 +103,6 @@
 				jQuery('#agMain').html(data);
 			},
 			error:function(XMLHttpRequest,textStatus,errorThrown){}});
-		
 		} 
 	}
   $(document).ready(function(){

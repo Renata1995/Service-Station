@@ -43,6 +43,11 @@ class CommOrgController {
 		render view:"_agForm",model:[agency:ag,heading:heading]
 	}
 
+	/**
+	 * Save or update an agency and direct to the card view
+	 * @param agency
+	 * @return
+	 */
 	def _saveOnCard(CommAg agency){
 		agency.properties=params
 		if (!agency.save(flush:true)) {
@@ -55,6 +60,11 @@ class CommOrgController {
 		render view:"index",model:[list:list]
 	}
 	
+	/**
+	 * Save or update an agency and direct to the table view
+	 * @param agency
+	 * @return
+	 */
 	def _saveOnTable(CommAg agency){
 		println "create"
 		agency.properties=params
@@ -66,6 +76,11 @@ class CommOrgController {
 		render view:"index",model:[list:list,table:1]
 	}
 
+	/**
+	 * Delete an agency and direct to the table view
+	 * @param agency
+	 * @return
+	 */
 	def _deleteOnTable(CommAg ag){
 		ServiceHour.findAllByCommAg(ag).each{
 			it.delete(flush:true,failOnError:true)
@@ -74,6 +89,11 @@ class CommOrgController {
 		_agTable()
 	}
 
+	/**
+	 * Delete an agency and direct to the card view
+	 * @param agency
+	 * @return
+	 */
 	def _deleteOnCard(CommAg ag){
 		ServiceHour.findAllByCommAg(ag).each{
 			it.delete(flush:true,failOnError:true)
