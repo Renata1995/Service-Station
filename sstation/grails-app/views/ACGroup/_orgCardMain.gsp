@@ -63,14 +63,20 @@
 										<b>Edit</b>
 									</g:remoteLink>
 
-									<g:remoteLink class="orgAgMainDelete aoListIcon" controller="ACGroup"
-										action="_deleteOnCard" id="${org.id}">
+									<a
+									onclick="deleteConfirm(${org.id})"
+									id="_deleteOnCard"
+									class="orgAgMainDelete aoListIcon"> <span
+									class="glyphicon glyphicon-trash" style="padding-left: 20px"
+									aria-hidden="true"></span> <b>Delete</b>
+								</a>
+								</div>
+								<!-- list-button <g:remoteLink class="orgAgMainDelete aoListIcon" controller="ACGroup"
+										action="_deleteOnCard" id="{org.id}">
 										<span class="glyphicon glyphicon-trash"
 											style="padding-left: 20px" aria-hidden="true"></span>
 										<b>Delete</b>
-									</g:remoteLink>
-								</div>
-								<!-- list-button -->
+									</g:remoteLink>-->
 
 							</div>
 							<!-- list-group-item -->
@@ -91,11 +97,25 @@
 			<!-- row ends -->
 	</div>
 	<script>
-		$(function() {
-			$(".orgAgMainDelete").click(function() {
-				$(this).parents("div.list-group-item").remove();
-			});
-		});
+	function deleteConfirm(id){
+		result = confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');
+		if (result){
+			jQuery.ajax({
+			type:'POST', url:'/sstation/ACGroup/_deleteOnCard/'+id,
+			success:function(data,textStatus){
+				jQuery('#orgMainType').html(data); // this is the broken bit
+				// it willdelete it but not update to show it on page
+			},
+			error:function(XMLHttpRequest,textStatus,errorThrown){}});
+		
+		} 
+	}
+  $(document).ready(function(){
+	    $("#deleteAgOnCard").mouseenter(function(){
+	    	$("#deleteAgOnCard").css("cursor","pointer");
+	    	   });
+	        
+	});
 	</script>
 </body>
 

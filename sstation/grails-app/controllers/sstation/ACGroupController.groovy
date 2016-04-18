@@ -62,6 +62,8 @@ class ACGroupController {
 			it.delete(flush:true,failOnError:true)
 		}
 		org.delete(flush:true,failOnError:true)
+		def list=CampusOrg.list()
+		render view:"_orgCardMain",model:[list:list]
 	}
 	
 	def _deleteOnTable(CampusOrg org){
