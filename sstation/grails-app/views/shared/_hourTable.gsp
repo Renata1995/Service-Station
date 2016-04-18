@@ -3,6 +3,7 @@
 		<thead>
 			<tr style="background-color: #C53C3E; border: none">
 				<th><input type="checkbox"></th>
+				<th>Student</th>
 				<th>Event</th>
 				<th>Campus Organization</th>
 				<th>Community Agency</th>
@@ -16,7 +17,11 @@
 				<tr class="${(i % 2) == 0 ? 'even' : 'odd'} shourRow" id="${s.id}">
 					<td><g:checkBox name="checkstudent" value="${s.id}"
 							checked="false" /></td>
-
+					
+					
+					<td>
+						${s.belongsTo.firstname }
+					</td>
 					<td>
 						${s.event?.name}
 					</td>
