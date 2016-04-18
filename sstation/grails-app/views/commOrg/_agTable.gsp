@@ -74,14 +74,12 @@
 						</td>
 
 						<td class="aoTableIcon"><g:remoteLink controller="commOrg"
-								action="_editAgency" update="main" id="${ag.id}">
+								action="_editAgency" update="agMain" id="${ag.id}">
 								<span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
 							</g:remoteLink> 
-							<g:remoteLink controller="commOrg" id="${ag.id}"
-								action="_deleteOnTable" update="agMain">
-								<span class="glyphicon glyphicon-trash"
-									style="padding-top: 10px" aria-hidden="true"></span>
-							</g:remoteLink></td>
+							<a id="deleteAgOnTable" onclick="deleteConfirm(${ag.id})">
+								<span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+							</a></td>
 
 					</tr>
 				</g:each>
@@ -90,8 +88,23 @@
 
 	</form>
 	<script>
+	function deleteConfirm(id){
+		result = confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');
+		if (result){
+			jQuery.ajax({
+			type:'POST', url:'/sstation/commOrg/_deleteOnTable/'+id,
+			success:function(data,textStatus){
+				jQuery('#agMain').html(data);
+			},
+			error:function(XMLHttpRequest,textStatus,errorThrown){}});
+		
+		} 
+	}
   $(document).ready(function(){
 	    $('#table').DataTable();
+	    $("#deleteAgOnTable").mouseenter(function(){
+	    	$("#deleteAgOnTable").css("cursor","pointer");
+	    	   });
 	        
 	});
   </script>

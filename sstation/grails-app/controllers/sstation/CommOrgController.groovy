@@ -9,9 +9,9 @@ class CommOrgController {
 	 * Community Agency Main Page
 	 * @return
 	 */
-	def agMain(){
+	def index(){
 		def list=CommAg.list()
-		render view:"agMain",model:[list:list]
+		render view:"index",model:[list:list]
 	}
 
 	def _agTable(){
@@ -45,16 +45,25 @@ class CommOrgController {
 
 	def _saveOnCard(CommAg agency){
 		agency.properties=params
-		agency.save(flush:true,failOnError:true)
+		if (!agency.save(flush:true)) {
+			render view:'index', model:[agency:agency,form:1,card:1] 
+			return
+		}
+		
+		//agency.save(flush:true,failOnError:true)
 		def list=CommAg.list()
-		render view:"agMain",model:[list:list]
+		render view:"index",model:[list:list]
 	}
 	
 	def _saveOnTable(CommAg agency){
+		println "create"
 		agency.properties=params
-		agency.save(flush:true,failOnError:true)
+		if (!agency.save(flush:true)) {
+			render view:'index', model:[agency:agency,form:1] 
+			return
+		}
 		def list=CommAg.list()
-		render view:"agMain",model:[list:list,table:1]
+		render view:"index",model:[list:list,table:1]
 	}
 
 	def _deleteOnTable(CommAg ag){
@@ -70,7 +79,8 @@ class CommOrgController {
 			it.delete(flush:true,failOnError:true)
 		}
 		ag.delete(flush:true,failOnError:true)
-		agMain()
+		def list=CommAg.list()
+		render view:"_agCard",model:[list:list]
 	}
 
 	def _deleteMultAgency(){

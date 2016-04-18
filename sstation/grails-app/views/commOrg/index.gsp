@@ -25,6 +25,9 @@
 			<g:if test="${table==1}">
 			<g:render template="agTable"/>
 			</g:if>
+			<g:elseif test="${form==1}">
+			<g:render template="agForm"/>
+			</g:elseif>
 			<g:else>		
 			<g:render template="agCard" />
 			</g:else>

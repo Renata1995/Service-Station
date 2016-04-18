@@ -119,7 +119,7 @@ body {
 							<span class="glyphicon glyphicon-pawn" aria-hidden="true"></span>
 							<br/>AC Group</g:link></li>
 							
-					<li><g:link controller="CommOrg" action="agMain">
+					<li><g:link controller="CommOrg" action="index">
 							<span class="glyphicon glyphicon-tower" aria-hidden="true"></span>
 							<br/>Organizations</g:link></li>
 
