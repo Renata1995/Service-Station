@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
 <meta name="layout" content="main" />
-<title>Insert title here</title>
+<title>AC Group Main Page</title>
 </head>
 <body>
 	<div class="body">
@@ -23,19 +23,17 @@
 		</div>
 		<!-- titletop ends -->
 
-		
-
-
 		<div id="orgMainType">
 		<g:if test="${table==1}">
 			<g:render template="orgTable" />
 			</g:if>
+			<g:elseif test="${form==1}">
+			<g:render template="orgForm"/>
+			</g:elseif>
 			<g:else>
 			<g:render template="orgCardMain"/>
 			</g:else>
 		</div>
-
-
 
 	</div>
 </body>
