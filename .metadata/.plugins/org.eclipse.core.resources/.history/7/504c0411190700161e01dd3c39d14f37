@@ -20,7 +20,7 @@
 
 
 				<td>
-					${s.acStudent.firstname} ${s.acStudent.lastname}
+					${s.acStudent.firstname}
 				</td>
 				<td>
 					${s.event?.name}
