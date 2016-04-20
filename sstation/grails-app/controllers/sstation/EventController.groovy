@@ -74,7 +74,10 @@ class EventController {
 	 */
 	def _saveEvent(Event e){
 		e.properties=params
-		e.save(flush:true,failOnError:true)
+		if(!e.save(flush:true)){
+			render view:'_eventForm', model:[event:e]
+			return
+		}
 		_eventTable()
 	}
 
@@ -90,16 +93,4 @@ class EventController {
 		e.delete(flush:true,failOnError:true)
 		_eventTable()
 	}
-
-
-	
-	
-	
-	
-	
-
-
-	
-
-	
 }

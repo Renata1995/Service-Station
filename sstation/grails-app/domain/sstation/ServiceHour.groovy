@@ -16,6 +16,10 @@ class ServiceHour {
 	Date starttime,lastmodified 
 	static belongsTo=[acStudent:AcStudent]
 	
+	static mapping = {
+		description type: "text"
+	}
+	
     static constraints = {
 		eventContactEmail(email:true,nullable:true,blank:true)
 		event(nullable:true)

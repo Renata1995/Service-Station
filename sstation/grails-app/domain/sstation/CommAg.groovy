@@ -8,6 +8,10 @@ class CommAg {
 	String contact
 	String contactPhone
 	String contactEmail
+	
+	static mapping = {
+		description type: "text"
+	}
 
 
 	static constraints = {
