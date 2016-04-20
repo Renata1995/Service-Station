@@ -76,7 +76,7 @@
 						<td class="aoTableIcon"><g:remoteLink controller="commOrg"
 								action="_editAgency" update="agMain" id="${ag.id}">
 								<span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
-							</g:remoteLink> 
+							</g:remoteLink>
 							<a id="deleteAgOnTable" onclick="deleteConfirm(${ag.id})">
 								<span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
 							</a></td>

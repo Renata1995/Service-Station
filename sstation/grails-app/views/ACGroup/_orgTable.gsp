@@ -1,20 +1,20 @@
 <%@ page contentType="text/html;charset=UTF-8"%>
 <html>
 <head>
-<asset:javascript src="aoMain.js"/>
+<asset:javascript src="aoMain.js" />
 </head>
 <body>
 	<div class="table_buttons" style="height: 2em">
 		<div class="col-md-3 navbar-right cornerButtons" style="margin: 0px;">
-			<g:remoteLink controller="ACGroup" action="_createOrg"
-				update="main">
+			<g:remoteLink controller="ACGroup" action="_createOrg" update="main">
 				<span style="color: #FFDE97" class="glyphicon glyphicon-plus"
 					aria-hidden="true"></span>
 				<b> Add Campus Organization</b>
 			</g:remoteLink>
 		</div>
 	</div>
-
+	<!-- Organization Table -->
+	>
 	<table id="otable" class="table" style="width: 100%">
 		<thead>
 			<tr>
@@ -54,7 +54,7 @@
 					</td>
 
 					<td class="aoTableIcon"><g:remoteLink controller="ACGroup"
-							action="_editOrg" update="main" id="${s.id}">
+							action="_editOrg" update="orgMainType" id="${s.id}">
 							<span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
 						</g:remoteLink> <g:remoteLink controller="ACGroup" id="${s.id}"
 							action="_deleteOnTable" update="orgMainType">
@@ -69,8 +69,8 @@
 		</tbody>
 	</table>
 	<script>
-	$(function(){
-	$("#otable").DataTable();
+		$(function() {
+			$("#otable").DataTable();
 		});
 	</script>
 </body>

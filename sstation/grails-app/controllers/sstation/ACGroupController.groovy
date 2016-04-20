@@ -35,24 +35,24 @@ class ACGroupController {
 	}
 	
 	def _saveOnCard(CampusOrg org){
-		org.properties=params		
+		org.properties=params
+		if (!org.save(flush:true)) {
+			render view:'index', model:[org:org,form:1,card:1] 
+			return
+		}
 		
-		try{
-			org.save(flush:true,failOnError:true)
-			def orgList=CampusOrg.list()
-			render view:"index", model:[list:orgList]
-		}
-		catch(error){
-			print("error")
-			render view:"_orgForm",model:[org:org,heading:org.name]
-		}
+		//agency.save(flush:true,failOnError:true)
+		def list=CommAg.list()
+		render view:"index",model:[list:list]
 		
 	}
 	
 	def _saveOnTable(CampusOrg org){
 		org.properties=params
-		org.save(flush:true,failOnError:true)
-		
+		if(!org.save(flush:true)){
+			render view:'index', model:[org:org,form:1]
+			return
+		}
 		def list=CampusOrg.list()
 		render view:"index",model:[list:list,table:1]
 	}
@@ -62,6 +62,8 @@ class ACGroupController {
 			it.delete(flush:true,failOnError:true)
 		}
 		org.delete(flush:true,failOnError:true)
+		def list=CampusOrg.list()
+		render view:"_orgCardMain",model:[list:list]
 	}
 	
 	def _deleteOnTable(CampusOrg org){
