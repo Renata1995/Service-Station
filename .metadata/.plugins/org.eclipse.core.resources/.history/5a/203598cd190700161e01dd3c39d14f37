@@ -2,11 +2,6 @@
 <%@ page import="sstation.Status" %>
 <ol class="property-list acStudent">
 
-			<g:if test="${shour?.acStudent}">
-				<li class="fieldcontain"><b>Student Name: </b> ${shour.acStudent.firstname} ${shour.acStudent.lastname}
-				</li>
-			</g:if>
-
 			<g:if test="${shour?.event}">
 				<li class="fieldcontain"><b>Event: </b> ${shour.event.name}
 				</li>
