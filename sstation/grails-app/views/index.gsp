@@ -23,7 +23,7 @@
 
 <style>
 body{
-	background-image: url('${resource(dir: "images", file: "login.jpg")}');
+	background-image: url('${resource(dir: "images", file: "")}');
 	background-repeat: no-repeat;
 	background-size:cover;
 }
@@ -37,7 +37,8 @@ body{
 	margin:30px;
 }
 ul.nav-tabs>li{
-	width:50%;
+	width:100%;
+
 }
 label.loginLabel{
 	text-align:left;
@@ -52,8 +53,8 @@ label.loginLabel{
 		
 		<div class="panel panel-danger">
 			<ul class="nav nav-tabs">
-			<li class="tab1" role="presentation"><a id="logInLink">Log In</a></li>
-			<li class="tab3" role="presentation"><a id="signUpLink">Sign Up</a></li>
+			<li class="tab1" role="presentation" ><a>Log In</a></li>
+		
 			</ul>
 		
 			
