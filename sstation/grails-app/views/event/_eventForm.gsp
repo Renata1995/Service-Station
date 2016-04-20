@@ -3,6 +3,16 @@
 <div class="formHeading greyBar">
 	${heading}
 </div>
+
+<g:hasErrors bean = "${event}">
+	<ul class = "errors" role = "alert">
+	<g:eachError bean="${event}" var="error">
+				<li
+					<g:if test="${error in org.springframework.validation.FieldError}">data-field-id="${error.field}"</g:if>>Please check the ${error.field} </li>
+			</g:eachError>
+	</ul>
+</g:hasErrors>
+
 <form class="mainback" method="POST">
 <div class="fieldcontain ${hasErrors(bean: event, field: 'name', 'error')} required">
 	<label for="name">
