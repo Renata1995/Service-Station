@@ -11,9 +11,7 @@
 			<h1 class="pagetitle">Event Management</h1>
 			<div class="cornerButtons"></div>
 		</div>
-			<g:remoteLink class="aoListIcon" controller="Event" action="_createEvent" update="main"
-								params="[eventMain:1]">
-								<span class="glyphicon glyphicon-plus" aria-hidden="true"></span> New Campus Event</g:remoteLink>
+			
 		<div>
 	
 	<!-- Link to the profile or the service hour list of the current student -->
