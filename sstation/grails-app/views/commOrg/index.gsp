@@ -19,7 +19,7 @@
 					<span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span>
 					Table View </g:remoteLink>
 			</div>
-		</div><!-- titletop ends -->		
+		</div><!-- title top ends -->		
 		
 		<div id="agMain">
 			<g:if test="${table==1}">
