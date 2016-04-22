@@ -93,7 +93,7 @@ class HourController {
 	 * @return
 	 */
 	def saveShour(ServiceHour sh){
-		println sh
+		println params
 		sh.properties=params
 		//Set the lastModified time
 		sh.lastmodified=new Date()
@@ -110,19 +110,9 @@ class HourController {
 
 
 		//Parse the id in the idList param and get corresponding students
-		def idList=params.idList.split(",")
-		def idNumList=[]
-		for(int i=1;i<idList.size();i++){
-			idNumList[i-1]=Long.parseLong(idList[i])
-		}
-		def studentList=[]
-		idNumList.each{
-			studentList.add(AcStudent.get(it))
-		}
-		println studentList
-
-		def id=Long.parseLong(idList[1])
+		def id=Long.parseLong(params.studentIdHolder)
 		def ac=AcStudent.get(id)
+		println "student"+ac
 		ac.addToServiceHours(sh).save(flush:true,failOnError:true)
 
 		if( !sh.save(flush:true,failOnError:true) ) {

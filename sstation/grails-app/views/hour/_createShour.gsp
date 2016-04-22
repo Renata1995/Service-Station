@@ -1,4 +1,4 @@
-<%@ page contentType="text/html;charset=UTF-8" %>
+<%@ page contentType="text/html;charset=UTF-8"%>
 <%@ page contentType="text/html;charset=UTF-8"%>
 <%@ page import="sstation.Status"%>
 <%@ page import="sstation.AcStudent"%>
@@ -9,10 +9,6 @@ div.panel {
 	border: 1px solid rgba(150, 149, 149, 0.38);
 	height: 100%;
 	margin-bottom: 100px;
-}
-
-div#row1 {
-	height: 600px;
 }
 
 div#selectedStudent {
@@ -45,195 +41,93 @@ div.btn-group-vertical {
 </style>
 </head>
 <body>
-<!-- Create Service Hour Page -->
-<g:form controller="hour" id="${shour.id}" method="POST">
-	<div id="totalCreateSH" class="mainback">
+	<!-- Create Service Hour Page -->
+	<g:form controller="hour" id="${shour.id}" method="POST">
+		<div id="totalCreateSH" class="mainback">
 
-		<div id="create-servicehour" class="content scaffold-create"
-			role="main">
+			<div id="create-servicehour" class="content scaffold-create"
+				role="main">
 
-			<g:if test="${flash.message}">
-				<div class="message" role="status">
-					${flash.message}
-				</div>
-			</g:if>
-
-			<g:hasErrors bean="${shour}">
-				<ul class="errors" role="alert">
-					<g:eachError bean="${shour}" var="error">
-						<li
-							<g:if test="${error in org.springframework.validation.FieldError}">data-field-id="${error.field}";${news}=${false}</g:if>><g:message
-								error="${error}" /></li>
-					</g:eachError>
-				</ul>
-			</g:hasErrors>
-
-			<fieldset class="form">
-				<g:render template="/shared/formShour" />
-				<div
-					class="fieldcontain ${hasErrors(bean: shour, field: 'status', 'error')} required">
-					<label for="status"> Status: </label>
-					<g:select name="status" from="${Status.values()}" />
-
-				</div>
-			</fieldset>
-			<fieldset class="buttons">
-
-				<div class="btn btn-default" id="totalNext">Next</div>
-
-			</fieldset>
-		</div>
-	</div>
-	<!-- totalCreateSH ends -->
-
-
-
-
-	<div id="totalSelectST" class="mainback" style="display: none">
-		<div class="row" id="row1">
-			<div class="col-md-7">
-				<table id="selectStudentTable" class="table">
-					<thead>
-						<tr>
-							<th><g:checkBox name="overall" value="" checked="false" /></th>
-							<th>Name</th>
-							<th>AC ID</th>
-							<th>Classification</th>
-						</tr>
-					</thead>
-					<tbody>
-						<g:each in="${list}" status="i" var="s">
-							<tr>
-								<td><g:checkBox name="checkstudent" value="${s.id}"
-										checked="false" /></td>
-								<td class="name">
-									${s.firstname} ${s.lastname}
-								</td>
-
-								<td id="studentid">
-									${s.acid}
-								</td>
-
-								<td>
-									${s.classification}
-								</td>
-
-							</tr>
-						</g:each>
-					</tbody>
-				</table>
-			</div>
-			<div class="col-md-2" style="padding-top:10%;">
-				<div class="btn-group-vertical">
-					<div class="btn btn-warning" id="add">Add</div>
-					<div class="btn btn-warning" id="remove">Remove</div>
-				</div>
-			</div>
-
-			<div id="selectedStudent" class="col-md-3">
-				<div class="panel">
-					<div class="panel-heading">
-						<g:checkBox name="stList" value=" " checked="false" />
-						Selected Student
+				<g:if test="${flash.message}">
+					<div class="message" role="status">
+						${flash.message}
 					</div>
-					<div class="panel-body">
-						<ul id="selectedList"></ul>
+				</g:if>
+
+				<g:hasErrors bean="${shour}">
+					<ul class="errors" role="alert">
+						<g:eachError bean="${shour}" var="error">
+							<li
+								<g:if test="${error in org.springframework.validation.FieldError}">data-field-id="${error.field}";${news}=${false}</g:if>><g:message
+									error="${error}" /></li>
+						</g:eachError>
+					</ul>
+				</g:hasErrors>
+
+				<fieldset class="form">
+					<g:render template="/shared/formShour" />
+					<div
+						class="fieldcontain ${hasErrors(bean: shour, field: 'status', 'error')} required">
+						<label for="status"> Status: </label>
+						<g:select name="status" from="${Status.values()}" />
 					</div>
-				</div>
+
+					<div
+						class="fieldcontain ${hasErrors(bean: shour, field: 'acStudent', 'error')} required">
+						<label for="acStudent"> Student: </label>
+						<g:textField name="student" required="" value="" readonly="readonly"/>
+
+						<g:hiddenField name="studentIdHolder" value=""/>
+
+
+					</div>
+				</fieldset>
+				<fieldset class="buttons">
+				<g:actionSubmit class="btn btn-default" value="Create" action="saveShour" />
+				
+				</fieldset>
 			</div>
-
 		</div>
-		<!-- Row End -->
-		<div class="row col-md-offset-6">
-			<g:hiddenField name="idList" value=""/>
-			<div class="btn btn-default" id="totalPrevious">Previous</div>
-			<g:actionSubmit id="totalCreate" value="Create" action="saveShour" class="btn btn-default"/>
+		<!-- totalCreateSH ends -->
+
+		<div id="Dialog">
+			<g:render template="studentFilter" />
 		</div>
-	</div>
-</g:form>
 
-<script>
-	$(function() {
-		$("#totalNext").click(function() {
-			$("#totalCreateSH").hide();
-			$("#totalSelectST").show();
-		});
-		$("#totalPrevious").click(function(){
-			$("#totalCreateSH").show();
-			$("#totalSelectST").hide();
-		});
-		$("#selectStudentTable").DataTable();
+		
+	</g:form>
 
-		var ss = new Array();/*Stores finally selected students*/
-		var hideStudent = new Array();/*Stores check boxs of student rows which are hidden*/
-
-		$("#add").click(function() {
-							$("input[name='checkstudent']:checked")
-									.map(
-											function() {
-												/*Append the student on the list*/
-												var id = $(this).val();
-												var name = $(this)
-														.parents("tr")
-														.children("td.name")
-														.html();
-												var string = "<li><input type='checkbox' name='stList' value='"+id+"'/> "
-														+ name + "</li>";
-												$("#selectedList").append(
-														string);
-
-												/*Change the table*/
-												var tr = $(this);
-												hideStudent.push(tr);
-												$(this).parents("tr").hide();
-												$(this).prop("checked", false);
-												return $(this).val();
-
-											});
-
-						});
-
-		/*When the Remove button is clicked*/
-		$("#remove").click(function() {
-			$("input[name='stList']:checked").map(function() {
-				var id = $(this).val();
-				//Show corresponding student rows
-				for (var i = 0; i < hideStudent.length; i++) {
-					if (hideStudent[i].val() == id) {
-						hideStudent[i].parents("tr").show();
-					}
-				}
-				//Remove the current student from the selected student list
-				$(this).parents("li").remove();
+	<script>
+		$(function() {
+			$("#Dialog").dialog({
+				dialogClass : 'no-close',
+				autoOpen : false,
+				resizable : true,
+				height : 600,
+				width : 800,
+				modal : true
 			});
-		});
 
-		/*When Create Button is clicked*/
-		$("#totalCreate").click(function() {
-			//Collect selected student
-			$("input[name='stList']").map(function() {
-				var id = parseInt($(this).val());
-				ss.push(id);
+			$("#totalPrevious").click(function() {
+				$(this).dialog("close");
 			});
-			//Put id list in the #idList hiddenField
-			$("#idList").val(ss);
-			alert($("#idList").val());
-			//Post data to the controller and go to the show servicehour page
-			/*$.ajax({
-				type : "POST",
-				data : $(this).parents('form:first').serialize(),
-				url : '/Success/hour/saveShour',
-				success : function(data, textStatus) {
-					$('#totalhour').html(data);
-				},
-				error : function(XMLHttpRequest, textStatus, errorThrown) {
-				}
-			});*/
-			
+			$("#student").click(function() {
+				$("#Dialog").dialog("open");
+			});
+
+			$("#selectStud").click(
+					function() {
+
+						var id = $("input[name='checkstudent']:checked")
+								.parents("tr").children("td.name").text();
+						$("#Dialog").dialog("close");
+						$('#student').val(id);
+						$("#studentIdHolder").val($("input[name='checkstudent']:checked").val());
+						
+
+					});
+
 		});
-
-	});
-
-</script>
+	</script>
 </body>
 </html>
