@@ -3,6 +3,16 @@
 <div class="formHeading greyBar">
 	${heading}
 </div>
+<g:hasErrors bean="${org}">
+		<ul class="errors" role="alert">
+			<g:eachError bean="${org}" var="error">
+				<li
+					<g:if test="${error in org.springframework.validation.FieldError}">data-field-id="${error.field}"</g:if>>Please check the ${error.field} </li>
+			</g:eachError>
+		</ul>
+	</g:hasErrors>
+	
+	
 <g:form class="mainback" controller="ACGroup" method="POST" id="${org.id}">
 	<div
 		class="fieldcontain ${hasErrors(bean: campusOrg, field: 'name', 'error')} required">
@@ -46,24 +56,14 @@
 			value="${org?.contactEmail}" />
 	</div>
 	
-	<div>
-		<g:hasErrors>
-		<g:if test = "error in org._orgForm.validation.FieldError">
-			<p style = color:red>
-				Please fill out all fields before submitting			
-			</p>
-		</g:if>
-		</g:hasErrors>
-	</div>
-	
 	<!-- Save Button -->
 	<div>
-		<g:if test="${params.orgAgMain=='1'}">
+		<g:if test="${params.orgAgMain=='1'||card==1}">
 			<g:actionSubmit class="btn btn-default" action="_saveOnCard"
 				value="Save" />
 		</g:if>
 		<g:else> 
-			<g:actionSubmit class="btn btn-default" action="_saveOnTable" value="Submit"/>
+			<g:actionSubmit class="btn btn-default" action="_saveOnTable" value="Save"/>
 		</g:else>
 	</div>
 	

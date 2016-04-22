@@ -66,10 +66,10 @@ class CommOrgController {
 	 * @return
 	 */
 	def _saveOnTable(CommAg agency){
-		println "create"
+
 		agency.properties=params
 		if (!agency.save(flush:true)) {
-			render view:'index', model:[agency:agency,form:1] 
+			render view:'index', model:[agency:agency,form:1]
 			return
 		}
 		def list=CommAg.list()

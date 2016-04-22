@@ -66,9 +66,7 @@
 									<b>Edit</b>
 								</g:remoteLink>
 
-								<a
-									onclick="deleteConfirm(${ag.id})"
-									id="deleteAgOnCard"
+								<a onclick="deleteConfirm(${ag.id})" id="deleteAgOnCard"
 									class="orgAgMainDelete aoListIcon"> <span
 									class="glyphicon glyphicon-trash" style="padding-left: 20px"
 									aria-hidden="true"></span> <b>Delete</b>

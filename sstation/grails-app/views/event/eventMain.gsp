@@ -11,7 +11,7 @@
 			<h1 class="pagetitle">Event Management</h1>
 			<div class="cornerButtons"></div>
 		</div>
-		
+			
 		<div>
 	
 	<!-- Link to the profile or the service hour list of the current student -->
