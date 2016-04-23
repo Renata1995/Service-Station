@@ -122,6 +122,12 @@ body {
 					<li><g:link controller="CommOrg" action="index">
 							<span class="glyphicon glyphicon-tower" aria-hidden="true"></span>
 							<br/>Organizations</g:link></li>
+					<li><g:link controller="Reports" action="index">
+							<span class="glyphicon glyphicon-tasks" aria-hidden="true"></span>
+							<br/>Station Reports</g:link></li>
+					<li><g:link controller="Moderator" action="index">
+							<span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+							<br/>Moderator</g:link></li>
 
 				</ul>
 			</div>

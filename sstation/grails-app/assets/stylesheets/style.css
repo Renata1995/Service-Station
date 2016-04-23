@@ -7,7 +7,7 @@
 	/*height:100%;*/
 	position:fixed;
 	width:11%;
-	height: 92%;
+	height: 94%;
 	margin-top: -20px;
 }
 ul.navLink>li{
@@ -15,7 +15,7 @@ ul.navLink>li{
 	text-align:center;
 	margin:0px;
 	background-color: rgba(178, 9, 56, 0.74);
-	height:16.67%;
+	height:12%;
 }
 ul.navLink>li>a{
 	padding: 30px 15px 20px 15px;
