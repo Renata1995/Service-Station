@@ -54,8 +54,9 @@ a.eventTime{
 					<li>Contact Email: ${event.contactEmail}</li>
 				</ol>
 				<div id="${event.id}">
-					<a class="eventTime aoListIcon">2015</a> <a class="eventTime aoListIcon">2014</a> <a
+					<!--  <a class="eventTime aoListIcon">2015</a> <a class="eventTime aoListIcon">2014</a> <a
 						class="eventTime aoListIcon">2013</a>
+						-->
 				</div>
 
 				<!-- Buttons -->
