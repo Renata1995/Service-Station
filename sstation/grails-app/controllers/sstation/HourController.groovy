@@ -81,10 +81,12 @@ class HourController {
 		def orgList=CampusOrg.list().collect{
 			it.name
 		}
+		def fullOrgList = CampusOrg.list()
+		
 		def agList=CommAg.list().collect{
 			it.name
 		}
-		[eventList:eventList,orgList:orgList,agList:agList,shour:sh,list:list,nameList:nameList]
+		[eventList:eventList,orgList:orgList,fullOrgList:fullOrgList,agList:agList,shour:sh,list:list,nameList:nameList]
 	}
 	
 	/**
