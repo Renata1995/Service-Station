@@ -7,7 +7,7 @@ $(function(){
 	 */
 	$("ul.navGradient li").on({
 		click:function() {
-			//alert("hello");		
+			alert("hello");		
 			/*$("ul.navGradient li").each(function(){
 			$(this).removeClass("activeTab");
 		});*/
