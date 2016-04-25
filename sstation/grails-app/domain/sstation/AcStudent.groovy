@@ -10,6 +10,7 @@ class AcStudent {
 	String acid,acEmail,acBox,phone
 	Integer acYear
 	Classification classification
+	Boolean isModerator
 
 	static constraints = {
 		firstname(nullable:false,blank:false)
@@ -18,6 +19,7 @@ class AcStudent {
 		acBox(nullable:false,blank:false)
 		acEmail(email:true,nullable:false,blank:false)
 		classification(nullable:false,blank:false)
+		isModerator(nullable:true)
 	}
 	static hasMany=[serviceHours:ServiceHour]
 
