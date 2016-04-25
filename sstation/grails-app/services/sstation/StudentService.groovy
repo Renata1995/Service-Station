@@ -97,5 +97,14 @@ class StudentService {
 		
 		return[frSum:frSum,soSum:soSum,juSum:juSum,seSum:seSum,gradSum:gradSum,otherSum:otherSum]
 	}
-
+	
+	def importStudents(inStream){
+		 
+		  int i = 0
+		  inStream.toCsvReader(['charset':'UTF-8']).eachLine { tokens ->
+		  if (i > 0) {
+			  
+		  }
+		  }
+	}
 }
