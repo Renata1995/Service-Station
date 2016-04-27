@@ -1,0 +1,20 @@
+/**
+ * 
+ */
+$(function(){
+	$("#show5").click(function(){
+		$("#tendency5y").show();
+		$("#tendencyYear").hide();
+		$("#tendencyMonth").hide();
+	});
+	$("#showYear").click(function(){
+		$("#tendency5y").hide();
+		$("#tendencyYear").show();
+		$("#tendencyMonth").hide();
+	});
+	$("#showMonth").click(function(){
+		$("#tendency5y").hide();
+		$("#tendencyYear").hide();
+		$("#tendencyMonth").show();
+	});
+});
