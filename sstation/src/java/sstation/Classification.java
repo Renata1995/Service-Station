@@ -3,8 +3,8 @@ package sstation;
 public enum Classification {
 	FR("Freshman"),
 	SO("Sophomore"),
-	JU("Junior"),
-	SE("Senior"),
+	JR("Junior"),
+	SR("Senior"),
 	GRAD("Graduate Student"),
 	OTHER("Other");
 	

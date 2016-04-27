@@ -390,14 +390,14 @@ class AcStudentController {
 	}
 	
 	def uploadPage(){
-		println("foo")
+		//println("foo")
 		render view:"uploadPage",model:[]
 	}
 
 	def upload(){
 		println params
 
-		def uploadedFile = request.getFile('myFile')
+		def uploadedFile = request.getFile('CSV')
 
 		if (uploadedFile == null) throw new Exception("cannot access course file")
 
@@ -414,6 +414,7 @@ class AcStudentController {
 		studentService.importStudents(inStream)
  
 		}
+		render view:"uploadSuccess",model:[]
 	}
   
 

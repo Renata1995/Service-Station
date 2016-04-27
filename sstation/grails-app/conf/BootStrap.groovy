@@ -84,10 +84,10 @@ class BootStrap {
 				clas=Classification.SO
 				break
 			case 3:
-				clas=Classification.JU
+				clas=Classification.JR
 				break
 			case 4:
-				clas=Classification.SE
+				clas=Classification.SR
 				break
 			default:
 				clas=Classification.OTHER

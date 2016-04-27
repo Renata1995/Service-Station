@@ -99,12 +99,32 @@ class StudentService {
 	}
 	
 	def importStudents(inStream){
-		 
-		  int i = 0
-		  inStream.toCsvReader(['charset':'UTF-8']).eachLine { tokens ->
-		  if (i > 0) {
-			  
-		  }
-		  }
+
+		int i = 0
+		inStream.toCsvReader(['charset':'UTF-8']).eachLine { tokens ->
+			if (i > 0) {
+				//s.findbyid(token[0]), don't add if exists, only update values (use counters for success page)
+				AcStudent s = new AcStudent();
+				s.acid = tokens[0]
+				s.firstname = tokens[2]
+				s.lastname = tokens[3]
+				s.status = tokens[4]
+				s.acBox=tokens[5]
+				try{
+					s.classification = tokens[6] as Classification
+				}
+				catch(Exception e){
+					s.classification = sstation.Classification.OTHER
+				}
+				s.acEmail = tokens[8]	
+				
+				if (s.validate()) {
+					//print(s.acid +","+ s.firstname+","+ s.lastname+","+ s.status+","+ s.acBox+","+ s.classification+","+ s.acEmail)
+					s.save(flush:true);
+				}
+			}
+			i++
+		}
+		inStream.close()
 	}
 }

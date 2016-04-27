@@ -25,10 +25,10 @@
 						action="_sTable" update="slist">
 						<b>Table</b>
 					</g:remoteLink></li>
-				<li class="tab3"><g:link controller="acStudent" action="uploadPage">
-					<span class="glyphicon glyphicon-th-list" aria-hidden="true"></span>
-					<b>Upload</b>
-				</g:link>
+				<li class="tab3"><g:link controller="acStudent"
+						action="uploadPage">
+						<b>Upload</b>
+					</g:link>
 			</ul>
 		</div>
 
