@@ -74,7 +74,7 @@ class EventController {
 	 */
 	def _saveEvent(Event e){
 		e.properties=params
-		if(!e.save(flush:true)){
+		if(!e.save(flush:true,failOnError:true)){
 			render view:'_eventForm', model:[event:e]
 			return
 		}
