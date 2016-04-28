@@ -1,5 +1,13 @@
 package sstation
 
+
+import grails.transaction.Transactional
+import java.security.MessageDigest
+import grails.plugin.springsecurity.annotation.Secured
+
+@Secured(['ROLE_ADMIN'])
+@Transactional(readOnly = false)
+
 class CommOrgController {
 
     /*

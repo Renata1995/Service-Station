@@ -9,6 +9,8 @@ import sstation.*
  */
 
 class BootStrap {
+	
+	
 	def random=new Random()
 	//lists used to generate random names
 	def fn=['John','Mary','Mike','Jenny','Aaron','Priya','Marrisa','Brittany']
@@ -19,6 +21,26 @@ class BootStrap {
 
 
 	def init = { servletContext ->
+
+		log.debug("creating roles and users")
+		
+		def adminRole = new AcRole(authority: "ROLE_ADMIN").save(flush:true)
+		def studentRole = new AcRole(authority: "ROLE_STUDENT").save(flush:true)
+		def moderatorRole = new AcRole(authority: "ROLE_MODERATOR").save(flush:true)
+	
+		def testAdminUser = new AcUser(username:'admin', password: 'admin_secret').save(flush:true)
+		def testStudentUser = new AcUser(username:'student', password: 'student_secret').save(flush:true)
+		def testModeratorUser = new AcUser(username:'moderator', password: 'moderator_secret').save(flush:true)
+		
+		AcUserAcRole.create(testAdminUser, adminRole, true)
+		AcUserAcRole.create(testStudentUser, studentRole, true)
+		AcUserAcRole.create(testModeratorUser, moderatorRole, true)
+		
+		assert AcUser.count() == 3
+		assert AcRole.count() == 3
+		assert AcUserAcRole.count() == 3
+
+		
 		/*
 		 * Create testing organizations
 		 */
