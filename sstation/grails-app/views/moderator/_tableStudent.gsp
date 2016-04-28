@@ -1,27 +1,11 @@
 <form>
-	<div class="row"
-		style="background-color: #625D4C; margin: 20px 0px 0px 0px">
 
-		<div class="col-md-6 navbar-right cornerButtons"
-			style="margin-top: 7px; margin-bottom: -7px;">
-			<g:remoteLink controller="moderator" action="_addModerator"
-				update="slist">
-				<span style="color: #FFDE97" class="glyphicon glyphicon-plus"
-					aria-hidden="true"></span>
-				<b>Add moderator</b>
-			</g:remoteLink>
-			<span style="color: #FFDE97" class="glyphicon glyphicon-trash"
-				aria-hidden="true"></span>
-			<g:submitToRemote controller="acStudent" action="deletemult"
-				update="main" value="Delete" class="tabledelete"></g:submitToRemote>
-		</div>
-	</div>
 	<!-- Student Table -->
-	<table id="table" class="table">
+	<table id="tableS" class="table">
 		<thead>
 			<tr>
-				<th style="background-color: #C53C3E; border: none"><input
-					type="checkbox"></th>
+				<th>Selected</th>
+					
 				<th>AC ID</th>
 
 				<th>Name</th>
@@ -39,13 +23,33 @@
 		<tbody>
 			<g:each in="${list}" status="i" var="s">
 				<tr class="${(i % 2) == 0 ? 'even' : 'odd'} studentRow" id="${s.id}">
-
-					<td><g:checkBox name="checkstudent" value="${s.id}"
-							checked="false" /></td>
-
-					<td id="studentid">
-						${s.acid}
+					
+					<td>
+					<g:if test="${s.isModerator}">
+					<g:checkBox id="s${s.id}" name="checkstudent" value="${s.id}"
+							checked="true" />
+					</g:if>
+					<g:else>
+					<g:checkBox id="s${s.id}" name="checkstudent" value="${s.id}"
+							checked="false" />
+					</g:else>
 					</td>
+					
+		
+					
+					<td class="acid"><a 
+					onclick="
+						$('#s${s.id}').prop('checked', true);
+						jQuery.ajax({
+						type:'POST', url:'/sstation/moderator/_addModerator/${s.id}',
+						success:function(data,textStatus){
+						jQuery('#slist').html(data);},
+						error:function(XMLHttpRequest,textStatus,errorThrown){}
+						});
+						return false;" id="1">
+						${s.acid }
+						</a>	</td>
+				
 
 					<td>
 						${s.firstname} ${s.lastname}
@@ -72,10 +76,26 @@
 		</tbody>
 	</table>
 
+	<div class="row col-md-offset-6">
+		<div class="btn btn-default" id="deselectMode">Cancel</div>
+
+	</div>
+
 </form>
 <script>
-  $(document).ready(function(){
-	    $('#table').DataTable();
-	    
-	});
-  </script>
+	$(document).ready(
+			function() {
+				$('#tableS').DataTable();
+
+				$("#deselectMode").click(function() {
+					$("#tableStudent").dialog("close");
+
+				});
+				$(".acid").mouseenter(function(){
+			    	$(".acid").css("cursor","pointer");
+			    	   });
+				
+			
+
+			});
+</script>

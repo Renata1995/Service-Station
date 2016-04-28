@@ -19,7 +19,9 @@
 		<div id="slist">
 			<g:render template="sTable" />
 		</div>
-
+		
+		<div id="tableStudent">
+		</div>
 
 	</div>
 </body>

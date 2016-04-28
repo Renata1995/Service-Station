@@ -4,8 +4,8 @@
 
 		<div class="col-md-6 navbar-right cornerButtons"
 			style="margin-top: 7px; margin-bottom: -7px;">
-			<g:remoteLink controller="moderator" action="_addModerator"
-				update="slist">
+			<g:remoteLink controller="moderator" action="_presentStudentTable"
+				update="tableStudent" class="tStudent">
 				<span style="color: #FFDE97" class="glyphicon glyphicon-plus"
 					aria-hidden="true"></span>
 				<b>Add moderator</b>
@@ -20,8 +20,7 @@
 	<table id="table" class="table">
 		<thead>
 			<tr>
-				<th style="background-color: #C53C3E; border: none"><input
-					type="checkbox"></th>
+	
 				<th>AC ID</th>
 
 				<th>Name</th>
@@ -39,9 +38,6 @@
 		<tbody>
 			<g:each in="${list}" status="i" var="s">
 				<tr class="${(i % 2) == 0 ? 'even' : 'odd'} studentRow" id="${s.id}">
-
-					<td><g:checkBox name="checkstudent" value="${s.id}"
-							checked="false" /></td>
 
 					<td id="studentid">
 						${s.acid}
@@ -76,6 +72,21 @@
 <script>
   $(document).ready(function(){
 	    $('#table').DataTable();
-	    
+
+	    $("#tableStudent").dialog({
+			dialogClass : 'no-close',
+			autoOpen : false,
+			resizable : true,
+			height : 600,
+			width : 800,
+			modal : true
+		});
+
+	    $(".tStudent").click(function() {
+			$("#tableStudent").dialog("open");
+		});
+
+		
+
 	});
   </script>
