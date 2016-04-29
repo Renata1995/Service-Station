@@ -5,16 +5,15 @@
 		<div class="col-md-6 navbar-right cornerButtons"
 			style="margin-top: 7px; margin-bottom: -7px;">
 
+			<g:remoteLink controller="acStudent" action="_createStudent"
+				update="slist">
+				<button class="btn btn-danger">
 
-			<button class="btn btn-warning">
-				<g:remoteLink controller="acStudent" action="_createStudent"
-					update="slist">
 					<span style="color: #FFDE97" class="glyphicon glyphicon-plus"
-						aria-hidden="true"></span>
-					New Student
-				</g:remoteLink>
-			</button>
-
+						aria-hidden="true"></span> New Student
+				</button>
+			</g:remoteLink>
+			
 			<button class="btn btn-danger" id="deleteStudentsBtn">
 				<span style="color: #FFDE97" class="glyphicon glyphicon-trash"
 					aria-hidden="true"></span> Delete
@@ -22,7 +21,7 @@
 
 		</div>
 	</div>
-	
+
 	<!-- Student Table -->
 	<table id="table" class="table">
 		<thead>
@@ -131,7 +130,7 @@
 
 		});
 
-		$("#deleteStudentsBtn").button().on("click", function() {
+		$("#deleteStudentsBtn").on("click", function() {
 			modalDelete.dialog("open");
 		});
 
