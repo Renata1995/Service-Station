@@ -27,19 +27,22 @@
 					<td>
 					<g:if test="${s.isModerator}">
 					<g:checkBox id="s${s.id}" name="checkstudent" value="${s.id}"
-							checked="true" />
+							checked="true" disabled="true"/>
 					</g:if>
 					<g:else>
 					<g:checkBox id="s${s.id}" name="checkstudent" value="${s.id}"
-							checked="false" />
+							checked="false" disabled="true" />
 					</g:else>
+					<script>
+						$('#s${s.id}').prop('disabled', true);
+					</script>
 					</td>
 					
 		
 					
 					<td class="acid"><a 
 					onclick="
-						$('#s${s.id}').prop('checked', true);
+						$('#s${s.id}').prop('checked', false);
 						jQuery.ajax({
 						type:'POST', url:'/sstation/moderator/_deleteModerator/${s.id}',
 						success:function(data,textStatus){
@@ -85,6 +88,7 @@
 <script>
 	$(document).ready(
 			function() {
+				
 				$('#tableS').DataTable();
 
 				$("#deselectMode").click(function() {
