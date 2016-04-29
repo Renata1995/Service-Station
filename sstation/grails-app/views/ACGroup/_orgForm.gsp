@@ -66,6 +66,8 @@
 			<g:actionSubmit class="btn btn-default" action="_saveOnTable" value="Save"
 			onclick="_saveOnTable"/>
 		</g:else>
+		<g:actionSubmit class="btn btn-default" action="index"
+				value="Cancel"/>
 	</div>
 	
 	
