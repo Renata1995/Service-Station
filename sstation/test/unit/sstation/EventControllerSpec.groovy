@@ -32,7 +32,6 @@ class EventControllerSpec extends Specification {
 		controller._saveEvent(ev)
 		then:
 		view=="/event/_eventForm"
-		//model.form==1  WE'RE NOT SURE WHICH NUMBER IS THE FORM WITH AN ERROR MESSAGE... WILL ASK RENATA
 	}
 	
 	void "delete an event on table"(){
