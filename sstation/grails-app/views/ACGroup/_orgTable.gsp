@@ -70,7 +70,10 @@
 	</table>
 	<script>
 		$(function() {
-			$("#otable").DataTable();
+			$("#otable").DataTable( {
+			"columnDefs" :[
+			   			{ "orderable": false, "targets" : [0, 6]}]
+				} );
 		});
 	</script>
 </body>
