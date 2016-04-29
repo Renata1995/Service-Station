@@ -45,7 +45,7 @@ class ACGroupController {
 			return
 		}
 		
-		agency.save(flush:true,failOnError:true)
+		org.save(flush:true,failOnError:true)
 		def list=CommAg.list()
 		render view:"index",model:[list:list]
 		

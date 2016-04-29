@@ -12,9 +12,4 @@ $(function(){
 		$("#tendencyYear").show();
 		$("#tendencyMonth").hide();
 	});
-	$("#showMonth").click(function(){
-		$("#tendency5y").hide();
-		$("#tendencyYear").hide();
-		$("#tendencyMonth").show();
-	});
 });

@@ -84,19 +84,20 @@ class BootStrap {
 				clas=Classification.SO
 				break
 			case 3:
-				clas=Classification.JU
+				clas=Classification.JR
 				break
 			case 4:
-				clas=Classification.SE
+				clas=Classification.SR
 				break
 			default:
 				clas=Classification.OTHER
 		}
+		char stat = 'A'
 
 		String box="${random.nextInt(30000)+30000}"
 		String email=fname.substring(0,1)+lname+(year-2000)+"@austincollege.edu"
 
-		return new AcStudent(isModerator:false,firstname:fname,lastname:lname,acid:id,acEmail:email,acBox:box,acYear:year,classification:clas,phone:"903820784")
+		return new AcStudent(isModerator:false,firstname:fname,lastname:lname,status:stat,acid:id,acEmail:email,acBox:box,acYear:year,classification:clas,phone:"903820784")
 	}
 
 	/**
