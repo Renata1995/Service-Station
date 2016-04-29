@@ -390,11 +390,12 @@ class AcStudentController {
 	}
 	
 	def uploadPage(){
-		//println("foo")
 		render view:"uploadPage",model:[]
 	}
 
 	def upload(){
+		def a
+		
 		println params
 
 		def uploadedFile = request.getFile('CSV')
@@ -411,10 +412,9 @@ class AcStudentController {
 			println "ContentType: ${uploadedFile.contentType}"
  
 		def inStream = uploadedFile.getInputStream()
-		studentService.importStudents(inStream)
- 
+		a = studentService.importStudents(inStream)
 		}
-		render view:"uploadSuccess",model:[]
+		render view:"uploadSuccess",model:[added:a[0],updated:a[1]]
 	}
   
 

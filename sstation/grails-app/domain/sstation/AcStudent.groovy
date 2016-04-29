@@ -15,8 +15,7 @@ class AcStudent {
 	static constraints = {
 		firstname(nullable:false,blank:false)
 		lastname(nullable:false,blank:false)
-		status(nullable:true, blank:false)
-		//should not be nullable
+		status(nullable:false, blank:false)
 		acid(unique:true,nullable:false,blank:false)
 		acBox(nullable:true,blank:false)
 		acEmail(email:true,nullable:false,blank:false)
