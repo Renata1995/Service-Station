@@ -104,7 +104,7 @@ div.col-md-7 {
 					</g:each>
 					<tr>
 						<td colspan="6" id="homePendingMore"><g:link
-								class="aoListIcon" controller="hour" action="">More</g:link></td>
+								class="aoListIcon" controller="hour" action="overall">More</g:link></td>
 					</tr>
 				</tbody>
 			</table>
