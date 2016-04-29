@@ -1,4 +1,4 @@
-<form>
+<div>
 	<div class="row"
 		style="background-color: #625D4C; margin: 20px 0px 0px 0px">
 
@@ -80,7 +80,7 @@
 		</tbody>
 	</table>
 
-</form>
+</div>
 
 
 <div id="modal_Delete" class="modal" style="display: none;">
@@ -100,7 +100,7 @@
 			</tr>
 		</thead>
 		<tbody id="deleteBody">
-
+			
 		</tbody>
 	</table>
 
@@ -111,7 +111,20 @@
 
 <script>
 	$(function() {
-		$('#table').DataTable();
+
+		$(document).ready(function(){
+		    $('#table').DataTable();
+		    var baseLink = '<g:createLink action="student" controller="acStudent" id="ID"/>';
+		    $(".studentRow").on({
+			    click: function(){
+				    var idstring=$(this).attr("id");
+				   
+				    window.location.href = baseLink.replace("ID", idstring);
+			    }
+			});
+		    
+		});
+		//$('#table').DataTable();
 
 		var modalDelete = $("#modal_Delete").dialog({
 			autoOpen : false,
@@ -121,7 +134,7 @@
 			modal : true
 		});
 
-		var baseLink = '<g:createLink action="student" controller="acStudent" id="ID"/>';
+		//var baseLink = '<g:createLink action="student" controller="acStudent" id="ID"/>';
 
 		$(".studentid").click(function() {
 
@@ -156,11 +169,11 @@
 						$('#deleteBody tr:last').after(returnedInfo);
 					} else if (!boo) {
 						$("#dRow_" + acId).remove();
-					}
-
+					}					
 				});
 
 		$("#deleteStudentsTable").DataTable();
+		
 
 	});
 </script>
