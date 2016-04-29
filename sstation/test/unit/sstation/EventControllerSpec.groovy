@@ -21,6 +21,7 @@ class EventControllerSpec extends Specification {
 		when:
 		def ev = new Event(name: "festival", description: "something", contact: "person", contactPhone: "666", contactEmail: "here@ac.edu")
 		controller._saveEvent(ev)
+		
 		then:
 		view=="/event/_eventTable"
     }
@@ -30,9 +31,9 @@ class EventControllerSpec extends Specification {
 		when:
 		def ev=Mock(Event)
 		controller._saveEvent(ev)
+		
 		then:
 		view=="/event/_eventForm"
-		//model.form==1  WE'RE NOT SURE WHICH NUMBER IS THE FORM WITH AN ERROR MESSAGE... WILL ASK RENATA
 	}
 	
 	void "delete an event on table"(){

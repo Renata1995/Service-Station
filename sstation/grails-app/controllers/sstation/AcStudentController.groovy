@@ -26,6 +26,7 @@ import sstation.Status;
 class AcStudentController {
 	def hourService//Calculate all statistics about service hour list
 	def reportService//Used for report pages
+	def studentService//for student uploads
 
 
 	/*
@@ -387,7 +388,35 @@ class AcStudentController {
 		def totalSH=hourService.studentStat(ac).get('aSum')
 		render view:"report/_orgReport",model:[student:ac,list:list,totalSH:totalSH]
 	}
+	
+	def uploadPage(){
+		render view:"uploadPage",model:[]
+	}
 
+	def upload(){
+		def a
+		
+		println params
+
+		def uploadedFile = request.getFile('CSV')
+
+		if (uploadedFile == null) throw new Exception("cannot access course file")
+
+		def invalidList = []
+
+		if(!uploadedFile.empty){
+			println "Class: ${uploadedFile.class}"
+			println "Name: ${uploadedFile.name}"
+			println "OriginalFileName: ${uploadedFile.originalFilename}"
+			println "Size: ${uploadedFile.size}"
+			println "ContentType: ${uploadedFile.contentType}"
+ 
+		def inStream = uploadedFile.getInputStream()
+		a = studentService.importStudents(inStream)
+		}
+		render view:"uploadSuccess",model:[added:a[0],updated:a[1]]
+	}
+  
 
 
 
