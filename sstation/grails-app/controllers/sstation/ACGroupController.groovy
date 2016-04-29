@@ -33,7 +33,11 @@ class ACGroupController {
 	def _editOrg(CampusOrg org){
 		render view:"_orgForm",model:[org:org,heading:org.name]
 	}
-	
+	/**
+	 * Save or update a org and direct to the card view
+	 * @param org
+	 * @return
+	 */
 	def _saveOnCard(CampusOrg org){
 		org.properties=params
 		if (!org.save(flush:true)) {
@@ -41,12 +45,16 @@ class ACGroupController {
 			return
 		}
 		
-		//agency.save(flush:true,failOnError:true)
+		org.save(flush:true,failOnError:true)
 		def list=CommAg.list()
 		render view:"index",model:[list:list]
 		
 	}
-	
+	/**
+	 * Save or update an org and direct to the table view
+	 * @param org
+	 * @return
+	 */
 	def _saveOnTable(CampusOrg org){
 		org.properties=params
 		if(!org.save(flush:true)){
@@ -56,7 +64,12 @@ class ACGroupController {
 		def list=CampusOrg.list()
 		render view:"index",model:[list:list,table:1]
 	}
-	
+
+	/**
+	 * Delete an org and direct to the card view
+	 * @param org
+	 * @return
+	 */
 	def _deleteOnCard(CampusOrg org){
 		ServiceHour.findAllByCampusOrg(org).each{
 			it.delete(flush:true,failOnError:true)
@@ -65,7 +78,11 @@ class ACGroupController {
 		def list=CampusOrg.list()
 		render view:"_orgCardMain",model:[list:list]
 	}
-	
+	/**
+	 * Delete an org and direct to the table view
+	 * @param org
+	 * @return
+	 */
 	def _deleteOnTable(CampusOrg org){
 		ServiceHour.findAllByCampusOrg(org).each{
 			it.delete(flush:true,failOnError:true)

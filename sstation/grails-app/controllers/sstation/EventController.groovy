@@ -27,6 +27,12 @@ class EventController {
 
 		render view:"_eventTable",model:[list:list]
 	}
+	
+	def _eventTableView(){
+		def list=Event.list()
+
+		render view:"_eventTableView",model:[list:list]
+	}
 
 	/**
 	 * KPI page about all events
@@ -74,7 +80,7 @@ class EventController {
 	 */
 	def _saveEvent(Event e){
 		e.properties=params
-		if(!e.save(flush:true)){
+		if(!e.save(flush:true,failOnError:true)){
 			render view:'_eventForm', model:[event:e]
 			return
 		}

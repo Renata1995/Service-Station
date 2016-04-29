@@ -24,14 +24,6 @@ class CommOrgController {
 		render view:"_agCard",model:[list:list]
 	}
 
-	def _agOverallKPI(){
-
-	}
-
-	def _agKPI(){
-
-	}
-
 	def _createAgency(){
 		CommAg ag=new CommAg()
 		def heading="New Community Agency"
@@ -55,7 +47,7 @@ class CommOrgController {
 			return
 		}
 		
-		//agency.save(flush:true,failOnError:true)
+		agency.save(flush:true,failOnError:true)
 		def list=CommAg.list()
 		render view:"index",model:[list:list]
 	}

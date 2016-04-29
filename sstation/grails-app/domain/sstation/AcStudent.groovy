@@ -11,6 +11,7 @@ class AcStudent {
 	Integer acYear
 	Character status
 	Classification classification
+	Boolean isModerator
 
 	static constraints = {
 		firstname(nullable:false,blank:false)
@@ -22,6 +23,7 @@ class AcStudent {
 		classification(nullable:true,blank:false)
 		phone(nullable:true)
 		acYear(nullable:true)
+		isModerator(nullable:true)
 	}
 	static hasMany=[serviceHours:ServiceHour]
 

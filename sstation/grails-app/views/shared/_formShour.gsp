@@ -31,8 +31,6 @@
 	<g:hiddenField name="tableId_CamOrg" />
 	<g:textField name="selected_CamOrg" readonly="readonly" />
 
-	<button type="button" id="btn_CamOrg">Press to Select</button>
-
 </div>
 
 <div class="modal" id="modal2_CamOrg" style="display: none;">
@@ -130,10 +128,101 @@
 <div
 	class="fieldcontain ${hasErrors(bean: shour, field: 'commAg', 'error')} required">
 	<label for="commAg"> Community Agency: </label>
-	<g:select name="shCommAg" value="${shour?.commAg}" from="${agList}" />
+
+	<g:hiddenField name="tableId_CommAg" />
+	<g:textField name="selected_CommAg" readonly="readonly" />
 
 </div>
 
+<div class="modal" id="modal2_CommAg" style="display: none;">
+
+	<h1>Select Community Agency</h1>
+
+	<br>
+
+	<table id="selectTable_CommAg" class="table">
+		<thead>
+			<tr>
+				<th>Name</th>
+				<th>Contact</th>
+			</tr>
+		</thead>
+
+		<tbody>
+			<g:each in="${fullAgList?}" status="i" var="ca">
+				<tr>
+
+					<td id="commAg_Name+${i}">
+						${i} <g:checkBox name="checkCA" value="${i}_${ca.name}"
+							checked="false" /> : ${ca.name}
+					</td>
+
+					<td id="commAg_Contact+${i}">
+						${ca.contact}
+					</td>
+				</tr>
+			</g:each>
+		</tbody>
+	</table>
+
+	<br>
+	<p style="text-align:center"> Current Selected Community Agency: </p>
+	<p id="show_CommAg" style="text-align:center"></p>
+	<br>	<br>
+</div>
+
+<script>
+	$(function() {
+		var dialog_CommAg = $("#modal2_CommAg").dialog(
+				{
+					autoOpen : false,
+					resizable : true,
+					height : 500,
+					width : 800,
+					modal : true,
+					buttons : {
+						Commit : function() {
+							//window.alert("commit");
+
+							var id = $("input[name='checkCA']:checked").val();
+
+							//window.alert("id "+id);
+
+							var set = id.split("_");
+							var num = set[0];
+							//window.alert("num "+num);
+							var co = set[1];
+							//window.alert("co "+co);
+							
+							$("#modal2_CommAg").dialog("close");
+							$('#selected_CommAg').val(co);
+							$("#tableId_CommAg").val(
+									$("input[name='checkCA']:checked").val());
+
+						}
+					}
+				});
+
+		$("#btn_CommAg").button().on("click", function() {
+			dialog_CommAg.dialog("open");
+		});
+
+		$("#selected_CommAg").click(function() {
+			dialog_CommAg.dialog("open");
+		});
+
+		$("input[name='checkCA']").change(function() {
+			$("input[name='checkCA']").not(this).prop('checked', false);
+			var id = $("input[name='checkCA']:checked").val();
+			var set = id.split("_");
+			var co = set[1];
+			$('#show_CommAg').text(co);
+		});
+
+		$("#selectTable_CommAg").DataTable();
+
+	});
+</script>
 
 <div
 	class="fieldcontain ${hasErrors(bean: shour, field: 'starttime', 'error')} required">

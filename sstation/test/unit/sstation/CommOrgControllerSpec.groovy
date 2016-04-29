@@ -21,6 +21,7 @@ class CommOrgControllerSpec extends Specification {
 		when:
 		def ag=Mock(CommAg)
 		controller._saveOnCard(ag)
+		
 		then:
 		view=="/commOrg/index"
     }
@@ -30,6 +31,7 @@ class CommOrgControllerSpec extends Specification {
 		def ag=Mock(CommAg)
 		ag.contactEmail="aaaa"
 		controller._saveOnCard(ag)
+		
 		then:
 		view=="/commOrg/index"
 		model.form==1
@@ -41,6 +43,7 @@ class CommOrgControllerSpec extends Specification {
 		when:
 		def ag=Mock(CommAg)
 		controller._saveOnCard(ag)
+		
 		then:
 		view=="/commOrg/index"
 	}
@@ -50,6 +53,7 @@ class CommOrgControllerSpec extends Specification {
 		def ag=Mock(CommAg)
 		ag.contactEmail="aaaa"
 		controller._saveOnCard(ag)
+		
 		then:
 		view=="/commOrg/index"
 		model.form==1

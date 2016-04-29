@@ -14,7 +14,9 @@
 		<g:render template="/shared/hourTable"/>
 		<script>
   $(document).ready(function(){
-	    $('table').DataTable();
+	    var table = $('table').DataTable( {
+	        "order": [[ 5, "desc" ]]
+	    } );
 	   
 	    var baseLink = '<g:createLink action="shour" controller="hour" id="ID"/>';
 	    $(".shourRow").on({

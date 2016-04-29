@@ -9,12 +9,47 @@ import spock.lang.Specification
 @TestFor(ACGroupController)
 class ACGroupControllerSpec extends Specification {
 
-    def setup() {
+     void "test when successful save and card view shown"() {
+		
+		when:
+		def co=Mock(CampusOrg)
+		controller._saveOnCard(co)
+		
+		then:
+		view=="/ACGroup/index"
     }
-
-    def cleanup() {
-    }
-
-    void "test something"() {
-    }
+	
+	void "test when not saved successfully and card view will be shown"(){
+		when:
+		def co=Mock(CampusOrg)
+		co.contactPhone="aaaa"
+		controller._saveOnCard(co)
+		
+		then:
+		view=="/ACGroup/index"
+		model.form==1
+		model.card==1
+	}
+	
+	void "test that if an agency is not saved(_saveOnTable) successfully the form view will be rendered"(){
+		when:
+		def co=Mock(CampusOrg)
+		co.contactPhone="aaaa"
+		controller._saveOnCard(co)
+		
+		then:
+		view=="/ACGroup/index"
+		model.form==1
+	}
+	
+	void "test when not saved successfully and table vie will be shown" (){
+		when:
+		def co=Mock(CampusOrg)
+		co.contactEmail="aaaa"
+		controller._saveOnCard(co)
+		
+		then:
+		view=="/ACGroup/index"
+		model.form==1
+	}
 }

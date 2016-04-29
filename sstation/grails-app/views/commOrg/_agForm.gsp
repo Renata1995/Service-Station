@@ -73,6 +73,8 @@
 			<g:actionSubmit class="btn btn-default" action="_saveOnTable"
 				value="Save"/>
 		</g:else>
+		<g:actionSubmit class="btn btn-default" action="index"
+				value="Cancel"/>
 	</div>
 </g:form>
 </html>

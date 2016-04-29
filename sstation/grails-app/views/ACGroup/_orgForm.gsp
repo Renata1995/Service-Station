@@ -60,11 +60,14 @@
 	<div>
 		<g:if test="${params.orgAgMain=='1'||card==1}">
 			<g:actionSubmit class="btn btn-default" action="_saveOnCard"
-				value="Save" />
+				value="Save"  onclick="_saveOnCard"/>
 		</g:if>
 		<g:else> 
-			<g:actionSubmit class="btn btn-default" action="_saveOnTable" value="Save"/>
+			<g:actionSubmit class="btn btn-default" action="_saveOnTable" value="Save"
+			onclick="_saveOnTable"/>
 		</g:else>
+		<g:actionSubmit class="btn btn-default" action="index"
+				value="Cancel"/>
 	</div>
 	
 	

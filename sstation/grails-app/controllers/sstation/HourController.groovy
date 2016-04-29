@@ -20,6 +20,15 @@ class HourController {
 		def list=ServiceHour.list()
 		[list:list]
 	}
+	
+	/**
+	 * Summary of only pending hours
+	 * @return
+	 */
+	def pending(){
+		def list=ServiceHour.list()
+		[list:list]
+	}
 
 	/**
 	 * Show the overall service hour kpi--Summary Page
@@ -82,11 +91,11 @@ class HourController {
 			it.name
 		}
 		def fullOrgList = CampusOrg.list()
-		
+		def fullAgList = CommAg.list()
 		def agList=CommAg.list().collect{
 			it.name
 		}
-		[eventList:eventList,orgList:orgList,fullOrgList:fullOrgList,agList:agList,shour:sh,list:list,nameList:nameList]
+		[eventList:eventList,orgList:orgList,fullOrgList:fullOrgList,agList:agList,fullAgList:fullAgList,shour:sh,list:list,nameList:nameList]
 	}
 	
 	/**

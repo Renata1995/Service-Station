@@ -97,7 +97,7 @@ class BootStrap {
 		String box="${random.nextInt(30000)+30000}"
 		String email=fname.substring(0,1)+lname+(year-2000)+"@austincollege.edu"
 
-		return new AcStudent(firstname:fname,lastname:lname,status:stat,acid:id,acEmail:email,acBox:box,acYear:year,classification:clas,phone:"903820784")
+		return new AcStudent(isModerator:false,firstname:fname,lastname:lname,status:stat,acid:id,acEmail:email,acBox:box,acYear:year,classification:clas,phone:"903820784")
 	}
 
 	/**
