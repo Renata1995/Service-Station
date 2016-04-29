@@ -33,6 +33,9 @@
 					<g:checkBox id="s${s.id}" name="checkstudent" value="${s.id}"
 							checked="false" />
 					</g:else>
+					<script>
+						$('#s${s.id}').prop('disabled', true);
+					</script>
 					</td>
 					
 		

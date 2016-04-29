@@ -85,6 +85,8 @@ div.btn-group-vertical {
 				<fieldset class="buttons">
 				<g:actionSubmit class="btn btn-default" value="Create" action="saveShour" />
 				
+				<a href = "javascript:location.reload(true)">Cancel</a>
+				
 				</fieldset>
 			</div>
 		</div>

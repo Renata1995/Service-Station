@@ -4,23 +4,25 @@
 
 		<div class="col-md-6 navbar-right cornerButtons"
 			style="margin-top: 7px; margin-bottom: -7px;">
-			<g:remoteLink controller="moderator" action="_presentStudentTable"
+			<g:remoteLink controller="moderator" action="_presentStudentTableAdd"
 				update="tableStudent" class="tStudent">
 				<span style="color: #FFDE97" class="glyphicon glyphicon-plus"
 					aria-hidden="true"></span>
-				<b>Add moderator</b>
+				<b>Add</b>
 			</g:remoteLink>
-			<span style="color: #FFDE97" class="glyphicon glyphicon-trash"
+			<g:remoteLink controller="moderator" action="_presentStudentTableDelete"
+				update="tableStudent" class="tStudent">
+				<span style="color: #FFDE97" class="glyphicon glyphicon-trash"
 				aria-hidden="true"></span>
-			<g:submitToRemote controller="acStudent" action="deletemult"
-				update="main" value="Delete" class="tabledelete"></g:submitToRemote>
+				<b>Delete</b>
+			</g:remoteLink>
 		</div>
 	</div>
 	<!-- Student Table -->
 	<table id="table" class="table">
 		<thead>
 			<tr>
-	
+
 				<th>AC ID</th>
 
 				<th>Name</th>
