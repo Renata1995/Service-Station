@@ -20,6 +20,15 @@ class HourController {
 		def list=ServiceHour.list()
 		[list:list]
 	}
+	
+	/**
+	 * Summary of only pending hours
+	 * @return
+	 */
+	def pending(){
+		def list=ServiceHour.list()
+		[list:list]
+	}
 
 	/**
 	 * Show the overall service hour kpi--Summary Page
