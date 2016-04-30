@@ -56,10 +56,13 @@ label.loginLabel{
 			<li class="tab1" role="presentation" ><a>Log In</a></li>
 		
 			</ul>
-		
+			
+			<g:if test='${flash.message}'>
+            	<div class='login_message'>${flash.message}</div>
+        	</g:if>
 			
 			<!-- Log in form -->
-			<g:form controller="home" class="indexForm form-horizontal" id="logInForm">
+			<form action="${createLink(uri: '/j_spring_security_check')}" method="POST" autocomplete="off" class="indexForm form-horizontal" id="logInForm">
 
 				<!-- Domin Selection -->
 				<div class="form-group">
@@ -77,10 +80,10 @@ label.loginLabel{
 				<!-- Email Input -->
 				<div class="form-group">
 					<label for="inputEmail3" class="loginLabel col-md-3 control-label"
-						style="text-align: left;">Email</label>
+						style="text-align: left;">AC Network ID</label>
 					<div class="col-md-7">
-						<input type="email" class="form-control" id="inputEmail3"
-							placeholder="Email">
+						<input type="text" class="form-control" id="inputEmail3"
+							placeholder="AC Login" name='j_username'>
 					</div>
 				</div>
 
@@ -91,80 +94,39 @@ label.loginLabel{
 						style="text-align: left;">Password</label>
 					<div class="col-md-7">
 						<input type="password" class="form-control" id="inputPassword3"
-							placeholder="Password">
+							placeholder="Password" name='j_password'>
 					</div>
 				</div>
 
-				<!-- Remember Me -->
+				<!-- Remember Me 
 				<div class="form-group">
 					<div class="col-md-offset-3 col-md-7">
 						<div class="checkbox">
-							<label> <input type="checkbox"> Remember me
+							<label> <input type="checkbox" name='_spring_security_remember_me'> Remember me
 							</label>
 						</div>
 					</div>
-				</div>
+				</div> -->
 
 				<!-- Log in button -->
 				<div class="form-group">
 					<div class="col-md-offset-3 col-md-7">
-						<g:actionSubmit controller="home" action="index" method="POST"
-							class="btn btn-default" value="Log In" />
+						<input type="submit" class="btn btn-default" value="Log In" />
 					</div>
 				</div>
-			</g:form>	<!-- Log in Form -->
-			
-			
-			
-			
-			
-			<!-- Sign up Form -->
-			<g:form class="indexForm form-horizontal" controller="home" id="signUpForm" style="display:none">
-
-				<!-- Domin Selection -->
-				<div class="form-group">
-					<label for="domain" class="loginLabel col-md-3 control-label"
-						style="text-align: left;">Domain</label>
-					<div class="col-md-7">
-						<select class="form-control" name="domain" value="">
-							<option value="1">Admin</option>
-							<option value="2">Student</option>
-						</select>
-					</div>
-				</div>
-
-
-				<!-- Email Input -->
-				<div class="form-group">
-					<label for="inputEmail3" class="loginLabel col-md-3 control-label"
-						style="text-align: left;">Email</label>
-					<div class="col-md-7">
-						<input type="email" class="form-control" id="inputEmail3"
-							placeholder="Email">
-					</div>
-				</div>
-
-				<!-- Password Input -->
-				<div class="form-group">
-					<label for="inputPassword3"
-						class="loginLabel col-md-3 control-label"
-						style="text-align: left;">Password</label>
-					<div class="col-md-7">
-						<input type="password" class="form-control" id="inputPassword3"
-							placeholder="Password">
-					</div>
-				</div>
-
-				<!-- Log in button -->
-				<div class="form-group">
-					<div class="col-md-offset-3 col-md-7">
-						<g:actionSubmit controller="home" action="index" method="POST"
-							class="btn btn-default" value="Sign Up" />
-					</div>
-				</div>
-			</g:form><!-- Sign Up Form -->
+			</form>	<!-- Log in Form -->
+				
 		</div>
 
 	</div>
+	
+	<script type='text/javascript'>
+    <!--
+    (function() {
+        document.forms['loginForm'].elements['j_username'].focus();
+    })();
+    // -->
+</script>
+
 </body>
 </html>

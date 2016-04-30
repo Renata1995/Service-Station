@@ -7,6 +7,13 @@ import sstation.CommAg;
 import sstation.Event;
 import sstation.ServiceHour;
 
+import grails.transaction.Transactional
+import java.security.MessageDigest
+import grails.plugin.springsecurity.annotation.Secured
+
+@Secured(['ROLE_ADMIN', 'ROLE_STUDENT'])
+@Transactional(readOnly = false)
+
 class HourController {
 	def hourService//Calculate all statistics about service hour list
 	/*
@@ -16,6 +23,8 @@ class HourController {
 	 * Main Page--Summary
 	 * @return
 	 */
+
+	@Secured(['ROLE_ADMIN'])
 	def overall(){
 		def list=ServiceHour.list()
 		[list:list]

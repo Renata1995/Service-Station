@@ -81,9 +81,11 @@ body {
 										class="glyphicon glyphicon-cog right-corner"
 										aria-hidden="true"></span>Setting</a></li>
 								<li role="separator" class="divider"></li>
-								<li><a href="#"><span
+								<li>
+								<g:link controller="logout"><span
 										class="glyphicon glyphicon-log-out right-corner"
-										aria-hidden="true"></span>Log Out</a></li>
+										aria-hidden="true"></span>Log Out</g:link>
+								</li>
 							</ul></li>
 					</ul>
 

@@ -23,6 +23,13 @@ import sstation.Event;
 import sstation.ServiceHour;
 import sstation.Status;
 
+import grails.transaction.Transactional
+import java.security.MessageDigest
+import grails.plugin.springsecurity.annotation.Secured
+
+@Secured(['ROLE_ADMIN', 'ROLE_STUDENT'])
+@Transactional(readOnly = false)
+
 class AcStudentController {
 	def hourService//Calculate all statistics about service hour list
 	def reportService//Used for report pages
@@ -72,7 +79,20 @@ class AcStudentController {
 
 
 	/**
-	 * This page is the main page for the current student. 
+	 * This page is the main page for the current student.
+	 * @param student  passed from the _studentList.gsp
+	 */
+	def home(AcStudent student) {
+		
+		def stat=hourService.studentStat(student)
+		def list=student.serviceHours
+
+		render view:"student/home",model:[student:student,stat:stat,list:list]
+	}
+
+
+	/**
+	 * This page is the main page for the current student.
 	 * @param student  passed from the _studentList.gsp
 	 */
 	def student(AcStudent student) {
