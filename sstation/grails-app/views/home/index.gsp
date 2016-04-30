@@ -58,8 +58,7 @@ div.col-md-7 {
 
 		<div class="col-md-7">
 			<div id="homeTableName" class="formHeading">
-				<g:link action="" controller="hour">Pending
-				Hours</g:link>
+				<g:link action="pending" controller="hour">Pending Hours</g:link>
 			</div>
 			<table id="homePendingTable" class="table">
 				<thead>
@@ -104,7 +103,7 @@ div.col-md-7 {
 					</g:each>
 					<tr>
 						<td colspan="6" id="homePendingMore"><g:link
-								class="aoListIcon" controller="hour" action="">More</g:link></td>
+								class="aoListIcon" controller="hour" action="pending">Show More</g:link></td>
 					</tr>
 				</tbody>
 			</table>

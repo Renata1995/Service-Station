@@ -29,7 +29,6 @@ class ACGroupControllerSpec extends Specification {
 		view=="/ACGroup/index"
 		model.form==1
 		model.card==1
-		//model.agency==co
 	}
 	
 	void "test that if an agency is not saved(_saveOnTable) successfully the form view will be rendered"(){

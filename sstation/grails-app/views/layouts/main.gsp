@@ -9,44 +9,44 @@
 <!-- Contains all resource import -->
 
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-<title></title>
-<meta name="viewport" content="width=device-width, initial-scale=2.0">
-
-
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-
-<!-- Latest compiled and minified JavaScript -->
-<script
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-<link rel="stylesheet"
-	href="//code.jquery.com/ui/1.11.4/themes/sunny/jquery-ui.css">
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-<!-- Optional theme -->
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
-
-<script
-	src="https://cdn.datatables.net/1.10.10/js/jquery.dataTables.min.js"></script>
-<script
-	src="https://cdn.datatables.net/1.10.10/js/dataTables.bootstrap.min.js"></script>
-<link rel="stylesheet"
-	href="https://cdn.datatables.net/1.10.10/css/dataTables.bootstrap.min.css" />
-
-<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
-<script src="http://code.highcharts.com/highcharts.js"></script>
-<asset:javascript src="style.js" />
-<asset:stylesheet src="style.css" />
-
-<style>
-body {
-	max-width: none;
-}
-</style>
-<g:layoutHead />
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<title></title>
+	<meta name="viewport" content="width=device-width, initial-scale=2.0">
+	
+	<link rel="shortcut icon" href="${createLinkTo(dir:'images',file:'favicon.ico')}" type="image/x-icon" />
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+	
+	<!-- Latest compiled and minified JavaScript -->
+	<script
+		src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+	<link rel="stylesheet"
+		href="//code.jquery.com/ui/1.11.4/themes/sunny/jquery-ui.css">
+	<link rel="stylesheet"
+		href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+	<!-- Optional theme -->
+	<link rel="stylesheet"
+		href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+	
+	<script
+		src="https://cdn.datatables.net/1.10.10/js/jquery.dataTables.min.js"></script>
+	<script
+		src="https://cdn.datatables.net/1.10.10/js/dataTables.bootstrap.min.js"></script>
+	<link rel="stylesheet"
+		href="https://cdn.datatables.net/1.10.10/css/dataTables.bootstrap.min.css" />
+	
+	<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+	<script src="http://code.highcharts.com/highcharts.js"></script>
+	<asset:javascript src="style.js" />
+	<asset:stylesheet src="style.css" />
+	
+	<style>
+	body {
+		max-width: none;
+	}
+	</style>
+	<g:layoutHead />
 </head>
 <body>
 	<div class="body" id="homeOverallDiv">
@@ -103,9 +103,10 @@ body {
 		<nav class="nav-pills nav-stacked" id="sideBar">
 			<div class="sidebar-collapse menu-collapse" style="height: 100%">
 				<ul class="nav navLink" id="main-menu" style="height: 100%">
-					<li><g:link controller="home" params="[domain:1]" action="index">
+					<li><g:link controller="home" params="[domain:1]"
+							action="index">
 							<span class="glyphicon glyphicon-home" aria-hidden="true"></span>
-							<br/>Home </g:link></li>
+							<br />Home </g:link></li>
 					<li><g:link controller="hour" action="overall">
 							<span class="glyphicon glyphicon-stats" aria-hidden="true"></span>
 							<br />Overall</g:link></li>
@@ -119,17 +120,17 @@ body {
 
 					<li><g:link controller="ACGroup" action="index">
 							<span class="glyphicon glyphicon-pawn" aria-hidden="true"></span>
-							<br/>AC Group</g:link></li>
-							
+							<br />AC Group</g:link></li>
+
 					<li><g:link controller="CommOrg" action="index">
 							<span class="glyphicon glyphicon-tower" aria-hidden="true"></span>
-							<br/>Organizations</g:link></li>
+							<br />Organizations</g:link></li>
 					<li><g:link controller="Reports" action="index">
 							<span class="glyphicon glyphicon-tasks" aria-hidden="true"></span>
-							<br/>Station Reports</g:link></li>
+							<br />Station Reports</g:link></li>
 					<li><g:link controller="Moderator" action="index">
 							<span class="glyphicon glyphicon-user" aria-hidden="true"></span>
-							<br/>Moderator</g:link></li>
+							<br />Moderator</g:link></li>
 
 				</ul>
 			</div>
@@ -141,8 +142,8 @@ body {
 			<div id="main">
 				<g:layoutBody />
 				<div id="spinner" class="spinner" style="display: none;">
-		<g:message code="spinner.alt" default="Loading&hellip;" />
-	</div>
+					<g:message code="spinner.alt" default="Loading&hellip;" />
+				</div>
 			</div>
 			<!-- main end -->
 		</div>

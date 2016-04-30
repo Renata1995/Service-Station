@@ -1,19 +1,26 @@
+<!DOCTYPE html>
 <%@ page contentType="text/html;charset=UTF-8"%>
 <html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+<meta name="layout" content="main" />
+
 <div class="formHeading greyBar">
 	${heading}
 </div>
 <g:hasErrors bean="${agency}">
-		<ul class="errors" role="alert">
-			<g:eachError bean="${agency}" var="error">
-				<li
-					<g:if test="${error in org.springframework.validation.FieldError}">data-field-id="${error.field}"</g:if>>Please check the ${error.field} </li>
-			</g:eachError>
-		</ul>
-	</g:hasErrors>
 	
-	
-<g:form class="mainback" controller="commOrg" id="${agency.id}" method="POST">
+</g:hasErrors>
+
+
+<ul class="errors" role="alert">
+		<g:eachError bean="${agency}" var="error">
+			<li <g:if test="${error in org.springframework.validation.FieldError}">data-field-id="${error.field}"</g:if>="">Please
+				check the <%error.field%>
+			</li>
+		</g:eachError>
+	</ul><g:form class="mainback" controller="commOrg" id="${agency.id}"
+	method="POST">
 	<div
 		class="fieldcontain ${hasErrors(bean: agency, field: 'name', 'error')} required">
 		<label for="name"> Name: <span class="required-indicator">*</span>
@@ -65,16 +72,16 @@
 
 	</div>
 	<div>
+
 		<g:if test="${params.orgAgMain=='1'||card==1}">
 			<g:actionSubmit class="btn btn-default" action="_saveOnCard"
-				value="Save"/>
+				value="Save" />
 		</g:if>
 		<g:else>
 			<g:actionSubmit class="btn btn-default" action="_saveOnTable"
-				value="Save"/>
+				value="Save" />
 		</g:else>
-		<g:actionSubmit class="btn btn-default" action="index"
-				value="Cancel"/>
+		<g:actionSubmit class="btn btn-default" action="index" value="Cancel" />
 	</div>
 </g:form>
 </html>

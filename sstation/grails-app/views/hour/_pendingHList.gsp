@@ -17,6 +17,8 @@
 	    var table = $('table').DataTable( {
 	        "order": [[ 5, "desc" ]]
 	    } );
+
+	    table.columns(7).search('pending').draw();
 	   
 	    var baseLink = '<g:createLink action="shour" controller="hour" id="ID"/>';
 	    $(".shourRow").on({
