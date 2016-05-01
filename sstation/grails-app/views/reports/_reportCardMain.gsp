@@ -74,6 +74,28 @@
 							<g:link controller="reports" action="commOrgReport">Generate Report</g:link>
 							<div class="cornerButtons listButtons"></div>
 						</div>
+						
+						<div class="list-group-item">
+							<h4 class="list-group-item-heading">
+								<b>Report by Year</b>
+							</h4>
+							<p class="list-group-item-text">
+								Generates an aggregate report of hours organized by Years.
+							</p>
+							<g:link controller="reports" action="yearReport">Generate Report</g:link>
+							<div class="cornerButtons listButtons"></div>
+						</div>
+						
+						<div class="list-group-item">
+							<h4 class="list-group-item-heading">
+								<b>Report by Semester</b>
+							</h4>
+							<p class="list-group-item-text">
+								Generates an aggregate report of hours organized by semesters.
+							</p>
+							<g:link controller="reports" action="semesterReport">Generate Report</g:link>
+							<div class="cornerButtons listButtons"></div>
+						</div>
 					</div>
 					<!-- List-group ends -->
 

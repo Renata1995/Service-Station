@@ -182,12 +182,12 @@ class HourService {
 		}
 		def juList=ServiceHour.list().findAll{
 			if(it.acStudent!=null){
-				it.acStudent.classification==Classification.JU
+				it.acStudent.classification==Classification.JR
 			}
 		}
 		def seList=ServiceHour.list().findAll{
 			if(it.acStudent!=null){
-				it.acStudent.classification==Classification.SE
+				it.acStudent.classification==Classification.SR
 			}
 		}
 		def gradList=ServiceHour.list().findAll{
