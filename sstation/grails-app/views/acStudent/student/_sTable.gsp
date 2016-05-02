@@ -138,8 +138,8 @@
 		});
 
 		$(".studentid").click(function() {
-			var rows = $('#table').DataTable().rows;
-			window.alert(row);
+			//var rows = $('#table').DataTable().rows;
+			//window.alert(row.length);
 			var acId = $(this).attr("id");
 			window.alert(acId);
 			var baseLink = '<g:createLink action="student" controller="acStudent" id="ID"/>';
