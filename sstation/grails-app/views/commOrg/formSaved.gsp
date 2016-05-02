@@ -10,11 +10,16 @@
 </div>
 <body>
 	<div class="body">
+		<h1>You Community Organization Has Been Saved</h1>
 		<g:if test='${table==1 }'>
-			<g:link controller='commOrg' action='returnToTable'>Back to Organizations</g:link>
+			<h1>
+				<g:link controller='commOrg' action='returnToTable'>Back to Community Organizations</g:link>
+			</h1>
 		</g:if>
 		<g:else>
-			<g:link controller='commOrg' action='returnToCard'>Back to Organizations</g:link>
+			<h1>
+				<g:link controller='commOrg' action='returnToCard'>Back to Community Organizations</g:link>
+			</h1>
 		</g:else>
 	</div>
 </body>
