@@ -49,7 +49,7 @@
 							<p class="list-group-item-text">
 								Generates an aggregate report of hours organized by service events.
 							</p>
-							<g:link controller="reports" action="eventSelection">Generate Report</g:link>
+							<g:link controller="reports" action="eventReport">Generate Report</g:link>
 							<div class="cornerButtons listButtons"></div>
 						</div>
 						
@@ -88,12 +88,12 @@
 						
 						<div class="list-group-item">
 							<h4 class="list-group-item-heading">
-								<b>Report by Semester</b>
+								<b>Summary Report</b>
 							</h4>
 							<p class="list-group-item-text">
-								Generates an aggregate report of hours organized by semesters.
+								Generates an aggregate summary report of hours.
 							</p>
-							<g:link controller="reports" action="semesterReport">Generate Report</g:link>
+							<g:link controller="reports" action="summaryReport">Generate Report</g:link>
 							<div class="cornerButtons listButtons"></div>
 						</div>
 					</div>
