@@ -13,20 +13,20 @@
 				<g:each in="${list}" status="i" var="s">
 					<tr>
 						<td>
-							${s.event.name}
+							${s.event?.name}
 						
 						<td>
 							${
-								s.campusOrg.name
+								s.campusOrg?.name
 							}
 						</td>
 
 						<td>
-							${s.commAg.name}
+							${s.commAg?.name}
 						</td>
 
 						<td>
-							${s.starttime.format('MM/dd/yyyy HH:mm')}
+							${s.starttime?.format('MM/dd/yyyy HH:mm')}
 						</td>
 
 						<td>
