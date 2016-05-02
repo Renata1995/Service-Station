@@ -14,7 +14,7 @@ import spock.lang.*
 @FreshRuntime
 class AcStudentControllerSpec extends Specification {
 	def rand
-	
+
 	def setup(){
 		rand=new Random()
 	}
@@ -28,8 +28,8 @@ class AcStudentControllerSpec extends Specification {
 		view=="/acStudent/student/studentList"
 		model.list.size()==0
 	}
-	
-	
+
+
 	void "test studentList with some students should not be empty"(){
 
 		when: "There are 10 students"
@@ -42,9 +42,9 @@ class AcStudentControllerSpec extends Specification {
 		model.list.size()==10
 		model.list[0].firstname=="Renata"
 	}
-	
-	
-	
+
+
+
 
 	void "test sTable which leads to the student list"(){
 		when:"execute _studentList with no students"
@@ -114,7 +114,7 @@ class AcStudentControllerSpec extends Specification {
 		view=="/acStudent/student/_showStudent"
 		model.student==ac
 	}
-	
+
 	void "test delete Student"(){
 		when:
 		AcStudent ac=new AcStudent(firstname:"Renata",lastname:"Chai",acid:"AC3483",acEmail:"rchai13@austincollege.edu",acBox:"11111",acYear:2013,classification:Classification.JR,phone:"1111111111", status:'A').save(flush:true,failOnError:true)
@@ -124,7 +124,7 @@ class AcStudentControllerSpec extends Specification {
 		view=="/acStudent/student/_sTable"
 		model.list.size()==count-1
 	}
-	
+
 	void "test deleting multiple student"(){
 		when:"There are 10 students and students 1,3,5 are deleted"
 		10.times{
@@ -139,22 +139,42 @@ class AcStudentControllerSpec extends Specification {
 		AcStudent.get(3)==null
 		AcStudent.get(5)==null
 	}
-	
-	
-	
-	
-	
+
+
+
+
+
 	/**
 	 * Report Method
 	 */
-	void "test _reportAdmin"(){
+	void "test reportAdmin"(){
 		def s=Mock(AcStudent)
+		controller.hourService=Mock(HourService)
 		when:
-		controller._reportAdmin(s)
+		controller.reportAdmin(s)
 		then:
-		view=="/acStudent/report/_reportAdmin"
-	}	
-	
+		view=="/acStudent/report/reportAdmin"
+	}
+
+	void "test semesterReport"(){
+		def s=new AcStudent(firstname:"Renata",lastname:"Chai",acid:"AC3483",acEmail:"rchai13@austincollege.edu",acBox:"11111",acYear:2013,classification:Classification.JR,phone:"1111111111", status:'A').save(flush:true,failOnError:true)
+		controller.reportService=new ReportService()
+		controller.hourService=new HourService()
+		when:
+		controller.semesterReport(s)
+		then:
+		view=="/acStudent/report/semesterReport"
+	}
+
+	void "test studentReport"(){
+		def s=new AcStudent(firstname:"Renata",lastname:"Chai",acid:"AC3483",acEmail:"rchai13@austincollege.edu",acBox:"11111",acYear:2013,classification:Classification.JR,phone:"1111111111", status:'A').save(flush:true,failOnError:true)
+		controller.hourService=new HourService()
+		when:
+		controller.studentReport(s)
+		then:
+		view=="/acStudent/report/studentReport"
+	}
+
 	/**
 	 * Service Hour Management
 	 */
@@ -169,7 +189,7 @@ class AcStudentControllerSpec extends Specification {
 		view=="/acStudent/shour/shour"
 		model.shour==ServiceHour.get(1)
 	}
-	
+
 	void "test creating a service hour"(){
 		def s=Mock(AcStudent)
 		when:
@@ -177,7 +197,7 @@ class AcStudentControllerSpec extends Specification {
 		then:
 		view=="/acStudent/shour/_createShour"
 	}
-	
+
 	void "test editing a service hour"(){
 		when:
 		def sh=Mock(ServiceHour)
@@ -185,7 +205,7 @@ class AcStudentControllerSpec extends Specification {
 		then:
 		view=="/acStudent/shour/_editShour"
 	}
-	
 
-	
+
+
 }
