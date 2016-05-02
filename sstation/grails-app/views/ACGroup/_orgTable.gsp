@@ -6,11 +6,11 @@
 <body>
 	<div class="table_buttons" style="height: 2em">
 		<div class="col-md-3 navbar-right cornerButtons" style="margin: 0px;">
-			<g:remoteLink controller="ACGroup" action="_createOrg" update="main">
+			<g:link controller="ACGroup" action="_createOrg" update="main">
 				<span style="color: #FFDE97" class="glyphicon glyphicon-plus"
 					aria-hidden="true"></span>
 				<b> Add Campus Organization</b>
-			</g:remoteLink>
+			</g:link>
 		</div>
 	</div>
 	<!-- Organization Table -->
@@ -70,7 +70,12 @@
 	</table>
 	<script>
 		$(function() {
-			$("#otable").DataTable();
+			$("#otable").DataTable({
+				"columnDefs" : [ {
+					"orderable" : false,
+					"targets" : [ 0, 6 ]
+				} ]
+			});
 		});
 	</script>
 </body>

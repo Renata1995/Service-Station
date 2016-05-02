@@ -1,20 +1,19 @@
-<form>
+<div>
 	<div class="row"
 		style="background-color: #625D4C; margin: 20px 0px 0px 0px">
 
 		<div class="col-md-6 navbar-right cornerButtons"
 			style="margin-top: 7px; margin-bottom: -7px;">
 
+			<g:remoteLink controller="acStudent" action="_createStudent"
+				update="slist">
+				<button class="btn btn-danger">
 
-			<button class="btn btn-warning">
-				<g:remoteLink controller="acStudent" action="_createStudent"
-					update="slist">
 					<span style="color: #FFDE97" class="glyphicon glyphicon-plus"
-						aria-hidden="true"></span>
-					New Student
-				</g:remoteLink>
-			</button>
-
+						aria-hidden="true"></span> New Student
+				</button>
+			</g:remoteLink>
+			
 			<button class="btn btn-danger" id="deleteStudentsBtn">
 				<span style="color: #FFDE97" class="glyphicon glyphicon-trash"
 					aria-hidden="true"></span> Delete
@@ -22,7 +21,7 @@
 
 		</div>
 	</div>
-	
+
 	<!-- Student Table -->
 	<table id="table" class="table">
 		<thead>
@@ -80,7 +79,7 @@
 		</tbody>
 	</table>
 
-</form>
+</div>
 
 
 <div id="modal_Delete" class="modal" style="display: none;">
@@ -100,7 +99,7 @@
 			</tr>
 		</thead>
 		<tbody id="deleteBody">
-
+			
 		</tbody>
 	</table>
 
@@ -111,7 +110,20 @@
 
 <script>
 	$(function() {
-		$('#table').DataTable();
+
+		$(document).ready(function(){
+		    $('#table').DataTable();
+		    var baseLink = '<g:createLink action="student" controller="acStudent" id="ID"/>';
+		    $(".studentRow").on({
+			    click: function(){
+				    var idstring=$(this).attr("id");
+				   
+				    window.location.href = baseLink.replace("ID", idstring);
+			    }
+			});
+		    
+		});
+		//$('#table').DataTable();
 
 		var modalDelete = $("#modal_Delete").dialog({
 			autoOpen : false,
@@ -121,7 +133,7 @@
 			modal : true
 		});
 
-		var baseLink = '<g:createLink action="student" controller="acStudent" id="ID"/>';
+		//var baseLink = '<g:createLink action="student" controller="acStudent" id="ID"/>';
 
 		$(".studentid").click(function() {
 
@@ -131,7 +143,7 @@
 
 		});
 
-		$("#deleteStudentsBtn").button().on("click", function() {
+		$("#deleteStudentsBtn").on("click", function() {
 			modalDelete.dialog("open");
 		});
 
@@ -156,11 +168,11 @@
 						$('#deleteBody tr:last').after(returnedInfo);
 					} else if (!boo) {
 						$("#dRow_" + acId).remove();
-					}
-
+					}					
 				});
 
 		$("#deleteStudentsTable").DataTable();
+		
 
 	});
 </script>

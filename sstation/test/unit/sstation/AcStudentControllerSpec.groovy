@@ -34,7 +34,7 @@ class AcStudentControllerSpec extends Specification {
 
 		when: "There are 10 students"
 		10.times{
-			new AcStudent(firstname:"Renata",lastname:"Chai",acid:"AC3483"+it,acEmail:"rchai13@austincollege.edu",acBox:"11111",acYear:2013,classification:Classification.JU,phone:"1111111111").save(flush:true,failOnError:true)
+			new AcStudent(firstname:"Renata",lastname:"Chai",acid:"AC3483"+it,acEmail:"rchai13@austincollege.edu",acBox:"11111",acYear:2013,classification:Classification.JR,phone:"1111111111", status:'A').save(flush:true,failOnError:true)
 		}
 		controller.studentList()
 		then:"10 students will be shown in the list"
@@ -55,7 +55,7 @@ class AcStudentControllerSpec extends Specification {
 
 		when: "There are 10 students"
 		10.times{
-			new AcStudent(firstname:"Renata",lastname:"Chai",acid:"AC3483"+it,acEmail:"rchai13@austincollege.edu",acBox:"11111",acYear:2013,classification:Classification.JU,phone:"1111111111").save(flush:true,failOnError:true)
+			new AcStudent(firstname:"Renata",lastname:"Chai",acid:"AC3483"+it,acEmail:"rchai13@austincollege.edu",acBox:"11111",acYear:2013,classification:Classification.JR,phone:"1111111111", status:'A').save(flush:true,failOnError:true)
 		}
 		controller._sTable()
 		then:"10 students will be shown in the list"
@@ -66,7 +66,7 @@ class AcStudentControllerSpec extends Specification {
 
 	void "test student which leads the student main page"(){
 		when:
-		AcStudent ac=new AcStudent(firstname:"Renata",lastname:"Chai",acid:"AC3483",acEmail:"rchai13@austincollege.edu",acBox:"11111",acYear:2013,classification:Classification.JU,phone:"1111111111").save(flush:true,failOnError:true)
+		AcStudent ac=new AcStudent(firstname:"Renata",lastname:"Chai",acid:"AC3483",acEmail:"rchai13@austincollege.edu",acBox:"11111",acYear:2013,classification:Classification.JR,phone:"1111111111", status:'A').save(flush:true,failOnError:true)
 		controller.student(ac)
 		then:
 		view=="/acStudent/student/student"
@@ -76,7 +76,7 @@ class AcStudentControllerSpec extends Specification {
 
 	void "test _showStudent which leads to the information page about the current student"(){
 		when:
-		AcStudent ac=new AcStudent(firstname:"Renata",lastname:"Chai",acid:"AC3483",acEmail:"rchai13@austincollege.edu",acBox:"11111",acYear:2013,classification:Classification.JU,phone:"1111111111").save(flush:true,failOnError:true)
+		AcStudent ac=new AcStudent(firstname:"Renata",lastname:"Chai",acid:"AC3483",acEmail:"rchai13@austincollege.edu",acBox:"11111",acYear:2013,classification:Classification.JR,phone:"1111111111", status:'A').save(flush:true,failOnError:true)
 		controller._showStudent(ac)
 		then:
 		view=="/acStudent/student/_showStudent"
@@ -91,7 +91,7 @@ class AcStudentControllerSpec extends Specification {
 	void "test saveStudent which saves the newly created student and leads to the student infor. page"(){
 		when:
 		int count=AcStudent.count()
-		AcStudent ac=new AcStudent(firstname:"Renata",lastname:"Chai",acid:"AC3483",acEmail:"rchai13@austincollege.edu",acBox:"11111",acYear:2013,classification:Classification.JU,phone:"1111111111").save(flush:true,failOnError:true)
+		AcStudent ac=new AcStudent(firstname:"Renata",lastname:"Chai",acid:"AC3483",acEmail:"rchai13@austincollege.edu",acBox:"11111",acYear:2013,classification:Classification.JR,phone:"1111111111", status:'A').save(flush:true,failOnError:true)
 		controller.saveStudent(ac)
 		then:
 		view=="/acStudent/student/student"
@@ -101,14 +101,14 @@ class AcStudentControllerSpec extends Specification {
 	}
 	void "test _editStudent which leads to the student edition form"(){
 		when:
-		AcStudent ac=new AcStudent(firstname:"Renata",lastname:"Chai",acid:"AC3483",acEmail:"rchai13@austincollege.edu",acBox:"11111",acYear:2013,classification:Classification.JU,phone:"1111111111").save(flush:true,failOnError:true)
+		AcStudent ac=new AcStudent(firstname:"Renata",lastname:"Chai",acid:"AC3483",acEmail:"rchai13@austincollege.edu",acBox:"11111",acYear:2013,classification:Classification.JR,phone:"1111111111", status:'A').save(flush:true,failOnError:true)
 		controller._editStudent(ac)
 		then:
 		view=="/acStudent/student/_editStudent"
 	}
 	void "test updateStudent which update the edited student and leads to the student infor page"(){
 		when:
-		AcStudent ac=new AcStudent(firstname:"Renata",lastname:"Chai",acid:"AC3483",acEmail:"rchai13@austincollege.edu",acBox:"11111",acYear:2013,classification:Classification.JU,phone:"1111111111").save(flush:true,failOnError:true)
+		AcStudent ac=new AcStudent(firstname:"Renata",lastname:"Chai",acid:"AC3483",acEmail:"rchai13@austincollege.edu",acBox:"11111",acYear:2013,classification:Classification.JR,phone:"1111111111", status:'A').save(flush:true,failOnError:true)
 		controller._updateStudent(ac)
 		then:
 		view=="/acStudent/student/_showStudent"
@@ -117,7 +117,7 @@ class AcStudentControllerSpec extends Specification {
 	
 	void "test delete Student"(){
 		when:
-		AcStudent ac=new AcStudent(firstname:"Renata",lastname:"Chai",acid:"AC3483",acEmail:"rchai13@austincollege.edu",acBox:"11111",acYear:2013,classification:Classification.JU,phone:"1111111111").save(flush:true,failOnError:true)
+		AcStudent ac=new AcStudent(firstname:"Renata",lastname:"Chai",acid:"AC3483",acEmail:"rchai13@austincollege.edu",acBox:"11111",acYear:2013,classification:Classification.JR,phone:"1111111111", status:'A').save(flush:true,failOnError:true)
 		int count=AcStudent.count()
 		controller.deleteStudent(ac)
 		then:
@@ -128,7 +128,7 @@ class AcStudentControllerSpec extends Specification {
 	void "test deleting multiple student"(){
 		when:"There are 10 students and students 1,3,5 are deleted"
 		10.times{
-			new AcStudent(firstname:"Renata",lastname:"Chai",acid:"AC3483"+it,acEmail:"rchai13@austincollege.edu",acBox:"11111",acYear:2013,classification:Classification.JU,phone:"1111111111").save(flush:true,failOnError:true)
+			new AcStudent(firstname:"Renata",lastname:"Chai",acid:"AC3483"+it,acEmail:"rchai13@austincollege.edu",acBox:"11111",acYear:2013,classification:Classification.JR,phone:"1111111111", status:'A').save(flush:true,failOnError:true)
 		}
 		params.checkstudent=["1","3","5"]
 		controller.deletemult()
