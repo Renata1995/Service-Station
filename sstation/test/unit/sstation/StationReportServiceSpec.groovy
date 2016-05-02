@@ -11,18 +11,18 @@ import spock.lang.Specification
 @TestFor(StationReportService)
 @Mock([AcStudent,ServiceHour,CampusOrg,Event,CommAg])
 class StationReportServiceSpec extends Specification {
-	
+
 	AcStudent s
 	def orgList=[]
 	def eventList=[]
 	def agList=[]
 	def setup() {
-		
+
 		agNameList.each{
 			agList.add(randomAg(it))
 		}
 
-		
+
 		orgList.add(randomOrg("Service Station"))
 		orgList.add(randomOrg("Habitat of Humanity"))
 		orgList.add(randomOrg("AC Church"))
@@ -31,7 +31,7 @@ class StationReportServiceSpec extends Specification {
 		orgList.add(randomOrg("APO"))
 		orgList.add(randomOrg("N/A"))
 
-		
+
 		eventList.add(randomEvent("N/A"))
 		eventList.add(randomEvent("Great Day of Service"))
 		eventList.add(randomEvent("First We Serve"))
@@ -44,7 +44,7 @@ class StationReportServiceSpec extends Specification {
 
 		s=randomStudent()
 		//Generate random service hours for the current student
-	
+
 	}
 
 	def cleanup() {
@@ -61,7 +61,7 @@ class StationReportServiceSpec extends Specification {
 		map.year==2016
 		map.total==3.0
 	}
-	
+
 	void "test hourKPIbyYear(int year) with more data in 2016"(){
 		when:
 		ServiceHour sh=new ServiceHour(description:"a",eventContactName:"a",eventContactPhone:"a",eventContactEmail:"a@g.com", status:Status.APPROVED,duration:3.0,campusOrg:orgList[2],event:eventList[3],commAg:agList[3])
@@ -84,9 +84,9 @@ class StationReportServiceSpec extends Specification {
 		sh5.starttime=new Date()
 		sh5.lastmodified=new Date()
 		s.addToServiceHours(sh5).save(failOnError:true,flush:true)
-		
+
 		def map=service.hourKPIbyYear(2016)
-		
+
 		then:
 		map.year==2016
 		map.total==9.0
@@ -95,7 +95,57 @@ class StationReportServiceSpec extends Specification {
 		map.avgByCommOrg==((double)(9.0)/7).round(2)
 		map.avgByGroup==((double)(9.0/7.0)).round(2)
 	}
-	
+
+	void "test hourKPIbyEvent with one ServiceHour stored in the database"() {
+		when:
+		ServiceHour sh=new ServiceHour(description:"a",eventContactName:"a",eventContactPhone:"a",eventContactEmail:"a@g.com", status:Status.APPROVED,duration:3.0,campusOrg:orgList[2],event:eventList[3],commAg:agList[3])
+		sh.starttime=new Date()
+		sh.lastmodified=new Date()
+		s.addToServiceHours(sh).save(failOnError:true,flush:true)
+		def map=service.hourKPIbyEvent(eventList[3])
+		then:
+		map.event==eventList[3].id
+		map.total==3.0
+	}
+
+	void "test hourKPIbyEvent with more data, including non-approved service hours"(){
+		when:
+		// doesn't count, event ins't what we're looking for
+		ServiceHour sh=new ServiceHour(description:"a",eventContactName:"a",eventContactPhone:"a",eventContactEmail:"a@g.com", status:Status.APPROVED,duration:3.0,campusOrg:orgList[2],event:eventList[5],commAg:agList[3])
+		sh.starttime=new Date()
+		sh.lastmodified=new Date()
+		s.addToServiceHours(sh).save(failOnError:true,flush:true)
+		// doesn't count, pending
+		ServiceHour sh2=new ServiceHour(description:"a",eventContactName:"a",eventContactPhone:"a",eventContactEmail:"a@g.com", status:Status.PENDING,duration:3.0,campusOrg:orgList[2],event:eventList[3],commAg:agList[3])
+		sh2.starttime=new Date()
+		sh2.lastmodified=new Date()
+		s.addToServiceHours(sh2).save(failOnError:true,flush:true)
+		ServiceHour sh3=new ServiceHour(description:"a",eventContactName:"a",eventContactPhone:"a",eventContactEmail:"a@g.com", status:Status.APPROVED,duration:4.0,campusOrg:orgList[2],event:eventList[3],commAg:agList[3])
+		sh3.starttime=new Date()
+		sh3.lastmodified=new Date()
+		s.addToServiceHours(sh3).save(failOnError:true,flush:true)
+		// doesn't count, rejected
+		ServiceHour sh4=new ServiceHour(description:"a",eventContactName:"a",eventContactPhone:"a",eventContactEmail:"a@g.com", status:Status.REJECTED,duration:3.0,campusOrg:orgList[2],event:eventList[3],commAg:agList[3])
+		sh4.starttime=new Date()
+		sh4.lastmodified=new Date()
+		s.addToServiceHours(sh4).save(failOnError:true,flush:true)
+		ServiceHour sh5=new ServiceHour(description:"a",eventContactName:"a",eventContactPhone:"a",eventContactEmail:"a@g.com", status:Status.APPROVED,duration:5.0,campusOrg:orgList[2],event:eventList[3],commAg:agList[3])
+		sh5.starttime=new Date()
+		sh5.lastmodified=new Date()
+		s.addToServiceHours(sh5).save(failOnError:true,flush:true)
+
+		def map=service.hourKPIbyEvent(eventList[3])
+
+		then:
+		map.name.equals(eventList[3].name)
+		map.event==eventList[3].id
+		map.total==9.0
+		map.avgByStudent==9.0
+		map.avgByCommOrg==((double)(9.0)/7).round(2)
+		map.avgByGroup==((double)(9.0/7.0)).round(2)
+	}
+
+
 	void "test hourKPIinFiveYears"(){
 		when:
 		ServiceHour sh=new ServiceHour(description:"a",eventContactName:"a",eventContactPhone:"a",eventContactEmail:"a@g.com", status:Status.APPROVED,duration:2.0,campusOrg:orgList[2],event:eventList[3],commAg:agList[3])
@@ -104,7 +154,7 @@ class StationReportServiceSpec extends Specification {
 		s.addToServiceHours(sh).save(failOnError:true,flush:true)
 		ServiceHour sh2=new ServiceHour(description:"a",eventContactName:"a",eventContactPhone:"a",eventContactEmail:"a@g.com", status:Status.APPROVED, duration:3.0,campusOrg:orgList[2],event:eventList[3],commAg:agList[3])
 		sh2.starttime=new Date(2014,2,3,3,3,0)
-				sh2.lastmodified=new Date()
+		sh2.lastmodified=new Date()
 		s.addToServiceHours(sh2).save(failOnError:true,flush:true)
 		ServiceHour sh3=new ServiceHour(description:"a",eventContactName:"a",eventContactPhone:"a",eventContactEmail:"a@g.com", status:Status.APPROVED,duration:4.0,campusOrg:orgList[2],event:eventList[3],commAg:agList[3])
 		sh3.starttime=new Date()
@@ -118,7 +168,7 @@ class StationReportServiceSpec extends Specification {
 		sh5.lastmodified=new Date()
 		sh5.starttime=new Date(2012,2,3,3,3,0)
 		s.addToServiceHours(sh5).save(failOnError:true,flush:true)
-		
+
 		def list=service.hourKPIInFiveYear()
 		then:
 		list.size()==5
@@ -126,7 +176,7 @@ class StationReportServiceSpec extends Specification {
 		list[0]['total']==4.0
 		list[0]['avgByEvent']==((double)(4.0/9)).round(2)
 	}
-	
+
 	void "test hourKPIinFiveYears with pending case"(){
 		when:
 		ServiceHour sh=new ServiceHour(description:"a",eventContactName:"a",eventContactPhone:"a",eventContactEmail:"a@g.com", status:Status.APPROVED,duration:2.0,campusOrg:orgList[2],event:eventList[3],commAg:agList[3])
@@ -135,7 +185,7 @@ class StationReportServiceSpec extends Specification {
 		s.addToServiceHours(sh).save(failOnError:true,flush:true)
 		ServiceHour sh2=new ServiceHour(description:"a",eventContactName:"a",eventContactPhone:"a",eventContactEmail:"a@g.com", status:Status.APPROVED, duration:3.0,campusOrg:orgList[2],event:eventList[3],commAg:agList[3])
 		sh2.starttime=new Date(2014,2,3,3,3,0)
-				sh2.lastmodified=new Date()
+		sh2.lastmodified=new Date()
 		s.addToServiceHours(sh2).save(failOnError:true,flush:true)
 		ServiceHour sh3=new ServiceHour(description:"a",eventContactName:"a",eventContactPhone:"a",eventContactEmail:"a@g.com", status:Status.APPROVED,duration:4.0,campusOrg:orgList[2],event:eventList[3],commAg:agList[3])
 		sh3.starttime=new Date()
@@ -153,7 +203,7 @@ class StationReportServiceSpec extends Specification {
 		sh6.lastmodified=new Date()
 		sh6.starttime=new Date()
 		s.addToServiceHours(sh6).save(failOnError:true,flush:true)
-		
+
 		def list=service.hourKPIInFiveYear()
 		then:
 		list.size()==5
@@ -161,9 +211,9 @@ class StationReportServiceSpec extends Specification {
 		list[0]['total']==4.0
 		list[0]['avgByEvent']==((double)(4.0/9)).round(2)
 	}
-	
-	
-	
+
+
+
 
 
 
@@ -172,11 +222,28 @@ class StationReportServiceSpec extends Specification {
 	 */
 	def random=new Random()
 	//lists used to generate random names
-	def fn=['John','Mary','Mike','Jenny','Aaron','Priya','Marrisa','Brittany']
+	def fn=[
+		'John',
+		'Mary',
+		'Mike',
+		'Jenny',
+		'Aaron',
+		'Priya',
+		'Marrisa',
+		'Brittany'
+	]
 	def ln=("Higgs,Block,Gorman,Countryman,Bortan,Mattew,Frindly").split(",")
 
 	//community agency names list
-	def agNameList=['N/A','Texas Community Center','Crisis Center','Big Brothers and Sisters','Sherman Elementary School','Charity Group',"Sherman Church"]
+	def agNameList=[
+		'N/A',
+		'Texas Community Center',
+		'Crisis Center',
+		'Big Brothers and Sisters',
+		'Sherman Elementary School',
+		'Charity Group',
+		"Sherman Church"
+	]
 
 	/**
 	 * Generate a random AcStudent
@@ -213,46 +280,46 @@ class StationReportServiceSpec extends Specification {
 		return new AcStudent(isModerator:false,firstname:fname,lastname:lname,status:stat,acid:id,acEmail:email,acBox:box,acYear:year,classification:clas,phone:"903820784")
 	}
 
-//	/**
-//	 * Generate a random service hour
-//	 * @return
-//	 */
-//	private ServiceHour randomSH(CampusOrg org,Event event,CommAg ag){
-//
-//		String status
-//		switch(random.nextInt(3)){
-//			case 0:
-//				status=Status.PENDING
-//				break
-//			case 1:
-//				status=Status.APPROVED
-//				break
-//			case 2:
-//				status=Status.REJECTED
-//				break
-//			default:
-//				status=Status.PENDING
-//		}
-//
-//		double duration=(double)random.nextInt(4)+(double)(1+random.nextInt(4))/4.0
-//		def first=fn[random.nextInt(fn.size())]
-//		def last=ln[random.nextInt(ln.size())]
-//		def name=first+" "+last
-//		def email=first.substring(0,1)+last+"@austincollege.edu"
-//
-//
-//		def year=111+random.nextInt(5)
-//		def month=1+random.nextInt(12)
-//		def date=1+random.nextInt(28)
-//		def hour=8+random.nextInt(10)
-//		def min=random.nextInt(60)
-//		def starttime=new Date(year,month,date,hour,min,0)
-//		def mod=new Date()
-//
-//
-//		ServiceHour sh=new ServiceHour(event:event,campusOrg:org,description:"service",status:status,commAg:ag,eventContactName:name,eventContactPhone:"9048937894",eventContactEmail:email,duration:duration,starttime:starttime,lastmodified:mod)
-//		return sh
-//	}
+	//	/**
+	//	 * Generate a random service hour
+	//	 * @return
+	//	 */
+	//	private ServiceHour randomSH(CampusOrg org,Event event,CommAg ag){
+	//
+	//		String status
+	//		switch(random.nextInt(3)){
+	//			case 0:
+	//				status=Status.PENDING
+	//				break
+	//			case 1:
+	//				status=Status.APPROVED
+	//				break
+	//			case 2:
+	//				status=Status.REJECTED
+	//				break
+	//			default:
+	//				status=Status.PENDING
+	//		}
+	//
+	//		double duration=(double)random.nextInt(4)+(double)(1+random.nextInt(4))/4.0
+	//		def first=fn[random.nextInt(fn.size())]
+	//		def last=ln[random.nextInt(ln.size())]
+	//		def name=first+" "+last
+	//		def email=first.substring(0,1)+last+"@austincollege.edu"
+	//
+	//
+	//		def year=111+random.nextInt(5)
+	//		def month=1+random.nextInt(12)
+	//		def date=1+random.nextInt(28)
+	//		def hour=8+random.nextInt(10)
+	//		def min=random.nextInt(60)
+	//		def starttime=new Date(year,month,date,hour,min,0)
+	//		def mod=new Date()
+	//
+	//
+	//		ServiceHour sh=new ServiceHour(event:event,campusOrg:org,description:"service",status:status,commAg:ag,eventContactName:name,eventContactPhone:"9048937894",eventContactEmail:email,duration:duration,starttime:starttime,lastmodified:mod)
+	//		return sh
+	//	}
 
 
 	/**
