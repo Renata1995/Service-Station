@@ -59,7 +59,7 @@ label.loginLabel{
 		
 			
 			<!-- Log in form -->
-			<g:form controller="home" class="indexForm form-horizontal" id="logInForm">
+			<g:form controller="home" class="indexForm form-horizontal">
 
 				<!-- Domin Selection -->
 				<div class="form-group">
