@@ -7,6 +7,7 @@ import spock.lang.Specification
  * See the API for {@link grails.test.mixin.web.ControllerUnitTestMixin} for usage instructions
  */
 @TestFor(ModeratorController)
+@Mock(AcStudent)
 class ModeratorControllerSpec extends Specification {
 
     def setup() {
@@ -20,6 +21,6 @@ class ModeratorControllerSpec extends Specification {
 //		controller._addModerator()=Mock()
 		controller.index()
 		then:"list should contain Moderator info"
-		view=="/home/index"
+		view=="/moderator/index"
     }
 }

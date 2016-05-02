@@ -4,8 +4,8 @@ class ReportsController {
 	def stationReportService
 
     def index() { 
-<<<<<<< HEAD
 		def orgList=CommAg.list()
+		def campusList =CampusOrg.list()
 		def semesterList = ["Fall", "Janterm", "Spring", "Summer"]
 		
 		int currentYear=new Date().getAt(Calendar.YEAR)
@@ -13,17 +13,7 @@ class ReportsController {
 		for(int a=currentYear; a > currentYear-5; a--){
 			yearList.add(a)
 		}
-		[orgList:orgList, semesterList:semesterList, yearList:yearList]
-	}
-	
-	def acGroupReport() {
-		render "group report"
-=======
-		def orgList =CommAg.list()
-		def campusList =CampusOrg.list()
-		println campusList.size()
-		[orgList:orgList, campusList:campusList]
->>>>>>> 9b9004f66565a679a5c62ab9d0da3512eedbd38a
+		[orgList:orgList, semesterList:semesterList, yearList:yearList,campusList:campusList]
 	}
 
 	
