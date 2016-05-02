@@ -13,8 +13,16 @@
 		<div class="cornerButtons"></div>
 	</div>
 	
-	<g:render template="hourTableFiltered"/>
+	<div>
+		<g:render template="/shared/hourTable"/>
+		
+	</div>
 	
 </div>
+<script>
+$(function(){
+	$('#htable').DataTable();
+})
+</script>
 </body>
 </html>

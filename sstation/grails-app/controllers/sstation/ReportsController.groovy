@@ -3,7 +3,7 @@ package sstation
 class ReportsController {
 
     def index() { 
-		def orgList=CampusOrg.list()
+		def orgList=CommAg.list()
 		[orgList:orgList]
 	}
 	
@@ -21,14 +21,17 @@ class ReportsController {
 	
 	def commOrgReport() {
 		def cbValue = params.commOrgComboBox
-		def filteredServiceHour = []
-		int counter = 0
-		ServiceHour.list().each{
-			if (it.commAg == cbValue.minus("\"")){
-				filteredServiceHour[counter] = it
-				counter ++
-			}
-		}
-		[filteredServiceHour:filteredServiceHour]
+		println cbValue
+	
+//		def list=ServiceHour.list().findAll{
+//			it.commAg.name==cbValue
+//		}
+		
+		//Alt way of generating filtered list
+		def commAg=CommAg.get(cbValue)
+		println commAg
+		def list=ServiceHour.findAllByCommAg(commAg)
+		println list.size()
+		[list:list]
 	}
 }

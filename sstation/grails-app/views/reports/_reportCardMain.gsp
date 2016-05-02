@@ -74,7 +74,7 @@
 							<g:form controller = "Reports">
 								<select name = commOrgComboBox>
 									<g:each in="${orgList}">
-										<option value="${it}">"${it.name}"</option>
+										<option value="${it.id}">${it.name}</option>
 									</g:each>
 								</select>
 								<br/>
