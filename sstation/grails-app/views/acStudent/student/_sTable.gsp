@@ -7,17 +7,18 @@
 
 			<g:remoteLink controller="acStudent" action="_createStudent"
 				update="slist">
-				<button class="btn btn-danger">
 
-					<span style="color: #FFDE97" class="glyphicon glyphicon-plus"
-						aria-hidden="true"></span> New Student
-				</button>
-			</g:remoteLink>
+
+				<span style="color: #FFDE97" class="glyphicon glyphicon-plus"
+					aria-hidden="true"></span> New Student
 			
-			<button class="btn btn-danger" id="deleteStudentsBtn">
-				<span style="color: #FFDE97" class="glyphicon glyphicon-trash"
+			</g:remoteLink>
+			<span id="deleteStudentsBtn" style="color: #FFDE97">
+				<span  class="glyphicon glyphicon-trash"
 					aria-hidden="true"></span> Delete
-			</button>
+			</span>
+
+
 
 		</div>
 	</div>
@@ -99,7 +100,7 @@
 			</tr>
 		</thead>
 		<tbody id="deleteBody">
-			
+
 		</tbody>
 	</table>
 
@@ -146,6 +147,14 @@
 
 		});
 
+		
+		$("#deleteStudentsBtn").on("mouseenter", function(){
+			$("#deleteStudentsBtn").css("cursor","pointer");
+			$("#deleteStudentsBtn").css("text-decoration","underline");
+			});
+		$("#deleteStudentsBtn").on("mouseleave", function(){
+			$("#deleteStudentsBtn").css("text-decoration","none");
+			});
 		$("#deleteStudentsBtn").on("click", function() {
 			modalDelete.dialog("open");
 		});
@@ -175,7 +184,7 @@
 				});
 
 		$("#deleteStudentsTable").DataTable();
-		
+		$
 
 	});
 </script>

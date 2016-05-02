@@ -69,9 +69,25 @@
 								<b>Report by Semester</b>
 							</h4>
 							<p class="list-group-item-text">
-								Generates an aggregate report of hours organized by semester/year.
+								Generates an aggregate report of hours organized by year/semester.
 							</p>
-							<g:link controller="reports" action="semesterReport">Generate Report</g:link>
+							<g:form controller = "Reports">
+								<select name = yearComboBox>
+									<g:each in="${yearList}">
+										<option value="${it}">${it}</option>
+									</g:each>
+								</select>
+								</br>
+								<select name = semesterComboBox>
+									<g:each in="${semesterList}">
+										<option value="${it}">${it}</option>
+									</g:each>
+								</select>
+								<br/>
+								<br/>
+								<g:actionSubmit value = "Generate Report" action="semesterReport" ></g:actionSubmit>
+								<div class="cornerButtons listButtons"></div>
+							</g:form>
 							<div class="cornerButtons listButtons"></div>
 						</div>
 						
