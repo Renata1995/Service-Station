@@ -39,7 +39,10 @@ class ACGroupController {
 		render view:"orgForm",model:[org:org,heading:org.name]
 	}
 	/**
-	 * Save or update a org and direct to the card view
+	 * Save or update a org and direct to the saved page
+	 * it needs to have an intermediary page so that on refresh
+	 * it doesn't duplicate things
+	 * don't mess with these
 	 * @param org
 	 * @return
 	 */
@@ -51,11 +54,14 @@ class ACGroupController {
 		}
 
 		org.save(flush:true,failOnError:true)
-		def list=CampusOrg.list()
-		render view:"index",model:[card:1,list:list]
+		
+		render view:'formSaved',model:[card:1]
 	}
 	/**
-	 * Save or update an org and direct to the table view
+	 * Save or update an org and direct to the saved page
+	 * it needs to have an intermediary page so that on refresh
+	 * it doesn't duplicate the org when you save
+	 * don't mess with these
 	 * @param org
 	 * @return
 	 */
@@ -66,8 +72,8 @@ class ACGroupController {
 			return
 		}
 		org.save(flush:true,failOnError:true)
-		def list=CampusOrg.list()
-		render view:"index",model:[table:1,list:list]
+		
+		render view:'formSaved',model:[table:1]
 	}
 
 	def returnToTable(){

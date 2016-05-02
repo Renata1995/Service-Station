@@ -40,7 +40,10 @@ class CommOrgController {
 	}
 
 	/**
-	 * Save or update an agency and direct to the card view
+	 * Save or update an agency and direct to the saved page
+	 * it needs to have an intermediary page so that on refresh
+	 * it doesn't duplicate things
+	 * don't mess with these
 	 * @param agency
 	 * @return
 	 */
@@ -52,12 +55,15 @@ class CommOrgController {
 		}
 
 		agency.save(flush:true,failOnError:true)
-		def list=CommAg.list()
-		render view:"index",model:[card:1,list:list]
+		
+		render view:'formSaved',model:[card:1]
 	}
 
 	/**
-	 * Save or update an agency and direct to the table view
+	 * Save or update an agency and direct to the saved page
+	 * it needs to have an intermediary page so that on refresh
+	 * it doesn't duplicate things
+	 * don't mess with these
 	 * @param agency
 	 * @return
 	 */
@@ -69,8 +75,8 @@ class CommOrgController {
 			return
 		}
 
-		def list=CommAg.list()
-		render view:"index",model:[table:1,list:list]
+		
+		render view:'formSaved',model:[table:1]
 	}
 
 	def returnToTable(){
