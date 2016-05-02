@@ -5,7 +5,7 @@
 		<thead>
 			<tr>
 				<th>Selected</th>
-					
+
 				<th>AC ID</th>
 
 				<th>Name</th>
@@ -23,25 +23,19 @@
 		<tbody>
 			<g:each in="${list}" status="i" var="s">
 				<tr class="${(i % 2) == 0 ? 'even' : 'odd'} studentRow" id="${s.id}">
-					
-					<td>
-					<g:if test="${s.isModerator}">
-					<g:checkBox id="s${s.id}" name="checkstudent" value="${s.id}"
-							checked="true" />
-					</g:if>
-					<g:else>
-					<g:checkBox id="s${s.id}" name="checkstudent" value="${s.id}"
-							checked="false" />
-					</g:else>
-					<script>
+
+					<td><g:if test="${s.isModerator}">
+							<g:checkBox id="s${s.id}" name="checkstudent" value="${s.id}"
+								checked="true" />
+						</g:if> <g:else>
+							<g:checkBox id="s${s.id}" name="checkstudent" value="${s.id}"
+								checked="false" />
+						</g:else> <script>
 						$('#s${s.id}').prop('disabled', true);
-					</script>
-					</td>
-					
-		
-					
-					<td class="acid"><a 
-					onclick="
+					</script></td>
+
+					<td class="acid"><a
+						onclick="
 						$('#s${s.id}').prop('checked', true);
 						jQuery.ajax({
 						type:'POST', url:'/sstation/moderator/_addModerator/${s.id}',
@@ -49,10 +43,10 @@
 						jQuery('#slist').html(data);},
 						error:function(XMLHttpRequest,textStatus,errorThrown){}
 						});
-						return false;" id="1">
-						${s.acid }
-						</a>	</td>
-				
+						return false;"
+						id="1"> ${s.acid }
+					</a></td>
+
 
 					<td>
 						${s.firstname} ${s.lastname}
@@ -92,13 +86,9 @@
 
 				$("#deselectMode").click(function() {
 					$("#tableStudent").dialog("close");
-
 				});
 				$(".acid").mouseenter(function(){
 			    	$(".acid").css("cursor","pointer");
 			    	   });
-				
-			
-
 			});
 </script>

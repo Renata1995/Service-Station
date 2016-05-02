@@ -69,10 +69,10 @@
 		</g:if>
 </div>
 
-	<g:submitToRemote class="btn btn-default" id="${event.id}" value="Save"
-		controller="event" update="eventMain" action="_saveEvent" />
-	<g:remoteLink class="btn btn-default" action="_eventTable"
-		controller="event" update="eventMain">Cancel</g:remoteLink>
+	<g:actionSubmit class="btn btn-default"  value="Save"
+		controller="event" action="_saveEvent" />
+	<g:remoteLink class="btn btn-default" action="eventMain"
+		controller="event" >Cancel</g:remoteLink>
 </form>
 
 </html>

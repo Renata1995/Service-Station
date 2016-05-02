@@ -4,6 +4,7 @@ class ReportsController {
 	def stationReportService
 
     def index() { 
+<<<<<<< HEAD
 		def orgList=CommAg.list()
 		def semesterList = ["Fall", "Janterm", "Spring", "Summer"]
 		
@@ -17,7 +18,14 @@ class ReportsController {
 	
 	def acGroupReport() {
 		render "group report"
+=======
+		def orgList =CommAg.list()
+		def campusList =CampusOrg.list()
+		println campusList.size()
+		[orgList:orgList, campusList:campusList]
+>>>>>>> 9b9004f66565a679a5c62ab9d0da3512eedbd38a
 	}
+
 	
 	def eventReport(Event e) {
 		def li = stationReportService.hourKPIbyEvent(e)
@@ -129,6 +137,18 @@ class ReportsController {
 		def list=ServiceHour.findAllByCommAg(commAg)
 		println list.size()
 		[list:list]
+	}
+	
+	
+	def campusOrgReport() {
+		def value = params.campusOrgComboBox
+		println value
+		
+		def campusOrg = CampusOrg.get(value)
+		println campusOrg
+		def list = ServiceHour.findAllByCampusOrg(campusOrg)
+		[list:list]
+		
 	}
 	
 	def yearReport(){
