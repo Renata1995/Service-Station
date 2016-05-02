@@ -273,7 +273,7 @@ class HourService {
 	 * Show the statistics about a specific student 
 	 */
 	def studentStat(AcStudent ac){
-		def acList
+		def acList=[]
 		if(ac.serviceHours!=null){
 			acList=ac.serviceHours.toList()
 		}
@@ -299,16 +299,18 @@ class HourService {
 					it.status==Status.REJECTED
 				}
 
-
+				if(aList!=null){
 				if(aList.size()!=0)aSum=aList.duration.sum()
 
-
-
+				}
+				
+				if(pList!=null){
 				if(pList.size()!=0)pSum=pList.duration.sum()
+				}
 
-
-
+				if(rList!=null){
 				if(rList.size()!=0)rSum=rList.duration.sum()
+				}
 			}
 		}
 

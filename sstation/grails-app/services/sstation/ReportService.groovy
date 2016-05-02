@@ -21,8 +21,10 @@ class ReportService {
 		//Get all approved service hours
 		def list=[]
 		if(ac.serviceHours!=null){
-			list=ac.serviceHours.toList().findAll{
-				it.status==Status.APPROVED
+			if(ac.serviceHours.size()!=0){
+				list=ac.serviceHours.toList().findAll{
+					it.status==Status.APPROVED
+				}
 			}
 		}
 		//Get current year
@@ -37,44 +39,46 @@ class ReportService {
 		def SHlist=[]
 		for(int i=currentYear;i>currentYear-5;i--){//In five years
 			//find all service hours in i year
-			def yearList=list.findAll{
-				it.starttime.getAt(Calendar.YEAR)==i
-			}
-
-			if(yearList.size!=0){
-				//find service hours in each semester in i year
-				def lspring=yearList.findAll{
-					it.starttime.getAt(Calendar.MONTH)>=1&&it.starttime.getAt(Calendar.MONTH)<=4
-				}
-				def lsummer=yearList.findAll{
-					it.starttime.getAt(Calendar.MONTH)>=5&&it.starttime.getAt(Calendar.MONTH)<=7
-				}
-				def lfall=yearList.findAll{
-					it.starttime.getAt(Calendar.MONTH)>=8&&it.starttime.getAt(Calendar.MONTH)<=11
-				}
-				def lwinter=yearList.findAll{
-					it.starttime.getAt(Calendar.MONTH)==0
+			def yearList=[]
+			if(list.size()!=0){
+				yearList=list.findAll{
+					it.starttime.getAt(Calendar.YEAR)==i
 				}
 
-				//add found semester's name and service hour sublist to the SHlist
-				if(lspring.size()!=0){
-					SHlist.add("${i}SP")
-					SHlist.add(lspring)
-				}
-				if(lsummer.size()!=0){
-					SHlist.add("${i}SU")
-					SHlist.add(lsummer)
-				}
-				if(lfall.size()!=0){
-					SHlist.add("${i}FA")
-					SHlist.add(lfall)
-				}
-				if(lwinter.size()!=0){
-					SHlist.add("${i}JA")
-					SHlist.add(lwinter)
-				}
+				if(yearList.size!=0){
+					//find service hours in each semester in i year
+					def lspring=yearList.findAll{
+						it.starttime.getAt(Calendar.MONTH)>=1&&it.starttime.getAt(Calendar.MONTH)<=4
+					}
+					def lsummer=yearList.findAll{
+						it.starttime.getAt(Calendar.MONTH)>=5&&it.starttime.getAt(Calendar.MONTH)<=7
+					}
+					def lfall=yearList.findAll{
+						it.starttime.getAt(Calendar.MONTH)>=8&&it.starttime.getAt(Calendar.MONTH)<=11
+					}
+					def lwinter=yearList.findAll{
+						it.starttime.getAt(Calendar.MONTH)==0
+					}
 
+					//add found semester's name and service hour sublist to the SHlist
+					if(lspring.size()!=0){
+						SHlist.add("${i}SP")
+						SHlist.add(lspring)
+					}
+					if(lsummer.size()!=0){
+						SHlist.add("${i}SU")
+						SHlist.add(lsummer)
+					}
+					if(lfall.size()!=0){
+						SHlist.add("${i}FA")
+						SHlist.add(lfall)
+					}
+					if(lwinter.size()!=0){
+						SHlist.add("${i}JA")
+						SHlist.add(lwinter)
+					}
 
+				}
 
 
 

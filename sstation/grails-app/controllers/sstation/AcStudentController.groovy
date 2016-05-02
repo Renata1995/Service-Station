@@ -361,6 +361,8 @@ class AcStudentController {
 	def reportAdmin(AcStudent ac){
 		def stat=hourService.studentStat(ac)
 		render view:"report/reportAdmin",model:[student:ac,stat:stat]
+		
+		
 	}
 
 	/**
@@ -368,14 +370,17 @@ class AcStudentController {
 	 */
 	def studentReport(AcStudent ac){
 		def list=[]
+		def totalSH=0
 		if(ac.serviceHours!=null){
 			if(ac.serviceHours.toList().size()!=0){
 				list=ac.serviceHours.toList().findAll{
 					it.status==Status.APPROVED
 				}
 			}
+			totalSH=hourService.studentStat(ac).get('aSum')
 		}
-		def totalSH=hourService.studentStat(ac).get('aSum')
+		
+		
 		render view:"report/studentReport",model:[student:ac,list:list,totalSH:totalSH]
 	}
 
@@ -384,7 +389,10 @@ class AcStudentController {
 	 */
 	def semesterReport(AcStudent ac){
 		def SHlist=reportService.semesterReport(ac)
-		def totalSH=hourService.studentStat(ac).get('aSum')
+		def totalSH=0.0
+		if(hourService.studentStat(ac).get('aSum')!=null){ 
+			totalSH=hourService.studentStat(ac).get('aSum')
+		}
 		render view:"report/semesterReport",model:[student:ac,SHlist:SHlist,totalSH:totalSH]
 	}
 
