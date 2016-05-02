@@ -2,7 +2,8 @@ package sstation
 
 class ReportsController {
 	def stationReportService
-
+	def eventReportService
+	
     def index() { 
 		
 	}
@@ -11,24 +12,13 @@ class ReportsController {
 		render "group report"
 	}
 	
-	def eventReport(Event event) {
-		def li = []
-		
-		
-		def listService = ServiceHour.list();
-		
-		def eventReportService = new EventReportService(event, listService);
-		for (Event e: Event.list()){
-			def value = []
-			value.add(e)
-			value.add(eventReportService.getTotalHourByEvent(e))
-			value.add(eventReportService.getListHourByEvent(e))
-			li[e.id] = value
-		}
-		
-		render view:"eventReport", model:[li:li]
-		
-		 
+	def eventSelection() {
+		def li = Event.list()
+		render view:"eventSelection", model:[list:li]
+	}
+	
+	def eventReport(Event e){
+		render "hello World"
 	}
 	
 	def semesterReport() {

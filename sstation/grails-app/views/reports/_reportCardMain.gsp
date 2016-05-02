@@ -49,7 +49,7 @@
 							<p class="list-group-item-text">
 								Generates an aggregate report of hours organized by service events.
 							</p>
-							<g:link controller="reports" action="eventReport">Generate Report</g:link>
+							<g:link controller="reports" action="eventSelection">Generate Report</g:link>
 							<div class="cornerButtons listButtons"></div>
 						</div>
 						
