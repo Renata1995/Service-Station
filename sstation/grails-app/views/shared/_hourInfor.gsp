@@ -56,15 +56,15 @@
 			<g:if test="${shour?.status}">
 				<li class="fieldcontain"><b>Status: </b><g:if
 						test="${shour.status==Status.APPROVED}">
-						<span class="label label-success htableLabel">
+						<span class="label label-success htableLabel" style="width:100px">
 							${shour.status}
 						</span>
 					</g:if> <g:elseif test="${shour.status==Status.PENDING }">
-						<span class="label label-warning htableLabel">
+						<span class="label label-warning htableLabel" style="width:100px">
 							${shour.status}
 						</span>
 					</g:elseif> <g:elseif test="${shour.status==Status.REJECTED}">
-						<span class="label label-default htableLabel">
+						<span class="label label-default htableLabel" style="width:100px">
 							${shour.status}
 						</span>
 					</g:elseif>
