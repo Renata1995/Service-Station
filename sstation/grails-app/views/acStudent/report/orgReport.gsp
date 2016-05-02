@@ -12,8 +12,18 @@
 }
 
 </style>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+<meta name="layout" content="main" />
 </head>
 <body>
+<div class="titletop">
+		<h1 class="pagetitle">
+			${student.firstname}
+			${student.lastname}
+		</h1>
+		<div class="cornerButtons"></div>
+	</div>
+	<br/>
 <div class="mainback">
 	<div class="reportTitle">
 	Austin College Service Hours Report

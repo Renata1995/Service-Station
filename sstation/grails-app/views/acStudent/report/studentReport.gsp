@@ -8,23 +8,29 @@
 
 .table>thead>tr>th {
 	background-color: transparent;
-	color:black;
+	color: black;
 	border-bottom: 1px solid #ddd;
 }
 </style>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+<meta name="layout" content="main" />
+<title>Student Report</title>
 </head>
-	<div class="mainback">
-	<div class="reportTitle">
-	Austin College Service Hours Report
+<div class="titletop">
+		<h1 class="pagetitle">
+			${student.firstname}
+			${student.lastname}
+		</h1>
+		<div class="cornerButtons"></div>
 	</div>
+	<br/>
+<div class="mainback">
+	<div class="reportTitle">Austin College Service Hours Report</div>
 	<div class="report">
-		<b>
-			${student.firstname} ${student.lastname}
-		</b> <br />
-		<b>Austin College ID: </b>
+		<b> ${student.firstname} ${student.lastname}
+		</b> <br /> <b>Austin College ID: </b>
 		${student.acid}
-		<br />
-		<b>Classification: </b>
+		<br /> <b>Classification: </b>
 		${student.classification}
 	</div>
 

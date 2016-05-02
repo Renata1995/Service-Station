@@ -10,7 +10,6 @@ import grails.transaction.Transactional
  *
  */
 
-@Transactional
 class ReportService {
 
 	/**
@@ -20,13 +19,16 @@ class ReportService {
 	 */
 	def semesterReport(AcStudent ac) {
 		//Get all approved service hours
-		def list=ac.serviceHours.toList().findAll{
-			it.status==Status.APPROVED
+		def list=[]
+		if(ac.serviceHours!=null){
+			list=ac.serviceHours.toList().findAll{
+				it.status==Status.APPROVED
+			}
 		}
 		//Get current year
 		def currentYear=new Date().getAt(Calendar.YEAR)
 
-		
+
 		/*
 		 * The for loop will go through 'list' to find all semesters that contains service hours
 		 * The name of the found semester and the sub-list of service hours in that semester will be
@@ -38,7 +40,7 @@ class ReportService {
 			def yearList=list.findAll{
 				it.starttime.getAt(Calendar.YEAR)==i
 			}
-			
+
 			if(yearList.size!=0){
 				//find service hours in each semester in i year
 				def lspring=yearList.findAll{
@@ -53,7 +55,7 @@ class ReportService {
 				def lwinter=yearList.findAll{
 					it.starttime.getAt(Calendar.MONTH)==0
 				}
-				
+
 				//add found semester's name and service hour sublist to the SHlist
 				if(lspring.size()!=0){
 					SHlist.add("${i}SP")
@@ -71,25 +73,25 @@ class ReportService {
 					SHlist.add("${i}JA")
 					SHlist.add(lwinter)
 				}
-				
-				
-			
-				
-				
+
+
+
+
+
 			}
 		}
 		return SHlist
 	}
-	
+
 	def orgReport(AcStudent ac){
 		//Find all approved service hours
 		def list=ac.serviceHours.toList().findAll{
 			it.status==Status.APPROVED
 		}
-		
+
 		def SHList=[]
 		def orgList=CampusOrg.list()
-		 
+
 		for(CampusOrg org:orgList){
 			def oneOrg=list.findAll{
 				it.campusOrg==org
@@ -100,6 +102,6 @@ class ReportService {
 			}
 		}
 		return SHList
-		
+
 	}
 }
