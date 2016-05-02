@@ -38,8 +38,19 @@
 							<p class="list-group-item-text">
 								Generates an aggregate report of hours organized by AC groups.
 							</p>
-							<g:link controller="reports" action="acGroupReport">Generate Report</g:link>
-							<div class="cornerButtons listButtons"></div>
+							<g:form controller = "Reports">
+								<select name = campusOrgComboBox>
+									<g:each in="${campusList}">
+										<option value="${it.id}">${it.name}</option>
+									</g:each>
+								</select>
+								<br/>
+								<br/>
+								<g:actionSubmit value = "Generate Report" action="campusOrgReport" ></g:actionSubmit>
+								<div class="cornerButtons listButtons"></div>
+							</g:form>
+					
+							
 						</div>
 						
 						<div class="list-group-item">
