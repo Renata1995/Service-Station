@@ -51,8 +51,8 @@ class ACGroupController {
 		}
 
 		org.save(flush:true,failOnError:true)
-
-		render view:"formSaved",model:[card:1]
+		def list=CampusOrg.list()
+		render view:"index",model:[card:1,list:list]
 	}
 	/**
 	 * Save or update an org and direct to the table view
@@ -66,8 +66,8 @@ class ACGroupController {
 			return
 		}
 		org.save(flush:true,failOnError:true)
-
-		render view:"formSaved",model:[table:1]
+		def list=CampusOrg.list()
+		render view:"index",model:[table:1,list:list]
 	}
 
 	def returnToTable(){

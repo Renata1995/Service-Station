@@ -52,8 +52,8 @@ class CommOrgController {
 		}
 
 		agency.save(flush:true,failOnError:true)
-
-		render view:"formSaved",model:[card:1]
+		def list=CommAg.list()
+		render view:"index",model:[card:1,list:list]
 	}
 
 	/**
@@ -69,8 +69,8 @@ class CommOrgController {
 			return
 		}
 
-
-		render view:"formSaved",model:[table:1]
+		def list=CommAg.list()
+		render view:"index",model:[table:1,list:list]
 	}
 
 	def returnToTable(){
