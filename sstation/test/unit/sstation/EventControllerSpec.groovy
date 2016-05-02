@@ -22,7 +22,7 @@ class EventControllerSpec extends Specification {
 		def ev = new Event(name: "festival", description: "something", contact: "person", contactPhone: "666", contactEmail: "here@ac.edu")
 		controller._saveEvent(ev)
 		then:
-		view=="/event/_eventTable"
+		view=="/event/eventMain"
     }
 	
 	
