@@ -117,8 +117,11 @@ div.col-md-7 {
 	
 	<script>
 	 $(function(){
-		 var height=$("#homeTable").css("height")-$("#homeCoreInfor").css("padding");
-		 $("#homeCoreInfor").css("height",height);
+		 var height = $("#homePendingTable").height() + $("#homeTableName").height()+$("#homePendingMore").height();
+
+		 $("#homeCoreInfor").css("height", height);
+
+		 alert(height);
 		 });
 	</script>
 

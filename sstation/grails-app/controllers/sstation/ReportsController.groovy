@@ -11,24 +11,23 @@ class ReportsController {
 		render "group report"
 	}
 	
-	def eventReport(Event event) {
-		def li = []
-		
-		
-		def listService = ServiceHour.list();
-		
-		def eventReportService = new EventReportService(event, listService);
-		for (Event e: Event.list()){
-			def value = []
-			value.add(e)
-			value.add(eventReportService.getTotalHourByEvent(e))
-			value.add(eventReportService.getListHourByEvent(e))
-			li[e.id] = value
+	def eventReport(Event e) {
+		def li = stationReportService.hourKPIbyEvent(e)
+		render view:"eventReport", model:[list:li]
+	}
+	
+	def eventSelection() {
+		def li = Event.list()
+		render view:"eventSelection", model:[list:li]
+	}
+	
+	def _hoursByEvent() {
+		int eventId = Integer.parseInt(params.event)
+		def aList=ServiceHour.findAllByStatus(Status.APPROVED);
+		def list=aList.findAll{
+			it.event.id==eventId
 		}
-		
-		render view:"eventReport", model:[li:li]
-		
-		 
+		render view:"_hoursByEvent",model:[list:list]
 	}
 	
 	def summaryReport(){
