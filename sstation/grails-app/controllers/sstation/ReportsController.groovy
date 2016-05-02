@@ -5,7 +5,14 @@ class ReportsController {
 
     def index() { 
 		def orgList=CommAg.list()
-		[orgList:orgList]
+		def semesterList = ["Fall", "Janterm", "Spring", "Summer"]
+		
+		int currentYear=new Date().getAt(Calendar.YEAR)
+		def yearList = []
+		for(int a=currentYear; a > currentYear-5; a--){
+			yearList.add(a)
+		}
+		[orgList:orgList, semesterList:semesterList, yearList:yearList]
 	}
 	
 	def acGroupReport() {
@@ -79,12 +86,38 @@ class ReportsController {
 	}
 	
 	def semesterReport() {
-		render "semester report"
+		def semesterValue = params.semesterComboBox
+		
+		def yearValue = params.yearComboBox
+		println yearValue +" "+ semesterValue
+		def list = []
+		def servList = ServiceHour.list()
+		def yearList = servList.findAll{
+			it.starttime.getAt(Calendar.YEAR)==Integer.parseInt(yearValue)
+		}
+		println yearList.size()
+		switch (semesterValue){
+			case "Fall": list=yearList.findAll{ it.starttime.getAt(Calendar.MONTH)>=8&&it.starttime.getAt(Calendar.MONTH)<=11 }
+			break;
+			case "Janterm": list=yearList.findAll{ it.starttime.getAt(Calendar.MONTH)==0 }
+			break;
+			case "Spring": list=yearList.findAll{it.starttime.getAt(Calendar.MONTH)>=1&&it.starttime.getAt(Calendar.MONTH)<=4 }
+			break;
+			case "Summer": list=yearList.findAll{ it.starttime.getAt(Calendar.MONTH)>=5&&it.starttime.getAt(Calendar.MONTH)<=7 }
+			break;
+		}
+		println list.size()
+		
+		
+		
+		
+		
+		[list:list]
 	}
 	
 	def commOrgReport() {
 		def cbValue = params.commOrgComboBox
-		println cbValue
+		//
 	
 //		def list=ServiceHour.list().findAll{
 //			it.commAg.name==cbValue

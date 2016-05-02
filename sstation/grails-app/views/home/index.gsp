@@ -121,7 +121,7 @@ div.col-md-7 {
 
 		 $("#homeCoreInfor").css("height", height);
 
-		 alert(height);
+		 //alert(height);
 		 });
 	</script>
 
