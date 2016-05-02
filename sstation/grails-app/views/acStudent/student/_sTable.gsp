@@ -110,15 +110,18 @@
 
 <script>
 	$(function() {
-
+		$('#table').DataTable();
 		$(document).ready(function(){
-		    $('#table').DataTable();
+		   // $('#table').DataTable();
 		    var baseLink = '<g:createLink action="student" controller="acStudent" id="ID"/>';
-		    $(".studentRow").on({
+		   // var row = $(".studentRow");
+		   // window.alert(row.attr("id"));
+		    $(".studentRow....").on({
 			    click: function(){
+				    //window.alert($(this).attr("acid"))
 				    var idstring=$(this).attr("id");
 				   
-				    window.location.href = baseLink.replace("ID", idstring);
+				    window.location = baseLink.replace("ID", idstring);
 			    }
 			});
 		    
@@ -133,13 +136,13 @@
 			modal : true
 		});
 
-		//var baseLink = '<g:createLink action="student" controller="acStudent" id="ID"/>';
-
 		$(".studentid").click(function() {
-
+			var rows = $('#table').DataTable().rows;
+			window.alert(row);
 			var acId = $(this).attr("id");
 			window.alert(acId);
-			window.location.href = baseLink.replace("ID", idstring);
+			var baseLink = '<g:createLink action="student" controller="acStudent" id="ID"/>';
+			window.location = baseLink.replace("ID", "1");
 
 		});
 
