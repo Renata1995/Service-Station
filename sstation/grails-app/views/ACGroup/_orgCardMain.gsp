@@ -27,74 +27,74 @@
 </head>
 <body>
 	<div class="body">
-			<div class="row">
-				<div class="col-md-12" id="orgTopList">
-		
-					<div class="list-group">
-						<div class="list-group-item more">
-							<g:remoteLink class="aoListIcon" controller="ACGroup" action="_createOrg" update="main"
-								params="[orgAgMain:1]">
-								<span class="glyphicon glyphicon-plus" aria-hidden="true"></span> New Campus Organization</g:remoteLink>
-						</div>
-						<g:each in="${list}" status="i" var="org">
+		<div class="row">
+			<div class="col-md-12" id="orgTopList">
 
-							<div class="list-group-item">
-								<!-- heading -->
-								<h4 class="list-group-item-heading">
-									<b> ${org.name}
-									</b>
-								</h4>
+				<div class="list-group">
+					<div class="list-group-item more">
+						<g:link class="aoListIcon" controller="ACGroup"
+							action="_createOrg" update="main" params="[orgAgMain:1]">
+							<span class="glyphicon glyphicon-plus" aria-hidden="true"></span> New Campus Organization</g:link>
+					</div>
+					<g:each in="${list}" status="i" var="org">
 
-								<!-- Information -->
-								<p class="list-group-item-text">
-									${org.description}
-								</p>
-								<ol class="contactInfor">
-									<li>Contact: ${org.contact}</li>
-									<li>Contact Phone: ${org.contactPhone}</li>
-									<li>Contact Email: ${org.contactEmail}</li>
-								</ol>
+						<div class="list-group-item">
+							<!-- heading -->
+							<h4 class="list-group-item-heading">
+								<b> ${org.name}
+								</b>
+							</h4>
 
-								<!-- Buttons -->
-								<div class="cornerButtons listButtons">
-									<g:remoteLink class="aoListIcon" controller="ACGroup" id="${org.id}" action="_editOrg"
-										update="main" params="[orgAgMain:1]">
-										<span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
-										<b>Edit</b>
-									</g:remoteLink>
+							<!-- Information -->
+							<p class="list-group-item-text">
+								${org.description}
+							</p>
+							<ol class="contactInfor">
+								<li>Contact: ${org.contact}</li>
+								<li>Contact Phone: ${org.contactPhone}</li>
+								<li>Contact Email: ${org.contactEmail}</li>
+							</ol>
 
-									<a
-									onclick="deleteConfirm(${org.id})"
-									id="_deleteOnCard"
+							<!-- Buttons -->
+							<div class="cornerButtons listButtons">
+								<g:remoteLink class="aoListIcon" controller="ACGroup"
+									id="${org.id}" action="_editOrg" update="main"
+									params="[orgAgMain:1]">
+									<span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+									<b>Edit</b>
+								</g:remoteLink>
+
+								<a onclick="deleteConfirm(${org.id})" id="_deleteOnCard"
 									class="orgAgMainDelete aoListIcon"> <span
 									class="glyphicon glyphicon-trash" style="padding-left: 20px"
 									aria-hidden="true"></span> <b>Delete</b>
 								</a>
-								</div>
-								<!-- list-button <g:remoteLink class="orgAgMainDelete aoListIcon" controller="ACGroup"
+							</div>
+							<!-- list-button <g:remoteLink class="orgAgMainDelete aoListIcon" controller="ACGroup"
 										action="_deleteOnCard" id="{org.id}">
 										<span class="glyphicon glyphicon-trash"
 											style="padding-left: 20px" aria-hidden="true"></span>
 										<b>Delete</b>
 									</g:remoteLink>-->
 
-							</div>
-							<!-- list-group-item -->
-
-						</g:each>
-
-						<div class="list-group-item more">
-							<g:link controller="ACGroup" action="orgTableView" class="aoListIcon">More</g:link>
 						</div>
+						<!-- list-group-item -->
 
+					</g:each>
+
+					<div class="list-group-item more">
+						<g:link controller="ACGroup" action="orgTableView"
+							class="aoListIcon">More</g:link>
 					</div>
-					<!-- List-group ends -->
 
 				</div>
-				<!-- orgTopList ends -->
+				<!-- List-group ends -->
 
 			</div>
-			<!-- row ends -->
+			<!-- orgTopList ends -->
+
+		</div>
+		<!-- row ends -->
 	</div>
 	<script>
 	function deleteConfirm(id){

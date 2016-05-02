@@ -18,7 +18,7 @@ class HourController {
 	 */
 	def overall(){
 		def list=ServiceHour.list()
-		[list:list]
+		render view:"overall",model:[list:list]
 	}
 	
 	/**
@@ -27,7 +27,8 @@ class HourController {
 	 */
 	def pending(){
 		def list=ServiceHour.list()
-		[list:list]
+		render view:"pending",
+		model:[list:list]
 	}
 
 	/**
@@ -35,6 +36,8 @@ class HourController {
 	 * @return
 	 */
 	def _hourkpi(){
+		render view:"_hourkpi"
+		
 		return hourService.hourCall()
 	}
 
@@ -44,7 +47,8 @@ class HourController {
 	 */
 	def _totalHList(){
 		def list=ServiceHour.list()
-		[list:list]
+		render view:"_totalHList",
+		model:[list:list]
 	}
 
 	/**
@@ -53,7 +57,8 @@ class HourController {
 	 * @return
 	 */
 	def shour(ServiceHour sh){
-		[shour:sh]
+		render view:"shour",
+		model:[shour:sh]
 	}
 	
 	/**
@@ -69,7 +74,10 @@ class HourController {
 		def agList=CommAg.list().collect{
 			it.name
 		}
-		[shour:sh,eventList:eventList,orgList:orgList,agList:agList]
+		def fullOrgList = CampusOrg.list()
+		def fullAgList = CommAg.list()
+		render view:"_editShour",
+		model: [shour:sh,eventList:eventList,orgList:orgList,agList:agList,fullOrgList:fullOrgList,fullAgList:fullAgList]
 		
 	}
 
@@ -95,7 +103,8 @@ class HourController {
 		def agList=CommAg.list().collect{
 			it.name
 		}
-		[eventList:eventList,orgList:orgList,fullOrgList:fullOrgList,agList:agList,fullAgList:fullAgList,shour:sh,list:list,nameList:nameList]
+		render view: "_createShour",
+		model: [eventList:eventList,orgList:orgList,fullOrgList:fullOrgList,agList:agList,fullAgList:fullAgList,shour:sh,list:list,nameList:nameList]
 	}
 	
 	/**
@@ -104,7 +113,7 @@ class HourController {
 	 * @return
 	 */
 	def saveShour(ServiceHour sh){
-		println params
+	
 		sh.properties=params
 		//Set the lastModified time
 		sh.lastmodified=new Date()
@@ -139,7 +148,6 @@ class HourController {
 	def updateShour(ServiceHour sh){
 		sh.properties=params
 		//Set the lastModified time
-		sh.properties=params
 		sh.lastmodified=new Date()
 
 		//Get the start date from the input
@@ -155,7 +163,7 @@ class HourController {
 		sh.status=params.status;
 
 
-		//Get the related student and save 
+		//Get the related student and save
 		def ac=sh.acStudent
 		ac.addToServiceHours(sh).save(flush:true,failOnError:true)
 

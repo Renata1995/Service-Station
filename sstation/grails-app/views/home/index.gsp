@@ -56,7 +56,7 @@ div.col-md-7 {
 		</div>
 		<!-- homeCoreInfor -->
 
-		<div class="col-md-7">
+		<div class="col-md-7" id="homeTable">
 			<div id="homeTableName" class="formHeading">
 				<g:link action="pending" controller="hour">Pending Hours</g:link>
 			</div>
@@ -114,6 +114,16 @@ div.col-md-7 {
 	<!-- row -->
 
 	<g:render template="hourkpi" />
+	
+	<script>
+	 $(function(){
+		 var height = $("#homePendingTable").height() + $("#homeTableName").height()+$("#homePendingMore").height();
+
+		 $("#homeCoreInfor").css("height", height);
+
+		 alert(height);
+		 });
+	</script>
 
 </body>
 </html>

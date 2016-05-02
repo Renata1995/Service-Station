@@ -27,6 +27,12 @@ class EventController {
 
 		render view:"_eventTable",model:[list:list]
 	}
+	
+	def _eventTableView(){
+		def list=Event.list()
+
+		render view:"_eventTableView",model:[list:list]
+	}
 
 	/**
 	 * KPI page about all events

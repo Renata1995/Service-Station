@@ -7,11 +7,9 @@
 <ul class="nav nav-tabs tendencyList">
 				<li class="tab1 kpiTab" role="presentation" id="show5">Five Years Tendency</li>
 				<li class="tab2 kpiTab" role="presentation" id="showYear">Current Year Tendency</li>
-				<li class="tab3 kpiTab" role="presentation" id="showMonth">Current Month Tendency</li>
 </ul>
 <div id="tendency5y"></div>
 <div id="tendencyYear" style="display:none;width:85%"></div>
-<div id="tendencyMonth" style="display:none;"></div>
 </div><!-- Tendency Charts End -->
 
 
@@ -164,45 +162,7 @@
         }]
     });
     
-    /*Current Month Tendency Chart*/
-    /* $('#tendency5y').highcharts({
-        chart: {
-            type: 'line'
-        },
-        title: {
-            text: 'Yearly Average Service Hours'
-        },
-        subtitle: {
-            text: 'Service Station'
-        },
-        xAxis: {
-            categories: ['2011','2012','2013','2014','2015']
-        },
-        yAxis: {
-            title: {
-                text: 'Service Hours(hr)'
-            }
-        },
-        plotOptions: {
-            line: {
-                dataLabels: {
-                    enabled: true
-                },
-                enableMouseTracking: false
-            }
-        },
-        series: [{
-            name: 'Actual',
-            data: [${tendency5y.get('totalYear')},${tendency5y.get('totalLast1')},${tendency5y.get('totalLast2')},${tendency5y.get('totalLast3')},${tendency5y.get('totalLast4')}]
-        },{
-        	name:'Expect',
-        	data:[10,12,14,16,18]
-        },{
-        	name:'Average',
-        	data:[${tendency5y.get('average')},${tendency5y.get('average')},${tendency5y.get('average')},${tendency5y.get('average')},${tendency5y.get('average')}]
-        }]
-    });*/
-    
+  
 
     // Build the chart
     $('#byStatus').highcharts({

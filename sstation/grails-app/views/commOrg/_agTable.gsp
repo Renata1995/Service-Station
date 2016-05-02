@@ -1,7 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8"%>
 <html>
 <head>
-<asset:javascript src="aoMain.js"/>
+<asset:javascript src="aoMain.js" />
 </head>
 <body>
 	<form>
@@ -9,15 +9,15 @@
 
 			<div class="col-md-6 navbar-right cornerButtons"
 				style="margin-top: 7px; margin-bottom: -7px;">
-				<g:remoteLink controller="commOrg" action="_createAgency" update="main">
+				<g:link controller="commOrg" action="_createAgency" update="main">
 					<span style="color: #FFDE97" class="glyphicon glyphicon-plus"
 						aria-hidden="true"></span>
 					<b>Add</b>
-				</g:remoteLink>
+				</g:link>
 				<span style="color: #FFDE97" class="glyphicon glyphicon-trash"
 					aria-hidden="true"></span>
-				<g:submitToRemote controller="commOrg" action="deletemult" value="Delete"
-					class="tabledelete"></g:submitToRemote>
+				<g:submitToRemote controller="commOrg" action="deletemult"
+					value="Delete" class="tabledelete"></g:submitToRemote>
 			</div>
 		</div>
 		<!-- Student Table -->
@@ -76,10 +76,9 @@
 						<td class="aoTableIcon"><g:remoteLink controller="commOrg"
 								action="_editAgency" update="agMain" id="${ag.id}">
 								<span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
-							</g:remoteLink>
-							<a id="deleteAgOnTable" onclick="deleteConfirm(${ag.id})">
-								<span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
-							</a></td>
+							</g:remoteLink> <a id="deleteAgOnTable" onclick="deleteConfirm(${ag.id})"> <span
+								class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+						</a></td>
 
 					</tr>
 				</g:each>
