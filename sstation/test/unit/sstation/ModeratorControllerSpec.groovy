@@ -15,6 +15,11 @@ class ModeratorControllerSpec extends Specification {
     def cleanup() {
     }
 
-    void "test something"() {
+    void "test tabelStudentAdd can add student into list"() {
+		when:"add Moderator to list"
+//		controller._addModerator()=Mock()
+		controller.index()
+		then:"list should contain Moderator info"
+		view=="/home/index"
     }
 }

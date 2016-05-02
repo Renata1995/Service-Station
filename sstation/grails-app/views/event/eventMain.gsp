@@ -12,22 +12,26 @@
 			<div class="cornerButtons"></div>
 		</div>
 		<div>
-		<g:remoteLink class="aoListIcon" controller="Event" action="_createEvent" update="main"
-			params="[eventMain:1]">
-			<span class="glyphicon glyphicon-plus" aria-hidden="true"></span> New Campus Event</g:remoteLink>
+			<g:remoteLink class="aoListIcon" controller="Event"
+				action="_createEvent" update="main" params="[eventMain:1]">
+				<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+				New Campus Event</g:remoteLink>
 		</div>
 		<div>
-	
-	<!-- Link to the profile or the service hour list of the current student -->
-		<ul class="nav-tabs navGradient nav">
-				<li class="tab1"><g:remoteLink controller="event" action="_eventTable" update="eventMain"><b>Event List</b></g:remoteLink></li>
-				<li class="tab2"><g:remoteLink controller="event" action="_eventOverallKPI" update="eventMain">Analysis</g:remoteLink></li>
-				
- 	</ul>
- 	</div>
- 	<div id="eventMain">
-		<g:render template="eventTable" />
-	</div>
+			<!-- Link to the profile or the service hour list of the current student -->
+			<ul class="nav-tabs navGradient nav">
+				<li class="tab1"><g:remoteLink controller="event"
+						action="_eventTable" update="eventMain">
+						<b>Event List</b>
+					</g:remoteLink></li>
+				<li class="tab2"><g:remoteLink controller="event"
+						action="_eventOverallKPI" update="eventMain">Analysis</g:remoteLink></li>
+
+			</ul>
+		</div>
+		<div id="eventMain">
+			<g:render template="eventTable" />
+		</div>
 
 	</div>
 </body>
