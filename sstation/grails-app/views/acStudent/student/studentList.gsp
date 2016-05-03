@@ -19,12 +19,6 @@
 		<!-- Link to the profile or the service hour list of the current student -->
 		<div>
 			<ul class="nav-tabs navGradient nav">
-				<li class="tab1"><g:remoteLink controller="acStudent"
-						action="_hourkpi" update="slist">Analysis</g:remoteLink></li>
-				<li class="tab2"><g:remoteLink controller="acStudent"
-						action="_sTable" update="slist">
-						<b>Table</b>
-					</g:remoteLink></li>
 				<li class="tab3"><g:link controller="acStudent"
 						action="uploadPage">
 						<b>Upload</b>
