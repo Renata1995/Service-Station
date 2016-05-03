@@ -68,7 +68,7 @@
 					id="bs-example-navbar-collapse-1">
 
 					<ul class="nav navbar-nav navbar-right">
-						<li><a href="">ZX</a></li>
+						<li><a href=""><sec:loggedInUserInfo field="username"/></a></li>
 						<li class="dropdown" style="padding-right: 20px"><a href="#"
 							class="dropdown-toggle" data-toggle="dropdown" role="button"
 							aria-haspopup="true" aria-expanded="false"><span
@@ -107,6 +107,8 @@
 							action="index">
 							<span class="glyphicon glyphicon-home" aria-hidden="true"></span>
 							<br />Home </g:link></li>
+							
+				<sec:ifAnyGranted roles="ROLE_ADMIN,ROLE_MODERATOR">
 					<li><g:link controller="hour" action="overall">
 							<span class="glyphicon glyphicon-stats" aria-hidden="true"></span>
 							<br />Overall</g:link></li>
@@ -128,10 +130,20 @@
 					<li><g:link controller="Reports" action="index">
 							<span class="glyphicon glyphicon-tasks" aria-hidden="true"></span>
 							<br />Station Reports</g:link></li>
+				</sec:ifAnyGranted>
+				
+				<sec:ifAnyGranted roles="ROLE_ADMIN">
 					<li><g:link controller="Moderator" action="index">
 							<span class="glyphicon glyphicon-user" aria-hidden="true"></span>
 							<br />Moderator</g:link></li>
+				</sec:ifAnyGranted>
 
+				<sec:ifAnyGranted roles="ROLE_MODERATOR">
+					<li><g:link controller="acStudent" action="home" id="1">
+							<span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+							<br />My Hours</g:link></li>
+				</sec:ifAnyGranted>
+				
 				</ul>
 			</div>
 

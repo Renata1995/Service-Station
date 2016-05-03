@@ -20,15 +20,18 @@ class HomeController {
 	 */
 	def index(){//dashboard Home page
 
+		// principal is a synonym for the current authenticated user....
 		def principal = springSecurityService.principal
 		
-		String username = principal.username
-		// a Collection of GrantedAuthority
-		def authorities = principal.authorities
-		boolean enabled = principal.enabled
+				
+		String username = principal.username     	// jsmith
+		
+		def authorities = principal.authorities  	// a Collection of GrantedAuthority
+		
+		boolean enabled = principal.enabled			// id user active
 		
 		
-		if (SpringSecurityUtils.ifAllGranted('ROLE_MODERATOR') || SpringSecurityUtils.ifAllGranted('ROLE_STUDENT')) {
+		if (SpringSecurityUtils.ifAllGranted('ROLE_STUDENT')) {
 			
 			// find the current student id by using the user login (email?) 
 			def sid = 1  
@@ -46,7 +49,7 @@ class HomeController {
 		}
 		else {
 		
-			return redirect (action:'home')
+			return redirect (controller:'home', action:'adminHome')
 		}
 		
 	}

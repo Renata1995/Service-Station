@@ -27,7 +27,7 @@ import grails.transaction.Transactional
 import java.security.MessageDigest
 import grails.plugin.springsecurity.annotation.Secured
 
-@Secured(['ROLE_ADMIN', 'ROLE_STUDENT'])
+@Secured(['ROLE_ADMIN', 'ROLE_STUDENT', 'ROLE_MODERATOR'])
 @Transactional(readOnly = false)
 
 class AcStudentController {
