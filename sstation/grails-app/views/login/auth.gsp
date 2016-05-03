@@ -61,6 +61,15 @@ label.loginLabel{
             	<div class='login_message'>${flash.message}</div>
         	</g:if>
 			
+			<div style="padding-left:20">
+			<br/>
+			<b>userid : passwd</b><br/>
+			admin : admin_secret<br/>
+			moderator : moderator_secret<br/>
+			student: student_secret<br/>
+			<br/>
+			</div>
+			
 			<!-- Log in form -->
 			<form action="${createLink(uri: '/j_spring_security_check')}" method="POST" autocomplete="off" class="indexForm form-horizontal" id="logInForm">
 
