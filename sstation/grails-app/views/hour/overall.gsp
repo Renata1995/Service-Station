@@ -12,18 +12,6 @@
 		<h1 class="pagetitle">Service Hours Management</h1>
 		<div class="cornerButtons"></div>
 	</div>
-	<div>
-
-		<!-- Link to the profile or the service hour list of the current student -->
-		<ul class="nav nav-tabs">
-			<li class="tab1"><g:remoteLink controller="hour"
-					action="_totalHList" update="totalhour">
-					Table
-				</g:remoteLink></li>
-			<li class="tab2" role="presentation"><g:remoteLink
-					controller="hour" action="_hourkpi" update="totalhour">Analysis</g:remoteLink></li>
-		</ul>
-	</div>
 
 
 
