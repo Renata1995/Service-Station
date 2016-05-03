@@ -38,8 +38,19 @@
 							<p class="list-group-item-text">
 								Generates an aggregate report of hours organized by AC groups.
 							</p>
-							<g:link controller="reports" action="acGroupReport">Generate Report</g:link>
-							<div class="cornerButtons listButtons"></div>
+							<g:form controller = "Reports">
+								<select name = campusOrgComboBox>
+									<g:each in="${campusList}">
+										<option value="${it.id}">${it.name}</option>
+									</g:each>
+								</select>
+								<br/>
+								<br/>
+								<g:actionSubmit value = "Generate Report" action="campusOrgReport" ></g:actionSubmit>
+								<div class="cornerButtons listButtons"></div>
+							</g:form>
+					
+							
 						</div>
 						
 						<div class="list-group-item">
@@ -49,7 +60,7 @@
 							<p class="list-group-item-text">
 								Generates an aggregate report of hours organized by service events.
 							</p>
-							<g:link controller="reports" action="eventReport">Generate Report</g:link>
+							<g:link controller="reports" action="eventSelection">Generate Report</g:link>
 							<div class="cornerButtons listButtons"></div>
 						</div>
 						
@@ -58,9 +69,25 @@
 								<b>Report by Semester</b>
 							</h4>
 							<p class="list-group-item-text">
-								Generates an aggregate report of hours organized by semester/year.
+								Generates an aggregate report of hours organized by year/semester.
 							</p>
-							<g:link controller="reports" action="semesterReport">Generate Report</g:link>
+							<g:form controller = "Reports">
+								<select name = yearComboBox>
+									<g:each in="${yearList}">
+										<option value="${it}">${it}</option>
+									</g:each>
+								</select>
+								</br>
+								<select name = semesterComboBox>
+									<g:each in="${semesterList}">
+										<option value="${it}">${it}</option>
+									</g:each>
+								</select>
+								<br/>
+								<br/>
+								<g:actionSubmit value = "Generate Report" action="semesterReport" ></g:actionSubmit>
+								<div class="cornerButtons listButtons"></div>
+							</g:form>
 							<div class="cornerButtons listButtons"></div>
 						</div>
 						
@@ -72,6 +99,28 @@
 								Generates an aggregate report of hours organized by community organizations.
 							</p>
 							<g:link controller="reports" action="commOrgReport">Generate Report</g:link>
+								<div class="cornerButtons listButtons"></div>
+						</div>
+						
+						<div class="list-group-item">
+							<h4 class="list-group-item-heading">
+								<b>Report by Year</b>
+							</h4>
+							<p class="list-group-item-text">
+								Generates an aggregate report of hours organized by Years.
+							</p>
+							<g:link controller="reports" action="yearReport">Generate Report</g:link>
+							<div class="cornerButtons listButtons"></div>
+						</div>
+						
+						<div class="list-group-item">
+							<h4 class="list-group-item-heading">
+								<b>Summary Report</b>
+							</h4>
+							<p class="list-group-item-text">
+								Generates an aggregate summary report of hours.
+							</p>
+							<g:link controller="reports" action="summaryReport">Generate Report</g:link>
 							<div class="cornerButtons listButtons"></div>
 						</div>
 					</div>

@@ -365,12 +365,13 @@ td.aoTableIcon>a>span.glyphicon {
 
 
 /* List */
-.list-group-item {
+.list-group-item{
 	background-color: rgba(247, 243, 234, 0.85);
 	border: 0px;
 	border-top: 1px solid rgba(199, 199, 199, 0.66);
 	padding: 20px 20px 0px 40px
 }
+
 .listButtons>a,.list-group-item>a,a.eventTime,a.more{
 	color: #FFAE00
 }

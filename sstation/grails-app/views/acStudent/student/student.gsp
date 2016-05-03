@@ -40,9 +40,9 @@
 				<li class="tab2" role="presentation"><g:remoteLink
 						controller="acStudent" action="_hourList"
 						id="${student.id}" update="student">Service Hour List</g:remoteLink></li>
-				<li class="tab3" role="presentation"><g:remoteLink
-						controller="acStudent" action="_reportAdmin" update="student"
-						id="${student.id }">Report</g:remoteLink></li>
+				<li class="tab3" role="presentation"><g:link
+						controller="acStudent" action="reportAdmin"
+						id="${student.id }">Report</g:link></li>
 			</ul>
 		</div>
 

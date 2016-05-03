@@ -23,7 +23,7 @@ class EventControllerSpec extends Specification {
 		controller._saveEvent(ev)
 		
 		then:
-		view=="/event/_eventTable"
+		view=="/event/eventMain"
     }
 	
 	

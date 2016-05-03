@@ -10,7 +10,7 @@ import grails.plugin.springsecurity.annotation.Secured
 
 class CommOrgController {
 
-    /*
+	/*
 	 * Methods about community agencies
 	 */
 	/**
@@ -26,42 +26,52 @@ class CommOrgController {
 		def list=CommAg.list()
 		render view:"_agTable",model:[list:list]
 	}
-	
+
 	def _agCard(){
 		def list=CommAg.list()
 		render view:"_agCard",model:[list:list]
 	}
 
 	def _createAgency(){
+		redirect action: 'agForm'
+	}
+
+	def agForm(){
 		CommAg ag=new CommAg()
 		def heading="New Community Agency"
-		render view:"_agForm",model:[agency:ag,heading:heading]
+		render view:"agForm", model:[agency:ag,heading:heading]
 	}
 
 	def _editAgency(CommAg ag){
 		def heading=ag.name
-		render view:"_agForm",model:[agency:ag,heading:heading]
+		render view:"agForm",model:[agency:ag,heading:heading]
 	}
 
 	/**
-	 * Save or update an agency and direct to the card view
+	 * Save or update an agency and direct to the saved page
+	 * it needs to have an intermediary page so that on refresh
+	 * it doesn't duplicate things
+	 * don't mess with these
 	 * @param agency
 	 * @return
 	 */
 	def _saveOnCard(CommAg agency){
 		agency.properties=params
 		if (!agency.save(flush:true)) {
-			render view:'index', model:[agency:agency,form:1,card:1] 
+			render view:'agForm', model:[agency:agency,form:1,card:1]
 			return
 		}
-		
+
 		agency.save(flush:true,failOnError:true)
-		def list=CommAg.list()
-		render view:"index",model:[list:list]
+		
+		render view:'formSaved',model:[card:1]
 	}
-	
+
 	/**
-	 * Save or update an agency and direct to the table view
+	 * Save or update an agency and direct to the saved page
+	 * it needs to have an intermediary page so that on refresh
+	 * it doesn't duplicate things
+	 * don't mess with these
 	 * @param agency
 	 * @return
 	 */
@@ -69,12 +79,24 @@ class CommOrgController {
 
 		agency.properties=params
 		if (!agency.save(flush:true)) {
-			render view:'index', model:[agency:agency,form:1]
+			render view:'agForm',model:[agency:agency,form:1,table:1]
 			return
 		}
-		def list=CommAg.list()
-		render view:"index",model:[list:list,table:1]
+
+		
+		render view:'formSaved',model:[table:1]
 	}
+
+	def returnToTable(){
+		def list=CommAg.list()
+		render view:'index',model:[list:list,table:1]
+	}
+
+	def returnToCard(){
+		def list=CommAg.list()
+		render view:'index',model:[list:list,card:1]
+	}
+
 
 	/**
 	 * Delete an agency and direct to the table view
@@ -104,6 +126,5 @@ class CommOrgController {
 	}
 
 	def _deleteMultAgency(){
-
 	}
 }

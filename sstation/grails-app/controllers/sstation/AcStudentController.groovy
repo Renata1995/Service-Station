@@ -353,7 +353,7 @@ class AcStudentController {
 		render view:"shour/shour",model:[shour:sh]
 
 	}
-	
+
 	/**
 	 * Delete the current service hour
 	 * @param sh
@@ -364,10 +364,10 @@ class AcStudentController {
 		AcStudent ac=sh.acStudent
 		sh.delete flush:true
 		student(ac)
-		
+
 	}
-	
-	
+
+
 
 	/*
 	 *Report Methods 
@@ -378,44 +378,60 @@ class AcStudentController {
 	 * @param ac
 	 * @return
 	 */
-	def _reportAdmin(AcStudent ac){
-		render view:"report/_reportAdmin",model:[student:ac]
+	def reportAdmin(AcStudent ac){
+		def stat=hourService.studentStat(ac)
+		render view:"report/reportAdmin",model:[student:ac,stat:stat]
+		
+		
 	}
 
 	/**
 	 * Show a report page about service hours of a specific student
 	 */
-	def _studentReport(AcStudent ac){
-		def list=ac.serviceHours.toList().findAll{
-			it.status==Status.APPROVED
+	def studentReport(AcStudent ac){
+		def list=[]
+		def totalSH=0
+		if(ac.serviceHours!=null){
+			if(ac.serviceHours.toList().size()!=0){
+				list=ac.serviceHours.toList().findAll{
+					it.status==Status.APPROVED
+				}
+			}
+			totalSH=hourService.studentStat(ac).get('aSum')
 		}
-		def totalSH=hourService.studentStat(ac).get('aSum')
-		render view:"report/_studentReport",model:[student:ac,list:list,totalSH:totalSH]
+		
+		
+		render view:"report/studentReport",model:[student:ac,list:list,totalSH:totalSH]
 	}
 
 	/**
 	 * Show a report page about service hours by semester of a specific student 
 	 */
-	def _semesterReport(AcStudent ac){
+	def semesterReport(AcStudent ac){
 		def SHlist=reportService.semesterReport(ac)
-		def totalSH=hourService.studentStat(ac).get('aSum')
-		render view:"report/_semesterReport",model:[student:ac,SHlist:SHlist,totalSH:totalSH]
+		def totalSH=0.0
+		if(hourService.studentStat(ac).get('aSum')!=null){ 
+			totalSH=hourService.studentStat(ac).get('aSum')
+		}
+		render view:"report/semesterReport",model:[student:ac,SHlist:SHlist,totalSH:totalSH]
 	}
 
-	def _orgReport(AcStudent ac){
+	def orgReport(AcStudent ac){
 		def list=reportService.orgReport(ac)
 		println list
 		def totalSH=hourService.studentStat(ac).get('aSum')
-		render view:"report/_orgReport",model:[student:ac,list:list,totalSH:totalSH]
+		render view:"report/orgReport",model:[student:ac,list:list,totalSH:totalSH]
 	}
-	
+
+
+
 	def uploadPage(){
 		render view:"uploadPage",model:[]
 	}
 
 	def upload(){
 		def a
-		
+
 		println params
 
 		def uploadedFile = request.getFile('CSV')
@@ -430,13 +446,13 @@ class AcStudentController {
 			println "OriginalFileName: ${uploadedFile.originalFilename}"
 			println "Size: ${uploadedFile.size}"
 			println "ContentType: ${uploadedFile.contentType}"
- 
-		def inStream = uploadedFile.getInputStream()
-		a = studentService.importStudents(inStream)
+
+			def inStream = uploadedFile.getInputStream()
+			a = studentService.importStudents(inStream)
 		}
 		render view:"uploadSuccess",model:[added:a[0],updated:a[1]]
 	}
-  
+
 
 
 

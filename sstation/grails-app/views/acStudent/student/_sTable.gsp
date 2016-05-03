@@ -7,17 +7,18 @@
 
 			<g:remoteLink controller="acStudent" action="_createStudent"
 				update="slist">
-				<button class="btn btn-danger">
 
-					<span style="color: #FFDE97" class="glyphicon glyphicon-plus"
-						aria-hidden="true"></span> New Student
-				</button>
-			</g:remoteLink>
+
+				<span style="color: #FFDE97" class="glyphicon glyphicon-plus"
+					aria-hidden="true"></span> New Student
 			
-			<button class="btn btn-danger" id="deleteStudentsBtn">
-				<span style="color: #FFDE97" class="glyphicon glyphicon-trash"
+			</g:remoteLink>
+			<span id="deleteStudentsBtn" style="color: #FFDE97">
+				<span  class="glyphicon glyphicon-trash"
 					aria-hidden="true"></span> Delete
-			</button>
+			</span>
+
+
 
 		</div>
 	</div>
@@ -99,7 +100,7 @@
 			</tr>
 		</thead>
 		<tbody id="deleteBody">
-			
+
 		</tbody>
 	</table>
 
@@ -110,15 +111,18 @@
 
 <script>
 	$(function() {
-
+		$('#table').DataTable();
 		$(document).ready(function(){
-		    $('#table').DataTable();
+		   // $('#table').DataTable();
 		    var baseLink = '<g:createLink action="student" controller="acStudent" id="ID"/>';
-		    $(".studentRow").on({
+		   // var row = $(".studentRow");
+		   // window.alert(row.attr("id"));
+		    $(".studentRow....").on({
 			    click: function(){
+				    //window.alert($(this).attr("acid"))
 				    var idstring=$(this).attr("id");
 				   
-				    window.location.href = baseLink.replace("ID", idstring);
+				    window.location = baseLink.replace("ID", idstring);
 			    }
 			});
 		    
@@ -133,16 +137,24 @@
 			modal : true
 		});
 
-		//var baseLink = '<g:createLink action="student" controller="acStudent" id="ID"/>';
-
 		$(".studentid").click(function() {
-
+			//var rows = $('#table').DataTable().rows;
+			//window.alert(row.length);
 			var acId = $(this).attr("id");
 			window.alert(acId);
-			window.location.href = baseLink.replace("ID", idstring);
+			var baseLink = '<g:createLink action="student" controller="acStudent" id="ID"/>';
+			window.location = baseLink.replace("ID", "1");
 
 		});
 
+		
+		$("#deleteStudentsBtn").on("mouseenter", function(){
+			$("#deleteStudentsBtn").css("cursor","pointer");
+			$("#deleteStudentsBtn").css("text-decoration","underline");
+			});
+		$("#deleteStudentsBtn").on("mouseleave", function(){
+			$("#deleteStudentsBtn").css("text-decoration","none");
+			});
 		$("#deleteStudentsBtn").on("click", function() {
 			modalDelete.dialog("open");
 		});
@@ -172,7 +184,7 @@
 				});
 
 		$("#deleteStudentsTable").DataTable();
-		
+		$
 
 	});
 </script>

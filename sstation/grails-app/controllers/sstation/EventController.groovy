@@ -84,7 +84,10 @@ class EventController {
 			render view:'_eventForm', model:[event:e]
 			return
 		}
-		_eventTable()
+		e.save(flush:true,failOnError:true)
+		def list=Event.list()
+		render view:"eventMain",model:[list:list]
+		//_eventTable()
 	}
 
 	/**

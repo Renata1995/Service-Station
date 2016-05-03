@@ -5,13 +5,24 @@
 .list-group-item-heading {
 	margin-bottom: 15px;
 }
+
 .list-group-item-text {
 	margin-bottom: 5px;
 }
-a.eventTime{
-	text-decoration:underline;
-	font-weight:600;
-	margin-right:10px;
+
+div.list-group-item:hover{
+	opacity: 0.66
+}
+
+a.eventTime {
+	text-decoration: underline;
+	font-weight: 600;
+	margin-right: 10px;
+}
+
+div.grayBar{
+	background-color: rgba(33, 32, 30, 0.5);
+	margin: 20px 0px 0px 0px
 }
 
 </style>
@@ -22,8 +33,12 @@ a.eventTime{
 
 		<div class="col-md-6 navbar-right cornerButtons"
 			style="margin-top: 7px; margin-bottom: -7px;">
-				<!--  <div id="createEventButton">-->
-				<g:remoteLink controller="event" action="_createEvent" update="eventMain"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span><b>New Event</b></g:remoteLink>
+			<!--  <div id="createEventButton">-->
+			<g:remoteLink controller="event" action="_createEvent"
+				update="eventMain">
+				<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+				<b>New Event</b>
+			</g:remoteLink>
 		</div>
 		<!-- cornerButtons ends -->
 	</div>
@@ -61,20 +76,24 @@ a.eventTime{
 
 				<!-- Buttons -->
 				<div class="cornerButtons listButtons">
-					<g:remoteLink class="aoListIcon" controller="event" id="${event.id}" action="_editEvent" update="eventMain">
-					<span
-						class="glyphicon glyphicon-edit" aria-hidden="true"></span> <b>Edit</b>
+					<g:remoteLink class="aoListIcon" controller="event"
+						id="${event.id}" action="_editEvent" update="eventMain">
+						<span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+						<b>Edit</b>
 					</g:remoteLink>
-					<g:remoteLink class="aoListIcon" controller="event" id="${event.id}" action="_deleteEvent" update="eventMain"><span
-						class="glyphicon glyphicon-trash" style="padding-left: 20px"
-						aria-hidden="true"></span> <b>Delete</b></g:remoteLink>
+					<g:remoteLink class="aoListIcon" controller="event"
+						id="${event.id}" action="_deleteEvent" update="eventMain">
+						<span class="glyphicon glyphicon-trash" style="padding-left: 20px"
+							aria-hidden="true"></span>
+						<b>Delete</b>
+					</g:remoteLink>
 				</div>
 			</div>
 
 		</g:each>
 	</div>
 	<!-- list-group ends -->
-	
+
 	<!-- Dialog that shows KPI of a specific event -->
 	<div id="eventKPI"></div>
 
@@ -84,7 +103,7 @@ a.eventTime{
 		$(document).ready(
 				function() {
 					$('#table').DataTable();
-					
+
 					$('#eventKPI').dialog({
 						model : true,
 						autoOpen : false,
@@ -98,7 +117,8 @@ a.eventTime{
 									/*Enter the current student page*/
 									var eventTime = $(this).html();
 									var url = "_eventKPI/"
-											+ $(this).parents("div:first").prop("id");
+											+ $(this).parents("div:first")
+													.prop("id");
 									$("#eventKPI").dialog("open");
 									$.ajax({
 										url : url,
@@ -116,9 +136,6 @@ a.eventTime{
 								}
 							});
 
-			
-
-					
 				});
 	</script>
 </body>

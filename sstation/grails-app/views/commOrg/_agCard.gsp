@@ -32,9 +32,9 @@
 
 				<div class="list-group" style="width: 100%">
 					<div class="list-group-item more">
-						<g:remoteLink controller="commOrg" class="aoListIcon"
+						<g:link controller="commOrg" class="aoListIcon"
 							action="_createAgency" update="main" params="[orgAgMain:1]">
-							<span class="glyphicon glyphicon-plus" aria-hidden="true"></span> New Community Agency</g:remoteLink>
+							<span class="glyphicon glyphicon-plus" aria-hidden="true"></span> New Community Agency</g:link>
 					</div>
 					<g:each in="${list}" status="i" var="ag">
 

@@ -17,6 +17,7 @@ sstation/prodDb.*
 sstation/stacktrace.log
 sstation/test/reports
 sstation/logs
+sstation/bin
 
 # project release file
 /*.war

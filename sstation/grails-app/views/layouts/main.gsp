@@ -111,7 +111,7 @@
 				<sec:ifAnyGranted roles="ROLE_ADMIN,ROLE_MODERATOR">
 					<li><g:link controller="hour" action="overall">
 							<span class="glyphicon glyphicon-stats" aria-hidden="true"></span>
-							<br />Overall</g:link></li>
+							<br />Service Hours</g:link></li>
 					<li><g:link controller="acStudent" action="studentList">
 							<span class="glyphicon glyphicon-education" aria-hidden="true"></span>
 							<br /> Students</g:link></li>

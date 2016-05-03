@@ -106,11 +106,10 @@ class StudentService {
 		int numberUpdated = 0
 		inStream.toCsvReader(['charset':'UTF-8']).eachLine { tokens ->
 			if (i > 0) {
-				//s.findbyid(token[0]), don't add if exists, only update values (use counters for success page)
-				
-				AcStudent.all.id
-				
+			
 				AcStudent s = AcStudent.findByAcid(tokens[0])
+				//consider changing to pull list of all IDs once
+				
 				if (s) //student exists
 				{
 					s.firstname = tokens[2]

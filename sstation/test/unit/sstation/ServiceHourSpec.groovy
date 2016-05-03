@@ -19,7 +19,7 @@ class ServiceHourSpec extends Specification{
 		'status'    | ""
 		'eventContactEmail'   | "not valid email form"
 		'duration'  | null
-		
+
 	}
 
 }
