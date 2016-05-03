@@ -135,13 +135,13 @@ class ReportsController {
 			
 			for (ServiceHour s: list){
 				if (s.commAg.name.equals(allAgs.get(i).name)){
-					agli += s.duration;
+					agli += s.duration
 				}
 				if (s.event.name.equals(allEvs.get(i).name)){
-					evli += s.duration;
+					evli += s.duration
 				}
 				if (s.campusOrg.name.equals(allOrgs.get(i).name)){
-					orgli += s.duration;
+					orgli += s.duration
 				}
 			}
 			agHours.add(agli)
@@ -150,24 +150,23 @@ class ReportsController {
 			
 		}
 
-		render view:"semesterReport", model: [totalHours:totalHours ,constant:constant, topAgs:topAgs, topOrgs:topOrgs, topEvs:topEvs, agHours:agHours, evHours:evHours, orgHours:orgHours]
+		render view:"semesterReport", model: [totalHours:totalHours, constant:constant, topAgs:topAgs, topOrgs:topOrgs, topEvs:topEvs, agHours:agHours, evHours:evHours, orgHours:orgHours]
 
 	}
 	
 	def commOrgReport() {
-		def cbValue = params.commOrgComboBox
-		//
-	
-//		def list=ServiceHour.list().findAll{
-//			it.commAg.name==cbValue
-//		}
-		
-		//Alt way of generating filtered list
-		def commAg=CommAg.get(cbValue)
-		println commAg
-		def list=ServiceHour.findAllByCommAg(commAg)
-		println list.size()
-		[list:list]
+		def orgList = CommAg.list()
+		def hourList = []
+		for(int a = 0; a < orgList.size(); a++){
+			def total = 0
+			for(ServiceHour s: ServiceHour.list()){
+				if(s.commAg.name.equals(orgList.get(a).name)){
+					total += s.duration
+				}
+			}
+			hourList.add(total)
+		}
+		render view: "campusOrgReport", model: [orgList:orgList, hourList:hourList]
 	}
 	
 	

@@ -98,17 +98,8 @@
 							<p class="list-group-item-text">
 								Generates an aggregate report of hours organized by community organizations.
 							</p>
-							<g:form controller = "Reports">
-								<select name = commOrgComboBox>
-									<g:each in="${orgList}">
-										<option value="${it.id}">${it.name}</option>
-									</g:each>
-								</select>
-								<br/>
-								<br/>
-								<g:actionSubmit value = "Generate Report" action="commOrgReport" ></g:actionSubmit>
+							<g:link controller="reports" action="commOrgReport">Generate Report</g:link>
 								<div class="cornerButtons listButtons"></div>
-							</g:form>
 						</div>
 						
 						<div class="list-group-item">
