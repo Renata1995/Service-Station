@@ -2,6 +2,7 @@ package sstation
 
 class ReportsController {
 	def stationReportService
+	def constant = 5
 
     def index() { 
 		def orgList=CommAg.list()
@@ -37,7 +38,7 @@ class ReportsController {
 	}
 	
 	def summaryReport(){
-		def constant = 5;
+		constant = 5;
 		def year = 2016;
 		def totalHours = 0;
 		
@@ -93,7 +94,7 @@ class ReportsController {
 		def yearList = servList.findAll{
 			it.starttime.getAt(Calendar.YEAR)==Integer.parseInt(yearValue)
 		}
-		println yearList.size()
+		
 		switch (semesterValue){
 			case "Fall": list=yearList.findAll{ it.starttime.getAt(Calendar.MONTH)>=8&&it.starttime.getAt(Calendar.MONTH)<=11 }
 			break;
@@ -105,12 +106,52 @@ class ReportsController {
 			break;
 		}
 		println list.size()
+		def totalHours = 0
+		for(int a = 0; a < list.size(); a++){
+			totalHours += list.get(a).duration
+		}
 		
+		def allHours = ServiceHour.list();
+		def allAgs = CommAg.list();
+		def allOrgs = CampusOrg.list();
+		def allEvs = Event.list();
 		
+		def topAgs = [];
+		def topEvs = [];
+		def topOrgs = [];
 		
-		
-		
-		[list:list]
+		def agHours = [];
+		def evHours = [];
+		def orgHours = [];
+		for (int i = 0; i < constant; i++){
+			
+			topAgs.add(allAgs.get(i));
+			topEvs.add(allEvs.get(i));
+			topOrgs.add(allOrgs.get(i));
+			
+			def agli = 0
+			def evli = 0
+			def orgli = 0
+			
+			for (ServiceHour s: list){
+				if (s.commAg.name.equals(allAgs.get(i).name)){
+					agli += s.duration;
+				}
+				if (s.event.name.equals(allEvs.get(i).name)){
+					evli += s.duration;
+				}
+				if (s.campusOrg.name.equals(allOrgs.get(i).name)){
+					orgli += s.duration;
+				}
+			}
+			agHours.add(agli)
+			evHours.add(evli)
+			orgHours.add(orgli)
+			
+		}
+
+		render view:"semesterReport", model: [totalHours:totalHours ,constant:constant, topAgs:topAgs, topOrgs:topOrgs, topEvs:topEvs, agHours:agHours, evHours:evHours, orgHours:orgHours]
+
 	}
 	
 	def commOrgReport() {
