@@ -184,7 +184,7 @@
 				});
 
 		$("#deleteStudentsTable").DataTable();
-		$
+		
 
 	});
 </script>
