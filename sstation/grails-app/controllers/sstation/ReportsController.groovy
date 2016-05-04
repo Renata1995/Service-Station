@@ -1,5 +1,11 @@
 package sstation
 
+import grails.transaction.Transactional
+import java.security.MessageDigest
+import grails.plugin.springsecurity.annotation.Secured
+
+@Secured(['ROLE_ADMIN','ROLE_MODERATOR'])
+@Transactional(readOnly = false)
 class ReportsController {
 	def stationReportService
 	def constant = 5

@@ -9,24 +9,24 @@ import spock.lang.Specification
 @TestFor(ACGroupController)
 class ACGroupControllerSpec extends Specification {
 
-     void "test when successful save and card view shown"() {
+     void "test when successful save and save view shown"() {
 		
 		when:
 		def co=Mock(CampusOrg)
 		controller._saveOnCard(co)
 		
 		then:
-		view=="/ACGroup/index"
+		view=="/ACGroup/formSaved"
     }
 	
-	void "test when not saved successfully and card view will be shown"(){
+	void "test when not saved successfully and form view will be shown"(){
 		when:
 		def co=Mock(CampusOrg)
 		co.contactPhone="aaaa"
 		controller._saveOnCard(co)
 		
 		then:
-		view=="/ACGroup/index"
+		view=="/ACGroup/orgForm"
 		model.form==1
 		model.card==1
 	}
@@ -38,18 +38,18 @@ class ACGroupControllerSpec extends Specification {
 		controller._saveOnCard(co)
 		
 		then:
-		view=="/ACGroup/index"
+		view=="/ACGroup/orgForm"
 		model.form==1
 	}
 	
-	void "test when not saved successfully and table vie will be shown" (){
+	void "test when not saved successfully and save view will be shown" (){
 		when:
 		def co=Mock(CampusOrg)
 		co.contactEmail="aaaa"
 		controller._saveOnCard(co)
 		
 		then:
-		view=="/ACGroup/index"
+		view=="/ACGroup/formSaved"
 		model.form==1
 	}
 }

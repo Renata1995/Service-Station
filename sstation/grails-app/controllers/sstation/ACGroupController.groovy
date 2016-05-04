@@ -1,5 +1,10 @@
 package sstation
+import grails.transaction.Transactional
+import java.security.MessageDigest
+import grails.plugin.springsecurity.annotation.Secured
 
+@Secured(['ROLE_ADMIN','ROLE_MODERATOR'])
+@Transactional(readOnly = false)
 class ACGroupController {
 
 	/*
@@ -54,7 +59,7 @@ class ACGroupController {
 		}
 
 		org.save(flush:true,failOnError:true)
-		
+
 		render view:'formSaved',model:[card:1]
 	}
 	/**
@@ -72,7 +77,7 @@ class ACGroupController {
 			return
 		}
 		org.save(flush:true,failOnError:true)
-		
+
 		render view:'formSaved',model:[table:1]
 	}
 
