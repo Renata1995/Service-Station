@@ -8,9 +8,17 @@
 </head>
 <body>
 
+	<!-- Buttons on the top -->
+	<div class="titletop">
+		<h1 class="pagetitle">Upload Complete</h1>
+	</div>
+
 	<!-- Link to the profile or the service hour list of the current student -->
 	<div>
-		${added} students added, ${updated} students updated
+		${added}
+		students added,
+		${updated}
+		students updated
 	</div>
 	<div>
 
