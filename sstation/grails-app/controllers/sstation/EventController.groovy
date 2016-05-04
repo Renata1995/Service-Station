@@ -5,6 +5,13 @@ import sstation.CommAg;
 import sstation.Event;
 import sstation.ServiceHour;
 
+import grails.transaction.Transactional
+import java.security.MessageDigest
+import grails.plugin.springsecurity.annotation.Secured
+
+@Secured(['ROLE_ADMIN', 'ROLE_MODERATOR'])
+@Transactional(readOnly = false)
+
 class EventController {
 	/*
 	 * Methods about events
