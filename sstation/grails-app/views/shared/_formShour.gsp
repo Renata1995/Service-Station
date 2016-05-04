@@ -29,7 +29,7 @@
 	<label for="campusOrg"> Campus Organization: </label>
 
 	<g:hiddenField name="tableId_CamOrg" />
-	<g:textField name="selected_CamOrg" readonly="readonly" />
+	<g:textField name="selected_CamOrg" readonly="readonly" value="${shour?.campusOrg?.name}" />
 
 </div>
 
@@ -130,7 +130,7 @@
 	<label for="commAg"> Community Agency: </label>
 
 	<g:hiddenField name="tableId_CommAg" />
-	<g:textField name="selected_CommAg" readonly="readonly" />
+	<g:textField name="selected_CommAg" readonly="readonly" value="${shour?.commAg.name}" />
 
 </div>
 

@@ -11,7 +11,7 @@ import grails.transaction.Transactional
 import java.security.MessageDigest
 import grails.plugin.springsecurity.annotation.Secured
 
-@Secured(['ROLE_ADMIN', 'ROLE_STUDENT'])
+@Secured(['ROLE_ADMIN', 'ROLE_MODERATOR'])
 @Transactional(readOnly = false)
 
 class HourController {
@@ -24,7 +24,7 @@ class HourController {
 	 * @return
 	 */
 
-	@Secured(['ROLE_ADMIN'])
+	
 	def overall(){
 		def list=ServiceHour.list()
 		render view:"overall",model:[list:list]
