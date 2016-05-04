@@ -29,6 +29,20 @@
 				$(this).css("cursor","pointer");
 			}
 		});
+		$("#tableCheckBox").on({
+			click:  function(){
+				return false;
+				}
+		});
+
+		$(".status").on({
+			click:  function(){
+
+			
+				
+				return false;
+				}
+		});
 	});
   </script>
 </html>
