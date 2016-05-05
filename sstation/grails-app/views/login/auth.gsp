@@ -28,7 +28,7 @@ body{
 	background-size:cover;
 }
 .panel{
-	margin: 100px 650px; 
+	margin: 100px 70px; 
 	width: 40%; 
 	padding-bottom:20px;
 	box-shadow: 0 1px 2px rgba(0, 0, 0, .2);
@@ -44,12 +44,23 @@ label.loginLabel{
 	text-align:left;
 }
 
+.panelLogo{
+	margin: 
+
+}
+
 </style>
 </head>
 
 
 <body>
-	<div id="indexDiv">
+	<div id ="container">
+	
+	<div id = "left" style = "float:left;width:50%; margin: 170px 100px; width: 40%; padding-bottom:20px;">
+		<asset:image src = "ServiceStationLogo.jpg" style = "width: 800px"/>
+	</div>
+	
+	<div id="indexDiv" style="float:right; width:50%;">
 		
 		<div class="panel panel-danger">
 			<ul class="nav nav-tabs">
@@ -126,9 +137,9 @@ label.loginLabel{
 			</form>	<!-- Log in Form -->
 				
 		</div>
+</div>
+</div>
 
-	</div>
-	
 	<script type='text/javascript'>
     <!--
     (function() {

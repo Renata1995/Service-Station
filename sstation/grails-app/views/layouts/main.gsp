@@ -59,8 +59,8 @@
 
 				<!-- Brand and toggle get grouped for better mobile display -->
 				<div class="navbar-header" style="font-size: 20px; color: white;">
-					<asset:image src="ACIcon.png" id="icon" style="width:45px" />
-					Austin College Service Station
+					<asset:image src="ServiceStationLogoCorner.jpeg" id="icon" style="width:200px" />
+				Austin College Service Station
 				</div>
 
 				<!-- Collect the nav links, forms, and other content for toggling -->
