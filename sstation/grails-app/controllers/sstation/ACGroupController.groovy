@@ -45,16 +45,14 @@ class ACGroupController {
 	}
 	/**
 	 * Save or update a org and direct to the saved page
-	 * it needs to have an intermediary page so that on refresh
-	 * it doesn't duplicate things
-	 * don't mess with these
+	 * from there it auto redirects to the index
 	 * @param org
 	 * @return
 	 */
 	def _saveOnCard(CampusOrg org){
 		org.properties=params
 		if (!org.save(flush:true)) {
-			render view:'index', model:[org:org,form:1,card:1]
+			render view:'orgForm', model:[org:org,form:1,card:1]
 			return
 		}
 
@@ -64,16 +62,14 @@ class ACGroupController {
 	}
 	/**
 	 * Save or update an org and direct to the saved page
-	 * it needs to have an intermediary page so that on refresh
-	 * it doesn't duplicate the org when you save
-	 * don't mess with these
+	 * from there it auto redirects to the index
 	 * @param org
 	 * @return
 	 */
 	def _saveOnTable(CampusOrg org){
 		org.properties=params
 		if(!org.save(flush:true)){
-			render view:'agForm', model:[org:org,form:1,table:1]
+			render view:'orgForm', model:[org:org,form:1,table:1]
 			return
 		}
 		org.save(flush:true,failOnError:true)
@@ -81,15 +77,7 @@ class ACGroupController {
 		render view:'formSaved',model:[table:1]
 	}
 
-	def returnToTable(){
-		def list=CommAg.list()
-		render view:'index',model:[list:list,table:1]
-	}
 
-	def returnToCard(){
-		def list=CommAg.list()
-		render view:'index',model:[list:list,card:1]
-	}
 
 	/**
 	 * Delete an org and direct to the card view
