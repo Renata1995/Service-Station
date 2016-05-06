@@ -53,14 +53,16 @@
 
 		<!-- Top Bar -->
 		<nav class="navbar navbar-default navbar-fixed-top" role="navigation"
-			style="width: 100%; height: 9%; border-radius: 0px"
+			style="width: 100%; border-radius: 0px"
 			id="horizontal-nav">
-			<div class="container-fluid" style="height: 9%">
+			<div class="container-fluid" style="padding-left:0px">
 
 				<!-- Brand and toggle get grouped for better mobile display -->
 				<div class="navbar-header" style="font-size: 20px; color: white;">
-					<asset:image src="ServiceStationLogoCorner.jpeg" id="icon" style="width:200px" />
+					<asset:image src="ServiceStationLogo150x51.jpeg" id="icon" />
+				<span>
 				Austin College Service Station
+				</span>
 				</div>
 
 				<!-- Collect the nav links, forms, and other content for toggling -->
@@ -100,7 +102,7 @@
 
 		<!-- Side Nav Bar -->
 		<!-- This nav bar contains five remoteLink -->
-		<nav class="nav-pills nav-stacked" id="sideBar">
+		<nav class="nav-pills nav-stacked" id="sideBar" style="width:151px;">
 			<div class="sidebar-collapse menu-collapse" style="height: 100%">
 				<ul class="nav navLink" id="main-menu" style="height: 100%">
 					<li><g:link controller="home" params="[domain:1]"

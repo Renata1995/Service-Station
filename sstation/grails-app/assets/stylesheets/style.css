@@ -7,8 +7,9 @@
 	/*height:100%;*/
 	position:fixed;
 	width:11%;
-	height: 94%;
+	height: 100%;
 	margin-top: -20px;
+	padding-bottom: 20px;
 }
 ul.navLink>li{
 	font-size:18px;

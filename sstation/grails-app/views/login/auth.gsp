@@ -29,7 +29,7 @@ body{
 }
 .panel{
 	margin: 100px 70px; 
-	width: 40%; 
+	width: 400px; 
 	padding-bottom:20px;
 	box-shadow: 0 1px 2px rgba(0, 0, 0, .2);
 }
@@ -56,46 +56,21 @@ label.loginLabel{
 <body>
 	<div id ="container">
 	
-	<div id = "left" style = "float:left;width:50%; margin: 170px 100px; width: 40%; padding-bottom:20px;">
-		<asset:image src = "ServiceStationLogo.jpg" style = "width: 800px"/>
-	</div>
-	
-	<div id="indexDiv" style="float:right; width:50%;">
+
+	<div id="indexDiv">
 		
 		<div class="panel panel-danger">
-			<ul class="nav nav-tabs">
-			<li class="tab1" role="presentation" ><a>Log In</a></li>
-		
-			</ul>
+			
+			<asset:image src = "ServiceStationLogo.jpg" style = "width: 400px"/>	
 			
 			<g:if test='${flash.message}'>
             	<div class='login_message'>${flash.message}</div>
         	</g:if>
 			
-			<div style="padding-left:20">
-			<br/>
-			<b>userid : passwd</b><br/>
-			admin : admin_secret<br/>
-			moderator : moderator_secret<br/>
-			student: student_secret<br/>
-			<br/>
-			</div>
+
 			
 			<!-- Log in form -->
 			<form action="${createLink(uri: '/j_spring_security_check')}" method="POST" autocomplete="off" class="indexForm form-horizontal" id="logInForm">
-
-				<!-- Domin Selection -->
-				<div class="form-group">
-					<label for="domain" class="loginLabel col-md-3 control-label"
-						style="text-align: left;">Domain</label>
-					<div class="col-md-7">
-						<select class="form-control" name="domain" value="">
-							<option value="1">Admin</option>
-							<option value="2">Student</option>
-						</select>
-					</div>
-				</div>
-
 
 				<!-- Email Input -->
 				<div class="form-group">
@@ -139,6 +114,15 @@ label.loginLabel{
 		</div>
 </div>
 </div>
+
+			<div style="padding-left:20">
+			<br/>
+			<b>userid : passwd</b><br/>
+			admin : admin_secret<br/>
+			moderator : moderator_secret<br/>
+			student: student_secret<br/>
+			<br/>
+			</div>
 
 	<script type='text/javascript'>
     <!--
