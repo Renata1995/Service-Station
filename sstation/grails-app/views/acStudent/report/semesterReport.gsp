@@ -1,4 +1,3 @@
-<%@ page contentType="text/html;charset=UTF-8" %>
 <html>
 <head>
 <style>
@@ -50,7 +49,7 @@
 				<th>Event</th>
 				<th>Campus Organization</th>
 				<th>Community Agency</th>
-				<th>Start Time</th>
+				<th>Date/Start Time</th>
 				<th>Duration</th>
 			</tr>
 		</thead>
