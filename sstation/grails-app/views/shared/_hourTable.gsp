@@ -15,7 +15,7 @@
 	<tbody>
 		<g:each in="${list}" status="i" var="s">
 			<tr class="${(i % 2) == 0 ? 'even' : 'odd'} shourRow" id="${s.id}">
-				<td><g:checkBox name="checkstudent" value="${s.id}"
+				<td id="tableCheckBox"><g:checkBox name="checkstudent" value="${s.id}"
 						checked="false" /></td>
 
 

@@ -19,6 +19,8 @@
 		<g:render template="student/form" />
 		<g:actionSubmit class="btn btn-default" action="saveStudent"
 			value="Save" />
+		<g:actionSubmit class="btn btn-default" action="studentList"
+				value="Cancel"/>
 	</g:form>
 </div>
 

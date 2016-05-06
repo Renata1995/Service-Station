@@ -71,8 +71,10 @@
 
 	<g:actionSubmit class="btn btn-default"  value="Save"
 		controller="event" action="_saveEvent" />
-	<g:remoteLink class="btn btn-default" action="eventMain"
-		controller="event" >Cancel</g:remoteLink>
+
+	<g:actionSubmit class="btn btn-default" action="eventMain"
+				value="Cancel"/>
+
 </form>
 
 </html>

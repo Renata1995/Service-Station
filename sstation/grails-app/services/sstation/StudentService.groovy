@@ -105,13 +105,15 @@ class StudentService {
 		int numberAdded = 0
 		int numberUpdated = 0
 		inStream.toCsvReader(['charset':'UTF-8']).eachLine { tokens ->
+			def allStudents = AcStudent.list()
+			def ids = allStudents.collect{it.acid}
 			if (i > 0) {
 			
-				AcStudent s = AcStudent.findByAcid(tokens[0])
-				//consider changing to pull list of all IDs once
+				def s
 				
-				if (s) //student exists
+				if (ids.contains(tokens[0])) //student exists
 				{
+					s = AcStudent.findByAcid(tokens[0])
 					s.firstname = tokens[2]
 					s.lastname = tokens[3]
 					s.status = tokens[4]
