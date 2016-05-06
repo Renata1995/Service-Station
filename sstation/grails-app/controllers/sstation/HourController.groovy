@@ -23,6 +23,9 @@ class HourController {
 	 * Main Page--Summary
 	 * @return
 	 */
+	def index(){
+		overall()
+	}
 
 	
 	def overall(){
