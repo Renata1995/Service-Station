@@ -130,7 +130,7 @@
 	<label for="commAg"> Community Agency: </label>
 
 	<g:hiddenField name="tableId_CommAg" />
-	<g:textField name="selected_CommAg" readonly="readonly" value="${shour?.commAg.name}" />
+	<g:textField name="selected_CommAg" readonly="readonly" value="${shour?.commAg?.name}" />
 
 </div>
 
