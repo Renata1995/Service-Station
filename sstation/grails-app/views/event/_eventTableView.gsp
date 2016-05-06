@@ -91,12 +91,21 @@
 		
 		} 
 	}
+
+	function btnRemove() {
+		$("#otable").DataTable({
+			"columnDefs" : [ {
+				"orderable" : false,
+				"targets" : [ 0, 6 ]
+			} ]
+		});
+	});
+
   $(document).ready(function(){
 	    $('#table').DataTable();
 	    $("#deleteAgOnTable").mouseenter(function(){
 	    	$("#deleteAgOnTable").css("cursor","pointer");
-	    	   });
-	        
+	    	   });   
 	});
   </script>
 </body>

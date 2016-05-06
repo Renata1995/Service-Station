@@ -80,7 +80,7 @@
 	</table>
 
 	<div class="row col-md-offset-6">
-		<div class="btn btn-default" id="deselectMode">Cancel</div>
+		<div class="btn btn-default" id="deselectMode">Close</div>
 
 	</div>
 
