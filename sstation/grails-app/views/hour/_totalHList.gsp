@@ -29,6 +29,36 @@
 				$(this).css("cursor","pointer");
 			}
 		});
+
+		$("#mainCheckBox").on({
+			click:  function(){
+
+				var ch = $("#mainCheckBox").checked;
+
+				if(ch){
+					$("input[name='checkStudent']").prop('checked', true);					
+				}else{
+					$("input[name='checkStudent']").prop('checked', false);
+				}
+							
+				return false;
+				}
+		});
+
+		function ooposite(element){
+			var boo = false;
+
+			var c = $(element)prop('checked');
+
+			if(c){
+				boo = false;
+			}else{
+				
+			}
+			
+			return boo;
+		}
+		
 		$("#tableCheckBox").on({
 			click:  function(){
 				return false;
