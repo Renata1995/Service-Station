@@ -51,7 +51,7 @@
 							value="${s.id}_${s.acid}_${s.firstname} ${s.lastname}"
 							checked="false" /></td>
 
-					<td class="studentid" id="${s.acid}">
+					<td class="studentid" id="${s.id}">
 						${s.acid}
 					</td>
 
@@ -141,9 +141,8 @@
 			//var rows = $('#table').DataTable().rows;
 			//window.alert(row.length);
 			var acId = $(this).attr("id");
-			window.alert(acId);
 			var baseLink = '<g:createLink action="student" controller="acStudent" id="ID"/>';
-			window.location = baseLink.replace("ID", "1");
+			window.location = baseLink.replace("ID", acId);
 
 		});
 
