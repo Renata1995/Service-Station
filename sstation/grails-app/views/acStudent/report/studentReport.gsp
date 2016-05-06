@@ -36,8 +36,9 @@
 
 	<!-- KPI -->
 	<div class="report">
+		<p align = "right">
 		<b>Service Hours Total: </b>
-		${totalSH}hr
+		${totalSH}hr</p>
 	</div>
 
 	<!-- Service Hours List -->
@@ -45,10 +46,15 @@
 		<table id="htable" class="table" style="width: 100%">
 			<thead>
 				<tr>
+					<th>Service Event</th>
+					<th>Campus Group</th>
+					<th>Community Organization</th>
+					<td>Date/Start Time</td>
+				<tr>
 					<th>Event</th>
 					<th>Campus Organization</th>
 					<th>Community Agency</th>
-					<th>Start Time</th>
+					<th>Date/Start Time</th>
 					<th>Duration</th>
 				</tr>
 			</thead>
@@ -82,5 +88,13 @@
 			</tbody>
 		</table>
 	</div>
+	
+	<!-- KPI -->
+	<div class="report">
+		<p align = "right">
+		<b>Service Hours Total: </b>
+		${totalSH}hr</p>
+	</div>
+	
 </div>
 </html>

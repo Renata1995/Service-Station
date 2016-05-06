@@ -33,10 +33,10 @@
 					<div class="list-group">
 						<div class="list-group-item">
 							<h4 class="list-group-item-heading">
-								<b>Report by AC Group</b>
+								<b>Report by Campus Group</b>
 							</h4>
 							<p class="list-group-item-text">
-								Generates an aggregate report of hours organized by AC groups.
+								Generates an aggregate report of service hours organized by Campus groups.
 							</p>
 							<g:form controller = "Reports">
 								<select name = campusOrgComboBox>
@@ -55,10 +55,10 @@
 						
 						<div class="list-group-item">
 							<h4 class="list-group-item-heading">
-								<b>Report by Event</b>
+								<b>Report by Service Event</b>
 							</h4>
 							<p class="list-group-item-text">
-								Generates an aggregate report of hours organized by service events.
+								Generates an aggregate report of service hours organized by service events.
 							</p>
 							<g:link controller="reports" action="eventSelection">Generate Report</g:link>
 							<div class="cornerButtons listButtons"></div>
@@ -69,7 +69,7 @@
 								<b>Report by Semester</b>
 							</h4>
 							<p class="list-group-item-text">
-								Generates an aggregate report of hours organized by year/semester.
+								Generates an aggregate report of service hours organized by year/semester.
 							</p>
 							<g:form controller = "Reports">
 								<select name = yearComboBox>
@@ -93,10 +93,10 @@
 						
 						<div class="list-group-item">
 							<h4 class="list-group-item-heading">
-								<b>Report by Organization</b>
+								<b>Report by Community Organization</b>
 							</h4>
 							<p class="list-group-item-text">
-								Generates an aggregate report of hours organized by community organizations.
+								Generates an aggregate report of service hours organized by community organizations.
 							</p>
 							<g:link controller="reports" action="commOrgReport">Generate Report</g:link>
 								<div class="cornerButtons listButtons"></div>
@@ -107,7 +107,7 @@
 								<b>Report by Year</b>
 							</h4>
 							<p class="list-group-item-text">
-								Generates an aggregate report of hours organized by Years.
+								Generates an aggregate report of service hours organized by Years.
 							</p>
 							<g:link controller="reports" action="yearReport">Generate Report</g:link>
 							<div class="cornerButtons listButtons"></div>
@@ -118,7 +118,7 @@
 								<b>Summary Report</b>
 							</h4>
 							<p class="list-group-item-text">
-								Generates an aggregate summary report of hours.
+								Generates an aggregate summary report of service hours.
 							</p>
 							<g:link controller="reports" action="summaryReport">Generate Report</g:link>
 							<div class="cornerButtons listButtons"></div>

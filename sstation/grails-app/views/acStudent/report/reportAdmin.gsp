@@ -27,7 +27,7 @@
 					<h4 class="list-group-item-heading">
 						<b>General Report</b>
 					</h4>
-					<p class="list-group-item-text">General a general report of hours.</p>
+					<p class="list-group-item-text">General a general report of service hours.</p>
 					<g:link controller="acStudent" id="${student.id}" action="studentReport">Generate Report</g:link>
 					<div class="cornerButtons listButtons"></div>
 				</div>
@@ -38,7 +38,7 @@
 					<h4 class="list-group-item-heading">
 						<b>Report by Semester</b>
 					</h4>
-					<p class="list-group-item-text">Generate a report of hours organized by semesters</p>
+					<p class="list-group-item-text">Generate a report of service hours organized by semesters</p>
 					<g:link controller="acStudent" id="${student.id}" action="semesterReport">Generate Report</g:link>
 					<div class="cornerButtons listButtons"></div>
 				</div>
@@ -47,9 +47,9 @@
 			<div class="list-group">
 				<div class="list-group-item">
 					<h4 class="list-group-item-heading">
-						<b>Report by AC Group</b>
+						<b>Report by Campus Group</b>
 					</h4>
-					<p class="list-group-item-text">Generates a report of hours organized by AC groups.</p>
+					<p class="list-group-item-text">Generates a report of service hours organized by Campus groups.</p>
 					<g:link controller="acStudent" id="${student.id}" action="orgReport">Generate Report</g:link>
 					<div class="cornerButtons listButtons"></div>
 				</div>

@@ -1,4 +1,3 @@
-<%@ page contentType="text/html;charset=UTF-8" %>
 <html>
 <head>
 <style>
@@ -46,11 +45,19 @@
 	<div>
 	<table id="htable" class="table" style="border:none;width: 100%">
 		<thead>
+<<<<<<< HEAD
+			<tr>
+				<th>Service Event</th>
+				<th>Campus Group</th>
+				<th>Community Organization</th>
+				<td>Date/Start Time</td>
+=======
 			<tr>
 				<th>Event</th>
 				<th>Campus Organization</th>
 				<th>Community Agency</th>
-				<th>Start Time</th>
+				<th>Date/Start Time</th>
+>>>>>>> 8603a618c45b82320fe17df342e5d8c51e663572
 				<th>Duration</th>
 			</tr>
 		</thead>

@@ -9,7 +9,7 @@
 			<g:link controller="ACGroup" action="_createOrg" update="main">
 				<span style="color: #FFDE97" class="glyphicon glyphicon-plus"
 					aria-hidden="true"></span>
-				<b> Add Campus Organization</b>
+				<b> Add Campus Group</b>
 			</g:link>
 		</div>
 	</div>
@@ -56,27 +56,49 @@
 					<td class="aoTableIcon"><g:remoteLink controller="ACGroup"
 							action="_editOrg" update="orgMainType" id="${s.id}">
 							<span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
-						</g:remoteLink> <g:remoteLink controller="ACGroup" id="${s.id}"
-							action="_deleteOnTable" update="orgMainType">
-							<span class="glyphicon glyphicon-trash" style="padding-top: 10px"
-								aria-hidden="true"></span>
-						</g:remoteLink></td>
-
-
-
+						</g:remoteLink> <a onclick="deleteConfirm(${s.id})" id="_deleteOnTable"
+						class="orgAgMainDelete aoListIcon"> <span
+							class="glyphicon glyphicon-trash" style="padding-left: 20px"
+							aria-hidden="true"></span> <b>Delete</b>
+					</a>
 				</tr>
 			</g:each>
 		</tbody>
 	</table>
 	<script>
-		$(function() {
-			$("#otable").DataTable({
-				"columnDefs" : [ {
-					"orderable" : false,
-					"targets" : [ 0, 6 ]
-				} ]
-			});
+	$(function() {
+		$("#otable").DataTable({
+			"columnDefs" : [ {
+				"orderable" : false,
+				"targets" : [ 0, 6 ]
+			} ]
 		});
+
+		
+
+
+		function deleteConfirm(id){
+			result = confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');
+			if (result){
+				jQuery.ajax({
+				type:'POST', url:'/sstation/ACGroup/_deleteOnTable/'+id,
+				success:function(data,textStatus){
+					jQuery('#orgMainType').html(data); // this is the broken bit
+					// it willdelete it but not update to show it on page
+				},
+				error:function(XMLHttpRequest,textStatus,errorThrown){}});
+			
+			} 
+		}
+
+		
+	  $(document).ready(function(){
+		    $("#deleteAgOnTable").mouseenter(function(){
+		    	$("#deleteAgOnTable").css("cursor","pointer");
+		    	   });
+		        
+		});
+
 	</script>
 </body>
 </html>
