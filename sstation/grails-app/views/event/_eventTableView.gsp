@@ -74,7 +74,8 @@
 								action="_editEvent" update="eventMain" id="${event.id}">
 								<span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
 
-							</g:remoteLink> <a onclick="deleteConfirm(${event.id})" id="_deleteEvent"
+							</g:remoteLink> <a onclick="deleteConfirm(${event.id})" id="_deleteEventTable"
+
 							class="orgAgMainDelete aoListIcon"> <span
 								class="glyphicon glyphicon-trash" aria-hidden="true"></span>
 
@@ -101,7 +102,7 @@
 		result = confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');
 		if (result){
 			jQuery.ajax({
-			type:'POST', url:'/sstation/event/_deleteEvent/'+id,
+			type:'POST', url:'/sstation/event/_deleteEventTable/'+id,
 			success:function(data,textStatus){
 				jQuery('#eventMain').html(data); // this is the broken bit
 				// it willdelete it but not update to show it on page

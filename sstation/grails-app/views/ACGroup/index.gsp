@@ -3,13 +3,13 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
 <meta name="layout" content="main" />
-<title>AC Group Main Page</title>
+<title>Campus Group Main Page</title>
 </head>
 <body>
 	<div class="body">
 
 		<div class="titletop">
-			<h1 class="pagetitle">Campus Organizations Management(AC Groups)</h1>
+			<h1 class="pagetitle">Campus Groups Management</h1>
 			<div class="cornerButtons">
 			<g:remoteLink
 					controller="ACGroup" action="_orgCardMain" update="orgMainType">
