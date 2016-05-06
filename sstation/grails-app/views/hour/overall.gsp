@@ -10,7 +10,7 @@
 	<!-- Buttons on the top -->
 	<div class="titletop">
 		<h1 class="pagetitle">Service Hours Management</h1>
-		<div class="cornerButtons"></div>
+		<div class="cornerButtons"></div>"wrapper"
 	</div>
 	<div>
 
@@ -23,6 +23,10 @@
 			<li class="tab2" role="presentation"><g:remoteLink
 					controller="hour" action="_hourkpi" update="totalhour">Analysis</g:remoteLink></li>
 		</ul>
+	</div>
+	
+	<div id="shourMainType">
+		
 	</div>
 
 	<div id="totalhour">

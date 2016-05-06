@@ -193,9 +193,10 @@ class HourController {
 	 * @return
 	 */
 	def deleteShour(ServiceHour sh){
+		println "delete"
 		sh.delete (flush:true,failOnError:true)
 		def list=ServiceHour.list()
-		render view:"overall",model:[list:list]
+		render view:"_totalHList",model:[list:list]
 		
 	}
 
