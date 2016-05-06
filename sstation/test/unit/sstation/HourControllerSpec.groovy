@@ -212,7 +212,7 @@ class HourControllerSpec extends Specification {
 		controller.deleteShour(sh)
 		
 		then:"0 ServiceHours should be in the list"
-		view=="/hour/overall"
+		view=="/hour/_totalHList"
 		model.list.size()==0
 	}
 	
