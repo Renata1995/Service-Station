@@ -21,7 +21,7 @@
 	
 	<div class="reportTitle">
 	Service Station Service Hours Report Summary<br>
-	<h4>Total Hours: ${totalHours}</h4>
+	<h4>Total Service Hours: ${totalHours}</h4>
 	</div>
 	
 	<div class="report">
@@ -32,9 +32,9 @@
 		<table id="stationYeartable" class="table" style="width: 100%">
 			<thead>
 				<tr>
-					<th>AC Groups</th>
-					<th>Events</th>
-					<th>Community Agencies</th>
+					<th>Campus Groups</th>
+					<th>Service Events</th>
+					<th>Community Organizations</th>
 				
 				</tr>
 			</thead>

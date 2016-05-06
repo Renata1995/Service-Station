@@ -46,9 +46,9 @@
 			<thead>
 				<tr style="background-color: #C53C3E; border: none">
 					<td><input type="checkbox"></td>
-					<td>Event</td>
+					<td>Service Event</td>
 					<td>Campus Group</td>
-					<td>Community Agency</td>
+					<td>Community Organization</td>
 					<td>Start Time</td>
 					<td>Duration</td>
 				</tr>

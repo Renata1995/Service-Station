@@ -3,12 +3,12 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
 <meta name="layout" content="main" />
-<title>Event Main Page</title>
+<title>Service Event Main Page</title>
 </head>
 <body>
 	<div class="body">
 		<div class="titletop">
-			<h1 class="pagetitle">Please Select an Event to Report On</h1>
+			<h1 class="pagetitle">Please Select an Service Event to Report On</h1>
 			<div class="cornerButtons"></div>
 			<div class="cornerButtons"></div>
 		</div>

@@ -26,7 +26,7 @@
 
 <div
 	class="fieldcontain ${hasErrors(bean: shour, field: 'campusOrg', 'error')} required">
-	<label for="campusOrg"> Campus Organization: </label>
+	<label for="campusOrg"> Campus Group: </label>
 
 	<g:hiddenField name="tableId_CamOrg" />
 	<g:textField name="selected_CamOrg" readonly="readonly" value="${shour?.campusOrg?.name}" />
@@ -35,7 +35,7 @@
 
 <div class="modal" id="modal2_CamOrg" style="display: none;">
 
-	<h1>Select Campus Organization</h1>
+	<h1>Select Campus Group</h1>
 
 	<br>
 
@@ -65,7 +65,7 @@
 	</table>
 
 	<br>
-	<p style="text-align:center"> Current Selected Campus Organization: </p>
+	<p style="text-align:center"> Current Selected Campus Group: </p>
 	<p id="show_CamOrg" style="text-align:center"></p>
 	<br>	<br>
 </div>
@@ -127,7 +127,7 @@
 
 <div
 	class="fieldcontain ${hasErrors(bean: shour, field: 'commAg', 'error')} required">
-	<label for="commAg"> Community Agency: </label>
+	<label for="commAg"> Community Organization: </label>
 
 	<g:hiddenField name="tableId_CommAg" />
 	<g:textField name="selected_CommAg" readonly="readonly" value="${shour?.commAg.name}" />
@@ -136,7 +136,7 @@
 
 <div class="modal" id="modal2_CommAg" style="display: none;">
 
-	<h1>Select Community Agency</h1>
+	<h1>Select Community Organization</h1>
 
 	<br>
 
@@ -166,7 +166,7 @@
 	</table>
 
 	<br>
-	<p style="text-align:center"> Current Selected Community Agency: </p>
+	<p style="text-align:center"> Current Selected Community Organization: </p>
 	<p id="show_CommAg" style="text-align:center"></p>
 	<br>	<br>
 </div>

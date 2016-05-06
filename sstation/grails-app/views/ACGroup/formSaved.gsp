@@ -10,12 +10,12 @@
 	<h1>Your Campus Group Has Been Saved</h1>
 		<g:if test='${table==1 }'>
 			<h1>
-				<g:link controller='ACGroup' action='returnToTable'>Back to Campus Organizations</g:link>
+				<g:link controller='ACGroup' action='returnToTable'>Back to Campus Groups</g:link>
 			</h1>
 		</g:if>
 		<g:else>
 			<h1>
-				<g:link controller='ACGroup' action='returnToCard'>Back to Campus Organizations</g:link>
+				<g:link controller='ACGroup' action='returnToCard'>Back to Campus Groups</g:link>
 			</h1>
 		</g:else>
 	</div>

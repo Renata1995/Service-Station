@@ -34,8 +34,8 @@
 					<th>Year</th>
 					<th>Total Service Hours (hr)</th>
 					<th>Average by Student (hr)</th>
-					<th>Average by Event (hr)</th>
-					<th>Average by AC Groups (hr)</th>
+					<th>Average by Service Event (hr)</th>
+					<th>Average by Campus Groups (hr)</th>
 					<th>Average by Community Organizations (hr)</th>
 					<th></th>
 				</tr>
