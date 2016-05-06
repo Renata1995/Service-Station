@@ -49,7 +49,7 @@
 					<td>Event</td>
 					<td>Campus Organization</td>
 					<td>Community Agency</td>
-					<td>Start Time</td>
+					<td>Date/Start Time</td>
 					<td>Duration</td>
 				</tr>
 			</thead>
