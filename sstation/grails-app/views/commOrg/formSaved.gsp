@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="refresh" content="0; url = index" />
 <meta name="layout" content="main" />
-<title>Community Agency Management</title>
+<title>Community Organization Management</title>
 </head>
 <body>
 	<div class="body">

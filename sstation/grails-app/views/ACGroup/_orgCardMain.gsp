@@ -34,7 +34,7 @@
 					<div class="list-group-item more">
 						<g:link class="aoListIcon" controller="ACGroup"
 							action="_createOrg" update="main" params="[orgAgMain:1]">
-							<span class="glyphicon glyphicon-plus" aria-hidden="true"></span> New Campus Organization</g:link>
+							<span class="glyphicon glyphicon-plus" aria-hidden="true"></span> New Campus Group</g:link>
 					</div>
 					<g:each in="${list}" status="i" var="org">
 
@@ -70,12 +70,7 @@
 									aria-hidden="true"></span> <b>Delete</b>
 								</a>
 							</div>
-							<!-- list-button <g:remoteLink class="orgAgMainDelete aoListIcon" controller="ACGroup"
-										action="_deleteOnCard" id="{org.id}">
-										<span class="glyphicon glyphicon-trash"
-											style="padding-left: 20px" aria-hidden="true"></span>
-										<b>Delete</b>
-									</g:remoteLink>-->
+							
 
 						</div>
 						<!-- list-group-item -->

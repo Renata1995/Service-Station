@@ -2,7 +2,7 @@
 <html>
 <head>
 
-<title>Station Report by Event</title>
+<title>Station Report by Service Event</title>
 <style>
 .table>tbody>tr>td {
 	border: none;
@@ -19,7 +19,7 @@
 	<div class="mainback">
 
 		<div class="reportTitle">Service Station Service Hours Report by
-			Event</div>
+			Service Event</div>
 
 		<div class="report"></div>
 
@@ -28,10 +28,10 @@
 			<table id="stationEventTable" class="table" style="width: 100%">
 				<thead>
 					<tr>
-						<th>Event Name</th>
+						<th>Service Event Name</th>
 						<th>Total Service Hours (hr)</th>
 						<th>Average by Student (hr)</th>
-						<th>Average by AC Groups (hr)</th>
+						<th>Average by Campus Groups (hr)</th>
 						<th>Average by Community Organizations (hr)</th>
 						<th></th>
 					</tr>

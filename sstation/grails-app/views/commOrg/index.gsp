@@ -3,12 +3,12 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
 <meta name="layout" content="main" />
-<title>Community Agency Main Page</title>
+<title>Community Organization Main Page</title>
 </head>
 <body>
 	<div class="body">
 		<div class="titletop">
-			<h1 class="pagetitle">Community Agency Management</h1>
+			<h1 class="pagetitle">Community Organization Management</h1>
 			<div class="cornerButtons"></div><div class="cornerButtons">
 			<g:remoteLink
 					controller="commOrg" action="_agCard" update="agMain">

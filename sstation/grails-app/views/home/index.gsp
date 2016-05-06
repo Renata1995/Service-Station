@@ -58,15 +58,15 @@ div.col-md-7 {
 
 		<div class="col-md-7" id="homeTable">
 			<div id="homeTableName" class="formHeading">
-				<g:link action="pending" controller="hour">Pending Hours</g:link>
+				<g:link action="pending" controller="hour">Pending Service Hours</g:link>
 			</div>
 			<table id="homePendingTable" class="table">
 				<thead>
 					<tr id="homeTableHead">
 						<th>Student</th>
 						<th>AC ID</th>
-						<th>Event</th>
-						<th>Organization</th>
+						<th>Service Event</th>
+						<th>Community Organization</th>
 						<th>Duration</th>
 						<th>Status</th>
 					</tr>

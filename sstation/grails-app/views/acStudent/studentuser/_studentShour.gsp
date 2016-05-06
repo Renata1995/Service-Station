@@ -26,7 +26,7 @@
 			
 				<g:if test="${shour?.commOrg}">
 				<li class="fieldcontain">
-					Organization: ${shour.commOrg}					
+					Community Organization: ${shour.commOrg}					
 				</li>
 				</g:if>
 				

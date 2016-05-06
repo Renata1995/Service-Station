@@ -2,9 +2,9 @@
 		<table id="stationYearDetailstable" style="width: 100%">
 			<thead>
 				<tr>
-					<th>Event</th>
-					<th>Campus Organization</th>
-					<th>Community Agency</th>
+					<th>Service Event</th>
+					<th>Campus Group</th>
+					<th>Community Organization</th>
 					<th>Start Time</th>
 					<th>Duration</th>
 				</tr>

@@ -118,15 +118,15 @@
 
 					<li><g:link controller="event" action="eventMain">
 							<span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>
-							<br />Events</g:link></li>
+							<br />Service Events</g:link></li>
 
 					<li><g:link controller="ACGroup" action="index">
 							<span class="glyphicon glyphicon-pawn" aria-hidden="true"></span>
-							<br />AC Group</g:link></li>
+							<br />Campus Groups</g:link></li>
 
 					<li><g:link controller="CommOrg" action="index">
 							<span class="glyphicon glyphicon-tower" aria-hidden="true"></span>
-							<br />Organizations</g:link></li>
+							<br />Community Organizations</g:link></li>
 					<li><g:link controller="Reports" action="index">
 							<span class="glyphicon glyphicon-tasks" aria-hidden="true"></span>
 							<br />Station Reports</g:link></li>
@@ -141,7 +141,7 @@
 				<sec:ifAnyGranted roles="ROLE_MODERATOR">
 					<li><g:link controller="acStudent" action="home" id="1">
 							<span class="glyphicon glyphicon-user" aria-hidden="true"></span>
-							<br />My Hours</g:link></li>
+							<br />My Service Hours</g:link></li>
 				</sec:ifAnyGranted>
 				
 				</ul>
