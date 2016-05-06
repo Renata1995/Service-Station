@@ -9,7 +9,7 @@
 			<g:link controller="ACGroup" action="_createOrg" update="main">
 				<span style="color: #FFDE97" class="glyphicon glyphicon-plus"
 					aria-hidden="true"></span>
-				<b> Add Campus Organization</b>
+				<b> Add Campus Group</b>
 			</g:link>
 		</div>
 	</div>

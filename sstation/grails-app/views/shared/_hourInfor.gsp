@@ -18,12 +18,12 @@
 			</g:if>
 
 			<g:if test="${shour?.campusOrg?.name}">
-				<li class="fieldcontain"><b>Campus Organization: </b> ${shour.campusOrg?.name}
+				<li class="fieldcontain"><b>Campus Group: </b> ${shour.campusOrg?.name}
 				</li>
 			</g:if>
 			
 			<g:if test="${shour?.commAg}">
-				<li class="fieldcontain"><b>Community Agency: </b>${shour.commAg.name}
+				<li class="fieldcontain"><b>Community Organization: </b>${shour.commAg.name}
 				</li>
 			</g:if>
 

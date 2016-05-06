@@ -36,7 +36,7 @@ div.grayBar {
 			<g:remoteLink controller="event" action="_createEvent"
 				update="eventMain">
 				<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
-				<b>New Event</b>
+				<b>New Service Event</b>
 			</g:remoteLink>
 		</div>
 		<!-- cornerButtons ends -->
