@@ -1,7 +1,8 @@
 <%@ page contentType="text/html;charset=UTF-8"%>
 <html>
 <head>
-<asset:javascript src="eventMain.js"/> <!-- not a real script yet -->
+<asset:javascript src="eventMain.js" />
+<!-- not a real script yet -->
 </head>
 <body>
 	<form>
@@ -10,11 +11,15 @@
 			<div class="col-md-6 navbar-right cornerButtons"
 				style="margin-top: 7px; margin-bottom: -7px;">
 				<!--  <div id="createEventButton">-->
-				<g:remoteLink controller="event" action="_createEvent" update="eventMain"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span><b>New Event</b></g:remoteLink>
+				<g:remoteLink controller="event" action="_createEvent"
+					update="eventMain">
+					<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+					<b>New Event</b>
+				</g:remoteLink>
 				<span style="color: #FFDE97" class="glyphicon glyphicon-trash"
 					aria-hidden="true"></span>
-				<g:submitToRemote controller="event" action="deletemult" value="Delete"
-					class="tabledelete"></g:submitToRemote>
+				<g:submitToRemote controller="event" action="deletemult"
+					value="Delete" class="tabledelete"></g:submitToRemote>
 			</div>
 		</div>
 		<!-- Student Table -->
@@ -26,7 +31,7 @@
 					<th>Name</th>
 
 					<th>Description</th>
-					
+
 					<th>Contact</th>
 
 					<th>Contact Phone</th>
@@ -39,7 +44,8 @@
 			</thead>
 			<tbody>
 				<g:each in="${list}" status="i" var="event">
-					<tr class="${(i % 2) == 0 ? 'even' : 'odd'} eventRow" id="${event.id}">
+					<tr class="${(i % 2) == 0 ? 'even' : 'odd'} eventRow"
+						id="${event.id}">
 
 						<td><g:checkBox name="checkEvent" value="${event.id}"
 								checked="false" /></td>
@@ -67,10 +73,9 @@
 						<td class="aoTableIcon"><g:remoteLink controller="event"
 								action="_editEvent" update="eventMain" id="${event.id}">
 								<span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
-							</g:remoteLink>
-							<a id="deleteEventOnTable" onclick="deleteConfirm(${event.id})">
+							</g:remoteLink> <a id="deleteEventOnTable" onclick="deleteConfirm(${event.id})">
 								<span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
-							</a></td>
+						</a></td>
 
 					</tr>
 				</g:each>
@@ -79,34 +84,34 @@
 
 	</form>
 	<script>
-	function deleteConfirm(id){
-		result = confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');
-		if (result){
-			jQuery.ajax({
-			type:'POST', url:'/sstation/event/_deleteOnTable/'+id,
-			success:function(data,textStatus){
-				jQuery('#eventMain').html(data);
-			},
-			error:function(XMLHttpRequest,textStatus,errorThrown){}});
-		
-		} 
-	}
-
-	function btnRemove() {
-		$("#otable").DataTable({
-			"columnDefs" : [ {
-				"orderable" : false,
-				"targets" : [ 0, 6 ]
-			} ]
+		$(function() {
+			$("#table").DataTable({
+				"columnDefs" : [ {
+					"orderable" : false,
+					"targets" : [ 0, 6 ]
+				} ]
+			});
 		});
-	});
-
-  $(document).ready(function(){
-	    $('#table').DataTable();
-	    $("#deleteAgOnTable").mouseenter(function(){
-	    	$("#deleteAgOnTable").css("cursor","pointer");
-	    	   });   
-	});
+		
+		function deleteConfirm(id){
+			result = confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');
+			if (result){
+				jQuery.ajax({
+				type:'POST', url:'/sstation/event/_deleteOnTable/'+id,
+				success:function(data,textStatus){
+					jQuery('#eventMain').html(data);
+				},
+				error:function(XMLHttpRequest,textStatus,errorThrown){}});
+			
+			} 
+		}
+	
+	  $(document).ready(function(){
+		    $('#table').DataTable();
+		    $("#deleteAgOnTable").mouseenter(function(){
+		    	$("#deleteAgOnTable").css("cursor","pointer");
+		    	   });   
+		});
   </script>
 </body>
 </html>
