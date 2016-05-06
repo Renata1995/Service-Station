@@ -40,10 +40,10 @@ class EventControllerSpec extends Specification {
 		when:
 		def ev = new Event(name: "festival", description: "something", contact: "person", contactPhone: "666", contactEmail: "here@ac.edu")
 		controller._saveEvent(ev)
-		controller._deleteEvent(ev)
+		controller._deleteEventTable(ev)
 		
 		then:
 		Event.count()==0
-		view=="/event/_eventTable"
+		view=="/event/_eventTableView"
 	}
 }

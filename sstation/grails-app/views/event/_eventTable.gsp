@@ -80,7 +80,7 @@ div.grayBar {
 						<span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
 						<b>Edit</b>
 					</g:remoteLink>
-					<a onclick="deleteConfirm(${event.id})" id="_deleteEvent"
+					<a onclick="deleteConfirm(${event.id})" id="_deleteEventCard"
 						class="orgAgMainDelete aoListIcon"> <span
 						class="glyphicon glyphicon-trash" style="padding-left: 20px"
 						aria-hidden="true"></span> <b>Delete</b>
@@ -102,7 +102,7 @@ div.grayBar {
 		result = confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');
 		if (result){
 			jQuery.ajax({
-			type:'POST', url:'/sstation/event/_deleteEvent/'+id,
+			type:'POST', url:'/sstation/event/_deleteEventCard/'+id,
 			success:function(data,textStatus){
 				jQuery('#eventMain').html(data); // this is the broken bit
 				// it willdelete it but not update to show it on page
