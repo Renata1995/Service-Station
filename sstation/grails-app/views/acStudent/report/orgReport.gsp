@@ -45,11 +45,19 @@
 		<table id="htable" class="table table-bordered" style="width: 100%;border:none">
 			<thead>
 				<tr style="background-color: #C53C3E; border: none">
+<<<<<<< HEAD
 					<td><input type="checkbox"></td>
 					<td>Service Event</td>
 					<td>Campus Group</td>
 					<td>Community Organization</td>
 					<td>Date/Start Time</td>
+=======
+					<td><input type="checkbox"></td>
+					<td>Event</td>
+					<td>Campus Organization</td>
+					<td>Community Agency</td>
+					<td>Date/Start Time</td>
+>>>>>>> 8603a618c45b82320fe17df342e5d8c51e663572
 					<td>Duration</td>
 				</tr>
 			</thead>
