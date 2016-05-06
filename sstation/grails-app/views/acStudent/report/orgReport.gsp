@@ -47,7 +47,7 @@
 				<tr style="background-color: #C53C3E; border: none">
 					<td><input type="checkbox"></td>
 					<td>Event</td>
-					<td>Campus Organization</td>
+					<td>Campus Group</td>
 					<td>Community Agency</td>
 					<td>Start Time</td>
 					<td>Duration</td>
