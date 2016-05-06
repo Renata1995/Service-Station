@@ -73,8 +73,11 @@
 						<td class="aoTableIcon"><g:remoteLink controller="event"
 								action="_editEvent" update="eventMain" id="${event.id}">
 								<span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
-							</g:remoteLink> <a id="deleteEventOnTable" onclick="deleteConfirm(${event.id})">
-								<span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+
+							</g:remoteLink> <a onclick="deleteConfirm(${event.id})" id="_deleteEvent"
+							class="orgAgMainDelete aoListIcon"> <span
+								class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+
 						</a></td>
 
 					</tr>
@@ -84,6 +87,7 @@
 
 	</form>
 	<script>
+<
 		$(function() {
 			$("#table").DataTable({
 				"columnDefs" : [ {
@@ -92,26 +96,28 @@
 				} ]
 			});
 		});
-		
-		function deleteConfirm(id){
-			result = confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');
-			if (result){
-				jQuery.ajax({
-				type:'POST', url:'/sstation/event/_deleteOnTable/'+id,
-				success:function(data,textStatus){
-					jQuery('#eventMain').html(data);
-				},
-				error:function(XMLHttpRequest,textStatus,errorThrown){}});
-			
-			} 
-		}
 	
-	  $(document).ready(function(){
-		    $('#table').DataTable();
-		    $("#deleteAgOnTable").mouseenter(function(){
-		    	$("#deleteAgOnTable").css("cursor","pointer");
-		    	   });   
-		});
+	function deleteConfirm(id){
+		result = confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');
+		if (result){
+			jQuery.ajax({
+			type:'POST', url:'/sstation/event/_deleteEvent/'+id,
+			success:function(data,textStatus){
+				jQuery('#eventMain').html(data); // this is the broken bit
+				// it willdelete it but not update to show it on page
+			},
+			error:function(XMLHttpRequest,textStatus,errorThrown){}});
+		
+		} 
+	}
+  $(document).ready(function(){
+	    $("#deleteEvent").mouseenter(function(){
+	    	$("#deleteEvent").css("cursor","pointer");
+	    	   });
+	        
+	});
+
+
   </script>
 </body>
 </html>
