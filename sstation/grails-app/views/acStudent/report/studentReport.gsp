@@ -36,8 +36,9 @@
 
 	<!-- KPI -->
 	<div class="report">
+		<p align = "right">
 		<b>Service Hours Total: </b>
-		${totalSH}hr
+		${totalSH}hr</p>
 	</div>
 
 	<!-- Service Hours List -->
@@ -82,5 +83,13 @@
 			</tbody>
 		</table>
 	</div>
+	
+	<!-- KPI -->
+	<div class="report">
+		<p align = "right">
+		<b>Service Hours Total: </b>
+		${totalSH}hr</p>
+	</div>
+	
 </div>
 </html>
