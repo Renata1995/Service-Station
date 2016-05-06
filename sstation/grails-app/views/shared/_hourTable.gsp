@@ -4,9 +4,9 @@
 		<tr style="background-color: #C53C3E; border: none">
 			<th><input type="checkbox" id="mainCheckBox"></th>
 			<th>Student</th>
-			<th>Event</th>
-			<th>Campus Organization</th>
-			<th>Community Agency</th>
+			<th>Service Event</th>
+			<th>Campus Group</th>
+			<th>Community Organization</th>
 			<th>Start Time</th>
 			<th>Duration</th>
 			<th>Status</th>

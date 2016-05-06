@@ -10,7 +10,7 @@
 	margin-bottom: 5px;
 }
 
-div.list-group-item:hover{
+div.list-group-item:hover {
 	opacity: 0.66
 }
 
@@ -20,11 +20,10 @@ a.eventTime {
 	margin-right: 10px;
 }
 
-div.grayBar{
+div.grayBar {
 	background-color: rgba(33, 32, 30, 0.5);
 	margin: 20px 0px 0px 0px
 }
-
 </style>
 </head>
 <body>
@@ -37,7 +36,7 @@ div.grayBar{
 			<g:remoteLink controller="event" action="_createEvent"
 				update="eventMain">
 				<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
-				<b>New Event</b>
+				<b>New Service Event</b>
 			</g:remoteLink>
 		</div>
 		<!-- cornerButtons ends -->
@@ -81,12 +80,11 @@ div.grayBar{
 						<span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
 						<b>Edit</b>
 					</g:remoteLink>
-					<g:remoteLink class="aoListIcon" controller="event"
-						id="${event.id}" action="_deleteEvent" update="eventMain">
-						<span class="glyphicon glyphicon-trash" style="padding-left: 20px"
-							aria-hidden="true"></span>
-						<b>Delete</b>
-					</g:remoteLink>
+					<a onclick="deleteConfirm(${event.id})" id="_deleteEventCard"
+						class="orgAgMainDelete aoListIcon"> <span
+						class="glyphicon glyphicon-trash" style="padding-left: 20px"
+						aria-hidden="true"></span> <b>Delete</b>
+					</a>
 				</div>
 			</div>
 
@@ -100,6 +98,19 @@ div.grayBar{
 
 
 	<script>
+	function deleteConfirm(id){
+		result = confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');
+		if (result){
+			jQuery.ajax({
+			type:'POST', url:'/sstation/event/_deleteEventCard/'+id,
+			success:function(data,textStatus){
+				jQuery('#eventMain').html(data); // this is the broken bit
+				// it willdelete it but not update to show it on page
+			},
+			error:function(XMLHttpRequest,textStatus,errorThrown){}});
+		
+		} 
+	}
 		$(document).ready(
 				function() {
 					$('#table').DataTable();

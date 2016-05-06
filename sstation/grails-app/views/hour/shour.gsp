@@ -26,10 +26,10 @@
 					update="overallShour" style="padding-right:5px">
 					<span style="color: #FFDE97" class="glyphicon glyphicon-edit"
 						aria-hidden="true"></span> Edit </g:remoteLink>
-				<g:link controller="hour" action="deleteShour" id="${shour.id}">
+						
+				<g:link onclick="deleteConfirm(${shour.id})" >
 					<span style="color: #FFDE97" class="glyphicon glyphicon-trash"
 						aria-hidden="true"></span> Delete</g:link>
-
 			</div>
 
 
@@ -40,5 +40,20 @@
 
 		</div>
 	</div>
+	<script>
+	function deleteConfirm(id){
+		result = confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');
+		if (result){
+			jQuery.ajax({
+			type:'POST', url:'/sstation/Hour/deleteShour/'+id,
+			success:function(data,textStatus){
+				jQuery('#totalhour').html(data); // this is the broken bit
+				// it willdelete it but not update to show it on page
+			},
+			error:function(XMLHttpRequest,textStatus,errorThrown){}});
+		
+		} 
+	}
+	</script>
 </body>
 </html>

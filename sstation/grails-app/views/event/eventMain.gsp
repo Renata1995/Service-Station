@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
 <meta name="layout" content="main" />
-<title>Event Main Page</title>
+<title>Service Event Main Page</title>
 </head>
 <body>
 	<div class="body">
