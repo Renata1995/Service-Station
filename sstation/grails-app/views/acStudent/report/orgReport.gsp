@@ -49,7 +49,7 @@
 					<td>Service Event</td>
 					<td>Campus Group</td>
 					<td>Community Organization</td>
-					<td>Start Time</td>
+					<td>Date/Start Time</td>
 					<td>Duration</td>
 				</tr>
 			</thead>

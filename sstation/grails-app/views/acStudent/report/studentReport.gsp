@@ -48,7 +48,7 @@
 					<th>Service Event</th>
 					<th>Campus Group</th>
 					<th>Community Organization</th>
-					<th>Start Time</th>
+					<td>Date/Start Time</td>
 					<th>Duration</th>
 				</tr>
 			</thead>

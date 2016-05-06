@@ -2,7 +2,7 @@
 <table id="htable" class="table" style="width: 100%">
 	<thead>
 		<tr style="background-color: #C53C3E; border: none">
-			<th><input type="checkbox"></th>
+			<th><input type="checkbox" id="mainCheckBox"></th>
 			<th>Student</th>
 			<th>Service Event</th>
 			<th>Campus Group</th>
@@ -15,9 +15,8 @@
 	<tbody>
 		<g:each in="${list}" status="i" var="s">
 			<tr class="${(i % 2) == 0 ? 'even' : 'odd'} shourRow" id="${s.id}">
-				<td id="tableCheckBox"><g:checkBox name="checkstudent" value="${s.id}"
+				<td id="tableCheckBox" ><g:checkBox class="studentCB" name="checkStudent" value="${s.id}"
 						checked="false" /></td>
-
 
 				<td>
 					${s.acStudent.firstname} ${s.acStudent.lastname}
