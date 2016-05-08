@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
 <meta name="layout" content="main" />
-<title>Station Report by Community Agency</title>
+<title>Station Report by Community Organization</title>
 <style>
 .table>tbody>tr>td {
 	border: none;
@@ -20,7 +20,7 @@
 	<div class="mainback">
 	
 	<div class="reportTitle">
-	Service Station Hours by Community Agency <br>
+	Service Hours by Community Organization <br>
 	</div>
 	
 	<div class="report">
@@ -31,7 +31,7 @@
 		<table id="stationYeartable" class="table" style="width: 100%">
 			<thead>
 				<tr>
-					<th>Community Agencies</th>
+					<th>Community Organizations</th>
 				
 				</tr>
 			</thead>

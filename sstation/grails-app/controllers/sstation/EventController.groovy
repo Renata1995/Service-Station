@@ -108,11 +108,24 @@ class EventController {
 	 * @param e
 	 * @return
 	 */
-	def _deleteEvent(Event e){
+	def _deleteEventCard(Event e){
 		ServiceHour.findAllByEvent(e).each{
 			it.delete(flush:true,failOnError:true)
 		}
 		e.delete(flush:true,failOnError:true)
 		_eventTable()
+	}
+	
+	/**
+	 * Delete a specific event
+	 * @param e
+	 * @return
+	 */
+	def _deleteEventTable(Event e){
+		ServiceHour.findAllByEvent(e).each{
+			it.delete(flush:true,failOnError:true)
+		}
+		e.delete(flush:true,failOnError:true)
+		_eventTableView()
 	}
 }

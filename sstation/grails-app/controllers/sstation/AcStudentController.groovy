@@ -417,10 +417,21 @@ class AcStudentController {
 	}
 
 	def orgReport(AcStudent ac){
-		def list=reportService.orgReport(ac)
-		println list
-		def totalSH=hourService.studentStat(ac).get('aSum')
-		render view:"report/orgReport",model:[student:ac,list:list,totalSH:totalSH]
+		def stat=hourService.studentStat(ac)
+		def totalSH=stat.get('aSum')
+	
+		def listSH = []
+		ac.serviceHours.each {
+			if (it.status == Status.APPROVED){
+				listSH.add(it)
+			}
+		}
+		println listSH.size()
+		
+		def listCO = CampusOrg.list()
+		
+		render view:"report/orgReport",model:[student:ac,listSH:listSH,listCO:listCO,totalSH:totalSH]
+	
 	}
 
 

@@ -25,8 +25,6 @@
 		</ul>
 	</div>
 
-
-
 	<div id="totalhour">
 		<g:render template="totalHList" />
 	</div>

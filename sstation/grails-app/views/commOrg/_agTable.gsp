@@ -87,6 +87,15 @@
 
 	</form>
 	<script>
+	$(function() {
+		$("#table").DataTable({
+			"columnDefs" : [ {
+				"orderable" : false,
+				"targets" : [ 0, 7 ]
+			} ]
+		});
+	});
+	
 	function deleteConfirm(id){
 		result = confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');
 		if (result){
