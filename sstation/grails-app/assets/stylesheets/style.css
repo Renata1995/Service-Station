@@ -37,6 +37,11 @@ ul.navLink>li.activePill>a{
 	background-color:transparent;
 }
 
+/*Revised Top Nav Bar*/
+ul#main-menu{
+	background-color:#B20938;
+	width:100%;
+}
 
 /*Top Bar*/
 .navbar{

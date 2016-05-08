@@ -102,52 +102,50 @@
 
 		<!-- Side Nav Bar -->
 		<!-- This nav bar contains five remoteLink -->
-		<nav class="nav-pills nav-stacked" id="sideBar" style="width:151px;">
-			<div class="sidebar-collapse menu-collapse" style="height: 100%">
-				<ul class="nav navLink" id="main-menu" style="height: 100%">
+		<nav>
+				<ul class="nav nav-tabs navLink" role="navigation" id="main-menu" style="height: 100%">
 					<li><g:link controller="home" params="[domain:1]"
 							action="index">
 							<span class="glyphicon glyphicon-home" aria-hidden="true"></span>
 							<br />Home </g:link></li>
 							
 				<sec:ifAnyGranted roles="ROLE_ADMIN,ROLE_MODERATOR">
-					<li><g:link controller="hour" action="overall">
+					<li role="presentation"><g:link controller="hour" action="overall">
 							<span class="glyphicon glyphicon-stats" aria-hidden="true"></span>
 							<br />Service Hours</g:link></li>
-					<li><g:link controller="acStudent" action="studentList">
+					<li role="presentation"><g:link controller="acStudent" action="studentList">
 							<span class="glyphicon glyphicon-education" aria-hidden="true"></span>
 							<br /> Students</g:link></li>
 
-					<li><g:link controller="event" action="eventMain">
+					<li role="presentation"><g:link controller="event" action="eventMain">
 							<span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>
 							<br />Service Events</g:link></li>
 
-					<li><g:link controller="ACGroup" action="index">
+					<li role="presentation"><g:link controller="ACGroup" action="index">
 							<span class="glyphicon glyphicon-pawn" aria-hidden="true"></span>
 							<br />Campus Groups</g:link></li>
 
-					<li><g:link controller="CommOrg" action="index">
+					<li role="presentation"><g:link controller="CommOrg" action="index">
 							<span class="glyphicon glyphicon-tower" aria-hidden="true"></span>
 							<br />Community Organizations</g:link></li>
-					<li><g:link controller="Reports" action="index">
+					<li role="presentation"><g:link controller="Reports" action="index">
 							<span class="glyphicon glyphicon-tasks" aria-hidden="true"></span>
 							<br />Station Reports</g:link></li>
 				</sec:ifAnyGranted>
 				
 				<sec:ifAnyGranted roles="ROLE_ADMIN">
-					<li><g:link controller="Moderator" action="index">
+					<li role="presentation"><g:link controller="Moderator" action="index">
 							<span class="glyphicon glyphicon-user" aria-hidden="true"></span>
 							<br />Moderator</g:link></li>
 				</sec:ifAnyGranted>
 
 				<sec:ifAnyGranted roles="ROLE_MODERATOR">
-					<li><g:link controller="acStudent" action="home" id="1">
+					<li role="presentation"><g:link controller="acStudent" action="home" id="1">
 							<span class="glyphicon glyphicon-user" aria-hidden="true"></span>
 							<br />My Service Hours</g:link></li>
 				</sec:ifAnyGranted>
 				
 				</ul>
-			</div>
 
 		</nav>
 		<div class="panel panel-default" style="margin-left: 160px">
