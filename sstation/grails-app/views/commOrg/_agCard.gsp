@@ -34,7 +34,7 @@
 					<div class="list-group-item more">
 						<g:link controller="commOrg" class="aoListIcon"
 							action="_createAgency" update="main" params="[orgAgMain:1]">
-							<span class="glyphicon glyphicon-plus" aria-hidden="true"></span> New Community Agency</g:link>
+							<span class="glyphicon glyphicon-plus" aria-hidden="true"></span> New Community Organization</g:link>
 					</div>
 					<g:each in="${list}" status="i" var="ag">
 
