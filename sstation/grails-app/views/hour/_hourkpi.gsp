@@ -19,11 +19,17 @@
 <b style="font-size:15px">Core Statistics</b></br></br>
 
 <!-- Main Stats -->
- <b>Total Students: </b>${overallStat.get('totalSt')}
- <br><b>Total Service Hours: </b>${overallStat.get('totalSH')} hr
- <br/><b>Service Hours Per Student: </b>${overallStat.get('average')} hr
- <br/><b>Service Hours in the Current Year:</b>${overallStat.get('totalYear')} hr
- <br/><b>Num. Pending: </b> ${overallStat.get('pTotal')} Service Hours
+ <b>Total Students: </b>
+			${overallStat.get('totalSt')}
+			<br> <b>Total Service Hours: </b>
+			${overallStat.get('totalSH')}
+			hr <br /> <b>Service Hours Per Student: </b>
+			${overallStat.get('average')}
+			hr <br /> <b>Service Hours in the Current Year:</b>
+			${overallStat.get('totalYear')}
+			hr <br /> <b>Num. Pending: </b>
+			${overallStat.get('pTotal')}
+			Service Hours
  </div><!-- Main stats end -->
  
  
@@ -111,12 +117,6 @@
             name: 'Actual',
             data: [${tendency5y.get('totalLast4')},${tendency5y.get('totalLast3')},${tendency5y.get('totalLast2')},${tendency5y.get('totalLast1')},${tendency5y.get('totalYear')}]
        		
-        },{
-        	name:'Expect',
-        	data:[3,5,7,9,11],
-        	marker: {
-                symbol: 'circle',
-            }
         },{
         	name:'Average',
         	data:[${tendency5y.get('average')},${tendency5y.get('average')},${tendency5y.get('average')},${tendency5y.get('average')},${tendency5y.get('average')}],

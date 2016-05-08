@@ -82,12 +82,6 @@
             data: [${tendency5y.get('totalLast4')},${tendency5y.get('totalLast3')},${tendency5y.get('totalLast2')},${tendency5y.get('totalLast1')},${tendency5y.get('totalYear')}]
        		
         },{
-        	name:'Expect',
-        	data:[3,5,7,9,11],
-        	marker: {
-                symbol: 'circle',
-            }
-        },{
         	name:'Average',
         	data:[${tendency5y.get('average')},${tendency5y.get('average')},${tendency5y.get('average')},${tendency5y.get('average')},${tendency5y.get('average')}],
        		marker: {
