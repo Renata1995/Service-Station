@@ -15,22 +15,7 @@
 		
 		<!-- Title + Three buttons -->
 		<div class="titletop">
-			<h1 class="pagetitle">${student.firstname} ${student.lastname}</h1>
-			<div class="cornerButtons">
-				<g:link controller="acStudent" action="studentList">
-					<span class="glyphicon glyphicon-th-list" aria-hidden="true"></span>
-					<b>Back</b>
-				</g:link>
-
-				<g:remoteLink controller="acStudent" action="deleteStudent"
-					id="${student.id}" update="main">
-					<span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
-					<b
-						onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');">Delete</b>
-				</g:remoteLink>
-			</div>
-
-			
+			<h1 class="pagetitle">${student.firstname} ${student.lastname}</h1>			
 			
 			<!-- Link to the profile or the service hour list of the current student -->
 			<ul class="nav nav-tabs">
@@ -40,9 +25,9 @@
 				<li class="tab2" role="presentation"><g:remoteLink
 						controller="acStudent" action="_hourList"
 						id="${student.id}" update="student">Service Hour List</g:remoteLink></li>
-				<li class="tab3" role="presentation"><g:remoteLink
-						controller="acStudent" action="_reportAdmin" update="student"
-						id="${student.id }">Report</g:remoteLink></li>
+				<li class="tab3" role="presentation"><g:link
+						controller="acStudent" action="reportStudent"
+						id="${student.id }">Report</g:link></li>
 			</ul>
 		</div>
 
