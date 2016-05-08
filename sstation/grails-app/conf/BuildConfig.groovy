@@ -64,6 +64,7 @@ grails.project.dependency.resolution = {
 		compile "org.grails.plugins:teamcity:1.0.3"
 		compile ':spring-security-core:2.0-RC5'
 		compile "org.grails.plugins:csv:0.3.1"
+		compile ":mail:1.0.7"
 
 
         // plugins needed at runtime but not for compilation

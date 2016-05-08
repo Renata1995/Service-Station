@@ -34,6 +34,8 @@ class AcStudentController {
 	def hourService//Calculate all statistics about service hour list
 	def reportService//Used for report pages
 	def studentService//for student uploads
+	def mailService
+	def springSecurityService
 
 
 	/*
@@ -384,6 +386,11 @@ class AcStudentController {
 		
 		
 	}
+	
+	def reportStudent(AcStudent ac){
+		def stat=hourService.studentStat(ac)
+		render view:"report/reportStudent",model:[student:ac,stat:stat]
+	}
 
 	/**
 	 * Show a report page about service hours of a specific student
@@ -434,8 +441,54 @@ class AcStudentController {
 	
 	}
 
+	def requestSemester(AcStudent ac){
+		mailService.sendMail{
+			to "mhiggs@austincollege.edu"
+			subject "Semester Report Request"
+			body "Request semester report for ${springSecurityService.currentUser}"
+		}
+		
+		def message = "Request semester report sent"
+		def stat=hourService.studentStat(ac)
+		redirect action:"reportStudent", id: "${ac.id}", controller:"acStudent", params:[message:"Semester Report Request Sent"]
 
+	}
+	
+	def requestGeneral(AcStudent ac){
+		mailService.sendMail{
+			to "mhiggs@austincollege.edu"
+			subject "General Report Request"
+			body "Request general report for ${springSecurityService.currentUser}"
+		}
+		
+		def message = "Request general report sent"
+		def stat=hourService.studentStat(ac)
+		redirect action:"reportStudent", id: "${ac.id}", controller:"acStudent", params:[message:"General Report Request Sent"]
 
+	}
+	
+	def requestCampusGroup(AcStudent ac){
+		mailService.sendMail{
+			to "mhiggs@austincollege.edu"
+			subject "Campus Group Report Request"
+			body "Request campus group report for ${springSecurityService.currentUser}"
+		}
+		
+		def message = "Request campus group report sent"
+		def stat=hourService.studentStat(ac)
+		redirect action:"reportStudent", id: "${ac.id}", controller:"acStudent", params:[message:"Campus Group Report Request Sent"]
+
+	}
+
+	
+
+	
+	
+	
+	/**
+	 * Upload students
+	 * @return
+	 */
 	def uploadPage(){
 		render view:"uploadPage",model:[]
 	}
