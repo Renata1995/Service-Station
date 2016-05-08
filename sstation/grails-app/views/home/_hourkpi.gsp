@@ -93,7 +93,7 @@
     /*Current Year Tendency Chart*/
      $('#tendencyYear').highcharts({
         chart: {
-            type: 'line',
+            type: 'column',
             backgroundColor: 'rgba(255,255,255,0.7)'
         },
         title: {
