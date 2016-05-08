@@ -29,7 +29,8 @@
 	<label for="campusOrg"> Campus Group: </label>
 
 	<g:hiddenField name="tableId_CamOrg" />
-	<g:textField name="selected_CamOrg" readonly="readonly" value="${shour?.campusOrg?.name}" />
+	<g:textField name="selected_CamOrg" readonly="readonly"
+		value="${shour?.campusOrg?.name}" />
 
 </div>
 
@@ -65,9 +66,9 @@
 	</table>
 
 	<br>
-	<p style="text-align:center"> Current Selected Campus Group: </p>
-	<p id="show_CamOrg" style="text-align:center"></p>
-	<br>	<br>
+	<p style="text-align: center">Current Selected Campus Group:</p>
+	<p id="show_CamOrg" style="text-align: center"></p>
+	<br> <br>
 </div>
 
 
@@ -80,7 +81,9 @@
 					height : 500,
 					width : 800,
 					modal : true,
-					open: function(event, ui) { $(".ui-dialog-titlebar-close").hide(); },
+					open : function(event, ui) {
+						$(".ui-dialog-titlebar-close").hide();
+					},
 					buttons : {
 						Commit : function() {
 							//window.alert("commit");
@@ -94,7 +97,7 @@
 							//window.alert("num "+num);
 							var co = set[1];
 							//window.alert("co "+co);
-							
+
 							$("#modal2_CamOrg").dialog("close");
 							$('#selected_CamOrg').val(co);
 							$("#tableId_CamOrg").val(
@@ -131,7 +134,9 @@
 	<label for="commAg"> Community Organization: </label>
 
 	<g:hiddenField name="tableId_CommAg" />
-	<g:textField name="selected_CommAg" readonly="readonly" value="${shour?.commAg?.name}" />
+	<g:textField name="selected_CommAg" readonly="readonly"
+		value="${shour?.commAg?.name}" />
+	<g:textField name="otherName_CommAg" />
 
 </div>
 
@@ -167,13 +172,19 @@
 	</table>
 
 	<br>
-	<p style="text-align:center"> Current Selected Community Organization: </p>
-	<p id="show_CommAg" style="text-align:center"></p>
-	<br>	<br>
+	<p style="text-align: center">Current Selected Community
+		Organization:</p>
+	<p id="show_CommAg" style="text-align: center"></p>
+	<br> <br>
 </div>
 
 <script>
 	$(function() {
+		//addded hidden textbox
+		$("input[name='otherName_CommAg']").hide();
+		//tells if other is selected as comm org
+		var otherCommOrg = false;
+
 		var dialog_CommAg = $("#modal2_CommAg").dialog(
 				{
 					autoOpen : false,
@@ -181,8 +192,9 @@
 					height : 500,
 					width : 800,
 					modal : true,
-					open: function(event, ui) { $(".ui-dialog-titlebar-close").hide(); },
-				
+					open : function(event, ui) {
+						$(".ui-dialog-titlebar-close").hide();
+					},
 					buttons : {
 						Commit : function() {
 							//window.alert("commit");
@@ -196,12 +208,19 @@
 							//window.alert("num "+num);
 							var co = set[1];
 							//window.alert("co "+co);
-							
+							console.log("co " + co);
 							$("#modal2_CommAg").dialog("close");
 							$('#selected_CommAg').val(co);
-							$("#tableId_CommAg").val(
-									$("input[name='checkCA']:checked").val());
-
+							$("#tableId_CommAg").val($("input[name='checkCA']:checked").val());
+							if (co == "Other") {
+								//opens hidden txtbox if 'other' picked
+								$("input[name='otherName_CommAg']").show();
+								//once a new comm org is picked then a boolean will change so that later when sending in data, the correct data cna be used
+								otherCommOrg = true;
+							} else {
+								$("input[name='otherName_CommAg']").hide();
+								otherCommOrg = false;
+							}
 						}
 					}
 				});

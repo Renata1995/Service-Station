@@ -6,9 +6,10 @@ import sstation.CampusOrg;
 import sstation.CommAg;
 import sstation.Event;
 import sstation.ServiceHour;
-
 import grails.transaction.Transactional
+
 import java.security.MessageDigest
+
 import grails.plugin.springsecurity.annotation.Secured
 
 @Secured(['ROLE_ADMIN', 'ROLE_MODERATOR'])
@@ -83,16 +84,17 @@ class HourController {
 		def orgList=CampusOrg.list().collect{
 			it.name
 		}
+		def fullOrgList = CampusOrg.list()
+		
 		def agList=CommAg.list().collect{
 			it.name
 		}
-		def fullOrgList = CampusOrg.list()
 		def fullAgList = CommAg.list()
+		
 		render view:"_editShour",
 		model: [shour:sh,eventList:eventList,orgList:orgList,agList:agList,fullOrgList:fullOrgList,fullAgList:fullAgList]
 		
 	}
-
 	/**
 	 * Create a new service hour page
 	 * @return
@@ -199,6 +201,16 @@ class HourController {
 		render view:"_totalHList",model:[list:list]
 		
 	}
-
+	//i created this call so that the newly created agency/organization could be saved
+	/**
+	 * Add newly created Community Organization
+	 * from Service Hour creation page
+	 * @param
+	 * @return
+	 */
+	def _saveNewCommOrg(CommAg ca){
+		ca.properties = params
+		ca.save(flush:true)
+	}
 
 }

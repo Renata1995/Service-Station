@@ -44,16 +44,16 @@
 
 				<td class="status" id="${s.id}"><g:if
 						test="${s.status.toString()=="APPROVED"}">
-						<span class="label label-success htableLabel">
+						<span class="label label-success htableLabel" onclick="click1(this)">
 							${s.status}
 						</span>
-					</g:if> <g:elseif test="${s.status.toString()=="PENDING" }">
-						<span class="label label-warning htableLabel">
-							${s.status}
+					</g:if> <g:elseif test="${s.status.toString()=="PENDING" }"
+						onclick="click1(this)">
+						<span class="label label-warning htableLabel"> ${s.status}
 						</span>
-					</g:elseif> <g:elseif test="${s.status.toString()=="REJECTED"}">
-						<span class="label label-default htableLabel">
-							${s.status}
+					</g:elseif> <g:elseif test="${s.status.toString()=="REJECTED"}"
+						onclick="click1(this)">
+						<span class="label label-default htableLabel"> ${s.status}
 						</span>
 					</g:elseif></td>
 
@@ -83,9 +83,10 @@
 	<p style="text-align: center">Selected Status</p>
 	<p id="show_S" style="text-align: center"></p>
 	<br>
-	
+
 	<p style="text-align: center">
-	<button onclick="changeStatus()" style="text-align: center"> Change Status</button>
+		<button onclick="changeStatus()" style="text-align: center">
+			Change Status</button>
 	</p>
 </div>
 
@@ -99,13 +100,7 @@
 			"order" : [ [ 5, "desc" ] ]
 		});
 
-		$("#modal_Status").dialog({
-			autoOpen : false,
-			resizable : true,
-			height : 500,
-			width : 500,
-			modal : true
-		});
+		makeDialog();
 
 		$("input[name='checkS']").change(function() {
 			$("input[name='checkS']").not(this).prop('checked', false);
@@ -116,15 +111,28 @@
 
 	});
 
+	function makeDialog(){
+
+		$("#modal_Status").dialog({
+			autoOpen : false,
+			resizable : true,
+			height : 500,
+			width : 500,
+			modal : true
+		});
+	}
+
 	var baseLink = '<g:createLink action="shour" controller="hour" id="ID"/>';
 
 	$(".shourRow").on({
 		click : function() {
+			console.log("clikcing row");
 			var idstring = $(this).attr("id");
 
 			if (toLink) {
 				window.location.href = baseLink.replace("ID", idstring);
 			}
+			toLink = true;
 		},
 		mouseenter : function() {
 			$(this).css("cursor", "pointer");
@@ -140,11 +148,12 @@
 							toLink = false;
 							
 							$("#modal_Status").dialog("open");
+							console.log("making new current status label");
 							currentStatusabel = $(this);
 						}
 					});
 
-	function changeStatus(){
+	function changeStatus(){//ele
 		var n = $("input[name='checkS']:checked").val();
 		console.log("changing status with "+n);
 
@@ -155,9 +164,9 @@
 			//$("#holdingStatus").val();
 
 		var toInput = '';
-		var approved = '<span class="label label-success htableLabel"> APPROVED	</span>';//1
-		var pending = '<span class="label label-warning htableLabel"> PENDING	</span>';//2
-		var rejected = '<span class="label label-default htableLabel"> REJECTED	</span>';//3
+		var approved = '<span class="label label-success htableLabel" onclick="click1(this)"> APPROVED	</span>';//1
+		var pending = '<span class="label label-warning htableLabel" onclick="click1(this)"> PENDING	</span>';//2
+		var rejected = '<span class="label label-default htableLabel" onclick="click1(this)"> REJECTED	</span>';//3
 
 		if (num == 1) {
 			toInput = approved;
@@ -168,9 +177,14 @@
 		}
 
 		currentStatusabel.replaceWith(toInput);
+		//ele.replaceWith(toInput);
+	
+	}
 
-		return false;
-		
+	function click1(ele){
+		currentStatusabel = ele;
+		console.log("Clicking status");
+		toLink = false;		
 	}
 	
 	function click2() {

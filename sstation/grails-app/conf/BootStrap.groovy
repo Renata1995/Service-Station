@@ -68,6 +68,11 @@ class BootStrap {
 		agNameList.each{
 			agList.add(randomAg(it))
 		}
+		//if needed
+		//here i created a new CommAg called other as just a spacer and nothing more
+		CommAg other=new CommAg(address:"In America",name:"Other",description:"placeholder for more organizations",contact:"Austin College",contactPhone:"9038132000",contactEmail:"nmorgan@austincollege.edu")
+		other.save(failOnError:true,flush:true)
+		agList.add(other)
 
 		10.times{
 			//Generate random students
