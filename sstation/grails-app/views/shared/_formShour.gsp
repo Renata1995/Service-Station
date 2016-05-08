@@ -80,6 +80,7 @@
 					height : 500,
 					width : 800,
 					modal : true,
+					open: function(event, ui) { $(".ui-dialog-titlebar-close").hide(); },
 					buttons : {
 						Commit : function() {
 							//window.alert("commit");
@@ -180,6 +181,8 @@
 					height : 500,
 					width : 800,
 					modal : true,
+					open: function(event, ui) { $(".ui-dialog-titlebar-close").hide(); },
+				
 					buttons : {
 						Commit : function() {
 							//window.alert("commit");

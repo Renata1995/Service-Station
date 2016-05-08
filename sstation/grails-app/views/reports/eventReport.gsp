@@ -78,6 +78,7 @@
 				height : 600,
 				width : 800,
 				modal : true
+				
 			});
 
 			$(".eventDetail").click(function() {

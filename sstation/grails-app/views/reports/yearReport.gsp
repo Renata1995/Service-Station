@@ -86,7 +86,13 @@ $(function(){
 				resizable : true,
 				height : 600,
 				width : 800,
-				modal : true
+				modal : true,
+				open: function(event, ui) { $(".ui-dialog-titlebar-close").hide(); },
+				buttons : {
+					Close : function() {
+							$("#yearDialog").dialog("close");
+						}
+				}
 	});
 
 	$(".yearDetail").click(function() {

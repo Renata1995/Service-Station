@@ -107,11 +107,12 @@ div.btn-group-vertical {
 				resizable : true,
 				height : 600,
 				width : 800,
-				modal : true
+				modal : true,
+				open: function(event, ui) { $(".ui-dialog-titlebar-close").hide(); }
 			});
 
 			$("#totalPrevious").click(function() {
-				$(this).dialog("close");
+				$("#Dialog").dialog("close");
 			});
 			$("#student").click(function() {
 				$("#Dialog").dialog("open");
