@@ -136,26 +136,31 @@ class HourController {
 		SimpleDateFormat format=new SimpleDateFormat("MM/dd/yyyy")
 		String d=params.startdate+" "+params.starthour+":"+params.startmin
 		Date date = new Date().parse("MM/dd/yyyy HH:mm",d)
+		println "printing stuff"
 		sh.starttime=date
-		sh.campusOrg=CampusOrg.findByName(params.shOrg)
+		sh.campusOrg=CampusOrg.findByName(params.selected_CamOrg)
+		println sh.campusOrg
+		println sh.campusOrg.name
 		sh.event=Event.findByName(params.shEvent)
-		sh.commAg=CommAg.findByName(params.shCommAg)
+		sh.commAg=CommAg.findByName(params.selected_CommAg)
+		println sh.commAg
+		println sh.commAg.name
 		sh.status=params.status;
-
 
 		//Parse the id in the idList param and get corresponding students
 		def id=Long.parseLong(params.studentIdHolder)
 		def ac=AcStudent.get(id)
-		println "student"+ac
+		println "student "+ac
+		
 		ac.addToServiceHours(sh).save(flush:true,failOnError:true)
-
+		
 		if( !sh.save(flush:true,failOnError:true) ) {
+			
 			sh.errors.each {
 				println it
 			}
 		}
-		println sh
-
+		
 		render view:"shour",model:[shour:sh]
 	}
 
@@ -171,9 +176,9 @@ class HourController {
 		sh.starttime=date
 		
 		//Save campus organization,event,community agency,and status
-		sh.campusOrg=CampusOrg.findByName(params.shOrg)
+		sh.campusOrg=CampusOrg.findByName(params.selected_CamOrg)
 		sh.event=Event.findByName(params.shEvent)
-		sh.commAg=CommAg.findByName(params.shCommAg)
+		sh.commAg=CommAg.findByName(params.selected_CommAg)
 		sh.status=params.status;
 
 
