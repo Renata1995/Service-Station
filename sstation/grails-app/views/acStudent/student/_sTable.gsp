@@ -161,7 +161,7 @@
 		$("input[name='checkstudent']").change(
 				function() {
 
-					var boo = $(this).prop('checked');
+					var boo = $(this).('checked');
 					//window.alert(boo);//sends boo as undefined... why?
 
 					var info = $(this).val();

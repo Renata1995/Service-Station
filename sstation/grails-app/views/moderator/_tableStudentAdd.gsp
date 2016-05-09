@@ -87,6 +87,8 @@
 				$("#deselectMode").click(function() {
 					$("#tableStudent").dialog("close");
 				});
+
+				
 				$(".acid").mouseenter(function(){
 			    	$(".acid").css("cursor","pointer");
 			    	   });
