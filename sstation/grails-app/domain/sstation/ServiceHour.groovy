@@ -12,6 +12,7 @@ class ServiceHour {
 	double duration
 	CampusOrg campusOrg
 	CommAg commAg
+	String otherCommAg
 	Event event
 	Date starttime,lastmodified 
 	static belongsTo=[acStudent:AcStudent]
@@ -26,6 +27,7 @@ class ServiceHour {
 		eventContactName(nullable:true,blank:true)
 		eventContactPhone(nullable:true,blank:true)
 		commAg(nullable:true)
+		otherCommAg(nullable:true)
 		campusOrg(nullable:true)
 		status(nullable:false,blank:false)
 		duration(nullable:false)

@@ -142,9 +142,27 @@ class HourController {
 		println sh.campusOrg
 		println sh.campusOrg.name
 		sh.event=Event.findByName(params.shEvent)
+		
+		def commAg1 = params.selected_CommAg
+		println "commAg1"
+		println commAg1
+		def commAg2 = params.otherName_CommAg
+		println "commAg2"
+		println commAg2
+		
 		sh.commAg=CommAg.findByName(params.selected_CommAg)
+		
+		if(commAg2 != null){
+			println "there is an_OTHER_ community agency"
+			sh.otherCommAg = commAg2
+		}else{
+			sh.otherCommAg = "n/a"
+		}
+		
 		println sh.commAg
 		println sh.commAg.name
+		println sh.otherCommAg
+		
 		sh.status=params.status;
 
 		//Parse the id in the idList param and get corresponding students
@@ -178,7 +196,26 @@ class HourController {
 		//Save campus organization,event,community agency,and status
 		sh.campusOrg=CampusOrg.findByName(params.selected_CamOrg)
 		sh.event=Event.findByName(params.shEvent)
+		
+		def commAg1 = params.selected_CommAg
+		println "commAg1"
+		println commAg1
+		def commAg2 = params.otherName_CommAg
+		println "commAg2"
+		println commAg2
+		
 		sh.commAg=CommAg.findByName(params.selected_CommAg)
+		
+		if(commAg2 != null){
+			println "there is an_OTHER_ community agency"
+			sh.otherCommAg = commAg2
+		}else{
+			sh.otherCommAg = "n/a"
+		}		
+		println sh.commAg
+		println sh.commAg.name
+		println sh.otherCommAg
+		
 		sh.status=params.status;
 
 
