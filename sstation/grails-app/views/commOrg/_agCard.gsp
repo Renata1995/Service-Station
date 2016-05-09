@@ -59,12 +59,11 @@
 
 							<!-- Buttons -->
 							<div class="cornerButtons listButtons">
-								<g:remoteLink class="aoListIcon" controller="commOrg"
-									params="[orgAgMain:1]" id="${ag.id}" action="_editAgency"
-									update="agMain">
+								<g:link class="aoListIcon" controller="commOrg"
+									params="[orgAgMain:1]" id="${ag.id}" action="_editAgency">
 									<span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
 									<b>Edit</b>
-								</g:remoteLink>
+								</g:link>
 
 								<a onclick="deleteConfirm(${ag.id})" id="deleteAgOnCard"
 									class="orgAgMainDelete aoListIcon"> <span

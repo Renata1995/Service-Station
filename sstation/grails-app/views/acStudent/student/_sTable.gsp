@@ -13,9 +13,8 @@
 					aria-hidden="true"></span> New Student
 			
 			</g:remoteLink>
-			<span id="deleteStudentsBtn" style="color: #FFDE97">
-				<span  class="glyphicon glyphicon-trash"
-					aria-hidden="true"></span> Delete
+			<span id="deleteStudentsBtn" style="color: #FFDE97"> <span
+				class="glyphicon glyphicon-trash" aria-hidden="true"></span> Delete
 			</span>
 
 
@@ -38,6 +37,8 @@
 				<th>Email</th>
 
 				<th>Classification</th>
+
+				<th>Status</th>
 
 				<th>AC Year</th>
 
@@ -71,6 +72,10 @@
 						${s.classification}
 					</td>
 
+					<td>
+						${s.status }
+					</td>
+					
 					<td>
 						${s.acYear}
 					</td>

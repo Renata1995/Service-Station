@@ -204,8 +204,7 @@ class AcStudentController {
 		}
 
 		student.delete flush:true
-		def myStudent=AcStudent.list()
-		render view:"student/_sTable", model:[list:myStudent]
+		redirect controller:"acStudent",action:"studentList"
 	}
 
 	/**

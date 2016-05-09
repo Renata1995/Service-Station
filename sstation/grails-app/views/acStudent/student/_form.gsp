@@ -55,6 +55,15 @@
 
 </div>
 
+<div class="fieldcontain ${hasErrors(bean: student, field: 'status', 'error')} required">
+	<label for="status">
+		<g:message code="acStudent.status.label" default="Status" />
+		<span class="required-indicator">*</span>
+	</label>
+	<g:select from="${['R','X','W']}" name="status" value="${student?.status?:""}" required=""/>
+
+</div>
+
 <div class="fieldcontain ${hasErrors(bean: student, field: 'acYear', 'error')} required">
 	<label for="acYear">
 		<g:message code="acStudent.acYear.label" default="Ac Year" />
@@ -72,4 +81,5 @@
 	<g:textField name="phone" required="" value="${student?.phone}"/>
 
 </div>
+
 
