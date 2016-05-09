@@ -38,17 +38,7 @@
 							<p class="list-group-item-text">
 								Generates an aggregate report of service hours organized by Campus groups.
 							</p>
-							<g:form controller = "Reports">
-								<select name = campusOrgComboBox>
-									<g:each in="${campusList}">
-										<option value="${it.id}">${it.name}</option>
-									</g:each>
-								</select>
-								<br/>
-								<br/>
-								<g:actionSubmit value = "Generate Report" action="campusOrgReport" ></g:actionSubmit>
-								<div class="cornerButtons listButtons"></div>
-							</g:form>
+							<g:link controller="reports" action="campusOrgReport">Generate Report</g:link>
 					
 							
 						</div>

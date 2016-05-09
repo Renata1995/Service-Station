@@ -3,26 +3,56 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
 <meta name="layout" content="main" />
-<title>Pending Service Hour Management</title>
+<title>Station Report by Community Organization</title>
+<style>
+.table>tbody>tr>td {
+	border: none;
+}
+
+.table>thead>tr>th {
+	background-color: transparent;
+	color:black;
+	border-bottom: 1px solid #ddd;
+}
+</style>
 </head>
 <body>
-<div>
-	<!-- Buttons on the top -->
-	<div class="titletop">
-		<h1 class="pagetitle">Community Organization Report</h1>
-		<div class="cornerButtons"></div>
+	<div class="mainback">
+	
+	<div class="reportTitle">
+	Service Hours by Community Organization <br>
 	</div>
 	
+	<div class="report">
+	</div>
+
+	<!-- Service Hours List -->
 	<div>
-		<g:render template="/shared/hourTable"/>
-		
-	</div>
+		<table id="stationYeartable" class="table" style="width: 100%">
+			<thead>
+				<tr>
+					<th>Community Organizations</th>
+				
+				</tr>
+			</thead>
+			
+			<tbody>
+			
+				<g:each in="${(0..<orgList.size()) }" var="i">
+					<tr>
+						<td>
+							${orgList.get(i).name}: ${hourList.get(i)}
+						</td>
+
+					</tr>
+				</g:each>
+				
+			</tbody>
+			
+		</table>
 	
+	</div>
 </div>
-<script>
-$(function(){
-	$('#htable').DataTable();
-})
-</script>
+
 </body>
 </html>

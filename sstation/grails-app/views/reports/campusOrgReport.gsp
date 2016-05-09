@@ -20,7 +20,7 @@
 	<div class="mainback">
 	
 	<div class="reportTitle">
-	Service Hours by Community Organization <br>
+	Service Hours by Campus Group <br>
 	</div>
 	
 	<div class="report">
@@ -31,7 +31,7 @@
 		<table id="stationYeartable" class="table" style="width: 100%">
 			<thead>
 				<tr>
-					<th>Community Organizations</th>
+					<th>Campus Group</th>
 				
 				</tr>
 			</thead>

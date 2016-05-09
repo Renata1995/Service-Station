@@ -172,18 +172,23 @@ class ReportsController {
 			}
 			hourList.add(total)
 		}
-		render view: "campusOrgReport", model: [orgList:orgList, hourList:hourList]
+		render view: "commOrgReport", model: [orgList:orgList, hourList:hourList]
 	}
 	
 	
 	def campusOrgReport() {
-		def value = params.campusOrgComboBox
-		println value
-		
-		def campusOrg = CampusOrg.get(value)
-		println campusOrg
-		def list = ServiceHour.findAllByCampusOrg(campusOrg)
-		[list:list]
+		def orgList = CampusOrg.list()
+		def hourList = []
+		for(int a = 0; a < orgList.size(); a++){
+			def total = 0
+			for(ServiceHour s: ServiceHour.list()){
+				if(s.campusOrg.name.equals(orgList.get(a).name)){
+					total += s.duration
+				}
+			}
+			hourList.add(total)
+		}
+		render view: "campusOrgReport", model: [orgList:orgList, hourList:hourList]
 		
 	}
 	
