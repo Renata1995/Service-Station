@@ -33,6 +33,12 @@
 					<b>Classification:</b>  ${student.classification}					
 				</li>
 				</g:if>
+				
+				<g:if test="${student?.status}">
+				<li class="fieldcontain">
+					<b>Status:</b>  ${student.status}					
+				</li>
+				</g:if>
 			
 				<g:if test="${student?.acYear}">
 				<li class="fieldcontain">
