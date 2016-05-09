@@ -143,10 +143,27 @@ class HourController {
 			sh.otherCamOrg = params.selected_CamOrg
 		}
 		sh.event=Event.findByName(params.shEvent)
+		
+		def commAg1 = params.selected_CommAg
+
+		def commAg2 = params.otherName_CommAg
+
+		
 		sh.commAg=CommAg.findByName(params.selected_CommAg)
-		if (sh.commAg == null){
-			sh.otherCommAg = params.selected_CommAg
+//<<<<<<< HEAD
+//		if (sh.commAg == null){
+//			sh.otherCommAg = params.selected_CommAg
+//		}
+//=======
+		
+		if(commAg2 != null){
+			println "there is an_OTHER_ community agency"
+			sh.otherCommAg = commAg2
+		}else{
+			sh.otherCommAg = "n/a"
 		}
+		
+		
 		sh.status=params.status;
 
 		//Parse the id in the idList param and get corresponding students
@@ -183,10 +200,27 @@ class HourController {
 			sh.otherCamOrg = params.selected_CamOrg
 		}
 		sh.event=Event.findByName(params.shEvent)
+		
+		def commAg1 = params.selected_CommAg
+
+		def commAg2 = params.otherName_CommAg
+
+		
 		sh.commAg=CommAg.findByName(params.selected_CommAg)
-		if (sh.commAg == null){
-			sh.otherCommAg = params.selected_CommAg
-		}
+//<<<<<<< HEAD
+//		if (sh.commAg == null){
+//			sh.otherCommAg = params.selected_CommAg
+//		}
+//=======
+		
+		if(commAg2 != null){
+			println "there is an_OTHER_ community agency"
+			sh.otherCommAg = commAg2
+		}else{
+			sh.otherCommAg = "n/a"
+		}		
+	
+		
 		sh.status=params.status;
 
 

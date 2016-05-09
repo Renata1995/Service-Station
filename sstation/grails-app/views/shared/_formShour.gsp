@@ -173,9 +173,8 @@
 		<g:textField name="selected_CommAg" readonly="readonly"
 		value="" />
 	</g:else>
+	<g:textField name="otherName_CommAg"/>
 
-	<g:checkBox id="commAgOther" name="commAgOther" checked="false" />
-	Other
 
 </div>
 

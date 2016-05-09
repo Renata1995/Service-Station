@@ -74,19 +74,22 @@ div.btn-group-vertical {
 
 					<div
 						class="fieldcontain ${hasErrors(bean: shour, field: 'acStudent', 'error')} required">
-						<label for="acStudent"> Student: </label>
-						<g:textField name="student" required="" value="" readonly="readonly"/>
+						<label for="acStudent"> Student: </label> <span
+							class="required-indicator">*</span>
+						<g:textField name="student" required="" value=""
+							readonly="readonly" />
 
-						<g:hiddenField name="studentIdHolder" value=""/>
+						<g:hiddenField name="studentIdHolder" value="" />
 
 
 					</div>
 				</fieldset>
 				<fieldset class="buttons">
-				<g:actionSubmit class="btn btn-default" value="Create" action="saveShour" />
-				
-				<a href = "javascript:location.reload(true)">Cancel</a>
-				
+					<g:actionSubmit class="btn btn-default" value="Create"
+						action="saveShour" />
+
+					<a href="javascript:location.reload(true)">Cancel</a>
+
 				</fieldset>
 			</div>
 		</div>
@@ -96,7 +99,7 @@ div.btn-group-vertical {
 			<g:render template="studentFilter" />
 		</div>
 
-		
+
 	</g:form>
 
 	<script>
@@ -108,7 +111,9 @@ div.btn-group-vertical {
 				height : 600,
 				width : 800,
 				modal : true,
-				open: function(event, ui) { $(".ui-dialog-titlebar-close").hide(); }
+				open : function(event, ui) {
+					$(".ui-dialog-titlebar-close").hide();
+				}
 			});
 
 			$("#totalPrevious").click(function() {
@@ -125,8 +130,8 @@ div.btn-group-vertical {
 								.parents("tr").children("td.name").text();
 						$("#Dialog").dialog("close");
 						$('#student').val(id);
-						$("#studentIdHolder").val($("input[name='checkstudent']:checked").val());
-						
+						$("#studentIdHolder").val(
+								$("input[name='checkstudent']:checked").val());
 
 					});
 

@@ -25,8 +25,7 @@
 	<!-- Link to the profile or the service hour list of the current student -->
 		<ul class="nav-tabs navGradient nav">
 				<li class="tab1"><g:remoteLink controller="event" action="_eventTable" update="eventMain"><b>Event List</b></g:remoteLink></li>
-				<li class="tab2"><g:remoteLink controller="Reports" action="eventReport" update="eventMain">Analysis</g:remoteLink></li>
-				
+				<li class="tab2"><g:remoteLink controller="event" action="_eventKPI" update="eventMain">Analysis</g:remoteLink></li>
  	</ul>
  	</div>
  	<div id="eventMain">
