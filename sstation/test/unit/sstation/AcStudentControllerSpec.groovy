@@ -121,8 +121,7 @@ class AcStudentControllerSpec extends Specification {
 		int count=AcStudent.count()
 		controller.deleteStudent(ac)
 		then:
-		view=="/acStudent/student/_sTable"
-		model.list.size()==count-1
+		AcStudent.count()==count-1
 	}
 
 	void "test deleting multiple student"(){
