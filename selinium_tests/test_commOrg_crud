@@ -117,8 +117,13 @@
 	<td>exact:Address: testAddress</td>
 </tr>
 <tr>
-	<td>click</td>
-	<td>css=#9 &gt; b</td>
+	<td>waitForElementPresent</td>
+	<td>//div[@id='agTopList']/div/div[10]/p</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>//div[@id='agTopList']/div/div[10]/div/a/b</td>
 	<td></td>
 </tr>
 <tr>
