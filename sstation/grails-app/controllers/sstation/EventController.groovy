@@ -65,10 +65,7 @@ class EventController {
 	 * @return
 	 */
 	
-	def _eventKPI(Event e){
-		int year=Integer.parseInt(params.eventTime)
-		println year
-		render view:"_eventKPI"
+	def _eventKPI(){
 	}
 
 	/**
