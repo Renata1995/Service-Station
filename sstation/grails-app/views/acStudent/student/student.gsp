@@ -22,12 +22,12 @@
 					<b>Back</b>
 				</g:link>
 
-				<g:remoteLink controller="acStudent" action="deleteStudent"
-					id="${student.id}" update="main">
+				<g:link controller="acStudent" action="deleteStudent"
+					id="${student.id}">
 					<span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
 					<b
 						onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');">Delete</b>
-				</g:remoteLink>
+				</g:link>
 			</div>
 
 			
