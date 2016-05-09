@@ -3,11 +3,6 @@
 <%@ page import="sstation.AcStudent"%>
 <html>
 <!-- Create Service Hour Page -->
-<script>
-$(function(){
-	alert("${shour.id}");
-})
-</script>
 <div id="createS">
 	<div class="formHeading greyBar">
 		New Service Hour
