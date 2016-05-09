@@ -76,7 +76,7 @@ div.grayBar {
 				<!-- Buttons -->
 				<div class="cornerButtons listButtons">
 					<g:remoteLink class="aoListIcon" controller="event"
-						id="${event.id}" action="_editEvent" update="eventMain">
+						params="[eventMain:1]" id="${event.id}" action="_editEvent" update="eventMain">
 						<span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
 						<b>Edit</b>
 					</g:remoteLink>

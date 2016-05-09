@@ -26,6 +26,10 @@ class EventController {
 	 * The event main page
 	 * @return
 	 */
+	def index(){
+		def list=Event.list()
+		[list:list]
+	}
 	def eventMain(){
 		def list=Event.list()
 		render view:"eventMain",model:[list:list]
@@ -35,6 +39,7 @@ class EventController {
 	 * Event list page
 	 * @return
 	 */
+	
 	def _eventTable(){
 		def list=Event.list()
 
@@ -59,21 +64,21 @@ class EventController {
 	 * @param e
 	 * @return
 	 */
+	
 	def _eventKPI(Event e){
 		int year=Integer.parseInt(params.eventTime)
 		println year
 		render view:"_eventKPI"
 	}
 
-
 	/**
 	 * Create a new event
 	 * @return
 	 */
 	def _createEvent(){
-		Event e=new Event()
+		Event event=new Event()
 		def heading="New Event"
-		render view:"_eventForm",model:[event:e,heading:heading]
+		render view:"_eventForm",model:[event:event,heading:heading]
 	}
 
 	/**
@@ -82,8 +87,7 @@ class EventController {
 	 * @return
 	 */
 	def _editEvent(Event e){
-		def heading=e.name
-		render view:"_eventForm",model:[event:e,heading:heading]
+		render view:"_eventForm",model:[event:e,heading:e.name]
 	}
 
 	/**
@@ -91,16 +95,34 @@ class EventController {
 	 * @param e
 	 * @return
 	 */
-	def _saveEvent(Event e){
+	
+	def _saveOnCard(Event e){
 		e.properties=params
-		if(!e.save(flush:true,failOnError:true)){
-			render view:'_eventForm', model:[event:e]
+		if (!e.save(flush:true)) {
+			render view:'eventForm', model:[event:e,form:1,card:1]
 			return
 		}
+
 		e.save(flush:true,failOnError:true)
-		def list=Event.list()
-		render view:"eventMain",model:[list:list]
-		//_eventTable()
+
+		render view:'formSaved',model:[card:1]
+	}
+	/**
+	 * Save or update an event and direct to the saved page
+	 * from there it auto redirects to the index
+	 * @param e
+	 * @return
+	 */
+	def _saveOnTable(Event e){
+		e.properties=params
+		if(!e.save(flush:true)){
+			print(wow)
+			render view:'eventForm', model:[event:e,form:1,table:1]
+			return
+		}
+		org.save(flush:true,failOnError:true)
+
+		render view:'formSaved',model:[table:1]
 	}
 
 	/**
@@ -121,6 +143,7 @@ class EventController {
 	 * @param e
 	 * @return
 	 */
+	
 	def _deleteEventTable(Event e){
 		ServiceHour.findAllByEvent(e).each{
 			it.delete(flush:true,failOnError:true)

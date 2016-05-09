@@ -4,16 +4,19 @@
 	${heading}
 </div>
 
-<g:hasErrors bean = "${event}">
-	<ul class = "errors" role = "alert">
-	<g:eachError bean="${event}" var="error">
-				<li
-					<g:if test="${error in org.springframework.validation.FieldError}">data-field-id="${error.field}"</g:if>>Please check the ${error.field} </li>
-			</g:eachError>
+<g:hasErrors bean="${event}">
+	<ul class="errors" role="alert">
+		<g:eachError bean="${event}" var="error">
+			<li
+				<g:if test="${error in org.springframework.validation.FieldError}">data-field-id="${error.field}"</g:if>>Please
+				check the ${error.field}
+			</li>
+		</g:eachError>
 	</ul>
 </g:hasErrors>
 
-<form class="mainback" method="POST">
+
+<g:form class="mainback" controller="Event" method="POST" id="${event.id}">
 	<div
 		class="fieldcontain ${hasErrors(bean: event, field: 'name', 'error')} required">
 		<label for="name"> Name: <span class="required-indicator">*</span>
@@ -61,20 +64,21 @@
 			value="${event?.contactEmail}" required="" />
 
 	</div>
-	
+
+	<!-- Save Button -->
 	<div>
 		<g:if test="${params.eventMain=='1'||card==1}">
-			<g:actionSubmit class="btn btn-default" action="_saveEvent"
-				value="Save"/>
+			<g:actionSubmit class="btn btn-default" action="_saveOnCard"
+				value="Save"  onclick="_saveOnCard"/>
 		</g:if>
-</div>
-
-	<g:actionSubmit class="btn btn-default"  value="Save"
-		controller="event" action="_saveEvent" />
-
-	<g:actionSubmit class="btn btn-default" action="eventMain"
+		<g:else> 
+			<g:actionSubmit class="btn btn-default" action="_saveOnTable" value="Save"
+			onclick="_saveOnTable"/>
+		</g:else>
+		<g:actionSubmit class="btn btn-default" action="eventMain"
 				value="Cancel"/>
+	</div>
 
-</form>
+</g:form>
 
 </html>

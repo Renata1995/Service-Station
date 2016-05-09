@@ -77,8 +77,6 @@ class ACGroupController {
 		render view:'formSaved',model:[table:1]
 	}
 
-
-
 	/**
 	 * Delete an org and direct to the card view
 	 * @param org
