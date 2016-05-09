@@ -29,9 +29,20 @@
 	<label for="campusOrg"> Campus Group: </label>
 
 	<g:hiddenField name="tableId_CamOrg" />
-	<g:textField name="selected_CamOrg" readonly="readonly"
-		value="${shour?.campusOrg?.name}" />
-
+	<g:if test="${shour?.campusOrg}">
+		<g:textField name="selected_CamOrg" readonly="readonly"
+		value="${shour?.campusOrg.name}" />
+	</g:if>
+	<g:elseif test="${shour?.otherCamOrg}">
+		<g:textField name="selected_CamOrg" readonly="readonly"
+		value="${shour?.otherCamOrg}" />
+	</g:elseif>
+	<g:else>
+		<g:textField name="selected_CamOrg" readonly="readonly"
+		value="" />
+	</g:else>
+	<g:checkBox id="campusOrgOther" name="campusOrgOther" checked="false" />
+	Other
 </div>
 
 <div class="modal" id="modal2_CamOrg" style="display: none;">
@@ -73,7 +84,28 @@
 
 
 <script>
+	var campusOrgFlag = true;
 	$(function() {
+		$("#campusOrgOther").on("click", function(){
+			if ($("#campusOrgOther").prop("checked")){
+				$("input[name='selected_CamOrg']").prop("readonly",false);
+				campusOrgFlag = false;
+			} else {
+				$("input[name='selected_CamOrg']").prop("readonly",true);
+				campusOrgFlag = true;
+				
+			}
+			});
+		
+			
+		$("#selected_CamOrg").click(function() {
+			if (campusOrgFlag){
+				dialog_CamOrg.dialog("open");
+			}
+			
+		});
+
+			
 		var dialog_CamOrg = $("#modal2_CamOrg").dialog(
 				{//modal_CamOrg
 					autoOpen : false,
@@ -85,7 +117,7 @@
 						$(".ui-dialog-titlebar-close").hide();
 					},
 					buttons : {
-						Commit : function() {
+						Select : function() {
 							//window.alert("commit");
 
 							var id = $("input[name='checkCO']:checked").val();
@@ -107,13 +139,7 @@
 					}
 				});
 
-		$("#btn_CamOrg").button().on("click", function() {
-			dialog_CamOrg.dialog("open");
-		});
-
-		$("#selected_CamOrg").click(function() {
-			dialog_CamOrg.dialog("open");
-		});
+		
 
 		//obtained from Z.C.(Ren)'s code that doesnt allow multiselection
 		$("input[name='checkCO']").change(function() {
@@ -134,9 +160,22 @@
 	<label for="commAg"> Community Organization: </label>
 
 	<g:hiddenField name="tableId_CommAg" />
-	<g:textField name="selected_CommAg" readonly="readonly"
-		value="${shour?.commAg?.name}" />
-	<g:textField name="otherName_CommAg" />
+	
+	<g:if test="${shour?.commAg}">
+		<g:textField name="selected_CommAg" readonly="readonly"
+		value="${shour?.commAg.name}" />
+	</g:if>
+	<g:elseif test="${shour?.otherCommAg}">
+		<g:textField name="selected_CommAg" readonly="readonly"
+		value="${shour?.otherCommAg}" />
+	</g:elseif>
+	<g:else>
+		<g:textField name="selected_CommAg" readonly="readonly"
+		value="" />
+	</g:else>
+
+	<g:checkBox id="commAgOther" name="commAgOther" checked="false" />
+	Other
 
 </div>
 
@@ -182,6 +221,28 @@
 	$(function() {
 		//addded hidden textbox
 		$("input[name='otherName_CommAg']").hide();
+
+
+		var commAgFlag = true;
+		$("#commAgOther").on("click", function(){
+				if ($("#commAgOther").prop("checked")){
+					$("input[name='selected_CommAg']").prop("readonly",false);
+					commAgFlag = false;
+				} else {
+					$("input[name='selected_CommAg']").prop("readonly",true);
+					commAgFlag = true;
+					
+				}
+			});
+
+			$("#selected_CommAg").click(function() {
+				if (commAgFlag){
+					dialog_CommAg.dialog("open");
+				}
+				
+			});
+		
+		
 		//tells if other is selected as comm org
 		var otherCommOrg = false;
 
@@ -196,7 +257,7 @@
 						$(".ui-dialog-titlebar-close").hide();
 					},
 					buttons : {
-						Commit : function() {
+						Select : function() {
 							//window.alert("commit");
 
 							var id = $("input[name='checkCA']:checked").val();
@@ -225,13 +286,7 @@
 					}
 				});
 
-		$("#btn_CommAg").button().on("click", function() {
-			dialog_CommAg.dialog("open");
-		});
-
-		$("#selected_CommAg").click(function() {
-			dialog_CommAg.dialog("open");
-		});
+	
 
 		$("input[name='checkCA']").change(function() {
 			$("input[name='checkCA']").not(this).prop('checked', false);

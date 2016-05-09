@@ -33,7 +33,7 @@ ul.navLink>li.activePill{
 	background-color:transparent;
 }
 ul.navLink>li.activePill>a{
-	color:#B20938;
+	/*color:#B20938;*/
 	background-color:transparent;
 }
 
@@ -258,10 +258,6 @@ div.formHeading, div.formHeading>a{
 .pagetitle{
 	padding-left:20px;
 	font-weight:700;
-}
-
-.editform{
-	background-color:
 }
 
 .showButtons{

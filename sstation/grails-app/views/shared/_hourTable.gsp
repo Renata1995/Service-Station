@@ -27,11 +27,21 @@
 				</td>
 
 				<td>
-					${s.campusOrg?.name}
+					<g:if test ="${s.campusOrg}">
+						${s.campusOrg.name}
+					</g:if>
+					<g:elseif test ="${s.otherCamOrg}">
+						${s.otherCamOrg}
+					</g:elseif>
 				</td>
 
 				<td>
-					${s.commAg?.name}
+					<g:if test ="${s.commAg}">
+						${s.commAg.name}
+					</g:if>
+					<g:elseif test ="${s.otherCommAg}">
+						${s.otherCommAg}
+					</g:elseif>
 				</td>
 
 				<td>

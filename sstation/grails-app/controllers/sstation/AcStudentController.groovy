@@ -284,18 +284,21 @@ class AcStudentController {
 	 * @return
 	 */
 	def _createShour(AcStudent ac){
-		def list=AcStudent.list()
-		def shour=new ServiceHour()
+		ServiceHour sh=new ServiceHour()
+		
 		def eventList=Event.list().collect{
 			it.name
 		}
 		def orgList=CampusOrg.list().collect{
 			it.name
 		}
+		def fullOrgList = CampusOrg.list()
+		def fullAgList = CommAg.list()
 		def agList=CommAg.list().collect{
 			it.name
 		}
-		render view:"shour/_createShour",model:[shour:shour,acid:ac.id,list:list,eventList:eventList,orgList:orgList,agList:agList]
+		render view: "shour/_createShour",
+		model: [acid:ac.id,eventList:eventList,orgList:orgList,fullOrgList:fullOrgList,agList:agList,fullAgList:fullAgList,shour:sh]
 	}
 	/**
 	 * Edit the current service hour
@@ -309,10 +312,13 @@ class AcStudentController {
 		def orgList=CampusOrg.list().collect{
 			it.name
 		}
+		def fullOrgList = CampusOrg.list()
+		def fullAgList = CommAg.list()
 		def agList=CommAg.list().collect{
 			it.name
 		}
-		render view:"shour/_editShour",model:[shour:sh,eventList:eventList,orgList:orgList,agList:agList]
+		render view: "shour/_editShour",
+		model: [eventList:eventList,orgList:orgList,fullOrgList:fullOrgList,agList:agList,fullAgList:fullAgList,shour:sh]
 	}
 
 	/**
@@ -322,37 +328,42 @@ class AcStudentController {
 	 */
 	def saveShour(ServiceHour sh){
 		//Set the lastModified time
-		sh.properties=params
+	sh.properties=params
+		//Set the lastModified time
 		sh.lastmodified=new Date()
 
 		//Get the start date from the input
 		SimpleDateFormat format=new SimpleDateFormat("MM/dd/yyyy")
 		String d=params.startdate+" "+params.starthour+":"+params.startmin
 		Date date = new Date().parse("MM/dd/yyyy HH:mm",d)
+		println "printing stuff"
 		sh.starttime=date
-		sh.campusOrg=CampusOrg.findByName(params.shOrg)
-		sh.event=Event.findByName(params.shEvent)
-		sh.commAg=CommAg.findByName(params.shCommAg)
-		if(params.doamin=="2"){
-			//If a student add a new service hour, the status of this service hour is pending
-			sh.status="Pending"
-
-		}else{
-			//If an admin user add a new service hour, the status is the one he/she input
-			sh.status=params.status;
+		sh.campusOrg=CampusOrg.findByName(params.selected_CamOrg)
+		if (sh.campusOrg == null){
+			sh.otherCamOrg = params.selected_CamOrg
 		}
+		sh.event=Event.findByName(params.shEvent)
+		sh.commAg=CommAg.findByName(params.selected_CommAg)
+		if (sh.commAg == null){
+			sh.otherCommAg = params.selected_CommAg
+		}
+		sh.status=params.status;
 
-
+		//Parse the id in the idList param and get corresponding students
 		def ac=AcStudent.get(params.acid)
 		ac.addToServiceHours(sh).save(flush:true,failOnError:true)
 
+		
 		if( !sh.save(flush:true,failOnError:true) ) {
+			
 			sh.errors.each {
 				println it
 			}
 		}
+		
 		render view:"shour/shour",model:[shour:sh]
 
+		
 	}
 
 	/**

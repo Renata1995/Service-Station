@@ -21,11 +21,19 @@
 				<li class="fieldcontain"><b>Campus Group: </b> ${shour.campusOrg?.name}
 				</li>
 			</g:if>
+			<g:elseif test="${shour?.otherCamOrg}">
+				<li class="fieldcontain"><b>Campus Group: </b> ${shour.otherCamOrg}
+				</li>
+			</g:elseif>
 			
 			<g:if test="${shour?.commAg}">
 				<li class="fieldcontain"><b>Community Organization: </b>${shour.commAg.name}
 				</li>
 			</g:if>
+			<g:elseif test="${shour?.otherCommAg}">
+				<li class="fieldcontain"><b>Community Organization: </b> ${shour.otherCommAg}
+				</li>
+			</g:elseif>
 
 			<g:if test="${shour?.starttime}">
 				<li class="fieldcontain"><b>Start Time: </b> ${shour.starttime.format('MM/dd/yyyy HH:mm')}

@@ -139,12 +139,14 @@ class HourController {
 		println "printing stuff"
 		sh.starttime=date
 		sh.campusOrg=CampusOrg.findByName(params.selected_CamOrg)
-		println sh.campusOrg
-		println sh.campusOrg.name
+		if (sh.campusOrg == null){
+			sh.otherCamOrg = params.selected_CamOrg
+		}
 		sh.event=Event.findByName(params.shEvent)
 		sh.commAg=CommAg.findByName(params.selected_CommAg)
-		println sh.commAg
-		println sh.commAg.name
+		if (sh.commAg == null){
+			sh.otherCommAg = params.selected_CommAg
+		}
 		sh.status=params.status;
 
 		//Parse the id in the idList param and get corresponding students
@@ -177,8 +179,14 @@ class HourController {
 		
 		//Save campus organization,event,community agency,and status
 		sh.campusOrg=CampusOrg.findByName(params.selected_CamOrg)
+		if (sh.campusOrg == null){
+			sh.otherCamOrg = params.selected_CamOrg
+		}
 		sh.event=Event.findByName(params.shEvent)
 		sh.commAg=CommAg.findByName(params.selected_CommAg)
+		if (sh.commAg == null){
+			sh.otherCommAg = params.selected_CommAg
+		}
 		sh.status=params.status;
 
 

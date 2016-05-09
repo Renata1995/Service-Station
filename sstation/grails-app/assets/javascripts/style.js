@@ -22,12 +22,12 @@ $(function(){
 	    }*/
 	});
 
-	$("ul.navLink li").click(function() {	
-		$("ul.navLink li").each(function(){
-			$(this).removeClass("activePill");
-		});
-		$(this).addClass("activePill");
-	});
+//	$("ul.navLink li").click(function() {	
+//		$("ul.navLink li").each(function(){
+//			$(this).removeClass("activePill");
+//		});
+//		$(this).addClass("activePill");
+//	});
 
 	/*Methods about tables*/
 	$("tr.odd").on({

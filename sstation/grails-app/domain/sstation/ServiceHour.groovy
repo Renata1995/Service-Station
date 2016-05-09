@@ -15,6 +15,8 @@ class ServiceHour {
 	Event event
 	Date starttime,lastmodified 
 	static belongsTo=[acStudent:AcStudent]
+	String otherCamOrg
+	String otherCommAg
 	
 	static mapping = {
 		description type: "text"
@@ -29,6 +31,8 @@ class ServiceHour {
 		campusOrg(nullable:true)
 		status(nullable:false,blank:false)
 		duration(nullable:false)
+		otherCamOrg(nullable:true)
+		otherCommAg(nullable:true)
     }
 	
 }
