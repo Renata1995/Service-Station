@@ -137,8 +137,8 @@
 	<td>exact:Phone: 555</td>
 </tr>
 <tr>
-	<td>click</td>
-	<td>//a[@id='11']/b</td>
+	<td>clickAndWait</td>
+	<td>//div[@id='student']/div/a/b</td>
 	<td></td>
 </tr>
 <tr>
@@ -187,8 +187,8 @@
 	<td>5552</td>
 </tr>
 <tr>
-	<td>click</td>
-	<td>//input[@id='11']</td>
+	<td>clickAndWait</td>
+	<td>name=_action__updateStudent</td>
 	<td></td>
 </tr>
 <tr>
@@ -261,7 +261,6 @@
 	<td>link=Log Out</td>
 	<td></td>
 </tr>
-
 </tbody></table>
 </body>
 </html>
