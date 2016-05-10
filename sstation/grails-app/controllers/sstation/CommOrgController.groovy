@@ -55,14 +55,16 @@ class CommOrgController {
 	 */
 	def _saveOnCard(CommAg agency){
 		agency.properties=params
-		if (!agency.save(flush:true)) {
-			render view:'agForm', model:[agency:agency,form:1,card:1]
-			return
+		try{
+			if (!agency.save(flush:true)) {
+				render view:'agForm',model:[agency:agency,form:1,card:1]
+				return
+			}
+			agency.save(flush:true,failOnError:true)
+			render view:'formSaved',model:[card:1]
+		}catch(Exception e){
+			render view:'agForm',model:[agency:agency,form:1,card:1]
 		}
-
-		agency.save(flush:true,failOnError:true)
-
-		render view:'formSaved',model:[card:1]
 	}
 
 	/**
@@ -72,15 +74,17 @@ class CommOrgController {
 	 * @return
 	 */
 	def _saveOnTable(CommAg agency){
-
 		agency.properties=params
-		if (!agency.save(flush:true)) {
+		try{
+			if (!agency.save(flush:true)) {
+				render view:'agForm',model:[agency:agency,form:1,table:1]
+				return
+			}
+			agency.save(flush:true,failOnError:true)
+			render view:'formSaved',model:[table:1]
+		}catch(Exception e){
 			render view:'agForm',model:[agency:agency,form:1,table:1]
-			return
 		}
-
-
-		render view:'formSaved',model:[table:1]
 	}
 
 

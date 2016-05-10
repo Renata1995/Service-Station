@@ -51,14 +51,17 @@ class ACGroupController {
 	 */
 	def _saveOnCard(CampusOrg org){
 		org.properties=params
-		if (!org.save(flush:true)) {
+		try{
+			if (!org.save(flush:true)) {
+				render view:'orgForm', model:[org:org,form:1,card:1]
+				return
+			}
+			org.save(flush:true,failOnError:true)
+
+			render view:'formSaved',model:[card:1]
+		}catch(Exception e){
 			render view:'orgForm', model:[org:org,form:1,card:1]
-			return
 		}
-
-		org.save(flush:true,failOnError:true)
-
-		render view:'formSaved',model:[card:1]
 	}
 	/**
 	 * Save or update an org and direct to the saved page
@@ -68,13 +71,17 @@ class ACGroupController {
 	 */
 	def _saveOnTable(CampusOrg org){
 		org.properties=params
-		if(!org.save(flush:true)){
-			render view:'orgForm', model:[org:org,form:1,table:1]
-			return
-		}
-		org.save(flush:true,failOnError:true)
+		try{
+			if (!org.save(flush:true)) {
+				render view:'orgForm', model:[org:org,form:1,table:1]
+				return
+			}
+			org.save(flush:true,failOnError:true)
 
-		render view:'formSaved',model:[table:1]
+			render view:'formSaved',model:[table:1]
+		}catch(Exception e){
+			render view:'orgForm', model:[org:org,form:1,table:1]
+		}
 	}
 
 	/**

@@ -86,7 +86,7 @@ class AcStudentController {
 	 * @param student  passed from the _studentList.gsp
 	 */
 	def home(AcStudent student) {
-		
+
 		def stat=hourService.studentStat(student)
 		def list=student.serviceHours
 
@@ -151,19 +151,20 @@ class AcStudentController {
 
 	def saveStudent(AcStudent student) {
 
-		/*if (student == null) {
-		 notFound()
-		 return
-		 }*/
 
-		/*if (student.hasErrors()) {
-		 println "error"
-		 respond student.errors, view:'_studentList'
-		 return
-		 }*/
 		student.properties=params
-		student.save(flush:true,failOnError:true)
-		render view:"student/student",model:[student:student]
+		try{
+			if(!student.save(flush:true,failOnError:true)){
+				render view:"student/_createStudent",model:[student:student]
+			}
+
+			student.save(flush:true,failOnError:true)
+			render view:"student/student",model:[student:student]
+		}catch(Exception ex){
+			render view:"student/_createStudent",model:[student:student]
+
+		}
+
 
 	}
 
@@ -302,18 +303,12 @@ class AcStudentController {
 	 */
 	def _createShour(AcStudent ac){
 		ServiceHour sh=new ServiceHour()
-		
-		def eventList=Event.list().collect{
-			it.name
-		}
-		def orgList=CampusOrg.list().collect{
-			it.name
-		}
+
+		def eventList=Event.list().collect{ it.name }
+		def orgList=CampusOrg.list().collect{ it.name }
 		def fullOrgList = CampusOrg.list()
 		def fullAgList = CommAg.list()
-		def agList=CommAg.list().collect{
-			it.name
-		}
+		def agList=CommAg.list().collect{ it.name }
 		render view: "shour/_createShour",
 		model: [acid:ac.id,eventList:eventList,orgList:orgList,fullOrgList:fullOrgList,agList:agList,fullAgList:fullAgList,shour:sh]
 	}
@@ -323,17 +318,11 @@ class AcStudentController {
 	 * @return
 	 */
 	def _editShour(ServiceHour sh){
-		def eventList=Event.list().collect{
-			it.name
-		}
-		def orgList=CampusOrg.list().collect{
-			it.name
-		}
+		def eventList=Event.list().collect{ it.name }
+		def orgList=CampusOrg.list().collect{ it.name }
 		def fullOrgList = CampusOrg.list()
 		def fullAgList = CommAg.list()
-		def agList=CommAg.list().collect{
-			it.name
-		}
+		def agList=CommAg.list().collect{ it.name }
 		render view: "shour/_editShour",
 		model: [eventList:eventList,orgList:orgList,fullOrgList:fullOrgList,agList:agList,fullAgList:fullAgList,shour:sh]
 	}
@@ -345,7 +334,7 @@ class AcStudentController {
 	 */
 	def saveShour(ServiceHour sh){
 		//Set the lastModified time
-	sh.properties=params
+		sh.properties=params
 		//Set the lastModified time
 		sh.lastmodified=new Date()
 
@@ -370,17 +359,15 @@ class AcStudentController {
 		def ac=AcStudent.get(params.acid)
 		ac.addToServiceHours(sh).save(flush:true,failOnError:true)
 
-		
+
 		if( !sh.save(flush:true,failOnError:true) ) {
-			
-			sh.errors.each {
-				println it
-			}
+
+			sh.errors.each { println it }
 		}
-		
+
 		render view:"shour/shour",model:[shour:sh]
 
-		
+
 	}
 
 	/**
@@ -410,10 +397,10 @@ class AcStudentController {
 	def reportAdmin(AcStudent ac){
 		def stat=hourService.studentStat(ac)
 		render view:"report/reportAdmin",model:[student:ac,stat:stat]
-		
-		
+
+
 	}
-	
+
 	def reportStudent(AcStudent ac){
 		def stat=hourService.studentStat(ac)
 		render view:"report/reportStudent",model:[student:ac,stat:stat]
@@ -433,8 +420,8 @@ class AcStudentController {
 			}
 			totalSH=hourService.studentStat(ac).get('aSum')
 		}
-		
-		
+
+
 		render view:"report/studentReport",model:[student:ac,list:list,totalSH:totalSH]
 	}
 
@@ -444,7 +431,7 @@ class AcStudentController {
 	def semesterReport(AcStudent ac){
 		def SHlist=reportService.semesterReport(ac)
 		def totalSH=0.0
-		if(hourService.studentStat(ac).get('aSum')!=null){ 
+		if(hourService.studentStat(ac).get('aSum')!=null){
 			totalSH=hourService.studentStat(ac).get('aSum')
 		}
 		render view:"report/semesterReport",model:[student:ac,SHlist:SHlist,totalSH:totalSH]
@@ -453,7 +440,7 @@ class AcStudentController {
 	def orgReport(AcStudent ac){
 		def stat=hourService.studentStat(ac)
 		def totalSH=stat.get('aSum')
-	
+
 		def listSH = []
 		ac.serviceHours.each {
 			if (it.status == Status.APPROVED){
@@ -461,11 +448,11 @@ class AcStudentController {
 			}
 		}
 		println listSH.size()
-		
+
 		def listCO = CampusOrg.list()
-		
+
 		render view:"report/orgReport",model:[student:ac,listSH:listSH,listCO:listCO,totalSH:totalSH]
-	
+
 	}
 
 	def requestSemester(AcStudent ac){
@@ -474,45 +461,45 @@ class AcStudentController {
 			subject "Semester Report Request"
 			body "Request semester report for ${springSecurityService.currentUser}"
 		}
-		
+
 		def message = "Request semester report sent"
 		def stat=hourService.studentStat(ac)
 		redirect action:"reportStudent", id: "${ac.id}", controller:"acStudent", params:[message:"Semester Report Request Sent"]
 
 	}
-	
-	
+
+
 	def requestGeneral(AcStudent ac){
 		mailService.sendMail{
 			to "mhiggs@austincollege.edu"
 			subject "General Report Request"
 			body "Request general report for ${springSecurityService.currentUser}"
 		}
-		
+
 		def message = "Request general report sent"
 		def stat=hourService.studentStat(ac)
 		redirect action:"reportStudent", id: "${ac.id}", controller:"acStudent", params:[message:"General Report Request Sent"]
 
 	}
-	
+
 	def requestCampusGroup(AcStudent ac){
 		mailService.sendMail{
 			to "mhiggs@austincollege.edu"
 			subject "Campus Group Report Request"
 			body "Request campus group report for ${springSecurityService.currentUser}"
 		}
-		
+
 		def message = "Request campus group report sent"
 		def stat=hourService.studentStat(ac)
 		redirect action:"reportStudent", id: "${ac.id}", controller:"acStudent", params:[message:"Campus Group Report Request Sent"]
 
 	}
 
-	
 
-	
-	
-	
+
+
+
+
 	/**
 	 * Upload students
 	 * @return
