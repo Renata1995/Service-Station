@@ -3,7 +3,7 @@
 <asset:javascript src="kpiOverall"/>
  <!-- Tendency Charts -->
  
-<div class="row" id="mainTendency" style="margin-top:20px;height:400px;">
+<div class="row" id="mainTendency" style="margin-top:20px;height:500px;">
 <ul class="nav nav-tabs tendencyList">
 				<li class="tab1 kpiTab" role="presentation" id="show5">Five Years Tendency</li>
 				<li class="tab2 kpiTab" role="presentation" id="showYear">Current Year Tendency</li>

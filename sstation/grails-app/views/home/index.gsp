@@ -35,7 +35,69 @@ div.col-md-7 {
 ul.nav-tabs{
 	margin-bottom:20px;
 }
+
+div.homeTable {
+	height: 30%
+}
+
+#homePendingTable {
+	overflow: auto;
+}
+
 </style>
+
+<script>
+
+
+function showApprovalDialog(id) {
+
+	$("#hrs_id").val(id);
+	$("#modal_Status").dialog("open");
+	
+	
+} 
+
+
+
+$(document).ready(function() {
+
+	$("#modal_Status").dialog({
+		autoOpen : false,
+		resizable : true,
+		height : 300,
+		width : 500,
+		modal : true,
+		buttons: {
+			"Update Status": function() { 
+				var stat = $("input[name='checkS']:checked").val();
+				var hid = $("#hrs_id").val();
+
+				$.ajax({
+					  url: "${createLink(controller:'home', action:'ajaxUpdateStatus')}"+"?hid="+hid+"&stat="+stat
+					}).done(function() {
+					    $("#modal_Status").dialog( "close" );
+					    location.reload(true);
+					})
+
+					  .fail(function() {
+					    alert( "error" );
+					  })
+					  
+					  .always(function() {
+					  });
+
+			},
+			
+			Cancel: function() {
+			$( this ).dialog( "close" ); }
+			}
+	});
+	
+});
+
+</script>
+
+
 <title>Service Station Project</title>
 </head>
 
@@ -57,8 +119,10 @@ ul.nav-tabs{
 				<li class="tab4"><g:link controller="moderator" action="index" >Moderators</g:link></li>
 				</sec:ifAnyGranted>
  		</ul>
-
-		<div id="homeCoreInfor" class="mainback col-md-5">
+	</div>
+	
+	<div class="row">
+		<div id="homeCoreInfor" class="mainback">
 			<b style="font-size: 15px">Core Statistics</b><br /> <br />
 
 			<!-- Main Stats -->
@@ -76,9 +140,9 @@ ul.nav-tabs{
 		</div>
 		<!-- homeCoreInfor -->
 
-		<div class="col-md-7" id="homeTable">
+		<div id="homeTable" style="margin-top: 50px; height:300px; overflow: scroll">
 			<div id="homeTableName" class="formHeading">
-				<g:link action="pending" controller="hour">Pending Service Hours</g:link>
+				<g:link action="pending" controller="hour">Pending Service Hours (${list.size()})</g:link>
 			</div>
 			<table id="homePendingTable" class="table">
 				<thead>
@@ -93,7 +157,7 @@ ul.nav-tabs{
 				</thead>
 				<tbody>
 					<g:each in="${list}" var="sh" status="i">
-						<tr class="${i%2==0?'even':'odd'}">
+						<tr class="${i%2==0?'even':'odd'}" onclick="showApprovalDialog(${sh.id}); return false;">
 							<td><b>
 									${sh.acStudent.firstname} ${sh.acStudent.lastname}
 							</b></td>
@@ -121,10 +185,6 @@ ul.nav-tabs{
 								</g:elseif></td>
 						</tr>
 					</g:each>
-					<tr>
-						<td colspan="6" id="homePendingMore"><g:link
-								class="aoListIcon" controller="hour" action="pending">Show More</g:link></td>
-					</tr>
 				</tbody>
 			</table>
 		</div>
@@ -135,14 +195,27 @@ ul.nav-tabs{
 
 	<g:render template="hourkpi" />
 	
+	<!--  the following dialog is a quick way to allow user to change status  -->
+	<div class="modal" id="modal_Status" style="display: none;">
+
+	<h1>Status Selection</h1>
+	<input id="hrs_id" type="hidden" />
+	<table>
+		<thead>
+		</thead>
+		<tbody>
+			<tr>
+				<td><g:radio name="checkS" value="APPROVED" checked="true" />&nbsp;APPROVED</td>
+				<td><g:radio name="checkS" value="PENDING" checked="false" />&nbsp;PENDING</td>
+				<td><g:radio name="checkS" value="REJECTED" checked="false" />&nbsp;REJECTED</td>
+			</tr>
+		</tbody>
+	</table>
+	
+</div>
+	
 	<script>
-	 $(function(){
-		 var height = $("#homePendingTable").height() + $("#homeTableName").height()+$("#homePendingMore").height();
 
-		 $("#homeCoreInfor").css("height", height);
-
-		 //alert(height);
-		 });
 	</script>
 
 </body>

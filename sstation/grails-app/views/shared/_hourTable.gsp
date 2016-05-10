@@ -83,9 +83,9 @@
 		</thead>
 		<tbody>
 			<tr>
-				<td><g:checkBox name="checkS" value="1" checked="false" />APPROVED</td>
-				<td><g:checkBox name="checkS" value="2" checked="false" />PENDING</td>
-				<td><g:checkBox name="checkS" value="3" checked="false" />REJECTED</td>
+				<td><g:checkBox name="checkS" value="1" checked="false" />&nbsp;APPROVED</td>
+				<td><g:checkBox name="checkS" value="2" checked="false" />&nbsp;PENDING</td>
+				<td><g:checkBox name="checkS" value="3" checked="false" />&nbsp;REJECTED</td>
 			</tr>
 		</tbody>
 	</table>
