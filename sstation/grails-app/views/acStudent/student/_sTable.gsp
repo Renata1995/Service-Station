@@ -5,14 +5,13 @@
 		<div class="col-md-6 navbar-right cornerButtons"
 			style="margin-top: 7px; margin-bottom: -7px;">
 
-			<g:remoteLink controller="acStudent" action="_createStudent"
-				update="slist">
+			<g:link controller="acStudent" action="_createStudent" update="slist">
 
 
 				<span style="color: #FFDE97" class="glyphicon glyphicon-plus"
 					aria-hidden="true"></span> New Student
 			
-			</g:remoteLink>
+			</g:link>
 			<span id="deleteStudentsBtn" style="color: #FFDE97"> <span
 				class="glyphicon glyphicon-trash" aria-hidden="true"></span> Delete
 			</span>
@@ -75,7 +74,7 @@
 					<td>
 						${s.status }
 					</td>
-					
+
 					<td>
 						${s.acYear}
 					</td>
@@ -117,21 +116,25 @@
 <script>
 	$(function() {
 		$('#table').DataTable();
-		$(document).ready(function(){
-		   // $('#table').DataTable();
-		    var baseLink = '<g:createLink action="student" controller="acStudent" id="ID"/>';
-		   // var row = $(".studentRow");
-		   // window.alert(row.attr("id"));
-		    $(".studentRow....").on({
-			    click: function(){
-				    //window.alert($(this).attr("acid"))
-				    var idstring=$(this).attr("id");
-				   
-				    window.location = baseLink.replace("ID", idstring);
-			    }
-			});
-		    
-		});
+		$(document)
+				.ready(
+						function() {
+							// $('#table').DataTable();
+							var baseLink = '<g:createLink action="student" controller="acStudent" id="ID"/>';
+							// var row = $(".studentRow");
+							// window.alert(row.attr("id"));
+							$(".studentRow....").on(
+									{
+										click : function() {
+											//window.alert($(this).attr("acid"))
+											var idstring = $(this).attr("id");
+
+											window.location = baseLink.replace(
+													"ID", idstring);
+										}
+									});
+
+						});
 		//$('#table').DataTable();
 
 		var modalDelete = $("#modal_Delete").dialog({
@@ -142,23 +145,24 @@
 			modal : true
 		});
 
-		$(".studentid").click(function() {
-			//var rows = $('#table').DataTable().rows;
-			//window.alert(row.length);
-			var acId = $(this).attr("id");
-			var baseLink = '<g:createLink action="student" controller="acStudent" id="ID"/>';
-			window.location = baseLink.replace("ID", acId);
+		$(".studentid")
+				.click(
+						function() {
+							//var rows = $('#table').DataTable().rows;
+							//window.alert(row.length);
+							var acId = $(this).attr("id");
+							var baseLink = '<g:createLink action="student" controller="acStudent" id="ID"/>';
+							window.location = baseLink.replace("ID", acId);
 
+						});
+
+		$("#deleteStudentsBtn").on("mouseenter", function() {
+			$("#deleteStudentsBtn").css("cursor", "pointer");
+			$("#deleteStudentsBtn").css("text-decoration", "underline");
 		});
-
-		
-		$("#deleteStudentsBtn").on("mouseenter", function(){
-			$("#deleteStudentsBtn").css("cursor","pointer");
-			$("#deleteStudentsBtn").css("text-decoration","underline");
-			});
-		$("#deleteStudentsBtn").on("mouseleave", function(){
-			$("#deleteStudentsBtn").css("text-decoration","none");
-			});
+		$("#deleteStudentsBtn").on("mouseleave", function() {
+			$("#deleteStudentsBtn").css("text-decoration", "none");
+		});
 		$("#deleteStudentsBtn").on("click", function() {
 			modalDelete.dialog("open");
 		});
@@ -184,11 +188,10 @@
 						$('#deleteBody tr:last').after(returnedInfo);
 					} else if (!boo) {
 						$("#dRow_" + acId).remove();
-					}					
+					}
 				});
 
 		$("#deleteStudentsTable").DataTable();
-		
 
 	});
 </script>

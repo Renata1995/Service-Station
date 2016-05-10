@@ -1,5 +1,5 @@
 <%! import sstation.Classification %>
-
+<meta name="layout" content="main" />
 <!-- form template for student -->
 <div class="fieldcontain ${hasErrors(bean: student, field: 'firstname', 'error')} required">
 	<label for="firstname">

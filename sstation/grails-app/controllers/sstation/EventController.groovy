@@ -30,6 +30,7 @@ class EventController {
 		def list=Event.list()
 		[list:list]
 	}
+
 	def eventMain(){
 		def list=Event.list()
 		render view:"eventMain",model:[list:list]
@@ -39,13 +40,13 @@ class EventController {
 	 * Event list page
 	 * @return
 	 */
-	
+
 	def _eventTable(){
 		def list=Event.list()
 
 		render view:"_eventTable",model:[list:list]
 	}
-	
+
 	def _eventTableView(){
 		def list=Event.list()
 
@@ -64,7 +65,7 @@ class EventController {
 	 * @param e
 	 * @return
 	 */
-	
+
 	def _eventKPI(){
 	}
 
@@ -92,17 +93,22 @@ class EventController {
 	 * @param e
 	 * @return
 	 */
-	
+
 	def _saveOnCard(Event e){
 		e.properties=params
-		if (!e.save(flush:true)) {
-			render view:'eventForm', model:[event:e,form:1,card:1]
-			return
+		try{
+
+			e.save(flush:true,failOnError:true)
+
+			render view:'formSaved',model:[card:1]
+		}catch(MissingPropertyException ex){
+			redirect action:"index"
+		}finally{
+			if(!e.save(flush:true)){
+				render view:'_eventForm', model:[event:e,form:1,card:1]
+				return
+			}
 		}
-
-		e.save(flush:true,failOnError:true)
-
-		render view:'formSaved',model:[card:1]
 	}
 	/**
 	 * Save or update an event and direct to the saved page
@@ -112,14 +118,19 @@ class EventController {
 	 */
 	def _saveOnTable(Event e){
 		e.properties=params
-		if(!e.save(flush:true)){
-			print(wow)
-			render view:'eventForm', model:[event:e,form:1,table:1]
-			return
-		}
-		org.save(flush:true,failOnError:true)
+		try{
 
-		render view:'formSaved',model:[table:1]
+			e.save(flush:true,failOnError:true)
+
+			render view:'formSaved',model:[table:1]
+		}catch(MissingPropertyException ex){
+			redirect action:"index"
+		}finally{
+			if(!e.save(flush:true)){
+				render view:'_eventForm', model:[event:e,form:1,table:1]
+				return
+			}
+		}
 	}
 
 	/**
@@ -134,13 +145,13 @@ class EventController {
 		e.delete(flush:true,failOnError:true)
 		_eventTable()
 	}
-	
+
 	/**
 	 * Delete a specific event
 	 * @param e
 	 * @return
 	 */
-	
+
 	def _deleteEventTable(Event e){
 		ServiceHour.findAllByEvent(e).each{
 			it.delete(flush:true,failOnError:true)

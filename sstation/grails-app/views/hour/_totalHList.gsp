@@ -2,12 +2,11 @@
 <html>
 <div class="table_buttons" style="height: 2em">
 	<div class="navbar-right cornerButtons" style="margin: 0px">
-		<g:remoteLink controller="hour" action="_createShour"
-			update="totalhour">
+		<g:link controller="hour" action="_createShour">
 			<span style="color: #FFDE97" class="glyphicon glyphicon-plus"
 				aria-hidden="true"></span>
 			<b> New Service Hour</b>
-		</g:remoteLink>
+		</g:link>
 	</div>
 
 	<g:textField name="holdingStatus" readonly="readonly" value="" />
@@ -18,6 +17,6 @@
 
 <g:render template="/shared/hourTable" />
 <script>
-
+	
 </script>
 </html>

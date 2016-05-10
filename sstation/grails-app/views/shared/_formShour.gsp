@@ -1,5 +1,5 @@
 <%@ page import="sstation.ServiceHour"%>
-
+<meta name="layout" content="main" />
 <!-- Form template for service hour -->
 
 <input type="text" style="display: none" name="sid" value="${shour?.id}"></input>
@@ -31,15 +31,14 @@
 	<g:hiddenField name="tableId_CamOrg" />
 	<g:if test="${shour?.campusOrg}">
 		<g:textField name="selected_CamOrg" readonly="readonly"
-		value="${shour?.campusOrg.name}" />
+			value="${shour?.campusOrg.name}" />
 	</g:if>
 	<g:elseif test="${shour?.otherCamOrg}">
 		<g:textField name="selected_CamOrg" readonly="readonly"
-		value="${shour?.otherCamOrg}" />
+			value="${shour?.otherCamOrg}" />
 	</g:elseif>
 	<g:else>
-		<g:textField name="selected_CamOrg" readonly="readonly"
-		value="" />
+		<g:textField name="selected_CamOrg" readonly="readonly" value="" />
 	</g:else>
 	<g:checkBox id="campusOrgOther" name="campusOrgOther" checked="false" />
 	Other
@@ -86,26 +85,24 @@
 <script>
 	var campusOrgFlag = true;
 	$(function() {
-		$("#campusOrgOther").on("click", function(){
-			if ($("#campusOrgOther").prop("checked")){
-				$("input[name='selected_CamOrg']").prop("readonly",false);
+		$("#campusOrgOther").on("click", function() {
+			if ($("#campusOrgOther").prop("checked")) {
+				$("input[name='selected_CamOrg']").prop("readonly", false);
 				campusOrgFlag = false;
 			} else {
-				$("input[name='selected_CamOrg']").prop("readonly",true);
+				$("input[name='selected_CamOrg']").prop("readonly", true);
 				campusOrgFlag = true;
-				
+
 			}
-			});
-		
-			
-		$("#selected_CamOrg").click(function() {
-			if (campusOrgFlag){
-				dialog_CamOrg.dialog("open");
-			}
-			
 		});
 
-			
+		$("#selected_CamOrg").click(function() {
+			if (campusOrgFlag) {
+				dialog_CamOrg.dialog("open");
+			}
+
+		});
+
 		var dialog_CamOrg = $("#modal2_CamOrg").dialog(
 				{//modal_CamOrg
 					autoOpen : false,
@@ -139,8 +136,6 @@
 					}
 				});
 
-		
-
 		//obtained from Z.C.(Ren)'s code that doesnt allow multiselection
 		$("input[name='checkCO']").change(function() {
 			$("input[name='checkCO']").not(this).prop('checked', false);
@@ -160,20 +155,19 @@
 	<label for="commAg"> Community Organization: </label>
 
 	<g:hiddenField name="tableId_CommAg" />
-	
+
 	<g:if test="${shour?.commAg}">
 		<g:textField name="selected_CommAg" readonly="readonly"
-		value="${shour?.commAg.name}" />
+			value="${shour?.commAg.name}" />
 	</g:if>
 	<g:elseif test="${shour?.otherCommAg}">
 		<g:textField name="selected_CommAg" readonly="readonly"
-		value="${shour?.otherCommAg}" />
+			value="${shour?.otherCommAg}" />
 	</g:elseif>
 	<g:else>
-		<g:textField name="selected_CommAg" readonly="readonly"
-		value="" />
+		<g:textField name="selected_CommAg" readonly="readonly" value="" />
 	</g:else>
-	<g:textField name="otherName_CommAg"/>
+	<g:textField name="otherName_CommAg" />
 
 
 </div>
@@ -221,27 +215,25 @@
 		//addded hidden textbox
 		$("input[name='otherName_CommAg']").hide();
 
-
 		var commAgFlag = true;
-		$("#commAgOther").on("click", function(){
-				if ($("#commAgOther").prop("checked")){
-					$("input[name='selected_CommAg']").prop("readonly",false);
-					commAgFlag = false;
-				} else {
-					$("input[name='selected_CommAg']").prop("readonly",true);
-					commAgFlag = true;
-					
-				}
-			});
+		$("#commAgOther").on("click", function() {
+			if ($("#commAgOther").prop("checked")) {
+				$("input[name='selected_CommAg']").prop("readonly", false);
+				commAgFlag = false;
+			} else {
+				$("input[name='selected_CommAg']").prop("readonly", true);
+				commAgFlag = true;
 
-			$("#selected_CommAg").click(function() {
-				if (commAgFlag){
-					dialog_CommAg.dialog("open");
-				}
-				
-			});
-		
-		
+			}
+		});
+
+		$("#selected_CommAg").click(function() {
+			if (commAgFlag) {
+				dialog_CommAg.dialog("open");
+			}
+
+		});
+
 		//tells if other is selected as comm org
 		var otherCommOrg = false;
 
@@ -271,7 +263,8 @@
 							console.log("co " + co);
 							$("#modal2_CommAg").dialog("close");
 							$('#selected_CommAg').val(co);
-							$("#tableId_CommAg").val($("input[name='checkCA']:checked").val());
+							$("#tableId_CommAg").val(
+									$("input[name='checkCA']:checked").val());
 							if (co == "Other") {
 								//opens hidden txtbox if 'other' picked
 								$("input[name='otherName_CommAg']").show();
@@ -284,8 +277,6 @@
 						}
 					}
 				});
-
-	
 
 		$("input[name='checkCA']").change(function() {
 			$("input[name='checkCA']").not(this).prop('checked', false);

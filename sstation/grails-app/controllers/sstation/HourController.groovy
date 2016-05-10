@@ -28,12 +28,12 @@ class HourController {
 		overall()
 	}
 
-	
+
 	def overall(){
 		def list=ServiceHour.list()
 		render view:"overall",model:[list:list]
 	}
-	
+
 	/**
 	 * Summary of only pending hours
 	 * @return
@@ -50,7 +50,7 @@ class HourController {
 	 */
 	def _hourkpi(){
 		render view:"_hourkpi"
-		
+
 		return hourService.hourCall()
 	}
 
@@ -73,27 +73,21 @@ class HourController {
 		render view:"shour",
 		model:[shour:sh]
 	}
-	
+
 	/**
 	 * Edit service hour page
 	 */
 	def _editShour(ServiceHour sh){
-		def eventList=Event.list().collect{
-			it.name
-		}
-		def orgList=CampusOrg.list().collect{
-			it.name
-		}
+		def eventList=Event.list().collect{ it.name }
+		def orgList=CampusOrg.list().collect{ it.name }
 		def fullOrgList = CampusOrg.list()
-		
-		def agList=CommAg.list().collect{
-			it.name
-		}
+
+		def agList=CommAg.list().collect{ it.name }
 		def fullAgList = CommAg.list()
-		
+
 		render view:"_editShour",
 		model: [shour:sh,eventList:eventList,orgList:orgList,agList:agList,fullOrgList:fullOrgList,fullAgList:fullAgList]
-		
+
 	}
 	/**
 	 * Create a new service hour page
@@ -106,81 +100,90 @@ class HourController {
 		AcStudent.list().each{
 			nameList.add(it.firstname+" "+it.lastname)
 		}
-		def eventList=Event.list().collect{
-			it.name
-		}
-		def orgList=CampusOrg.list().collect{
-			it.name
-		}
+		def eventList=Event.list().collect{ it.name }
+		def orgList=CampusOrg.list().collect{ it.name }
 		def fullOrgList = CampusOrg.list()
 		def fullAgList = CommAg.list()
-		def agList=CommAg.list().collect{
-			it.name
-		}
+		def agList=CommAg.list().collect{ it.name }
 		render view: "_createShour",
 		model: [eventList:eventList,orgList:orgList,fullOrgList:fullOrgList,agList:agList,fullAgList:fullAgList,shour:sh,list:list,nameList:nameList]
 	}
-	
+
 	/**
 	 * Used for saving a service hour in the totalhour page
 	 * @param sh
 	 * @return
 	 */
 	def saveShour(ServiceHour sh){
-	
+
 		sh.properties=params
-		//Set the lastModified time
-		sh.lastmodified=new Date()
+		try{
+			//Set the lastModified time
+			sh.lastmodified=new Date()
 
-		//Get the start date from the input
-		SimpleDateFormat format=new SimpleDateFormat("MM/dd/yyyy")
-		String d=params.startdate+" "+params.starthour+":"+params.startmin
-		Date date = new Date().parse("MM/dd/yyyy HH:mm",d)
-		println "printing stuff"
-		sh.starttime=date
-		sh.campusOrg=CampusOrg.findByName(params.selected_CamOrg)
-		if (sh.campusOrg == null){
-			sh.otherCamOrg = params.selected_CamOrg
-		}
-		sh.event=Event.findByName(params.shEvent)
-		
-		def commAg1 = params.selected_CommAg
-
-		def commAg2 = params.otherName_CommAg
-
-		
-		sh.commAg=CommAg.findByName(params.selected_CommAg)
-//<<<<<<< HEAD
-//		if (sh.commAg == null){
-//			sh.otherCommAg = params.selected_CommAg
-//		}
-//=======
-		
-		if(commAg2 != null){
-			println "there is an_OTHER_ community agency"
-			sh.otherCommAg = commAg2
-		}else{
-			sh.otherCommAg = "n/a"
-		}
-		
-		
-		sh.status=params.status;
-
-		//Parse the id in the idList param and get corresponding students
-		def id=Long.parseLong(params.studentIdHolder)
-		def ac=AcStudent.get(id)
-		println "student "+ac
-		
-		ac.addToServiceHours(sh).save(flush:true,failOnError:true)
-		
-		if( !sh.save(flush:true,failOnError:true) ) {
-			
-			sh.errors.each {
-				println it
+			//Get the start date from the input
+			SimpleDateFormat format=new SimpleDateFormat("MM/dd/yyyy")
+			String d=params.startdate+" "+params.starthour+":"+params.startmin
+			Date date = new Date().parse("MM/dd/yyyy HH:mm",d)
+			println "printing stuff"
+			sh.starttime=date
+			sh.campusOrg=CampusOrg.findByName(params.selected_CamOrg)
+			if (sh.campusOrg == null){
+				sh.otherCamOrg = params.selected_CamOrg
 			}
-		}
+			sh.event=Event.findByName(params.shEvent)
+
+			def commAg1 = params.selected_CommAg
+
+			def commAg2 = params.otherName_CommAg
+
+
+			sh.commAg=CommAg.findByName(params.selected_CommAg)
+			//<<<<<<< HEAD
+			//		if (sh.commAg == null){
+			//			sh.otherCommAg = params.selected_CommAg
+			//		}
+			//=======
+
+			if(commAg2 != null){
+				println "there is an_OTHER_ community agency"
+				sh.otherCommAg = commAg2
+			}else{
+				sh.otherCommAg = "n/a"
+			}
+
+
+			sh.status=params.status;
+
+			//Parse the id in the idList param and get corresponding students
+			def id=Long.parseLong(params.studentIdHolder)
+			def ac=AcStudent.get(id)
+			println "student "+ac
+
+			ac.addToServiceHours(sh).save(flush:true,failOnError:true)
+
+			if( !sh.save(flush:true,failOnError:true) ) {
+
+				sh.errors.each { println it }
+			}
+
+			render view:"shour",model:[shour:sh]
+		}catch(Exception e){
 		
-		render view:"shour",model:[shour:sh]
+		def list=AcStudent.list()
+		def nameList=[]
+		AcStudent.list().each{
+			nameList.add(it.firstname+" "+it.lastname)
+		}
+		def eventList=Event.list().collect{ it.name }
+		def orgList=CampusOrg.list().collect{ it.name }
+		def fullOrgList = CampusOrg.list()
+		def fullAgList = CommAg.list()
+		def agList=CommAg.list().collect{ it.name }
+		render view: "_createShour",
+		model: [eventList:eventList,orgList:orgList,fullOrgList:fullOrgList,agList:agList,fullAgList:fullAgList,shour:sh,list:list,nameList:nameList]
+		}
+
 	}
 
 	def updateShour(ServiceHour sh){
@@ -193,34 +196,34 @@ class HourController {
 		String d=params.startdate+" "+params.starthour+":"+params.startmin
 		Date date = new Date().parse("MM/dd/yyyy HH:mm",d)
 		sh.starttime=date
-		
+
 		//Save campus organization,event,community agency,and status
 		sh.campusOrg=CampusOrg.findByName(params.selected_CamOrg)
 		if (sh.campusOrg == null){
 			sh.otherCamOrg = params.selected_CamOrg
 		}
 		sh.event=Event.findByName(params.shEvent)
-		
+
 		def commAg1 = params.selected_CommAg
 
 		def commAg2 = params.otherName_CommAg
 
-		
+
 		sh.commAg=CommAg.findByName(params.selected_CommAg)
-//<<<<<<< HEAD
-//		if (sh.commAg == null){
-//			sh.otherCommAg = params.selected_CommAg
-//		}
-//=======
-		
+		//<<<<<<< HEAD
+		//		if (sh.commAg == null){
+		//			sh.otherCommAg = params.selected_CommAg
+		//		}
+		//=======
+
 		if(commAg2 != null){
 			println "there is an_OTHER_ community agency"
 			sh.otherCommAg = commAg2
 		}else{
 			sh.otherCommAg = "n/a"
-		}		
-	
-		
+		}
+
+
 		sh.status=params.status;
 
 
@@ -229,9 +232,7 @@ class HourController {
 		ac.addToServiceHours(sh).save(flush:true,failOnError:true)
 
 		if( !sh.save(flush:true,failOnError:true) ) {
-			sh.errors.each {
-				println it
-			}
+			sh.errors.each { println it }
 		}
 		render view:"shour",model:[shour:sh]
 	}
@@ -246,7 +247,7 @@ class HourController {
 		sh.delete (flush:true,failOnError:true)
 		def list=ServiceHour.list()
 		render view:"_totalHList",model:[list:list]
-		
+
 	}
 	//i created this call so that the newly created agency/organization could be saved
 	/**

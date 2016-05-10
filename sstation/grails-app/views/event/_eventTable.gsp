@@ -1,6 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8"%>
 <html>
 <head>
+
 <style>
 .list-group-item-heading {
 	margin-bottom: 15px;
@@ -33,11 +34,10 @@ div.grayBar {
 		<div class="col-md-6 navbar-right cornerButtons"
 			style="margin-top: 7px; margin-bottom: -7px;">
 			<!--  <div id="createEventButton">-->
-			<g:remoteLink controller="event" action="_createEvent"
-				update="eventMain">
+			<g:link controller="event" action="_createEvent">
 				<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
 				<b>New Service Event</b>
-			</g:remoteLink>
+			</g:link>
 		</div>
 		<!-- cornerButtons ends -->
 	</div>
@@ -76,7 +76,8 @@ div.grayBar {
 				<!-- Buttons -->
 				<div class="cornerButtons listButtons">
 					<g:remoteLink class="aoListIcon" controller="event"
-						params="[eventMain:1]" id="${event.id}" action="_editEvent" update="eventMain">
+						params="[eventMain:1]" id="${event.id}" action="_editEvent"
+						update="eventMain">
 						<span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
 						<b>Edit</b>
 					</g:remoteLink>

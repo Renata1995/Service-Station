@@ -1,6 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8"%>
 <html>
 <head>
+
 <asset:javascript src="eventMain.js" />
 <!-- not a real script yet -->
 </head>
@@ -11,11 +12,10 @@
 			<div class="col-md-6 navbar-right cornerButtons"
 				style="margin-top: 7px; margin-bottom: -7px;">
 				<!--  <div id="createEventButton">-->
-				<g:remoteLink controller="event" action="_createEvent"
-					update="eventMain">
+				<g:link controller="event" action="_createEvent">
 					<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
 					<b>New Event</b>
-				</g:remoteLink>
+				</g:link>
 				<span style="color: #FFDE97" class="glyphicon glyphicon-trash"
 					aria-hidden="true"></span>
 				<g:submitToRemote controller="event" action="deletemult"
@@ -75,7 +75,6 @@
 								<span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
 
 							</g:remoteLink> <a onclick="deleteConfirm(${event.id})" id="_deleteEventTable"
-
 							class="orgAgMainDelete aoListIcon"> <span
 								class="glyphicon glyphicon-trash" aria-hidden="true"></span>
 
