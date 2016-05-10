@@ -42,29 +42,24 @@
 	<td></td>
 </tr>
 <tr>
-	<td>select</td>
-	<td>name=semesterComboBox</td>
-	<td>label=Spring</td>
-</tr>
-<tr>
-	<td>select</td>
-	<td>name=yearComboBox</td>
-	<td>label=2014</td>
-</tr>
-<tr>
 	<td>clickAndWait</td>
-	<td>name=_action_semesterReport</td>
+	<td>xpath=(//a[contains(text(),'Generate Report')])[5]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertLocation</td>
+	<td>http://localhost:8080/sstation/reports/summaryReport</td>
 	<td></td>
 </tr>
 <tr>
 	<td>assertText</td>
 	<td>css=div.reportTitle</td>
-	<td>Service Station Service Hours Report By Semester<br /> Total Service Hours: *</td>
+	<td>Service Station Service Hours Summary Report <br /> Total Service Hours: *</td>
 </tr>
 <tr>
 	<td>assertText</td>
 	<td>css=h4</td>
-	<td>Total Service Hours: *.*</td>
+	<td>Total Service Hours: *</td>
 </tr>
 <tr>
 	<td>assertText</td>
@@ -88,47 +83,7 @@
 </tr>
 <tr>
 	<td>assertText</td>
-	<td>//table[@id='stationYeartable']/tbody/tr[2]/td</td>
-	<td>*: *</td>
-</tr>
-<tr>
-	<td>assertText</td>
-	<td>//table[@id='stationYeartable']/tbody/tr[3]/td</td>
-	<td>*: *</td>
-</tr>
-<tr>
-	<td>assertText</td>
-	<td>//table[@id='stationYeartable']/tbody/tr[4]/td</td>
-	<td>*: *</td>
-</tr>
-<tr>
-	<td>assertText</td>
-	<td>//table[@id='stationYeartable']/tbody/tr[5]/td</td>
-	<td>*: *</td>
-</tr>
-<tr>
-	<td>assertText</td>
 	<td>//table[@id='stationYeartable']/tbody/tr/td[2]</td>
-	<td>*: *</td>
-</tr>
-<tr>
-	<td>assertText</td>
-	<td>//table[@id='stationYeartable']/tbody/tr[2]/td[2]</td>
-	<td>*: *</td>
-</tr>
-<tr>
-	<td>assertText</td>
-	<td>//table[@id='stationYeartable']/tbody/tr[3]/td[2]</td>
-	<td>*: *</td>
-</tr>
-<tr>
-	<td>assertText</td>
-	<td>//table[@id='stationYeartable']/tbody/tr[4]/td[2]</td>
-	<td>*: *</td>
-</tr>
-<tr>
-	<td>assertText</td>
-	<td>//table[@id='stationYeartable']/tbody/tr[5]/td[2]</td>
 	<td>*: *</td>
 </tr>
 <tr>
@@ -137,28 +92,8 @@
 	<td>*: *</td>
 </tr>
 <tr>
-	<td>assertText</td>
-	<td>//table[@id='stationYeartable']/tbody/tr[2]/td[3]</td>
-	<td>*: *</td>
-</tr>
-<tr>
-	<td>assertText</td>
-	<td>//table[@id='stationYeartable']/tbody/tr[3]/td[3]</td>
-	<td>*: *</td>
-</tr>
-<tr>
-	<td>assertText</td>
-	<td>//table[@id='stationYeartable']/tbody/tr[4]/td[3]</td>
-	<td>*: *</td>
-</tr>
-<tr>
-	<td>assertText</td>
-	<td>//table[@id='stationYeartable']/tbody/tr[5]/td[3]</td>
-	<td>*: *</td>
-</tr>
-<tr>
 	<td>click</td>
-	<td>css=a.dropdown-toggle</td>
+	<td>css=span.glyphicon.glyphicon-menu-hamburger</td>
 	<td></td>
 </tr>
 <tr>
