@@ -38,7 +38,7 @@
 </tr>
 <tr>
 	<td>assertLocation</td>
-	<td>http://localhost:8080/sstation/event/eventMain</td>
+	<td>http://localhost:8080/sstation/event/index</td>
 	<td></td>
 </tr>
 <tr>
@@ -78,12 +78,12 @@
 </tr>
 <tr>
 	<td>clickAndWait</td>
-	<td>name=_action__saveEvent</td>
+	<td>name=_action__saveOnTable</td>
 	<td></td>
 </tr>
 <tr>
-	<td>verifyElementPresent</td>
-	<td>//div[@id='eventMain']/div[2]/div[10]/ol/li</td>
+	<td>waitForElementPresent</td>
+	<td>//div[@id='eventMain']/div[2]/div[10]/p</td>
 	<td></td>
 </tr>
 <tr>
@@ -198,32 +198,37 @@
 </tr>
 <tr>
 	<td>clickAndWait</td>
-	<td>name=_action__saveEvent</td>
+	<td>name=_action__saveOnCard</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForElementPresent</td>
+	<td>//div[@id='eventMain']/div[2]/div[10]</td>
 	<td></td>
 </tr>
 <tr>
 	<td>assertText</td>
-	<td>//div[@id='eventMain']/div[2]/div[11]/h4/b</td>
+	<td>//div[@id='eventMain']/div[2]/div[10]/h4/b</td>
 	<td>testName2</td>
 </tr>
 <tr>
 	<td>assertText</td>
-	<td>//div[@id='eventMain']/div[2]/div[11]/p</td>
+	<td>//div[@id='eventMain']/div[2]/div[10]/p</td>
 	<td>this is a description 2</td>
 </tr>
 <tr>
 	<td>assertText</td>
-	<td>//div[@id='eventMain']/div[2]/div[11]/ol/li</td>
+	<td>//div[@id='eventMain']/div[2]/div[10]/ol/li</td>
 	<td>exact:Contact: testContact2</td>
 </tr>
 <tr>
 	<td>assertText</td>
-	<td>//div[@id='eventMain']/div[2]/div[11]/ol/li[2]</td>
+	<td>//div[@id='eventMain']/div[2]/div[10]/ol/li[2]</td>
 	<td>Contact Phone: 5552</td>
 </tr>
 <tr>
 	<td>assertText</td>
-	<td>//div[@id='eventMain']/div[2]/div[11]/ol/li[3]</td>
+	<td>//div[@id='eventMain']/div[2]/div[10]/ol/li[3]</td>
 	<td>Contact Email: x2@ac.com</td>
 </tr>
 <tr>
@@ -233,7 +238,7 @@
 </tr>
 <tr>
 	<td>click</td>
-	<td>xpath=(//a[@id='_deleteEventCard']/b)[11]</td>
+	<td>xpath=(//a[@id='_deleteEventCard']/b)[10]</td>
 	<td></td>
 </tr>
 <tr>
@@ -243,32 +248,32 @@
 </tr>
 <tr>
 	<td>assertText</td>
-	<td>//div[@id='eventMain']/div[2]/div[11]/h4/b</td>
+	<td>//div[@id='eventMain']/div[2]/div[10]/h4/b</td>
 	<td>testName2</td>
 </tr>
 <tr>
 	<td>assertText</td>
-	<td>//div[@id='eventMain']/div[2]/div[11]/p</td>
+	<td>//div[@id='eventMain']/div[2]/div[10]/p</td>
 	<td>this is a description 2</td>
 </tr>
 <tr>
 	<td>assertText</td>
-	<td>//div[@id='eventMain']/div[2]/div[11]/ol/li</td>
+	<td>//div[@id='eventMain']/div[2]/div[10]/ol/li</td>
 	<td>exact:Contact: testContact2</td>
 </tr>
 <tr>
 	<td>assertText</td>
-	<td>//div[@id='eventMain']/div[2]/div[11]/ol/li[2]</td>
+	<td>//div[@id='eventMain']/div[2]/div[10]/ol/li[2]</td>
 	<td>Contact Phone: 5552</td>
 </tr>
 <tr>
 	<td>assertText</td>
-	<td>//div[@id='eventMain']/div[2]/div[11]/ol/li[3]</td>
+	<td>//div[@id='eventMain']/div[2]/div[10]/ol/li[3]</td>
 	<td>Contact Email: x2@ac.com</td>
 </tr>
 <tr>
 	<td>click</td>
-	<td>xpath=(//a[@id='_deleteEventCard']/b)[11]</td>
+	<td>xpath=(//a[@id='_deleteEventCard']/b)[10]</td>
 	<td></td>
 </tr>
 <tr>
@@ -283,27 +288,27 @@
 </tr>
 <tr>
 	<td>assertNotText</td>
-	<td>//div[@id='eventMain']/div[2]/div[11]/h4/b</td>
+	<td>//div[@id='eventMain']/div[2]/div[10]/h4/b</td>
 	<td>testName2</td>
 </tr>
 <tr>
 	<td>assertNotText</td>
-	<td>//div[@id='eventMain']/div[2]/div[11]/p</td>
+	<td>//div[@id='eventMain']/div[2]/div[10]/p</td>
 	<td>this is a description 2</td>
 </tr>
 <tr>
 	<td>assertNotText</td>
-	<td>//div[@id='eventMain']/div[2]/div[11]/ol/li</td>
+	<td>//div[@id='eventMain']/div[2]/div[10]/ol/li</td>
 	<td>exact:Contact: testContact2</td>
 </tr>
 <tr>
 	<td>assertNotText</td>
-	<td>//div[@id='eventMain']/div[2]/div[11]/ol/li[2]</td>
+	<td>//div[@id='eventMain']/div[2]/div[10]/ol/li[2]</td>
 	<td>Contact Phone: 5552</td>
 </tr>
 <tr>
 	<td>assertNotText</td>
-	<td>//div[@id='eventMain']/div[2]/div[11]/ol/li[3]</td>
+	<td>//div[@id='eventMain']/div[2]/div[10]/ol/li[3]</td>
 	<td>Contact Email: x2@ac.com</td>
 </tr>
 <tr>
