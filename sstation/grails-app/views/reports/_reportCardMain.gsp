@@ -108,7 +108,7 @@
 								<b>Summary Report</b>
 							</h4>
 							<p class="list-group-item-text">
-								Generates an aggregate summary report of service hours.
+								Generates an aggregate summary report of service hours for the current year.
 							</p>
 							<g:link controller="reports" action="summaryReport">Generate Report</g:link>
 							<div class="cornerButtons listButtons"></div>
