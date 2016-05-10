@@ -64,12 +64,12 @@
 	<!-- Buttons -->
 	<div class="table_buttons" style="height: 2em">
 		<div class="col-md-3 navbar-right cornerButtons" style="margin: 0px;">
-			<g:remoteLink controller="acStudent" action="_createShour"
+			<g:link controller="acStudent" action="_createShour"
 				update="main" id="${student.id}">
 				<span style="color: #FFDE97" class="glyphicon glyphicon-plus"
 					aria-hidden="true"></span>
 				<b> New Service Hour</b>
-			</g:remoteLink>
+			</g:link>
 		</div>
 	</div>
 	

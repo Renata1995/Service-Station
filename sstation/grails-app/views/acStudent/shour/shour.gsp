@@ -21,10 +21,10 @@
 	</div>
 	
 	<div class="nav cornerButtons showButtons" role="navigation">
-		<g:remoteLink controller="acStudent" action="_editShour"
+		<g:link controller="acStudent" action="_editShour"
 			id="${shour.id}" update="main" style="padding-right:5px">
 			<span style="color: #FFDE97" class="glyphicon glyphicon-edit"
-				aria-hidden="true"></span> Edit </g:remoteLink>
+				aria-hidden="true"></span> Edit </g:link>
 		<g:link controller="acStudent" action="deleteShour"
 			id="${shour.id}">
 			<span style="color: #FFDE97" class="glyphicon glyphicon-trash"

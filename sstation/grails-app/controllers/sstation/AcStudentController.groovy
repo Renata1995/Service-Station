@@ -198,7 +198,7 @@ class AcStudentController {
 		}
 		
 		
-		
+		println springSecurityService.getCurrentUser().getAuthorities().toString()
 		if(springSecurityService.getCurrentUser().getAuthorities().toString()=="[ROLE_ADMIN]"){
 			redirect controller:"acStudent", action:"student",id:student.id
 		}else if(springSecurityService.getCurrentUser().getAuthorities().toString()=="[ROLE_STUDENT]"){

@@ -27,7 +27,7 @@
 						controller="acStudent" action="_hourList"
 						id="${student.id}">Service Hour List</g:link></li>
 				<li class="tab3" role="presentation"><g:link
-						controller="acStudent" action="reportAdmin"
+						controller="acStudent" action="reportStudent"
 						id="${student.id }">Report</g:link></li>
 			</ul>
 		</div>
@@ -38,7 +38,7 @@
 			<!-- This place will show either the student information, the edit form, or the create form  -->
 		<div id="student">
 			<div class="nav cornerButtons showButtons" role="navigation">
-		 				<g:remoteLink controller="acStudent" action="_editStudent" id="${student.id}" update="student"><span class="glyphicon glyphicon-edit" aria-hidden="true" style="padding-left:10px"></span> <b>Edit</b></g:remoteLink>
+		 				<g:link controller="acStudent" action="_editStudent" id="${student.id}"><span class="glyphicon glyphicon-edit" aria-hidden="true" style="padding-left:10px"></span> <b>Edit</b></g:link>
 </div>
 
 <!-- Information -->
