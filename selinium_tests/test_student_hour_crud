@@ -37,7 +37,12 @@
 	<td></td>
 </tr>
 <tr>
-	<td>click</td>
+	<td>clickAndWait</td>
+	<td>link=Service Hour List</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
 	<td>css=b</td>
 	<td></td>
 </tr>
@@ -63,7 +68,7 @@
 </tr>
 <tr>
 	<td>click</td>
-	<td>link=1</td>
+	<td>css=a.ui-state-default.ui-state-hover</td>
 	<td></td>
 </tr>
 <tr>
@@ -114,7 +119,7 @@
 <tr>
 	<td>assertText</td>
 	<td>//div[@id='main']/div/div[3]/ol/li[4]</td>
-	<td>Start Time: 05/01/2016 08:30</td>
+	<td>Start Time: * 08:30</td>
 </tr>
 <tr>
 	<td>assertText</td>
@@ -137,8 +142,8 @@
 	<td>Contact Email: x@ac.com</td>
 </tr>
 <tr>
-	<td>click</td>
-	<td>id=101</td>
+	<td>clickAndWait</td>
+	<td>link=Edit</td>
 	<td></td>
 </tr>
 <tr>
@@ -189,7 +194,7 @@
 <tr>
 	<td>assertText</td>
 	<td>//div[@id='main']/div/div[3]/ol/li[4]</td>
-	<td>Start Time: 05/01/2016 07:30</td>
+	<td>Start Time: * 07:30</td>
 </tr>
 <tr>
 	<td>assertText</td>
@@ -261,7 +266,6 @@
 	<td>link=Log Out</td>
 	<td></td>
 </tr>
-
 </tbody></table>
 </body>
 </html>
