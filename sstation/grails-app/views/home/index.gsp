@@ -31,12 +31,32 @@ div.formHeading>a,td#homePendingMore>a {
 div.col-md-7 {
 	padding-right: 0px;
 }
+
+ul.nav-tabs{
+	margin-bottom:20px;
+}
 </style>
 <title>Service Station Project</title>
 </head>
 
 <body>
 	<div class="row">
+	
+		<div class="titletop">
+			<h1 class="pagetitle">Service Station Home</h1>
+			<div class="cornerButtons"></div><div class="cornerButtons">
+		</div>
+	
+	
+	<!-- Link to the profile or the service hour list of the current student -->
+		<ul class="nav-tabs navGradient nav" >
+				<li class="tab1"><g:link controller="event" action="index">Service Events</g:link></li>
+				<li class="tab2"><g:link controller="ACGroup" action="index" >Campus Groups</g:link></li>
+				<li class="tab3"><g:link controller="commOrg" action="index"><b>Community Organizations</b></g:link></li>
+				<sec:ifAnyGranted roles="ROLE_ADMIN">
+				<li class="tab4"><g:link controller="moderator" action="index" >Moderators</g:link></li>
+				</sec:ifAnyGranted>
+ 		</ul>
 
 		<div id="homeCoreInfor" class="mainback col-md-5">
 			<b style="font-size: 15px">Core Statistics</b><br /> <br />

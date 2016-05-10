@@ -119,31 +119,11 @@
   							<span class="glyphicon glyphicon-education" aria-hidden="true"></span>
   							<br /> Students</g:link></li>
   
- 					<li><g:link controller="event" action="eventMain">
- 
-  							<span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>
-  							<br />Service Events</g:link></li>
-  
- 					<li><g:link controller="ACGroup" action="index">
- 
-  							<span class="glyphicon glyphicon-pawn" aria-hidden="true"></span>
-  							<br />Campus Groups</g:link></li>
-  
- 					<li><g:link controller="CommOrg" action="index">
- 
-  							<span class="glyphicon glyphicon-tower" aria-hidden="true"></span>
-  							<br />Community Organizations</g:link></li>
+ 					
  					<li><g:link controller="Reports" action="index">
  
   							<span class="glyphicon glyphicon-tasks" aria-hidden="true"></span>
   							<br />Station Reports</g:link></li>
-  				</sec:ifAnyGranted>
-  				
-  				<sec:ifAnyGranted roles="ROLE_ADMIN">
- 					<li><g:link controller="Moderator" action="index">
-
-  							<span class="glyphicon glyphicon-user" aria-hidden="true"></span>
-  							<br />Moderator</g:link></li>
   				</sec:ifAnyGranted>
   
   				<sec:ifAnyGranted roles="ROLE_MODERATOR">
