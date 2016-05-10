@@ -17,13 +17,22 @@
 <title>Student Report</title>
 </head>
 <div class="titletop">
-		<h1 class="pagetitle">
-			${student.firstname}
-			${student.lastname}
-		</h1>
-		<div class="cornerButtons"></div>
+	<h1 class="pagetitle">
+		${student.firstname}
+		${student.lastname}
+	</h1>
+	<div class="cornerButtons">
+		<sec:ifAnyGranted roles="ROLE_ADMIN,ROLE_MODERATOR">
+			<g:link controller="acStudent" action="reportAdmin"
+				id="${student.id}">Back</g:link>
+		</sec:ifAnyGranted>
+		<sec:ifAnyGranted roles="ROLE_STUDENT">
+			<g:link controller="acStudent" action="reportStudent"
+				id="${student.id}">Back</g:link>
+		</sec:ifAnyGranted>
 	</div>
-	<br/>
+</div>
+<br />
 <div class="mainback">
 	<div class="reportTitle">Austin College Service Hours Report</div>
 	<div class="report">
@@ -36,9 +45,10 @@
 
 	<!-- KPI -->
 	<div class="report">
-		<p align = "right">
-		<b>Service Hours Total: </b>
-		${totalSH}hr</p>
+		<p align="right">
+			<b>Service Hours Total: </b>
+			${totalSH}hr
+		</p>
 	</div>
 
 	<!-- Service Hours List -->
@@ -87,14 +97,20 @@
 				</g:each>
 			</tbody>
 		</table>
+
+
 	</div>
-	
+
 	<!-- KPI -->
 	<div class="report">
-		<p align = "right">
-		<b>Service Hours Total: </b>
-		${totalSH}hr</p>
+		<p align="right">
+			<b>Service Hours Total: </b>
+			${totalSH}hr
+		</p>
 	</div>
-	
+
+
 </div>
+
+
 </html>

@@ -14,16 +14,18 @@
 		
 
 		<!-- Link to the profile or the service hour list of the current student -->
-		<ul class="nav nav-tabs">
-			<li class="tab1" role="presentation" class="active"><g:remoteLink
-					controller="acStudent" action="_showStudent" id="${student.id}"
-					update="student">Profile</g:remoteLink></li>
-			<li class="tab2" role="presentation"><g:remoteLink
-					controller="acStudent" action="_hourList" id="${student.id}"
-					update="student">Service Hour List</g:remoteLink></li>
-			<li class="tab3" role="presentation"><g:link
-					controller="acStudent" action="reportStudent" id="${student.id }">Report</g:link></li>
-		</ul>
+		<!-- Link to the profile or the service hour list of the current student -->
+			<ul class="nav nav-tabs">
+				<li class="tab1" role="presentation" class="active"><g:link
+						controller="acStudent" action="home"
+						id="${student.id}" >Profile</g:link></li>
+				<li class="tab2" role="presentation"><g:link
+						controller="acStudent" action="_hourList"
+						id="${student.id}">Service Hour List</g:link></li>
+				<li class="tab3" role="presentation"><g:link
+						controller="acStudent" action="reportStudent"
+						id="${student.id }">Report</g:link></li>
+			</ul>
 	</div>
 	
 	<div class="mainback" style="margin-top: 20px; margin-bottom: 20px">

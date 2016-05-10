@@ -13,7 +13,7 @@
 	<div class="titletop">
 			<h1 class="pagetitle">Service Hour</h1>
 			<div class="cornerButtons">
-				<g:link controller="acStudent" action="student" id="${shour.acStudent.id}">
+				<g:link controller="acStudent" action="_hourList" id="${shour.acStudent.id}">
 					<span class="glyphicon glyphicon-th-list" aria-hidden="true"></span>
 					<b>Back</b>
 				</g:link>

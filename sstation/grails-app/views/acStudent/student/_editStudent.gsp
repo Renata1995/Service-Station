@@ -20,7 +20,7 @@
 	</g:hasErrors>
 
 	<div class="mainback">
-		<g:form method="PUT">
+		<g:form method="PUT" controller="acStudent" id="${student.id}">
 			<g:hiddenField name="version" value="${student?.version}" />
 			<fieldset class="form">
 				<g:render template="student/form" />
@@ -28,8 +28,8 @@
 
 			<fieldset class="buttons">
 				<div id="cd">
-					<g:submitToRemote class="btn btn-default" action="_updateStudent"
-						value="Update" id="${student.id}" update="student" />
+					<g:actionSubmit class="btn btn-default" controller ="acStudent" action="_updateStudent"
+					value="Update" />
 				</div>
 			</fieldset>
 		</g:form>

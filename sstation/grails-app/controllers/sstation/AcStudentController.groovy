@@ -173,6 +173,7 @@ class AcStudentController {
 	 * @return
 	 */
 	def _updateStudent(AcStudent student) {
+		student.properties=params
 		/*if (student == null) {
 		 println("null")
 		 notFound()
@@ -186,8 +187,24 @@ class AcStudentController {
 		}
 
 		student.save flush:true
-		render(view:"student/_showStudent",model:[student:student])
-
+		//println springSecurityService.getAuthentication()
+	
+		
+		if(springSecurityService.getCurrentUser()==null){
+			println student.id
+			redirect controller:"acStudent", action:"student",id:student.id
+			return
+		}
+		
+		
+		
+		if(springSecurityService.getCurrentUser().getAuthorities().toString()=="[ROLE_ADMIN]"){
+			redirect controller:"acStudent", action:"student",id:student.id
+		}else if(springSecurityService.getCurrentUser().getAuthorities().toString()=="[ROLE_STUDENT]"){
+			redirect controller:"acStudent",action:"home",id:student.id		
+		} else {
+			redirect controller:"acStudent", action:"student",id:student.id
+		}
 	}
 
 

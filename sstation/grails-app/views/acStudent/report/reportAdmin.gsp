@@ -13,6 +13,17 @@
 		</h1>
 		<div class="cornerButtons"></div>
 	</div>
+	<ul class="nav nav-tabs">
+				<li class="tab1" role="presentation" class="active"><g:link
+						controller="acStudent" action="student"
+						id="${student.id}" >Profile</g:link></li>
+				<li class="tab2" role="presentation"><g:link
+						controller="acStudent" action="_hourList"
+						id="${student.id}">Service Hour List</g:link></li>
+				<li class="tab3" role="presentation"><g:link
+						controller="acStudent" action="reportAdmin"
+						id="${student.id }">Report</g:link></li>
+	</ul>
 
 	<div class="mainback" style="margin-top: 20px; margin-bottom: 20px">
 		<b>Total Service Hours: </b>

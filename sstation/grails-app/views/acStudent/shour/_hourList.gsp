@@ -1,7 +1,65 @@
 <%@ page contentType="text/html;charset=UTF-8"%>
 <html>
-<!-- Service Hour List -->
-<div class="body">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+<meta name="layout" content="main" />
+<title>Student Management</title>
+</head>
+
+<body>
+	<!-- Student Main Page. The div "student" is used for ajax -->
+	<div style="padding: 10px 0px;rgb(197, 62, 62)">
+		
+		<!-- Title + Three buttons -->
+		<div class="titletop">
+			<h1 class="pagetitle">${student.firstname} ${student.lastname}</h1>
+			<div class="cornerButtons">
+			<sec:ifAnyGranted roles="ROLE_ADMIN,ROLE_MODERATOR">
+				<g:link controller="acStudent" action="studentList">
+					<span class="glyphicon glyphicon-th-list" aria-hidden="true"></span>
+					<b>Back</b>
+				</g:link>
+
+				<g:link controller="acStudent" action="deleteStudent"
+					id="${student.id}">
+					<span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+					<b
+						onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');">Delete</b>
+				</g:link>
+				</sec:ifAnyGranted>
+			</div>
+
+			
+			
+			<!-- Link to the profile or the service hour list of the current student -->
+			<ul class="nav nav-tabs">
+				<sec:ifAnyGranted roles="ROLE_ADMIN,ROLE_MODERATOR">
+				<li class="tab1" role="presentation" class="active"><g:link
+						controller="acStudent" action="student"
+						id="${student.id}" >Profile</g:link></li>
+				</sec:ifAnyGranted>
+				<sec:ifAnyGranted roles="ROLE_STUDENT">
+				<li class="tab1" role="presentation" class="active"><g:link
+						controller="acStudent" action="home"
+						id="${student.id}" >Profile</g:link></li>
+				</sec:ifAnyGranted>
+				
+				<li class="tab2" role="presentation"><g:link
+						controller="acStudent" action="_hourList"
+						id="${student.id}">Service Hour List</g:link></li>
+				
+				<sec:ifAnyGranted roles="ROLE_ADMIN,ROLE_MODERATOR">
+				<li class="tab3" role="presentation"><g:link
+						controller="acStudent" action="reportAdmin"
+						id="${student.id }">Report</g:link></li>
+				</sec:ifAnyGranted>
+				<sec:ifAnyGranted roles="ROLE_STUDENT">
+					<li class="tab3" role="presentation"><g:link
+						controller="acStudent" action="reportStudent"
+						id="${student.id }">Report</g:link></li>
+				</sec:ifAnyGranted>
+			</ul>
+		</div>
 
 	<!-- Buttons -->
 	<div class="table_buttons" style="height: 2em">
