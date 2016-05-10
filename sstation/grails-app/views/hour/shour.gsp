@@ -22,10 +22,10 @@
 			<!-- Buttons -->
 
 			<div class="nav cornerButtons showButtons" role="navigation">
-				<g:remoteLink controller="hour" action="_editShour" id="${shour.id}"
+				<g:link controller="hour" action="_editShour" id="${shour.id}"
 					update="overallShour" style="padding-right:5px">
 					<span style="color: #FFDE97" class="glyphicon glyphicon-edit"
-						aria-hidden="true"></span> Edit </g:remoteLink>
+						aria-hidden="true"></span> Edit </g:link>
 						
 				<g:link onclick="deleteConfirm(${shour.id})" >
 					<span style="color: #FFDE97" class="glyphicon glyphicon-trash"

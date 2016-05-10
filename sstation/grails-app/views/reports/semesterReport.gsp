@@ -20,7 +20,7 @@
 	<div class="mainback">
 	
 	<div class="reportTitle">
-	Service Station Service Hours Report Summary<br>
+	Service Station Service Hours Report By Semester<br>
 	<h4>Total Service Hours: ${totalHours}</h4>
 	</div>
 	

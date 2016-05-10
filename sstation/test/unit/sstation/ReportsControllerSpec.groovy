@@ -33,19 +33,11 @@ class ReportsControllerSpec extends Specification {
 		view=="/reports/_hoursByYear"
 	}
 
-	void "test eventSelection"() {
-		when:
-		controller.stationReportService=Mock(StationReportService)
-		controller.eventSelection()
-		then:
-		view=="/reports/eventSelection"
-	}
 
 	void "test eventReport"() {
 		when:
 		controller.stationReportService=Mock(StationReportService)
-		def event = randomEvent("asdf")
-		controller.eventReport(event)
+		controller.eventReport()
 		
 		then:
 		view=="/reports/eventReport"

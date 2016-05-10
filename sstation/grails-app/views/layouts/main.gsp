@@ -104,12 +104,13 @@
  		<nav class="nav-pills nav-stacked" id="sideBar" style="width:151px;">
  			<div class="sidebar-collapse menu-collapse" style="height: 100%">
  				<ul class="nav navLink" id="main-menu" style="height: 100%">
+ 				<sec:ifAnyGranted roles="ROLE_ADMIN,ROLE_MODERATOR">
   					<li><g:link controller="home" params="[domain:1]"
   							action="index">
   							<span class="glyphicon glyphicon-home" aria-hidden="true"></span>
   							<br />Home </g:link></li>
   							
-  				<sec:ifAnyGranted roles="ROLE_ADMIN,ROLE_MODERATOR">
+  				
  					<li><g:link controller="hour" action="overall">
  
   							<span class="glyphicon glyphicon-stats" aria-hidden="true"></span>
@@ -125,6 +126,7 @@
   							<span class="glyphicon glyphicon-tasks" aria-hidden="true"></span>
   							<br />Station Reports</g:link></li>
   				</sec:ifAnyGranted>
+
   
   				<sec:ifAnyGranted roles="ROLE_MODERATOR">
  					<li><g:link controller="acStudent" action="home" id="1">

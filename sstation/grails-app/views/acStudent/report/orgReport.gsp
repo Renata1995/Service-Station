@@ -21,7 +21,16 @@
 			${student.firstname}
 			${student.lastname}
 		</h1>
-		<div class="cornerButtons"></div>
+		<div class="cornerButtons">
+			<sec:ifAnyGranted roles="ROLE_ADMIN,ROLE_MODERATOR">
+				<g:link controller="acStudent" action="reportAdmin"
+					id="${student.id}">Back</g:link>
+			</sec:ifAnyGranted>
+			<sec:ifAnyGranted roles="ROLE_STUDENT">
+				<g:link controller="acStudent" action="reportStudent"
+					id="${student.id}">Back</g:link>
+			</sec:ifAnyGranted>
+		</div>
 	</div>
 	<br />
 	<div class="mainback">
@@ -90,6 +99,7 @@
 
 				</tbody>
 			</table>
+
 		</div>
 	</div>
 </body>

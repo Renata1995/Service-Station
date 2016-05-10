@@ -8,6 +8,7 @@ import sstation.Status;
 import grails.test.runtime.FreshRuntime;
 import grails.test.mixin.*
 import spock.lang.*
+import grails.plugin.springsecurity.*
 
 @TestFor(AcStudentController)
 @Mock([AcStudent,ServiceHour,CampusOrg,Event,CommAg])
@@ -108,11 +109,13 @@ class AcStudentControllerSpec extends Specification {
 	}
 	void "test updateStudent which update the edited student and leads to the student infor page"(){
 		when:
+		controller.springSecurityService=new SpringSecurityService()
 		AcStudent ac=new AcStudent(firstname:"Renata",lastname:"Chai",acid:"AC3483",acEmail:"rchai13@austincollege.edu",acBox:"11111",acYear:2013,classification:Classification.JR,phone:"1111111111", status:'A').save(flush:true,failOnError:true)
+		params.firstname="R"
 		controller._updateStudent(ac)
 		then:
-		view=="/acStudent/student/_showStudent"
-		model.student==ac
+		ac.firstname=="R"
+		
 	}
 
 	void "test delete Student"(){

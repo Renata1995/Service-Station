@@ -24,15 +24,17 @@ class ReportsController {
 	}
 
 	
-	def eventReport(Event e) {
-		def li = stationReportService.hourKPIbyEvent(e)
-		render view:"eventReport", model:[list:li]
+	def eventReport() {
+		def listEvent = Event.list()
+		def li = [:]
+		listEvent.each{
+			def keyName=stationReportService.hourKPIbyEvent(it)['name']
+			li.put(keyName,stationReportService.hourKPIbyEvent(it)['total'])
+		}
+		println li.size
+		render view:"eventReport", model:[li:li]
 	}
-	
-	def eventSelection() {
-		def li = Event.list()
-		render view:"eventSelection", model:[list:li]
-	}
+
 	
 	def _hoursByEvent() {
 		int eventId = Integer.parseInt(params.event)

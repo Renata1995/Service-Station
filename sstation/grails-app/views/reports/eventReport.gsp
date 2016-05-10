@@ -1,7 +1,8 @@
 <%@ page contentType="text/html;charset=UTF-8"%>
 <html>
 <head>
-
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+<meta name="layout" content="main" />
 <title>Station Report by Service Event</title>
 <style>
 .table>tbody>tr>td {
@@ -29,41 +30,23 @@
 				<thead>
 					<tr>
 						<th>Service Event Name</th>
-						<th>Total Service Hours (hr)</th>
-						<th>Average by Student (hr)</th>
-						<th>Average by Campus Groups (hr)</th>
-						<th>Average by Community Organizations (hr)</th>
-						<th></th>
+
 					</tr>
 				</thead>
 
 				<tbody>
 
+					<g:each in="${li}" var="list">
 
-					<tr>
-						<td>
-							${list['name']}
-						</td>
-						<td>
-							${list['total'] }
-						</td>
-						<td>
-							${list['avgByStudent']}
-						</td>
+						<tr>
+							<td>
+								${list.key} : ${list.value }
+							</td>
 
-						<td>
-							${list['avgByGroup']}
-						</td>
 
-						<td>
-							${list['avgByCommOrg']}
-						</td>
 
-						<td>
-							<div class="btn btn-default eventDetail" id="${list['event']}">Details</div>
-						</td>
-					</tr>
-
+						</tr>
+					</g:each>
 				</tbody>
 
 			</table>
